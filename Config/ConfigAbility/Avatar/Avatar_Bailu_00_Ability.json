@@ -17,10 +17,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -212,10 +208,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -236,10 +228,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -277,11 +265,7 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "FormationConfigName": "LowSpacing",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationConfigName": "LowSpacing"
         },
         {
           "$type": "RPG.GameCore.WaitAnimState",
@@ -389,10 +373,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "MDF_HealPercentage",
           "Value": {
             "IsDynamic": true,
@@ -406,10 +386,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "MDF_HealValue",
           "Value": {
             "IsDynamic": true,
@@ -440,10 +416,6 @@
           "TaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_HealPercentage",
               "Value": {
                 "IsDynamic": true,
@@ -473,10 +445,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_HealValue",
               "Value": {
                 "IsDynamic": true,
@@ -569,7 +537,7 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.LoopExecuteTaskList",
+          "$type": "RPG.GameCore.LoopExecuteTaskListWithInterval",
           "MaxLoopCount": {
             "IsDynamic": true,
             "Expressions": [
@@ -608,10 +576,6 @@
               "TaskList": [
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "MDF_HealPercentage",
                   "Value": {
                     "IsDynamic": true,
@@ -641,10 +605,6 @@
                 },
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "MDF_HealValue",
                   "Value": {
                     "IsDynamic": true,
@@ -830,21 +790,13 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
-          "CustomFormationName": "Bailu_00_Skill03_Ready",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "CustomFormationName": "Bailu_00_Skill03_Ready"
         },
         {
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "UseSkillPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0,
@@ -878,10 +830,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "UseSkillPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 1.1,
@@ -955,10 +903,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03"
         },
         {
@@ -1030,10 +974,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         }
@@ -1161,10 +1101,6 @@
                   "SuccessTaskList": [
                     {
                       "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "DynamicKey": "MDF_SkillTree02_HealCountExtra",
                       "Value": {
                         "IsDynamic": true,
@@ -1180,10 +1116,6 @@
                   "FailedTaskList": [
                     {
                       "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "DynamicKey": "MDF_SkillTree02_HealCountExtra",
                       "Value": {
                         "IsDynamic": false,
@@ -1205,10 +1137,6 @@
                   "SuccessTaskList": [
                     {
                       "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "DynamicKey": "MDF_SkillTree03_DamageResistance",
                       "Value": {
                         "IsDynamic": true,
@@ -1224,10 +1152,6 @@
                   "FailedTaskList": [
                     {
                       "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "DynamicKey": "MDF_SkillTree03_DamageResistance",
                       "Value": {
                         "IsDynamic": false,
@@ -1249,10 +1173,6 @@
                   "SuccessTaskList": [
                     {
                       "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "DynamicKey": "MDF_Rank01_AddSP",
                       "Value": {
                         "IsDynamic": true,
@@ -1268,10 +1188,6 @@
                   "FailedTaskList": [
                     {
                       "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "DynamicKey": "MDF_Rank01_AddSP",
                       "Value": {
                         "IsDynamic": false,
@@ -1468,57 +1384,9 @@
     {
       "Modifiers": {
         "MAvatar_Bailu_00_DieEvent": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeammate"
-              },
-              "ModifierName": "MAvatar_Bailu_Revive_Ready"
-            },
-            {
-              "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "Active": "True",
-              "BarType": 3,
-              "CurrentState": "Active",
-              "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1211Passive.png",
-              "MaxCount": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1796447628
-                  }
-                ]
-              },
-              "CurrentCount": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 963991070
-                  }
-                ]
-              }
-            }
-          ],
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
@@ -1526,83 +1394,133 @@
                     "Alias": "AllTeammate"
                   },
                   "ModifierName": "MAvatar_Bailu_Revive_Ready"
+                },
+                {
+                  "$type": "RPG.GameCore.SetEnergyBarState",
+                  "Active": "True",
+                  "BarType": 3,
+                  "CurrentState": "Active",
+                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1211Passive.png",
+                  "MaxCount": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1796447628
+                      }
+                    ]
+                  },
+                  "CurrentCount": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 963991070
+                      }
+                    ]
+                  }
                 }
               ]
-            }
-          ],
-          "OnBeforeDying": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeamMember"
-              },
-              "ModifierName": "MAvatar_Bailu_Revive_Ready"
             },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeamMember"
-              },
-              "ModifierName": "MAvatar_Bailu_Revive_Mark"
-            }
-          ],
-          "OnListenModifierRemove": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
+                      "Alias": "ParamEntity"
                     },
-                    "ModifierName": "MAvatar_Bailu_Revive_Mark"
+                    "Team": "TeamLight"
                   },
-                  {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "ModifierName": "MAvatar_Bailu_00_ReviveEvent",
-                    "Inverse": true
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllTeammate"
+                      },
+                      "ModifierName": "MAvatar_Bailu_Revive_Ready"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnBeforeDying": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "AllTeamMember"
                   },
-                  "ModifierName": "MAvatar_Bailu_Revive_Ready",
-                  "OnlyRemoveCasterAdded": true
+                  "ModifierName": "MAvatar_Bailu_Revive_Ready"
                 },
                 {
                   "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
-                    "$type": "RPG.GameCore.TargetConcat",
-                    "Targets": [
-                      {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "AllTeamMember"
-                      },
-                      {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "AllUnselectable"
-                      }
-                    ]
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllTeamMember"
                   },
                   "ModifierName": "MAvatar_Bailu_Revive_Mark"
                 }
               ]
+            },
+            "OnListenModifierRemove": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                        "ModifierName": "MAvatar_Bailu_Revive_Mark"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "ModifierName": "MAvatar_Bailu_00_ReviveEvent",
+                        "Inverse": true
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllTeamMember"
+                      },
+                      "ModifierName": "MAvatar_Bailu_Revive_Ready",
+                      "OnlyRemoveCasterAdded": true
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetConcat",
+                        "Targets": [
+                          {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "AllTeamMember"
+                          },
+                          {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "AllUnselectable"
+                          }
+                        ]
+                      },
+                      "ModifierName": "MAvatar_Bailu_Revive_Mark"
+                    }
+                  ]
+                }
+              ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {}
           }
@@ -1625,10 +1543,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_ReviveTime",
               "Value": {
                 "IsDynamic": true,
@@ -1653,10 +1567,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_ReviveTime",
               "Value": {
                 "IsDynamic": false,
@@ -1669,10 +1579,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "MDF_ReviveTime2",
           "Value": {
             "IsDynamic": true,
@@ -1765,10 +1671,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimStateName": "PassiveSkill"
             },
             {
@@ -1822,6 +1724,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "AbilityTargetEntity"
               },
+              "AliveOnly": false,
               "FormulaType": "HealByHealerMaxHP",
               "HealPercentage": {
                 "IsDynamic": true,
@@ -1858,10 +1761,6 @@
               "SuccessTaskList": [
                 {
                   "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "ModifierName": "MAvatar_Bailu_00_ReviveEvent",
                   "Multiplier": {
                     "IsDynamic": true,
@@ -1878,10 +1777,6 @@
                 },
                 {
                   "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "Active": "True",
                   "BarType": 3,
                   "CurrentState": "Active",
@@ -1909,10 +1804,6 @@
               "FailedTaskList": [
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "MDF_ReviveTime2",
                   "Value": {
                     "IsDynamic": true,
@@ -1928,10 +1819,6 @@
                 },
                 {
                   "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "Active": "True",
                   "BarType": 3,
                   "CurrentState": "Disable",
@@ -1967,10 +1854,6 @@
             },
             {
               "$type": "RPG.GameCore.MoveToTargetPosition",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "TeamFormation"
@@ -2001,216 +1884,58 @@
       "Modifiers": {
         "StageAbility_Maze_Bailu_00_Modifier": {
           "EnterBattlePriority": "CharacterBuff",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.BySkillPointActivated",
-                    "PointTriggerKey": {
-                      "Hash": 1455742904
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
                     }
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.BySkillPointActivated",
+                        "PointTriggerKey": {
+                          "Hash": 1455742904
+                        }
                       },
-                      "DynamicKey": "MDF_SkillTree02_HealCountExtra",
-                      "Value": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1887701537
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "MDF_SkillTree02_HealCountExtra",
+                          "Value": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1887701537
+                              }
+                            ]
                           }
-                        ]
-                      }
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "MDF_SkillTree02_HealCountExtra",
-                      "Value": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0
                         }
-                      }
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.BySkillPointActivated",
-                    "PointTriggerKey": {
-                      "Hash": 1455742905
-                    }
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "MDF_SkillTree03_DamageResistance",
-                      "Value": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1212431349
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "MDF_SkillTree02_HealCountExtra",
+                          "Value": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 0
+                            }
                           }
-                        ]
-                      }
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "MDF_SkillTree03_DamageResistance",
-                      "Value": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0
-                        }
-                      }
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByRankActivated",
-                    "TriggerKey": {
-                      "Hash": 2089636447
-                    }
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "MDF_Rank01_AddSP",
-                      "Value": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1351111378
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "MDF_Rank01_AddSP",
-                      "Value": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0
-                        }
-                      }
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllTeamMember"
-                  },
-                  "ModifierName": "MAvatar_Bailu_Heal_Mark",
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -422443133
-                      }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "MDF__HealPercentage2": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -169854598
                         }
                       ]
                     },
-                    "MDF__HealValue2": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -1134214845
-                        }
-                      ]
-                    },
-                    "MDF_AddSP": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -1177881702
-                        }
-                      ]
-                    },
-                    "MDF_HealCount": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -747859631
-                        }
-                      ]
-                    },
-                    "MDF_HealCountExtra": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1980500375
-                        }
-                      ]
-                    }
-                  },
-                  "SuccessTaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
@@ -2221,23 +1946,161 @@
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "AllTeamMember"
-                          },
-                          "ModifierName": "MAvatar_Bailu_00_PointB3",
-                          "DynamicValues": {
-                            "MDF_DamageResistance": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": 1709596951
-                                }
-                              ]
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "MDF_SkillTree03_DamageResistance",
+                          "Value": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1212431349
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "MDF_SkillTree03_DamageResistance",
+                          "Value": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 0
                             }
                           }
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByRankActivated",
+                        "TriggerKey": {
+                          "Hash": 2089636447
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "MDF_Rank01_AddSP",
+                          "Value": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1351111378
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "MDF_Rank01_AddSP",
+                          "Value": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 0
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllTeamMember"
+                      },
+                      "ModifierName": "MAvatar_Bailu_Heal_Mark",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -422443133
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MDF__HealPercentage2": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -169854598
+                            }
+                          ]
+                        },
+                        "MDF__HealValue2": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -1134214845
+                            }
+                          ]
+                        },
+                        "MDF_AddSP": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -1177881702
+                            }
+                          ]
+                        },
+                        "MDF_HealCount": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -747859631
+                            }
+                          ]
+                        },
+                        "MDF_HealCountExtra": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1980500375
+                            }
+                          ]
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.BySkillPointActivated",
+                            "PointTriggerKey": {
+                              "Hash": 1455742905
+                            }
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "AllTeamMember"
+                              },
+                              "ModifierName": "MAvatar_Bailu_00_PointB3",
+                              "DynamicValues": {
+                                "MDF_DamageResistance": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": 1709596951
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
@@ -2245,7 +2108,7 @@
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Bailu_00_SkillMazeInLevel",
@@ -2289,31 +2152,247 @@
   ],
   "GlobalModifiers": {
     "MAvatar_Bailu_Revive_Ready": {
-      "OnAfterBeingHitAll": [],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "ModifierName": "MAvatar_Bailu_00_ReviveEvent",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
+      "_CallbackList": {
+        "OnAfterBeingHitAll": {
+          "CallbackConfig": []
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCompareModifierValue",
+                    "ModifierName": "MAvatar_Bailu_00_ReviveEvent",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
                   }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHP",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByAnd",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByTargetListIntersects",
+                            "FirstTargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ModifierOwnerEntity"
+                            },
+                            "FirstTargetAliveOnly": false,
+                            "SecondTargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "Caster"
+                            },
+                            "SecondTargetAliveOnly": false
+                          }
+                        ]
+                      },
+                      "SuccessTaskList": [],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCompareHP",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "Caster"
+                            },
+                            "CompareType": "LessEqual",
+                            "CompareValue": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 0
+                              }
+                            }
+                          },
+                          "SuccessTaskList": [],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.PredicateTaskList",
+                              "Predicate": {
+                                "$type": "RPG.GameCore.ByAny",
+                                "PredicateList": [
+                                  {
+                                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                                    "TargetType": {
+                                      "$type": "RPG.GameCore.TargetAlias",
+                                      "Alias": "Caster"
+                                    },
+                                    "Flag": "STAT_CTRL"
+                                  },
+                                  {
+                                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                                    "TargetType": {
+                                      "$type": "RPG.GameCore.TargetAlias",
+                                      "Alias": "Caster"
+                                    },
+                                    "Flag": "DisableAction"
+                                  }
+                                ]
+                              },
+                              "SuccessTaskList": [],
+                              "FailedTaskList": [
+                                {
+                                  "$type": "RPG.GameCore.AddModifier",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "AliveOnly": false,
+                                  "ModifierName": "MAvatar_Bailu_Revive_Mark"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
+              ],
+              "FailedTaskList": []
+            }
+          ]
+        },
+        "OnAfterBeingAttacked": {
+          "CallbackConfig": []
+        }
+      },
+      "Stacking": "ReplaceByCaster"
+    },
+    "MAvatar_Bailu_Heal_Mark": {
+      "UseSnapshotEntity": true,
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "MDF_AddSP",
+                    "ContextScope": "ContextModifier",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ModifySPNew",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "FixedAddValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -636281976
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_MAZ_RecoverSP.prefab"
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "MAvatar_Bailu_00_PointB3"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetModifierValue",
+              "ModifierName": "MAvatar_Bailu_Heal_Mark",
+              "Value": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -478185549
+                  },
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1843504749
+                  },
+                  {
+                    "Type": "Add"
+                  }
+                ]
               }
-            ]
-          },
-          "SuccessTaskList": [
+            }
+          ]
+        },
+        "OnAfterBeingAttacked": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
@@ -2322,7 +2401,7 @@
                   "$type": "RPG.GameCore.TargetAlias",
                   "Alias": "ModifierOwnerEntity"
                 },
-                "CompareType": "LessEqual",
+                "CompareType": "Greater",
                 "CompareValue": {
                   "IsDynamic": false,
                   "FixedValue": {
@@ -2332,266 +2411,54 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByAnd",
-                    "PredicateList": [
+                  "$type": "RPG.GameCore.HealHP",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "FormulaType": "HealByHealerMaxHP",
+                  "HealPercentage": {
+                    "IsDynamic": true,
+                    "Expressions": [
                       {
-                        "$type": "RPG.GameCore.ByTargetListIntersects",
-                        "FirstTargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ModifierOwnerEntity"
-                        },
-                        "FirstTargetAliveOnly": false,
-                        "SecondTargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
-                        "SecondTargetAliveOnly": false
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -909747415
                       }
                     ]
                   },
-                  "SuccessTaskList": [],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareHP",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
-                        "CompareType": "LessEqual",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 0
-                          }
-                        }
-                      },
-                      "SuccessTaskList": [],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.PredicateTaskList",
-                          "Predicate": {
-                            "$type": "RPG.GameCore.ByAny",
-                            "PredicateList": [
-                              {
-                                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                                "TargetType": {
-                                  "$type": "RPG.GameCore.TargetAlias",
-                                  "Alias": "Caster"
-                                },
-                                "Flag": "STAT_CTRL"
-                              },
-                              {
-                                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                                "TargetType": {
-                                  "$type": "RPG.GameCore.TargetAlias",
-                                  "Alias": "Caster"
-                                },
-                                "Flag": "DisableAction"
-                              }
-                            ]
-                          },
-                          "SuccessTaskList": [],
-                          "FailedTaskList": [
-                            {
-                              "$type": "RPG.GameCore.AddModifier",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "AliveOnly": false,
-                              "ModifierName": "MAvatar_Bailu_Revive_Mark"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "FailedTaskList": []
-            }
-          ],
-          "FailedTaskList": []
-        }
-      ],
-      "OnAfterBeingAttacked": [],
-      "Stacking": "ReplaceByCaster"
-    },
-    "MAvatar_Bailu_Heal_Mark": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
+                  "ModifyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -87085370
+                      }
+                    ]
+                  },
+                  "DisplayData": {
+                    "UIMessageHeight": 0.8
+                  }
                 },
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
+                {
+                  "$type": "RPG.GameCore.ModifierAttachEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_Heal_Maze.prefab",
+                  "MinMutexTime": -1,
+                  "MutexType": "Entity"
                 },
-                "DynamicKey": "MDF_AddSP",
-                "ContextScope": "ContextModifier",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
+                {
+                  "$type": "RPG.GameCore.SetModifierValue",
+                  "ModifierName": "MAvatar_Bailu_Heal_Mark",
+                  "ModifyFunction": "Add"
                 }
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.ModifySPNew",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "FixedAddValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -636281976
-                  }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_MAZ_RecoverSP.prefab"
-            }
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MAvatar_Bailu_00_PointB3"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetModifierValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MAvatar_Bailu_Heal_Mark",
-          "Value": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -478185549
-              },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1843504749
-              },
-              {
-                "Type": "Add"
-              }
-            ]
-          }
-        }
-      ],
-      "OnAfterBeingAttacked": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareHP",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "CompareType": "Greater",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0
-              }
-            }
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.HealHP",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "FormulaType": "HealByHealerMaxHP",
-              "HealPercentage": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -909747415
-                  }
-                ]
-              },
-              "ModifyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -87085370
-                  }
-                ]
-              },
-              "DisplayData": {
-                "UIMessageHeight": 0.8
-              }
-            },
-            {
-              "$type": "RPG.GameCore.ModifierAttachEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_Heal_Maze.prefab",
-              "MinMutexTime": -1,
-              "MutexType": "Entity"
-            },
-            {
-              "$type": "RPG.GameCore.SetModifierValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MAvatar_Bailu_Heal_Mark",
-              "ModifyFunction": "Add"
+              ]
             }
           ]
         }
-      ],
-      "UseSnapshotEntity": true,
+      },
       "Count": 1,
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
@@ -2602,52 +2469,84 @@
       }
     },
     "MAvatar_Bailu_00_PointB1": {
-      "OnAfterDealHeal": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByHealDataProperty",
-          "DynamicKey": "Overflowheal",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "Result_OverflowHealAmount"
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
+      "_CallbackList": {
+        "OnAfterDealHeal": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByHealDataProperty",
+              "DynamicKey": "Overflowheal",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "Result_OverflowHealAmount"
             },
-            "DynamicKey": "Overflowheal",
-            "CompareType": "Greater",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0
-              }
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "DynamicKey": "Overflowheal",
+                "CompareType": "Greater",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 0
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "ModifierName": "MAvatar_Bailu_00_PointB1_HPIncrease",
+                  "LifeTime": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 319869695
+                      }
+                    ]
+                  },
+                  "DynamicValues": {
+                    "MDF_HPIncrease": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -950169871
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
             }
-          },
-          "SuccessTaskList": [
+          ]
+        },
+        "OnSnapshotCreate": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ParamEntity"
               },
-              "ModifierName": "MAvatar_Bailu_00_PointB1_HPIncrease",
-              "LifeTime": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 319869695
-                  }
-                ]
-              },
+              "ModifierName": "MAvatar_Bailu_00_PointB1_Sub",
               "DynamicValues": {
-                "MDF_HPIncrease": {
+                "MDF_LifeTime": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": 319869695
+                    }
+                  ]
+                },
+                "MDF_HPIncrease2": {
                   "IsDynamic": true,
                   "Expressions": [
                     {
@@ -2660,37 +2559,7 @@
             }
           ]
         }
-      ],
-      "OnSnapshotCreate": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "MAvatar_Bailu_00_PointB1_Sub",
-          "DynamicValues": {
-            "MDF_LifeTime": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 319869695
-                }
-              ]
-            },
-            "MDF_HPIncrease2": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -950169871
-                }
-              ]
-            }
-          }
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-913589714": {}
@@ -2698,303 +2567,24 @@
       }
     },
     "MAvatar_Bailu_00_PointB1_Sub": {
-      "OnAfterDealHeal": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByHealDataProperty",
-          "DynamicKey": "Overflowheal",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "Result_OverflowHealAmount"
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "Overflowheal",
-            "CompareType": "Greater",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0
-              }
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnAfterDealHeal": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
+              "$type": "RPG.GameCore.SetDynamicValueByHealDataProperty",
+              "DynamicKey": "Overflowheal",
+              "ReadTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
+                "Alias": "ModifierOwnerEntity"
               },
-              "ModifierName": "MAvatar_Bailu_00_PointB1_HPIncrease",
-              "LifeTime": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1820617363
-                  }
-                ]
-              },
-              "DynamicValues": {
-                "MDF_HPIncrease": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 47229878
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "-913589714": {},
-          "1820617363": {},
-          "47229878": {}
-        }
-      }
-    },
-    "MAvatar_Bailu_00_PointB1_HPIncrease": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "HPAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1794670696
-              }
-            ]
-          }
-        }
-      ],
-      "Stacking": "ReplaceByCaster"
-    },
-    "MAvatar_Bailu_00_PointB3": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AllDamageReduce",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1070223720
-              }
-            ]
-          }
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "-1070223720": {}
-        }
-      }
-    },
-    "MAvatar_Bailu_00_Rank02": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "HealRatioBase",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 2128130574
-              }
-            ]
-          }
-        }
-      ],
-      "Stacking": "ReplaceByCaster",
-      "DynamicValues": {
-        "Values": {
-          "2128130574": {}
-        }
-      }
-    },
-    "MAvatar_Bailu_00_Rank04": {
-      "OnAfterDealHeal": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "MAvatar_Bailu_00_Rank04_AttackUp",
-          "LifeTime": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1336719836
-              }
-            ]
-          },
-          "MaxLayer": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1670536626
-              }
-            ]
-          },
-          "LayerAddWhenStack": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "DynamicValues": {
-            "MDF_AttackUpRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -46128150
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    "MAvatar_Bailu_00_Rank04_AttackUp": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ValueType": "Layer",
-          "Multiplier": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "DynamicKey": "MDF_Layer"
-        },
-        {
-          "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "MDF_AttackUpRatio",
-          "Value": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -389231940
-              },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1662446059
-              },
-              {
-                "Type": "Mul"
-              }
-            ]
-          }
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AllDamageTypeAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -389231940
-              }
-            ]
-          }
-        }
-      ],
-      "Stacking": "ReplaceByCaster",
-      "DynamicValues": {
-        "Values": {
-          "1662446059": {}
-        }
-      }
-    },
-    "MAvatar_Bailu_Revive_Mark": {
-      "OnStack": [],
-      "LimboWaitHealPriority": "AvatarReviveOthers",
-      "OnLimboWaitHeal": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAny",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "Flag": "STAT_CTRL"
-              },
-              {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "Flag": "DisableAction"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
-            }
-          ],
-          "FailedTaskList": [
+              "Property": "Result_OverflowHealAmount"
+            },
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByCompareHP",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "LessEqual",
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "DynamicKey": "Overflowheal",
+                "CompareType": "Greater",
                 "CompareValue": {
                   "IsDynamic": false,
                   "FixedValue": {
@@ -3004,49 +2594,175 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.TriggerAnimState",
+                  "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                    "Alias": "ParamEntity"
                   },
-                  "AnimLogicState": "Limbo",
-                  "AnimStateName": "Die_Limbo",
-                  "NormalizedTransitionDuration": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.10000000009313226
+                  "ModifierName": "MAvatar_Bailu_00_PointB1_HPIncrease",
+                  "LifeTime": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1820617363
+                      }
+                    ]
+                  },
+                  "DynamicValues": {
+                    "MDF_HPIncrease": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 47229878
+                        }
+                      ]
                     }
-                  },
-                  "ForceStart": true
+                  }
                 }
               ]
-            },
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "-913589714": {},
+          "1820617363": {},
+          "47229878": {}
+        }
+      }
+    },
+    "MAvatar_Bailu_00_PointB1_HPIncrease": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Avatar_Bailu_00_InsertSkill_Revive",
+              "$type": "RPG.GameCore.StackProperty",
               "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AbilityTarget": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "AbortBehaviorFlags": [
-                "DisableAction",
-                "STAT_CTRL"
-              ],
-              "InsertAbilityPriority": "AvatarReviveOthers",
-              "TargetAliveState": "Mask_AliveOrLimbo",
-              "ShowInActionBar": true,
-              "PreCheck": {
-                "Type": "AbilityOwnerInsertCount",
-                "Count": {
+              "Property": "HPAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1794670696
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Stacking": "ReplaceByCaster"
+    },
+    "MAvatar_Bailu_00_PointB3": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AllDamageReduce",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1070223720
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "-1070223720": {}
+        }
+      }
+    },
+    "MAvatar_Bailu_00_Rank02": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "HealRatioBase",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 2128130574
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Stacking": "ReplaceByCaster",
+      "DynamicValues": {
+        "Values": {
+          "2128130574": {}
+        }
+      }
+    },
+    "MAvatar_Bailu_00_Rank04": {
+      "_CallbackList": {
+        "OnAfterDealHeal": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "MAvatar_Bailu_00_Rank04_AttackUp",
+              "LifeTime": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1336719836
+                  }
+                ]
+              },
+              "MaxLayer": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1670536626
+                  }
+                ]
+              },
+              "LayerAddWhenStack": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "DynamicValues": {
+                "MDF_AttackUpRatio": {
                   "IsDynamic": true,
                   "Expressions": [
                     {
                       "Type": "DynamicNumber",
-                      "DynamicHash": 963991070
+                      "DynamicHash": -46128150
                     }
                   ]
                 }
@@ -3054,8 +2770,185 @@
             }
           ]
         }
-      ],
-      "OnAfterBeingAttacked": []
+      }
+    },
+    "MAvatar_Bailu_00_Rank04_AttackUp": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ValueType": "Layer",
+              "Multiplier": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "DynamicKey": "MDF_Layer"
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "MDF_AttackUpRatio",
+              "Value": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -389231940
+                  },
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1662446059
+                  },
+                  {
+                    "Type": "Mul"
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AllDamageTypeAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -389231940
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Stacking": "ReplaceByCaster",
+      "DynamicValues": {
+        "Values": {
+          "1662446059": {}
+        }
+      }
+    },
+    "MAvatar_Bailu_Revive_Mark": {
+      "LimboWaitHealPriority": "AvatarReviveOthers",
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": []
+        },
+        "OnLimboWaitHeal": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAny",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Flag": "STAT_CTRL"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Flag": "DisableAction"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHP",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerAnimState",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "AnimLogicState": "Limbo",
+                      "AnimStateName": "Die_Limbo",
+                      "NormalizedTransitionDuration": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0.10000000009313226
+                        }
+                      },
+                      "ForceStart": true
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Avatar_Bailu_00_InsertSkill_Revive",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AbortBehaviorFlags": [
+                    "DisableAction",
+                    "STAT_CTRL"
+                  ],
+                  "InsertAbilityPriority": "AvatarReviveOthers",
+                  "TargetAliveState": "Mask_AliveOrLimbo",
+                  "ShowInActionBar": true,
+                  "PreCheck": {
+                    "Type": "AbilityOwnerInsertCount",
+                    "Count": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 963991070
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "OnAfterBeingAttacked": {
+          "CallbackConfig": []
+        }
+      }
     }
   }
 }

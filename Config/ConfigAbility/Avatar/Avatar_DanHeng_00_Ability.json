@@ -26,10 +26,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity",
           "Duration": 1
         },
@@ -149,33 +145,37 @@
     {
       "Modifiers": {
         "MAvatar_DanHeng_00_Tree03_DamageAddedRatio": {
-          "OnBeforeHit": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "DamageDefenderEntity"
-                },
-                "Flag": "STAT_SpeedDown"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeforeHit": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ModifyDamageData",
-                  "Attacker_AllDamageTypeAddedRatio": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2003839773
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "DamageDefenderEntity"
+                    },
+                    "Flag": "STAT_SpeedDown"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifyDamageData",
+                      "Attacker_AllDamageTypeAddedRatio": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 2003839773
+                          }
+                        ]
                       }
-                    ]
-                  }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_DanHeng_00_Skill01_Phase02",
@@ -371,10 +371,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity",
           "Duration": 1
         },
@@ -490,60 +486,64 @@
     {
       "Modifiers": {
         "DanHeng_Skill02_CheckCritical_Modifier": {
-          "OnAfterHit": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsDamageCritical"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterHit": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AbilityTargetEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsDamageCritical"
                   },
-                  "ModifierName": "MAvatar_DanHeng_00_BPSkill_SpeedDown",
-                  "Chance": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -322514336
-                      }
-                    ]
-                  },
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -2121200112
-                      }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 769117057
-                        },
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1208421608
-                        },
-                        {
-                          "Type": "Add"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AbilityTargetEntity"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_BPSkill_SpeedDown",
+                      "Chance": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -322514336
+                          }
+                        ]
+                      },
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -2121200112
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 769117057
+                            },
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1208421608
+                            },
+                            {
+                              "Type": "Add"
+                            }
+                          ]
                         }
-                      ]
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-322514336": {}
@@ -554,34 +554,38 @@
           "BehaviorFlagList": [
             "STAT_SpeedDown"
           ],
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 0
-                    }
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 2128130574
+                      },
+                      {
+                        "Type": "Sub"
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -611,10 +615,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "_RankSpeedDown",
               "Value": {
                 "IsDynamic": true,
@@ -630,10 +630,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "_RankSpeedDown",
               "Value": {
                 "IsDynamic": false,
@@ -937,10 +933,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "DarkTeamCenter"
         },
         {
@@ -960,10 +952,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": -0.5,
@@ -1004,10 +992,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0.35,
@@ -1052,10 +1036,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1085,10 +1065,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03"
         },
         {
@@ -1151,11 +1127,7 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamDark",
-          "FormationType": "DarkTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationType": "DarkTeamNormal"
         },
         {
           "$type": "RPG.GameCore.ShowBattleUI",
@@ -1164,18 +1136,10 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamDark",
-          "FormationType": "DarkTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationType": "DarkTeamNormal"
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1193,36 +1157,42 @@
     {
       "Modifiers": {
         "MAvatar_DanHeng_00_Rank04_Trigger": {
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.SetActionDelay",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
+          "_CallbackList": {
+            "OnTriggerDeath": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetActionDelay",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
                 }
-              }
-            }
-          ],
-          "OnTriggerDeathrattle": [
-            {
-              "$type": "RPG.GameCore.SetActionDelay",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
+              ]
+            },
+            "OnTriggerDeathrattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetActionDelay",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
                 }
-              }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_DanHeng_00_Skill03_Phase02",
@@ -1411,252 +1381,308 @@
     },
     {
       "Modifiers": {
-        "MAvatar_DanHeng_CheckSelfBeingTarget": {
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
+        "SkillPreShowModifier": {
+          "ModifierAffectedPreshowConfig": {
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "Condition": {
+              "$type": "RPG.GameCore.ByNot",
               "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "ModifierName": "MAvatar_DanHeng_00_PointB2_SpeedUp"
+              }
+            },
+            "ActionDelayPreshowConfig": {
+              "AddSpeedRatio": {
+                "IsDynamic": true,
+                "Expressions": [
                   {
-                    "$type": "RPG.GameCore.ByAny",
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1190779430
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "SkillPreShowModifier2": {
+          "ModifierAffectedPreshowConfig": {
+            "SkillTypes": [
+              "Skill"
+            ],
+            "Condition": {
+              "$type": "RPG.GameCore.ByNot",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MAvatar_DanHeng_00_BPSkill_SpeedDown"
+              }
+            },
+            "ActionDelayPreshowConfig": {
+              "AddSpeedRatio": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 769117057
+                  },
+                  {
+                    "Type": "Neg"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "MAvatar_DanHeng_CheckSelfBeingTarget": {
+          "_CallbackList": {
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
                     "PredicateList": [
                       {
-                        "$type": "RPG.GameCore.ByCurrentSkillType"
+                        "$type": "RPG.GameCore.ByAny",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByCurrentSkillType"
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByCurrentSkillType",
+                            "SkillType": "Skill"
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByCurrentSkillType",
+                            "SkillType": "Ultra"
+                          }
+                        ]
                       },
                       {
-                        "$type": "RPG.GameCore.ByCurrentSkillType",
-                        "SkillType": "Skill"
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsContainModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhanceCD"
+                        }
                       },
                       {
-                        "$type": "RPG.GameCore.ByCurrentSkillType",
-                        "SkillType": "Ultra"
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsContainModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "ModifierName": "MAvatar_DanHeng_00_Passive_SelfBeingTargetEnhance"
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByTargetListIntersects",
+                          "FirstTargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "SecondTargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          }
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByIsTeammate",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByTargetListIntersects",
+                        "FirstTargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntitySkillTargetEntityList"
+                        },
+                        "SecondTargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        }
                       }
                     ]
                   },
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsContainModifier",
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "Caster"
                       },
-                      "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhanceCD"
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsContainModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "ModifierName": "MAvatar_DanHeng_00_Passive_SelfBeingTargetEnhance"
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByTargetListIntersects",
-                      "FirstTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "SecondTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByIsTeammate",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByTargetListIntersects",
-                    "FirstTargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntitySkillTargetEntityList"
-                    },
-                    "SecondTargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MAvatar_DanHeng_00_Passive_SelfBeingTargetEnhance",
-                  "DynamicValues": {
-                    "DanHeng_PassivePene": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -1413736392
+                      "ModifierName": "MAvatar_DanHeng_00_Passive_SelfBeingTargetEnhance",
+                      "DynamicValues": {
+                        "DanHeng_PassivePene": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -1413736392
+                            }
+                          ]
                         }
-                      ]
-                    }
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Active": "True",
-                  "BarType": 1,
-                  "CurrentState": "Active",
-                  "CD": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  },
-                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
-                },
-                {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhance"
-                }
-              ],
-              "FailedTaskList": []
-            }
-          ],
-          "OnListenInsertAbilityFinish": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsContainModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhanceCD"
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsContainModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "ModifierName": "MAvatar_DanHeng_00_Passive_SelfBeingTargetEnhance"
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByTargetListIntersects",
-                      "FirstTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "SecondTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
                       }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByIsTeammate",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByTargetListIntersects",
-                    "FirstTargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntityList"
                     },
-                    "SecondTargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MAvatar_DanHeng_00_Passive_SelfBeingTargetEnhance",
-                  "DynamicValues": {
-                    "DanHeng_PassivePene": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -1413736392
+                    {
+                      "$type": "RPG.GameCore.TriggerEnergyBarEffect"
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "Active": "True",
+                      "BarType": 1,
+                      "CurrentState": "Active",
+                      "CD": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
                         }
-                      ]
+                      },
+                      "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhance"
                     }
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Active": "True",
-                  "BarType": 1,
-                  "CurrentState": "Active",
-                  "CD": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  },
-                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
-                },
-                {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhance"
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
+            },
+            "OnListenInsertAbilityFinish": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsContainModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhanceCD"
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsContainModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "ModifierName": "MAvatar_DanHeng_00_Passive_SelfBeingTargetEnhance"
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByTargetListIntersects",
+                          "FirstTargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "SecondTargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          }
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByIsTeammate",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByTargetListIntersects",
+                        "FirstTargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntityList"
+                        },
+                        "SecondTargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        }
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_Passive_SelfBeingTargetEnhance",
+                      "DynamicValues": {
+                        "DanHeng_PassivePene": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -1413736392
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "Active": "True",
+                      "BarType": 1,
+                      "CurrentState": "Active",
+                      "CD": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhance"
+                    }
+                  ],
+                  "FailedTaskList": []
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_DanHeng_00_PassiveSkill01",
@@ -1664,6 +1690,33 @@
         "TargetType": "Caster"
       },
       "OnStart": [
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.BySkillPointActivated",
+            "PointTriggerKey": {
+              "Hash": 1455742904
+            }
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "SkillPreShowModifier"
+            }
+          ]
+        },
+        {
+          "$type": "RPG.GameCore.AddModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "ModifierName": "SkillPreShowModifier2"
+        },
         {
           "$type": "RPG.GameCore.AddModifier",
           "TargetType": {
@@ -1682,10 +1735,6 @@
         },
         {
           "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "BarType": 1,
           "CurrentState": "Normal",
@@ -1729,10 +1778,6 @@
             },
             {
               "$type": "RPG.GameCore.LookAt",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": "AbilityTargetEntity"
             },
             {
@@ -1755,10 +1800,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimStateName": "Skill_Passive01",
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
@@ -1832,73 +1873,81 @@
       "Modifiers": {
         "SkillMaze_DanHeng_Modifier": {
           "EnterBattlePriority": "CharacterBuff",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_MazeSkill_AttackRatioUp",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -2081277152
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -201412227
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": []
+                }
+              ]
+            }
+          }
+        },
+        "MAvatar_DanHeng_00_MazeSkill_AttackRatioUp": {
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "MAvatar_DanHeng_00_MazeSkill_AttackRatioUp",
-                  "LifeTime": {
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
                     "IsDynamic": true,
                     "Expressions": [
                       {
                         "Type": "DynamicNumber",
-                        "DynamicHash": -2081277152
+                        "DynamicHash": 2128130574
                       }
                     ]
-                  },
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -201412227
-                        }
-                      ]
-                    }
                   }
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
-        },
-        "MAvatar_DanHeng_00_MazeSkill_AttackRatioUp": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
-              }
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1925,103 +1974,109 @@
     {
       "Modifiers": {
         "MAvatar_DanHeng_00_LowHP_AggroDown": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 350792237
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "MAvatar_DanHeng_00_SkillTree_AggroDown",
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
                       "IsDynamic": true,
                       "Expressions": [
                         {
                           "Type": "DynamicNumber",
-                          "DynamicHash": 615124190
+                          "DynamicHash": 350792237
                         }
                       ]
                     }
-                  }
-                }
-              ]
-            }
-          ],
-          "OnHPChange": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
+                  },
+                  "SuccessTaskList": [
                     {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 350792237
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_SkillTree_AggroDown",
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 615124190
+                            }
+                          ]
+                        }
+                      }
                     }
                   ]
                 }
-              },
-              "SuccessTaskList": [
+              ]
+            },
+            "OnHPChange": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "MAvatar_DanHeng_00_SkillTree_AggroDown",
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
                       "IsDynamic": true,
                       "Expressions": [
                         {
                           "Type": "DynamicNumber",
-                          "DynamicHash": 615124190
+                          "DynamicHash": 350792237
                         }
                       ]
                     }
-                  }
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "MAvatar_DanHeng_00_SkillTree_AggroDown",
-                  "OnlyRemoveCasterAdded": true
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_SkillTree_AggroDown",
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 615124190
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_SkillTree_AggroDown",
+                      "OnlyRemoveCasterAdded": true
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -2032,34 +2087,38 @@
         },
         "MAvatar_DanHeng_00_SkillTree_AggroDown": {
           "LifeStepMoment": "ModifierPhase1End",
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AggroAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 0
-                    }
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
+                  "Property": "AggroAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 2128130574
+                      },
+                      {
+                        "Type": "Sub"
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -2106,77 +2165,85 @@
     {
       "Modifiers": {
         "M_DanHeng_Tree02": {
-          "OnAfterAttack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByRandomChance",
-                "Chance": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1484493014
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterAttack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "MAvatar_DanHeng_00_PointB2_SpeedUp",
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 950844375
-                      }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "MDF_PropertyRatio": {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByRandomChance",
+                    "Chance": {
                       "IsDynamic": true,
                       "Expressions": [
                         {
                           "Type": "DynamicNumber",
-                          "DynamicHash": -1190779430
+                          "DynamicHash": 1484493014
                         }
                       ]
                     }
-                  }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MAvatar_DanHeng_00_PointB2_SpeedUp",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 950844375
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MDF_PropertyRatio": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -1190779430
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MAvatar_DanHeng_00_PointB2_SpeedUp": {
           "BehaviorFlagList": [
             "STAT_SpeedUp"
           ],
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1266164220
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1266164220
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -2203,43 +2270,47 @@
     {
       "Modifiers": {
         "MAvatar_DanHeng_Rank01": {
-          "OnBeforeHitAll": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "DamageDefenderEntity"
-                },
-                "CompareType": "GreaterEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 792124569
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeforeHitAll": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ModifyDamageData",
-                  "Attacker_CriticalChance": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2040617188
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "DamageDefenderEntity"
+                    },
+                    "CompareType": "GreaterEqual",
+                    "CompareValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 792124569
+                        }
+                      ]
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifyDamageData",
+                      "Attacker_CriticalChance": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 2040617188
+                          }
+                        ]
                       }
-                    ]
-                  }
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_DanHeng_Rank01",

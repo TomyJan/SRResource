@@ -8,10 +8,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -130,10 +126,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -149,6 +141,102 @@
       ]
     },
     {
+      "Modifiers": {
+        "Avatar_Seele_SkillTree02_ModifyAction": {
+          "ModifierAffectedPreshowConfig": {
+            "SkillTypes": [
+              "Normal"
+            ],
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "ActionDelayPreshowConfig": {
+              "AddDelayRatio": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 2078981293
+                  },
+                  {
+                    "Type": "Neg"
+                  }
+                ]
+              }
+            }
+          },
+          "_CallbackList": {
+            "OnListenTurnEnd": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifyActionDelay",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AddNormalizedValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 2078981293
+                      },
+                      {
+                        "Type": "Neg"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
+                }
+              ]
+            }
+          },
+          "Stacking": "Multiple"
+        },
+        "Skill01PreShowModifier_AppliedRatio": {
+          "ModifierAffectedPreshowConfig": {
+            "SkillTypes": [
+              "Normal"
+            ],
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "ActionDelayPreshowConfig": {
+              "AddDelayRatio": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -735588398
+                  },
+                  {
+                    "Type": "Neg"
+                  }
+                ]
+              }
+            }
+          },
+          "_CallbackList": {
+            "OnActionEnd": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
+                }
+              ]
+            }
+          },
+          "Stacking": "Multiple",
+          "DynamicValues": {
+            "Values": {
+              "-735588398": {}
+            }
+          }
+        }
+      },
       "Name": "Avatar_Seele_00_Skill01_Phase02",
       "TargetInfo": {
         "TargetType": "SkillTargetEntityList"
@@ -285,19 +373,119 @@
           },
           "SuccessTaskList": [
             {
-              "$type": "RPG.GameCore.ModifyCurrentSkillDelayCost",
-              "NormalizedValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2078981293
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsInsertAction"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsTurnOwnerEntity",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    }
                   },
-                  {
-                    "Type": "Sub"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "Avatar_Seele_SkillTree02_ModifyAction",
+                      "DynamicValues": {
+                        "MDF_DelayCost": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 2078981293
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifyActionDelay",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AddNormalizedValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 2078981293
+                          },
+                          {
+                            "Type": "Neg"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "Skill01PreShowModifier_AppliedRatio",
+                      "DynamicValues": {
+                        "MDF_Skill01_Delay": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 2078981293
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.ModifyCurrentSkillDelayCost",
+                  "NormalizedValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 2078981293
+                      },
+                      {
+                        "Type": "Neg"
+                      }
+                    ]
                   }
-                ]
-              }
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Skill01PreShowModifier_AppliedRatio",
+                  "DynamicValues": {
+                    "MDF_Skill01_Delay": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 2078981293
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
             }
           ]
         },
@@ -314,10 +502,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -639,10 +823,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1088,10 +1268,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "DarkTeamCenter"
         },
         {
@@ -1111,10 +1287,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0.7,
@@ -1157,10 +1329,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0.4,
@@ -1204,10 +1372,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1238,10 +1402,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -1266,11 +1426,7 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamDark",
-          "FormationType": "DarkTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationType": "DarkTeamNormal"
         },
         {
           "$type": "RPG.GameCore.HideLevelStage"
@@ -1286,10 +1442,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1307,35 +1459,39 @@
     {
       "Modifiers": {
         "MAvatar_Seele_Rank06_Flag": {
-          "OnAfterBeingAttacked": [
-            {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AttackProperty": {
-                "DamageType": "Quantum",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 812514228
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Seele/Eff_Avatar_Seele_00_Skill01_Hit01.prefab"
-              },
-              "DisplayData": {
-                "DitherRangeX": 0.01,
-                "DitherRangeY": 0.02,
-                "AttachPoint": "SelectRoot"
-              }
+          "_CallbackList": {
+            "OnAfterBeingAttacked": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Quantum",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 812514228
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Seele/Eff_Avatar_Seele_00_Skill01_Hit01.prefab"
+                  },
+                  "DisplayData": {
+                    "DitherRangeX": 0.01,
+                    "DitherRangeY": 0.02,
+                    "AttachPoint": "SelectRoot"
+                  }
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Seele_00_Skill03_Phase02",
@@ -1523,212 +1679,115 @@
     },
     {
       "Modifiers": {
-        "Local_Seele_ListenKill": {
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "InsertAction",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
+        "Skill01PreShowModifier_Fixed": {
+          "ModifierAffectedPreshowConfig": {
+            "SkillTypes": [
+              "Normal"
+            ],
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "ActionDelayPreshowConfig": {
+              "AddDelayRatio": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -735588398
+                  },
+                  {
+                    "Type": "Neg"
+                  }
+                ]
               }
             }
-          ],
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByIsInsertAction"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsCurrentSkillActive",
+          },
+          "DynamicValues": {
+            "Values": {
+              "-735588398": {}
+            }
+          }
+        },
+        "Skill02PreShowModifier": {
+          "ModifierAffectedPreshowConfig": {
+            "SkillTypes": [
+              "Skill"
+            ],
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "Condition": {
+              "$type": "RPG.GameCore.ByAnd",
+              "PredicateList": [
+                {
+                  "$type": "RPG.GameCore.ByNot",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "MAvatar_Seele_00_BPSkill_SpeedUp"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.ByAny",
+                  "PredicateList": [
+                    {
+                      "$type": "RPG.GameCore.ByNot",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "ModifierName": "MAvatar_Seele_00_BPSkill_SpeedUpRank02"
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.ByCompareModifierValue",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MAvatar_Seele_00_BPSkill_SpeedUpRank02",
+                      "ValueType": "Layer",
+                      "CompareType": "Less",
+                      "CompareValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -1227230863
+                          }
+                        ]
                       }
                     }
-                  }
-                ]
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "InsertAction",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MAvatar_Seele_00_Passive_DamageUp",
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2037926592
-                      }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "seele_dmg_percent": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1071234256
-                        }
-                      ]
-                    },
-                    "MDF_Penetrate": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1042274470
-                        }
-                      ]
-                    }
-                  }
+                  ]
                 }
               ]
-            }
-          ],
-          "OnTriggerDeathrattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
+            },
+            "ActionDelayPreshowConfig": {
+              "AddSpeedRatio": {
+                "IsDynamic": true,
+                "Expressions": [
                   {
-                    "$type": "RPG.GameCore.ByIsInsertAction"
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -244373248
                   }
                 ]
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "InsertAction",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MAvatar_Seele_00_Passive_DamageUp",
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2037926592
-                      }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "seele_dmg_percent": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1071234256
-                        }
-                      ]
-                    },
-                    "MDF_Penetrate": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1042274470
-                        }
-                      ]
-                    }
-                  }
-                }
-              ]
+              }
             }
-          ],
-          "OnAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "Seele_Rank6_Listen",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "InsertAction",
-                    "CompareType": "Greater",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
-                    }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+          }
+        },
+        "Local_Seele_ListenKill": {
+          "_CallbackList": {
+            "OnPhase1": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "InsertAction",
                   "Value": {
                     "IsDynamic": false,
@@ -1736,79 +1795,249 @@
                       "Value": 0
                     }
                   }
-                },
+                }
+              ]
+            },
+            "OnTriggerDeath": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByHaveEnemyAlive",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    }
+                    "$type": "RPG.GameCore.ByAny",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsInsertAction"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsCurrentSkillActive",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          }
+                        }
+                      }
+                    ]
                   },
-                  "SuccessTaskList": [
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "InsertAction",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "Caster"
                       },
-                      "CurrentState": "Active"
-                    },
-                    {
-                      "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
+                      "ModifierName": "MAvatar_Seele_00_Passive_DamageUp",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 2037926592
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "seele_dmg_percent": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1071234256
+                            }
+                          ]
+                        },
+                        "MDF_Penetrate": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1042274470
+                            }
+                          ]
+                        }
                       }
                     }
                   ]
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "Local_Seele_PassiveActionModifier"
-                },
-                {
-                  "$type": "RPG.GameCore.TurnInsertAction",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "PrepareAbilityName": "Avatar_Seele_00_Bonus"
                 }
-              ],
-              "FailedTaskList": []
+              ]
             },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsInsertAction"
-              },
-              "SuccessTaskList": [
+            "OnTriggerDeathrattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsInsertAction"
+                      }
+                    ]
                   },
-                  "CurrentState": "Normal"
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "InsertAction",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MAvatar_Seele_00_Passive_DamageUp",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 2037926592
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "seele_dmg_percent": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1071234256
+                            }
+                          ]
+                        },
+                        "MDF_Penetrate": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1042274470
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnAfterSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "Seele_Rank6_Listen",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "InsertAction",
+                        "CompareType": "Greater",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "InsertAction",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByHaveEnemyAlive",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetEnergyBarState",
+                          "CurrentState": "Active"
+                        },
+                        {
+                          "$type": "RPG.GameCore.TriggerEnergyBarEffect"
+                        },
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "ModifierName": "Local_Seele_PassiveActionModifier"
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAction",
+                      "PrepareAbilityName": "Avatar_Seele_00_Bonus"
+                    }
+                  ],
+                  "FailedTaskList": []
                 },
                 {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsInsertAction"
                   },
-                  "ModifierName": "Local_Seele_PassiveActionModifier"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "CurrentState": "Normal"
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "Local_Seele_PassiveActionModifier"
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "1071234256": {}
@@ -1826,6 +2055,44 @@
         "TargetType": "Caster"
       },
       "OnStart": [
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.BySkillPointActivated",
+            "PointTriggerKey": {
+              "Hash": 1455742905
+            }
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Skill01PreShowModifier_Fixed",
+              "DynamicValues": {
+                "MDF_Skill01_Delay": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": 2078981293
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "$type": "RPG.GameCore.AddModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "ModifierName": "Skill02PreShowModifier"
+        },
         {
           "$type": "RPG.GameCore.AddModifier",
           "TargetType": {
@@ -1847,10 +2114,6 @@
         },
         {
           "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "BarType": 1,
           "CurrentState": "Normal",
@@ -1872,10 +2135,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "CurrentState": "Active"
         },
         {
@@ -1888,11 +2147,7 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamDark",
-          "FormationType": "DarkTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationType": "DarkTeamNormal"
         },
         {
           "$type": "RPG.GameCore.TriggerAbility",
@@ -1909,10 +2164,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "Skill_Passive",
           "NormalizedTransitionDuration": {
@@ -1928,61 +2179,65 @@
       "Modifiers": {
         "Avatar_Seele_00_Maze_Modifier": {
           "EnterBattlePriority": "CharacterBuff",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MAvatar_Seele_00_Passive_DamageUp",
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2037926592
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
                       }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "seele_dmg_percent": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -1202675578
-                        }
-                      ]
-                    },
-                    "MDF_Penetrate": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1042274470
-                        }
-                      ]
                     }
-                  }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MAvatar_Seele_00_Passive_DamageUp",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 2037926592
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "seele_dmg_percent": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -1202675578
+                            }
+                          ]
+                        },
+                        "MDF_Penetrate": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1042274470
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Seele_00_SkillMazeInLevel",
@@ -2003,103 +2258,109 @@
     {
       "Modifiers": {
         "MAvatar_Seele_00_LowHP_AggroDown": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 350792237
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "MAvatar_Seele_00_SkillTree_AggroDown",
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
                       "IsDynamic": true,
                       "Expressions": [
                         {
                           "Type": "DynamicNumber",
-                          "DynamicHash": 615124190
+                          "DynamicHash": 350792237
                         }
                       ]
                     }
-                  }
-                }
-              ]
-            }
-          ],
-          "OnHPChange": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
+                  },
+                  "SuccessTaskList": [
                     {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 350792237
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MAvatar_Seele_00_SkillTree_AggroDown",
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 615124190
+                            }
+                          ]
+                        }
+                      }
                     }
                   ]
                 }
-              },
-              "SuccessTaskList": [
+              ]
+            },
+            "OnHPChange": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "MAvatar_Seele_00_SkillTree_AggroDown",
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
                       "IsDynamic": true,
                       "Expressions": [
                         {
                           "Type": "DynamicNumber",
-                          "DynamicHash": 615124190
+                          "DynamicHash": 350792237
                         }
                       ]
                     }
-                  }
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "MAvatar_Seele_00_SkillTree_AggroDown",
-                  "OnlyRemoveCasterAdded": true
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MAvatar_Seele_00_SkillTree_AggroDown",
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 615124190
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MAvatar_Seele_00_SkillTree_AggroDown",
+                      "OnlyRemoveCasterAdded": true
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -2110,34 +2371,38 @@
         },
         "MAvatar_Seele_00_SkillTree_AggroDown": {
           "LifeStepMoment": "ModifierPhase1End",
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AggroAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 0
-                    }
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
+                  "Property": "AggroAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 2128130574
+                      },
+                      {
+                        "Type": "Sub"
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -2184,59 +2449,63 @@
     {
       "Modifiers": {
         "MAvatar_Seele_Rank01": {
-          "OnBeforeHitAll": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "MDF_MaxHP",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "Value": "MaxHP"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareAbilityProperty",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
+          "_CallbackList": {
+            "OnBeforeHitAll": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "MDF_MaxHP",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "Value": "MaxHP"
                 },
-                "Property": "CurrentHP",
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1610876898
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareAbilityProperty",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
                     },
+                    "Property": "CurrentHP",
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1610876898
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -920079452
+                        },
+                        {
+                          "Type": "Mul"
+                        }
+                      ]
+                    }
+                  },
+                  "SuccessTaskList": [
                     {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -920079452
-                    },
-                    {
-                      "Type": "Mul"
+                      "$type": "RPG.GameCore.ModifyDamageData",
+                      "Attacker_CriticalChance": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -336911246
+                          }
+                        ]
+                      }
                     }
                   ]
                 }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.ModifyDamageData",
-                  "Attacker_CriticalChance": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -336911246
-                      }
-                    ]
-                  }
-                }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1610876898": {}
@@ -2262,24 +2531,28 @@
     {
       "Modifiers": {
         "MAvatar_Seele_Rank04": {
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.ModifySPNew",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AddValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -636281976
+          "_CallbackList": {
+            "OnTriggerDeath": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifySPNew",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AddValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -636281976
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-636281976": {}
@@ -2316,60 +2589,58 @@
     {
       "Modifiers": {
         "MAvatar_Seele_Rank06": {
-          "OnBeforeDying": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllEnemy"
-              },
-              "ModifierName": "MAvatar_Seele_Rank06_Flag"
-            }
-          ],
-          "OnListenAfterAttack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsTurnActionEntity",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeforeDying": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                    "Alias": "AllEnemy"
                   },
-                  "DynamicKey": "Seele_Rank6_Listen",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  }
+                  "ModifierName": "MAvatar_Seele_Rank06_Flag"
                 }
-              ],
-              "FailedTaskList": [
+              ]
+            },
+            "OnListenAfterAttack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Seele_Rank6_Listen",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 5
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsTurnActionEntity",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
                     }
-                  }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Seele_Rank6_Listen",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Seele_Rank6_Listen",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 5
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Seele_Rank06",

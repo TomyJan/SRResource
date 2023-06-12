@@ -3,61 +3,69 @@
     {
       "Modifiers": {
         "StageAbility_3990801_Modifier": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MLevel_WB_3990801",
+                      "DynamicValues": {
+                        "MDF_Ratio": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 59671469
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "MLevel_WB_3990801": {
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "MLevel_WB_3990801",
-                  "DynamicValues": {
-                    "MDF_Ratio": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 59671469
-                        }
-                      ]
-                    }
+                  "Property": "Level_AllDamageAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -306891275
+                      }
+                    ]
                   }
                 }
               ]
             }
-          ]
-        },
-        "MLevel_WB_3990801": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "Level_AllDamageAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -306891275
-                  }
-                ]
-              }
-            }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-306891275": {}
@@ -80,151 +88,153 @@
     {
       "Modifiers": {
         "StageAbility_3990802_Modifier": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MLevel_WB_PowerBoss",
+                      "DynamicValues": {
+                        "ATK_Ratio": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.10000000009313226
+                          }
+                        },
+                        "Count": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "MLevel_WB_PowerBoss": {
+          "_CallbackList": {
+            "OnAllowAction": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "Count",
+                  "Value": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1554779067
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      {
+                        "Type": "Add"
+                      }
+                    ]
+                  }
                 },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "MLevel_WB_PowerBoss",
+                  "ModifierName": "MLevel_WB_AllDamageAdd",
                   "DynamicValues": {
                     "ATK_Ratio": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0.10000000009313226
-                      }
-                    },
-                    "Count": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -455908924
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 1554779067
+                        },
+                        {
+                          "Type": "Mul"
+                        }
+                      ]
+                    }
+                  },
+                  "InheritCaster": "TargetSelf"
+                }
+              ]
+            },
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "Count",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
                     }
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_AllDamageAdd",
+                  "DynamicValues": {
+                    "ATK_Ratio": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -455908924
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 1554779067
+                        },
+                        {
+                          "Type": "Mul"
+                        }
+                      ]
+                    }
+                  },
+                  "InheritCaster": "TargetSelf"
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_AllDamageReSet"
                 }
               ]
             }
-          ]
-        },
-        "MLevel_WB_PowerBoss": {
-          "OnAllowAction": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Count",
-              "Value": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1554779067
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  {
-                    "Type": "Add"
-                  }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_AllDamageAdd",
-              "DynamicValues": {
-                "ATK_Ratio": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -455908924
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1554779067
-                    },
-                    {
-                      "Type": "Mul"
-                    }
-                  ]
-                }
-              },
-              "InheritCaster": "TargetSelf"
-            }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Count",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_AllDamageAdd",
-              "DynamicValues": {
-                "ATK_Ratio": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -455908924
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1554779067
-                    },
-                    {
-                      "Type": "Mul"
-                    }
-                  ]
-                }
-              },
-              "InheritCaster": "TargetSelf"
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_AllDamageReSet"
-            }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-455908924": {},
@@ -233,68 +243,76 @@
           }
         },
         "MLevel_WB_AllDamageReSet": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_AllDamageReSet"
-            }
-          ]
-        },
-        "MLevel_WB_AllDamageAdd": {
-          "OnAfterAttack": [
-            {
-              "$type": "RPG.GameCore.LoopExecuteTaskList",
-              "MaxLoopCount": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.Retarget",
+                  "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AttackTargetList"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "MaxNumber": {
+                  "ModifierName": "MLevel_WB_AllDamageReSet"
+                }
+              ]
+            }
+          }
+        },
+        "MLevel_WB_AllDamageAdd": {
+          "_CallbackList": {
+            "OnAfterAttack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.LoopExecuteTaskList",
+                  "MaxLoopCount": {
                     "IsDynamic": false,
                     "FixedValue": {
-                      "Value": 4
+                      "Value": 1
                     }
                   },
                   "TaskList": [
                     {
-                      "$type": "RPG.GameCore.DamageByAttackProperty",
+                      "$type": "RPG.GameCore.Retarget",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
+                        "Alias": "AttackTargetList"
                       },
-                      "AttackProperty": {
-                        "DamageType": "Ice",
-                        "DamagePercentage": {
-                          "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": -455908924
-                            }
-                          ]
-                        },
-                        "AttackType": "Pursued",
-                        "HitAnimation": "Hit",
-                        "HitPosHeight": 2
-                      }
+                      "MaxNumber": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 4
+                        }
+                      },
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.DamageByAttackProperty",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "AttackProperty": {
+                            "DamageType": "Ice",
+                            "DamagePercentage": {
+                              "IsDynamic": true,
+                              "Expressions": [
+                                {
+                                  "Type": "DynamicNumber",
+                                  "DynamicHash": -455908924
+                                }
+                              ]
+                            },
+                            "AttackType": "Pursued",
+                            "HitAnimation": "Hit",
+                            "HitPosHeight": 2
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "Replace",
           "DynamicValues": {
             "Values": {
@@ -318,78 +336,86 @@
     {
       "Modifiers": {
         "StageAbility_3990803_Modifier": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
                   },
-                  "ModifierName": "MLevel_WB_PowerBoss_HP",
-                  "DynamicValues": {
-                    "HP_Ratio": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 59671469
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MLevel_WB_PowerBoss_HP",
+                      "DynamicValues": {
+                        "HP_Ratio": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 59671469
+                            }
+                          ]
                         }
-                      ]
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "MLevel_WB_PowerBoss_HealHP": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_Heal.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.HealHP",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "FormulaType": "HealByTargetMaxHP",
-              "HealPercentage": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1169441530
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_Heal.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.HealHP",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "FormulaType": "HealByTargetMaxHP",
+                  "HealPercentage": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1169441530
+                      }
+                    ]
                   }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_HealHP"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_PowerBoss_HealHP"
+                }
+              ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1169441530": {}
@@ -397,16 +423,20 @@
           }
         },
         "MLevel_WB_PowerBoss_RemoveHeal": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_RemoveHeal"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_PowerBoss_RemoveHeal"
+                }
+              ]
             }
-          ]
+          }
         },
         "MLevel_WB_PowerBoss_HP": {
           "LayerAddWhenStack": {
@@ -422,80 +452,88 @@
               "Value": 0.3000000002793968
             }
           },
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddBuffPerform",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
                   },
-                  "TaskList": [
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
                     {
-                      "$type": "RPG.GameCore.TriggerEffect",
+                      "$type": "RPG.GameCore.AddBuffPerform",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Fire_Add.prefab",
-                      "AttachPoint": "SelectRoot"
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.TriggerEffect",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Fire_Add.prefab",
+                          "AttachPoint": "SelectRoot"
+                        }
+                      ],
+                      "AddPerformTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0.7500000006984919
+                        }
+                      }
                     }
-                  ],
-                  "AddPerformTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.7500000006984919
+                  ]
+                }
+              ]
+            },
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_PowerBoss_HealHP",
+                  "DynamicValues": {
+                    "HP_Ratio": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1169441530
+                        }
+                      ]
                     }
                   }
                 }
               ]
-            }
-          ],
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_HealHP",
-              "DynamicValues": {
-                "HP_Ratio": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1169441530
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_HP"
             },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_RemoveHeal"
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_PowerBoss_HP"
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_PowerBoss_RemoveHeal"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -519,96 +557,110 @@
     {
       "Modifiers": {
         "StageAbility_3990804_Modifier": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
                   },
-                  "ModifierName": "MLevel_WB_PowerBoss_ATKSlow",
-                  "DynamicValues": {
-                    "ATK_Ratio": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0.10000000009313226
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MLevel_WB_PowerBoss_ATKSlow",
+                      "DynamicValues": {
+                        "ATK_Ratio": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.10000000009313226
+                          }
+                        }
                       }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MLevel_WB_PowerBoss_RemoveATKSlow": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_RemoveATKSlow"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_PowerBoss_RemoveATKSlow"
+                }
+              ]
             }
-          ]
+          }
         },
         "MLevel_WB_PowerBoss_ATKSlow": {
-          "OnAfterAttack": [
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AttackTargetList"
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnAfterAttack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AttackTargetList"
+                  },
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MLevel_WB_PowerBoss_Slow",
+                      "DynamicValues": {
+                        "ATK_Ratio": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.10000000009313226
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_PowerBoss_ATKSlow"
+                },
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "MLevel_WB_PowerBoss_Slow",
-                  "DynamicValues": {
-                    "ATK_Ratio": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0.10000000009313226
-                      }
-                    }
-                  }
+                  "ModifierName": "MLevel_WB_PowerBoss_RemoveATKSlow"
                 }
               ]
             }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_ATKSlow"
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_RemoveATKSlow"
-            }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-455908924": {},
@@ -617,29 +669,33 @@
           }
         },
         "MLevel_WB_PowerBoss_Slow": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.ModifyActionDelay",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AddNormalizedValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.10000000009313226
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifyActionDelay",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AddNormalizedValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0.10000000009313226
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MLevel_WB_PowerBoss_Slow"
                 }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MLevel_WB_PowerBoss_Slow"
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_3990804",
@@ -657,60 +713,70 @@
     {
       "Modifiers": {
         "StageAbility_MechanismSnow_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_SnowAdd_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_MechanismSnow_Modifier"
-            }
-          ],
-          "Stacking": "Replace"
-        },
-        "Mechanism_SnowAdd_Modifier": {
-          "OnCreate": [],
-          "OnActionEnd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
-              },
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
-                  "ID": 1,
-                  "DeltaValue": 2
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_SnowAdd_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_MechanismSnow_Modifier"
                 }
               ]
             }
-          ],
+          },
+          "Stacking": "Replace"
+        },
+        "Mechanism_SnowAdd_Modifier": {
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnActionEnd": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                      "ID": 1,
+                      "DeltaValue": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          },
           "Stacking": "Replace"
         }
       },
@@ -772,36 +838,40 @@
     {
       "Modifiers": {
         "StageAbility_MechanismSnow_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_SnowAdd_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_SnowAdd_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "MLevel_WB_Snow_LoseHP": {
@@ -818,84 +888,90 @@
               "Value": 0.3000000002793968
             }
           },
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddBuffPerform",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
                   },
-                  "TaskList": [
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
                     {
-                      "$type": "RPG.GameCore.TriggerEffect",
+                      "$type": "RPG.GameCore.AddBuffPerform",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
-                      "AttachPoint": "SelectRoot"
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.TriggerEffect",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
+                          "AttachPoint": "SelectRoot"
+                        }
+                      ],
+                      "AddPerformTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
-                  ],
-                  "AddPerformTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
+                  ]
+                }
+              ]
+            },
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ShowEntityFloatMessage",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ContentID": {
+                    "Hash": 1272228075
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.LoseHPByRatio",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AttackType": "Insert",
+                  "DamageType": "Ice",
+                  "RatioType": "MaxHP",
+                  "Ratio": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -325944519
+                      }
+                    ]
+                  },
+                  "Floor": {
+                    "Value": 1
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
+                  "AttachPoint": "SelectRoot"
                 }
               ]
             }
-          ],
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.ShowEntityFloatMessage",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ContentID": {
-                "Hash": 1272228075
-              }
-            },
-            {
-              "$type": "RPG.GameCore.LoseHPByRatio",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AttackType": "Insert",
-              "DamageType": "Ice",
-              "RatioType": "MaxHP",
-              "Ratio": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -325944519
-                  }
-                ]
-              },
-              "Floor": {
-                "Value": 1
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
-              "AttachPoint": "SelectRoot"
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -904,27 +980,33 @@
           }
         },
         "Mechanism_SnowAdd_Modifier": {
-          "OnCreate": [],
-          "OnActionEnd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
-              },
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnActionEnd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
-                  "ID": 1,
-                  "DeltaValue": 2
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                      "ID": 1,
+                      "DeltaValue": 2
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "Replace"
         }
       },
@@ -1016,36 +1098,40 @@
     {
       "Modifiers": {
         "StageAbility_MechanismSnow_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_SnowAdd_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_SnowAdd_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "MLevel_WB_Snow_LoseHP": {
@@ -1062,84 +1148,90 @@
               "Value": 0.3000000002793968
             }
           },
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddBuffPerform",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
                   },
-                  "TaskList": [
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
                     {
-                      "$type": "RPG.GameCore.TriggerEffect",
+                      "$type": "RPG.GameCore.AddBuffPerform",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
-                      "AttachPoint": "SelectRoot"
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.TriggerEffect",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
+                          "AttachPoint": "SelectRoot"
+                        }
+                      ],
+                      "AddPerformTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
-                  ],
-                  "AddPerformTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
+                  ]
+                }
+              ]
+            },
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ShowEntityFloatMessage",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ContentID": {
+                    "Hash": 1272228075
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.LoseHPByRatio",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AttackType": "Insert",
+                  "DamageType": "Ice",
+                  "RatioType": "MaxHP",
+                  "Ratio": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -325944519
+                      }
+                    ]
+                  },
+                  "Floor": {
+                    "Value": 1
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
+                  "AttachPoint": "SelectRoot"
                 }
               ]
             }
-          ],
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.ShowEntityFloatMessage",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ContentID": {
-                "Hash": 1272228075
-              }
-            },
-            {
-              "$type": "RPG.GameCore.LoseHPByRatio",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AttackType": "Insert",
-              "DamageType": "Ice",
-              "RatioType": "MaxHP",
-              "Ratio": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -325944519
-                  }
-                ]
-              },
-              "Floor": {
-                "Value": 1
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
-              "AttachPoint": "SelectRoot"
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1148,27 +1240,33 @@
           }
         },
         "Mechanism_SnowAdd_Modifier": {
-          "OnCreate": [],
-          "OnActionEnd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
-              },
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnActionEnd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
-                  "ID": 1,
-                  "DeltaValue": 2
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                      "ID": 1,
+                      "DeltaValue": 2
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "Replace"
         }
       },
@@ -1260,36 +1358,40 @@
     {
       "Modifiers": {
         "StageAbility_MechanismSnow_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_SnowAdd_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_SnowAdd_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "MLevel_WB_Snow_LoseHP": {
@@ -1306,84 +1408,90 @@
               "Value": 0.3000000002793968
             }
           },
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddBuffPerform",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
                   },
-                  "TaskList": [
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
                     {
-                      "$type": "RPG.GameCore.TriggerEffect",
+                      "$type": "RPG.GameCore.AddBuffPerform",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
-                      "AttachPoint": "SelectRoot"
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.TriggerEffect",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
+                          "AttachPoint": "SelectRoot"
+                        }
+                      ],
+                      "AddPerformTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
-                  ],
-                  "AddPerformTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
+                  ]
+                }
+              ]
+            },
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ShowEntityFloatMessage",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ContentID": {
+                    "Hash": 1272228075
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.LoseHPByRatio",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AttackType": "Insert",
+                  "DamageType": "Ice",
+                  "RatioType": "MaxHP",
+                  "Ratio": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -325944519
+                      }
+                    ]
+                  },
+                  "Floor": {
+                    "Value": 1
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
+                  "AttachPoint": "SelectRoot"
                 }
               ]
             }
-          ],
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.ShowEntityFloatMessage",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ContentID": {
-                "Hash": 1272228075
-              }
-            },
-            {
-              "$type": "RPG.GameCore.LoseHPByRatio",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AttackType": "Insert",
-              "DamageType": "Ice",
-              "RatioType": "MaxHP",
-              "Ratio": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -325944519
-                  }
-                ]
-              },
-              "Floor": {
-                "Value": 1
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
-              "AttachPoint": "SelectRoot"
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1392,27 +1500,33 @@
           }
         },
         "Mechanism_SnowAdd_Modifier": {
-          "OnCreate": [],
-          "OnActionEnd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
-              },
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnActionEnd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
-                  "ID": 1,
-                  "DeltaValue": 2
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                      "ID": 1,
+                      "DeltaValue": 2
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "Replace"
         }
       },
@@ -1504,36 +1618,40 @@
     {
       "Modifiers": {
         "StageAbility_MechanismSnow_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_SnowAdd_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_SnowAdd_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "MLevel_WB_Snow_LoseHP": {
@@ -1550,84 +1668,90 @@
               "Value": 0.3000000002793968
             }
           },
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddBuffPerform",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
                   },
-                  "TaskList": [
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
                     {
-                      "$type": "RPG.GameCore.TriggerEffect",
+                      "$type": "RPG.GameCore.AddBuffPerform",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
-                      "AttachPoint": "SelectRoot"
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.TriggerEffect",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
+                          "AttachPoint": "SelectRoot"
+                        }
+                      ],
+                      "AddPerformTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
-                  ],
-                  "AddPerformTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
+                  ]
+                }
+              ]
+            },
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ShowEntityFloatMessage",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ContentID": {
+                    "Hash": 1272228075
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.LoseHPByRatio",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AttackType": "Insert",
+                  "DamageType": "Ice",
+                  "RatioType": "MaxHP",
+                  "Ratio": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -325944519
+                      }
+                    ]
+                  },
+                  "Floor": {
+                    "Value": 1
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
+                  "AttachPoint": "SelectRoot"
                 }
               ]
             }
-          ],
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.ShowEntityFloatMessage",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ContentID": {
-                "Hash": 1272228075
-              }
-            },
-            {
-              "$type": "RPG.GameCore.LoseHPByRatio",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AttackType": "Insert",
-              "DamageType": "Ice",
-              "RatioType": "MaxHP",
-              "Ratio": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -325944519
-                  }
-                ]
-              },
-              "Floor": {
-                "Value": 1
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
-              "AttachPoint": "SelectRoot"
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1636,27 +1760,33 @@
           }
         },
         "Mechanism_SnowAdd_Modifier": {
-          "OnCreate": [],
-          "OnActionEnd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
-              },
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnActionEnd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
-                  "ID": 1,
-                  "DeltaValue": 2
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                      "ID": 1,
+                      "DeltaValue": 2
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "Replace"
         }
       },
@@ -1748,36 +1878,40 @@
     {
       "Modifiers": {
         "StageAbility_MechanismSnow_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_SnowAdd_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_SnowAdd_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_MechanismSnow_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "MLevel_WB_Snow_LoseHP": {
@@ -1794,84 +1928,90 @@
               "Value": 0.3000000002793968
             }
           },
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddBuffPerform",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByInTurnBasedGameModeState"
                   },
-                  "TaskList": [
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
                     {
-                      "$type": "RPG.GameCore.TriggerEffect",
+                      "$type": "RPG.GameCore.AddBuffPerform",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
-                      "AttachPoint": "SelectRoot"
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.TriggerEffect",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Add.prefab",
+                          "AttachPoint": "SelectRoot"
+                        }
+                      ],
+                      "AddPerformTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
-                  ],
-                  "AddPerformTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
+                  ]
+                }
+              ]
+            },
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ShowEntityFloatMessage",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ContentID": {
+                    "Hash": 1272228075
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.LoseHPByRatio",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AttackType": "Insert",
+                  "DamageType": "Ice",
+                  "RatioType": "MaxHP",
+                  "Ratio": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -325944519
+                      }
+                    ]
+                  },
+                  "Floor": {
+                    "Value": 1
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
+                  "AttachPoint": "SelectRoot"
                 }
               ]
             }
-          ],
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.ShowEntityFloatMessage",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ContentID": {
-                "Hash": 1272228075
-              }
-            },
-            {
-              "$type": "RPG.GameCore.LoseHPByRatio",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AttackType": "Insert",
-              "DamageType": "Ice",
-              "RatioType": "MaxHP",
-              "Ratio": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -325944519
-                  }
-                ]
-              },
-              "Floor": {
-                "Value": 1
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Ice_Trigger.prefab",
-              "AttachPoint": "SelectRoot"
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1880,27 +2020,33 @@
           }
         },
         "Mechanism_SnowAdd_Modifier": {
-          "OnCreate": [],
-          "OnActionEnd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
-              },
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnActionEnd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
-                  "ID": 1,
-                  "DeltaValue": 2
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "MLevel_WB_StageAbility_Furance_LightTeam_Modifier"
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                      "ID": 1,
+                      "DeltaValue": 2
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "Stacking": "Replace"
         }
       },
@@ -1992,43 +2138,47 @@
     {
       "Modifiers": {
         "StageAblity_PlayerSpeedDown": {
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "MCommon_SpeedDown",
-              "LifeTime": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": -1
-                }
-              },
-              "DynamicValues": {
-                "MDF_PropertyValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 30
-                  }
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.ShowUIPage",
-              "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
-              "UITextNodes": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "TextPath": "AreaInfoPanel/Title/Text",
-                  "TextContent": {
-                    "Hash": -1731622440
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "MCommon_SpeedDown",
+                  "LifeTime": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": -1
+                    }
+                  },
+                  "DynamicValues": {
+                    "MDF_PropertyValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 30
+                      }
+                    }
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.ShowUIPage",
+                  "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
+                  "UITextNodes": [
+                    {
+                      "TextPath": "AreaInfoPanel/Title/Text",
+                      "TextContent": {
+                        "Hash": -1731622440
+                      }
+                    }
+                  ],
+                  "LifeTime": 3
                 }
-              ],
-              "LifeTime": 3
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_3991301",
@@ -2046,47 +2196,57 @@
     {
       "Modifiers": {
         "StageAbility_DimensionShift_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_DS_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_DimensionShift_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_DS_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_DimensionShift_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "Mechanism_DS_Modifier": {
-          "OnCreate": [],
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.ChangeMechanismBarValue",
-              "ID": 4,
-              "DeltaValue": 1
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnTriggerDeath": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                  "ID": 4,
+                  "DeltaValue": 1
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         }
       },
@@ -2105,47 +2265,57 @@
     {
       "Modifiers": {
         "StageAbility_DimensionShift_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_DS_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_DimensionShift_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_DS_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_DimensionShift_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "Mechanism_DS_Modifier": {
-          "OnCreate": [],
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.ChangeMechanismBarValue",
-              "ID": 4,
-              "DeltaValue": 1
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnTriggerDeath": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                  "ID": 4,
+                  "DeltaValue": 1
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         }
       },
@@ -2164,47 +2334,57 @@
     {
       "Modifiers": {
         "StageAbility_DimensionShift_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_DS_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_DimensionShift_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_DS_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_DimensionShift_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "Mechanism_DS_Modifier": {
-          "OnCreate": [],
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.ChangeMechanismBarValue",
-              "ID": 4,
-              "DeltaValue": 1
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
+            },
+            "OnTriggerDeath": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                  "ID": 4,
+                  "DeltaValue": 1
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         }
       },
@@ -2223,47 +2403,57 @@
     {
       "Modifiers": {
         "StageAbility_DimensionShift_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": []
                 },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Mechanism_DS_Modifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "StageAbility_DimensionShift_Modifier"
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "Mechanism_DS_Modifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "StageAbility_DimensionShift_Modifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "Replace"
         },
         "Mechanism_DS_Modifier": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.ChangeMechanismBarValue",
-              "ID": 4,
-              "DeltaValue": -3
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ChangeMechanismBarValue",
+                  "ID": 4,
+                  "DeltaValue": -3
+                }
+              ]
+            },
+            "OnTriggerDeath": {
+              "CallbackConfig": []
             }
-          ],
-          "OnTriggerDeath": [],
+          },
           "Stacking": "Replace"
         }
       },

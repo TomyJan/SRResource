@@ -6,135 +6,127 @@
           "BehaviorFlagList": [
             "Deathrattle"
           ],
-          "OnBeingLimbo": [
-            {
-              "$type": "RPG.GameCore.CharacterChangePhase",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "OnlyAlive": false,
-              "PhaseAnimConfig": {
-                "ModifierBehaviorVisuals": [
-                  {
-                    "Flag": "Break",
-                    "ReactionAnims": {
-                      "$type": "RPG.GameCore.CharacterReactionAnimConfig",
-                      "HitFlyRecover": "Hit_Fly_Recover"
-                    }
-                  }
-                ],
-                "HitFlyRecover": "Hit_Fly_Recover"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllEnemy"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "Monster_W2_Abomi02_00_Mark",
-                "CasterFilter": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                }
-              },
-              "MaxNumber": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 9
-                }
-              },
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnBeingLimbo": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "$type": "RPG.GameCore.CharacterChangePhase",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "DynamicKey": "DeathrattleFlag",
-                  "ContextScope": "TargetEntity"
+                  "OnlyAlive": false,
+                  "PhaseAnimConfig": {
+                    "ModifierBehaviorVisuals": [
+                      {
+                        "Flag": "Break",
+                        "ReactionAnims": {
+                          "$type": "RPG.GameCore.CharacterReactionAnimConfig",
+                          "HitFlyRecover": "Hit_Fly_Recover"
+                        }
+                      }
+                    ],
+                    "HitFlyRecover": "Hit_Fly_Recover"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllEnemy"
+                  },
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "ModifierName": "Monster_W2_Abomi02_00_Mark",
+                    "CasterFilter": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    }
+                  },
+                  "MaxNumber": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 9
+                    }
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "DynamicKey": "DeathrattleFlag",
+                      "ContextScope": "TargetEntity"
+                    }
+                  ]
                 }
               ]
-            }
-          ],
-          "OnDeathrattle": [
-            {
-              "$type": "RPG.GameCore.DispelStatus",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "OnlyAlive": false,
-              "IsSlientDispel": true
             },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "MarkRemainCount",
-                "ContextScope": "TargetEntity",
-                "CompareType": "GreaterEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+            "OnDeathrattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TriggerEffect",
+                  "$type": "RPG.GameCore.DispelStatus",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                    "Alias": "Caster"
                   },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi02_00/Eff_Monster_W2_Abomi02_00_Skill03_Hint.prefab",
-                  "PositionOffset": {
-                    "X": 0,
-                    "Y": 1.05,
-                    "Z": 0
-                  }
+                  "OnlyAlive": false,
+                  "IsSlientDispel": true
                 },
                 {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_W2_Abomi02_00_PassiveSkill_Insert",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "MarkRemainCount",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "GreaterEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
                   },
-                  "InsertAbilityPriority": "MonsterDeathRattle",
-                  "OwnerAliveState": "Mask_AliveOrLimbo",
-                  "TargetAliveState": "Mask_AliveOrLimbo",
-                  "ShowInActionBar": true
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_W2_Abomi02_00_PassiveSkill_Insert_Fail",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "InsertAbilityPriority": "MonsterDeathRattle",
-                  "OwnerAliveState": "Mask_AliveOrLimbo",
-                  "TargetAliveState": "Mask_AliveOrLimbo",
-                  "ShowInActionBar": true
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi02_00/Eff_Monster_W2_Abomi02_00_Skill03_Hint.prefab",
+                      "PositionOffset": {
+                        "X": 0,
+                        "Y": 1.05,
+                        "Z": 0
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_W2_Abomi02_00_PassiveSkill_Insert",
+                      "InsertAbilityPriority": "MonsterDeathRattle",
+                      "OwnerAliveState": "Mask_AliveOrLimbo",
+                      "TargetAliveState": "Mask_AliveOrLimbo"
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_W2_Abomi02_00_PassiveSkill_Insert_Fail",
+                      "InsertAbilityPriority": "MonsterDeathRattle",
+                      "OwnerAliveState": "Mask_AliveOrLimbo",
+                      "TargetAliveState": "Mask_AliveOrLimbo"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_W2_Abomi02_00_Passive01",
@@ -252,10 +244,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -268,10 +256,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -316,10 +300,6 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "MarkRemainCount",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
@@ -354,10 +334,6 @@
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
                         "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
                         "DynamicKey": "MarkRemainCount",
                         "ContextScope": "TargetEntity",
                         "CompareType": "Equal",
@@ -404,10 +380,6 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "DeathrattleFlag",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
@@ -621,10 +593,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -637,10 +605,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -669,10 +633,6 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "DeathrattleFlag",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
@@ -756,18 +716,10 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -784,10 +736,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -845,10 +793,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1017,18 +961,10 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -1045,10 +981,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1224,7 +1156,10 @@
   ],
   "GlobalModifiers": {
     "Monster_W2_Abomi02_00_TargetList": {
-      "OnStack": [],
+      "UIConfig": {
+        "UIPosition": "UI_Middle",
+        "ModifierUIPriority": "Counter"
+      },
       "OnDynamicValueChange": [
         {
           "Key": {
@@ -1380,65 +1315,68 @@
           ]
         }
       ],
-      "UIConfig": {
-        "UIPosition": "UI_Middle",
-        "ModifierUIPriority": "Counter"
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": []
+        }
       },
       "Stacking": "Replace"
     },
     "Monster_W2_Abomi02_00_Mark": {
-      "OnCreate": [],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "IsInDeathRattle",
-            "ContextScope": "TargetEntity",
-            "CompareType": "Equal",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0
-              }
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": []
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.SetDynamicValueByAddValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "Key": "MarkRemainCount",
-              "AddValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": -1
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "DynamicKey": "IsInDeathRattle",
+                "ContextScope": "TargetEntity",
+                "CompareType": "Equal",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 0
+                  }
                 }
               },
-              "Min": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "Key": "MarkRemainCount",
+                  "AddValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": -1
+                    }
+                  },
+                  "Min": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  },
+                  "Max": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 2
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
                 }
-              },
-              "Max": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 2
-                }
-              },
-              "ContextScope": "TargetEntity"
+              ],
+              "FailedTaskList": []
             }
-          ],
-          "FailedTaskList": []
+          ]
         }
-      ],
+      },
       "Stacking": "Multiple"
     },
     "Monster_W2_Abomi02_00_EffectControl": {

@@ -3,37 +3,41 @@
     {
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Player_Modifier": {
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetActionDelay",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllLightTeam"
-                  },
-                  "NormalizedValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.5000000004656613
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
                     }
-                  }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetActionDelay",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllLightTeam"
+                      },
+                      "NormalizedValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0.5000000004656613
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Player",
@@ -51,37 +55,41 @@
     {
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Monster_Modifier": {
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ModifyActionDelay",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllLightTeam"
-                  },
-                  "AddValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 2
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
                     }
-                  }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifyActionDelay",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllLightTeam"
+                      },
+                      "AddValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Monster",
@@ -100,256 +108,240 @@
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Physical_Modifier": {
           "EnterBattlePriority": "StanceBreak",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerUINotify",
-              "NotifyTypeName": "BattleRefreshWeaknessActivate"
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareWaveCount",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByHasStanceWeak",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "WeakType": "Physical"
-                  }
-                ]
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "SkillIndex",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
+                  "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerUINotify",
+                  "NotifyTypeName": "BattleRefreshWeaknessActivate"
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Physical",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1486738352
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareWaveCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByHasStanceWeak",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "WeakType": "Physical"
                       }
-                    },
+                    ]
+                  },
+                  "TaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "SkillIndex",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Physical.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Physical",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1486738352
+                              }
+                            ]
                           }
+                        },
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Physical.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Physical.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Physical.prefab"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Physical",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1763421411
+                              }
+                            ]
+                          }
                         },
                         {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
                           },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Physical.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Physical.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ]
                     }
                   ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Physical",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1763421411
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
-                          }
-                        ]
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Physical.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Physical.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
-                        }
-                      ]
-                    }
-                  ]
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Physical",
@@ -368,256 +360,240 @@
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Fire_Modifier": {
           "EnterBattlePriority": "StanceBreak",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerUINotify",
-              "NotifyTypeName": "BattleRefreshWeaknessActivate"
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareWaveCount",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByHasStanceWeak",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "WeakType": "Fire"
-                  }
-                ]
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "SkillIndex",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
+                  "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerUINotify",
+                  "NotifyTypeName": "BattleRefreshWeaknessActivate"
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Fire",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1486738352
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareWaveCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByHasStanceWeak",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "WeakType": "Fire"
                       }
-                    },
+                    ]
+                  },
+                  "TaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "SkillIndex",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Fire.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Fire",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1486738352
+                              }
+                            ]
                           }
+                        },
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Fire.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Fire.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Fire.prefab"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Fire",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1763421411
+                              }
+                            ]
+                          }
                         },
                         {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
                           },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Fire.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Fire.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ]
                     }
                   ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Fire",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1763421411
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
-                          }
-                        ]
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Fire.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Fire.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
-                        }
-                      ]
-                    }
-                  ]
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Fire",
@@ -636,181 +612,80 @@
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Ice_Modifier": {
           "EnterBattlePriority": "StanceBreak",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerUINotify",
-              "NotifyTypeName": "BattleRefreshWeaknessActivate"
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareWaveCount",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByHasStanceWeak",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "WeakType": "Ice"
-                  }
-                ]
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "SkillIndex",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
+                  "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerUINotify",
+                  "NotifyTypeName": "BattleRefreshWeaknessActivate"
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Ice",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1486738352
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareWaveCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareStance",
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByHasStanceWeak",
                         "TargetType": {
                           "$type": "RPG.GameCore.TargetAlias",
                           "Alias": "ParamEntity"
                         },
-                        "CompareType": "LessEqual",
+                        "WeakType": "Ice"
+                      }
+                    ]
+                  },
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "SkillIndex",
+                        "CompareType": "Equal",
                         "CompareValue": {
                           "IsDynamic": false,
                           "FixedValue": {
-                            "Value": 0
+                            "Value": 1
                           }
                         }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Ice.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Ice",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1486738352
+                              }
+                            ]
                           }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Ice.prefab"
                         },
                         {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
-                        }
-                      ]
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Ice",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1763421411
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
                             "$type": "RPG.GameCore.ByCompareStance",
                             "TargetType": {
                               "$type": "RPG.GameCore.TargetAlias",
@@ -823,64 +698,149 @@
                                 "Value": 0
                               }
                             }
-                          }
-                        ]
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
                           },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Ice.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          }
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Ice.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Ice.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Ice.prefab"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Ice",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1763421411
+                              }
+                            ]
+                          }
                         },
                         {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
                           },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Ice.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Ice.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ]
                     }
-                  ]
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Ice",
@@ -899,256 +859,240 @@
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Thunder_Modifier": {
           "EnterBattlePriority": "StanceBreak",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerUINotify",
-              "NotifyTypeName": "BattleRefreshWeaknessActivate"
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareWaveCount",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByHasStanceWeak",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "WeakType": "Thunder"
-                  }
-                ]
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "SkillIndex",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
+                  "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerUINotify",
+                  "NotifyTypeName": "BattleRefreshWeaknessActivate"
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Thunder",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1486738352
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareWaveCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByHasStanceWeak",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "WeakType": "Thunder"
                       }
-                    },
+                    ]
+                  },
+                  "TaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "SkillIndex",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Thunder.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Thunder",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1486738352
+                              }
+                            ]
                           }
+                        },
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Thunder.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Thunder.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Thunder.prefab"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Thunder",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1763421411
+                              }
+                            ]
+                          }
                         },
                         {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
                           },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Thunder.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Thunder.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ]
                     }
                   ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Thunder",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1763421411
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
-                          }
-                        ]
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Thunder.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Thunder.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
-                        }
-                      ]
-                    }
-                  ]
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Thunder",
@@ -1167,274 +1111,258 @@
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Wind_Modifier": {
           "EnterBattlePriority": "StanceBreak",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerUINotify",
-              "NotifyTypeName": "BattleRefreshWeaknessActivate"
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareWaveCount",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByHasStanceWeak",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "WeakType": "Wind"
-                  }
-                ]
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "SkillIndex",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
+                  "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerUINotify",
+                  "NotifyTypeName": "BattleRefreshWeaknessActivate"
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Wind",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1486738352
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareWaveCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByHasStanceWeak",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "WeakType": "Wind"
                       }
-                    },
+                    ]
+                  },
+                  "TaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "SkillIndex",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Wind.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Wind",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1486738352
+                              }
+                            ]
                           }
                         },
                         {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
                           },
-                          "AnimLogicState": "Idle",
-                          "AnimStateName": "Stagger_Loop"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Wind.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "Idle",
+                              "AnimStateName": "Stagger_Loop"
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Wind.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Wind.prefab"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Wind",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1763421411
+                              }
+                            ]
+                          }
                         },
                         {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
                           },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Wind.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "Idle",
+                              "AnimStateName": "Stagger_Loop"
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Wind.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ]
                     }
                   ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Wind",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1763421411
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
-                          }
-                        ]
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Wind.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          }
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "AnimLogicState": "Idle",
-                          "AnimStateName": "Stagger_Loop"
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Wind.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
-                        }
-                      ]
-                    }
-                  ]
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Wind",
@@ -1453,256 +1381,240 @@
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Quantum_Modifier": {
           "EnterBattlePriority": "StanceBreak",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerUINotify",
-              "NotifyTypeName": "BattleRefreshWeaknessActivate"
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareWaveCount",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByHasStanceWeak",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "WeakType": "Quantum"
-                  }
-                ]
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "SkillIndex",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
+                  "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerUINotify",
+                  "NotifyTypeName": "BattleRefreshWeaknessActivate"
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Quantum",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1486738352
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareWaveCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByHasStanceWeak",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "WeakType": "Quantum"
                       }
-                    },
+                    ]
+                  },
+                  "TaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "SkillIndex",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Quantum.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Quantum",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1486738352
+                              }
+                            ]
                           }
+                        },
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Quantum.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Quantum.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Quantum.prefab"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Quantum",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1763421411
+                              }
+                            ]
+                          }
                         },
                         {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
                           },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Quantum.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Quantum.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ]
                     }
                   ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Quantum",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1763421411
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
-                          }
-                        ]
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Quantum.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Quantum.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
-                        }
-                      ]
-                    }
-                  ]
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Quantum",
@@ -1721,256 +1633,240 @@
       "Modifiers": {
         "StageAbility_MazeCommon_EnterBattle_Imaginary_Modifier": {
           "EnterBattlePriority": "StanceBreak",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TriggerUINotify",
-              "NotifyTypeName": "BattleRefreshWeaknessActivate"
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareWaveCount",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByHasStanceWeak",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "WeakType": "Imaginary"
-                  }
-                ]
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "SkillIndex",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
+                  "$type": "RPG.GameCore.SetCurrentTurnActionEntity",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerUINotify",
+                  "NotifyTypeName": "BattleRefreshWeaknessActivate"
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Imaginary",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1486738352
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareWaveCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByHasStanceWeak",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "WeakType": "Imaginary"
                       }
-                    },
+                    ]
+                  },
+                  "TaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "SkillIndex",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
                           }
-                        ]
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Imaginary.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Imaginary",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1486738352
+                              }
+                            ]
                           }
+                        },
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Imaginary.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Imaginary.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Imaginary.prefab"
+                          "$type": "RPG.GameCore.DamageStance",
+                          "StanceDamageType": "Imaginary",
+                          "StanceValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1763421411
+                              }
+                            ]
+                          }
                         },
                         {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByAnd",
+                            "PredicateList": [
+                              {
+                                "$type": "RPG.GameCore.ByCompareStance",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "CompareType": "LessEqual",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              }
+                            ]
                           },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Imaginary.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerBreak",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.TriggerEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Imaginary.prefab"
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.1
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerAnimState",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "AnimLogicState": "OnHit",
+                              "AnimStateName": "Hit"
+                            }
+                          ]
                         }
                       ]
                     }
                   ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageStance",
-                      "StanceDamageType": "Imaginary",
-                      "AttackerTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DefenderTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "StanceValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1763421411
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByAnd",
-                        "PredicateList": [
-                          {
-                            "$type": "RPG.GameCore.ByCompareStance",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ParamEntity"
-                            },
-                            "CompareType": "LessEqual",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
-                          }
-                        ]
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "StageAbility_MazeCommon_EnterBattle_StanceBreakModifier"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Imaginary.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerBreak",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Hit_Common_Imaginary.prefab"
-                        },
-                        {
-                          "$type": "RPG.GameCore.WaitSecond",
-                          "WaitTime": 0.1
-                        },
-                        {
-                          "$type": "RPG.GameCore.TriggerAnimState",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "AnimLogicState": "OnHit",
-                          "AnimStateName": "Hit"
-                        }
-                      ]
-                    }
-                  ]
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeCommon_EnterBattle_Imaginary",

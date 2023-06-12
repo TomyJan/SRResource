@@ -6,32 +6,32 @@
           "BehaviorFlagList": [
             "Deathrattle"
           ],
-          "OnDeathrattle": [
-            {
-              "$type": "RPG.GameCore.DispelStatus",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "OnlyAlive": false,
-              "IsSlientDispel": true
-            },
-            {
-              "$type": "RPG.GameCore.SetDieImmediately"
-            },
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Monster_W1_GSMecha_01_PassiveSkill_Insert",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "InsertAbilityPriority": "MonsterDeathRattle",
-              "OwnerAliveState": "Mask_AliveOrLimbo",
-              "TargetAliveState": "Mask_AliveOrLimbo",
-              "ShowInActionBar": true
+          "_CallbackList": {
+            "OnDeathrattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.DispelStatus",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "OnlyAlive": false,
+                  "IsSlientDispel": true
+                },
+                {
+                  "$type": "RPG.GameCore.SetDieImmediately"
+                },
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Monster_W1_GSMecha_01_PassiveSkill_Insert",
+                  "InsertAbilityPriority": "MonsterDeathRattle",
+                  "OwnerAliveState": "Mask_AliveOrLimbo",
+                  "TargetAliveState": "Mask_AliveOrLimbo",
+                  "ShowInActionBar": true
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_W1_GSMecha_01_PassiveSkill_Initiate",
@@ -71,39 +71,39 @@
       "Modifiers": {
         "Monster_W1_GSMecha_01_PassiveSkill_KlaraEnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.VCameraConfigChange",
-              "CameraConfig": {
-                "NormalConfig": {
-                  "CameraState": "CastAnimation",
-                  "AnchorTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AimTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AimOffset": {
-                    "X": 0,
-                    "Y": -0.75,
-                    "Z": 0
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.VCameraConfigChange",
+                  "CameraConfig": {
+                    "NormalConfig": {
+                      "CameraState": "CastAnimation",
+                      "AimTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AimOffset": {
+                        "X": 0,
+                        "Y": -0.75,
+                        "Z": 0
+                      }
+                    },
+                    "ShowEntityConfig": {
+                      "ShowTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllDarkTeam"
+                      }
+                    }
                   }
                 },
-                "ShowEntityConfig": {
-                  "ShowTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllDarkTeam"
-                  }
+                {
+                  "$type": "RPG.GameCore.WaitSecond",
+                  "WaitTime": 2
                 }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.WaitSecond",
-              "WaitTime": 2
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_W1_GSMecha_01_PassiveSkill_KlaraCamera",
@@ -132,10 +132,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 2.91,
                 "Y": 0.25,
@@ -169,33 +165,39 @@
     {
       "Modifiers": {
         "Monster_W1_GSMecha_01_KlaraSpecialVictory_LockHP": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.LockHP",
-              "Threshold": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.010000000009313226
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.LockHP",
+                  "Threshold": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0.010000000009313226
+                    }
+                  }
                 }
-              }
-            }
-          ],
-          "OnLockHPThresholdReached": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllEnemy"
-              },
-              "ModifierName": "Monster_W1_GSMecha_01_Instance_DisableAction"
+              ]
             },
-            {
-              "$type": "RPG.GameCore.TriggerCustomString",
-              "CustomString": {
-                "Value": "Level_SpecialWin"
-              }
+            "OnLockHPThresholdReached": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllEnemy"
+                  },
+                  "ModifierName": "Monster_W1_GSMecha_01_Instance_DisableAction"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "Level_SpecialWin"
+                  }
+                }
+              ]
             }
-          ]
+          }
         },
         "Monster_W1_GSMecha_01_Instance_DisableAction": {
           "BehaviorFlagList": [
@@ -235,10 +237,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -330,10 +328,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -450,10 +444,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -467,18 +457,22 @@
     {
       "Modifiers": {
         "Monster_W1_GSMecha_01_ExplodeCharge_Effect": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.ModifierAttachEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha01_00/Eff_Monster_W1_Mecha01_00_Skill02_Charge.prefab",
-              "MinMutexTime": -1,
-              "MutexType": "Entity"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifierAttachEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha01_00/Eff_Monster_W1_Mecha01_00_Skill02_Charge.prefab",
+                  "MinMutexTime": -1,
+                  "MutexType": "Entity"
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_W1_GSMecha_01_Skill02_Phase02",
@@ -602,10 +596,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy_Charge"
         },
@@ -629,10 +619,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -659,10 +645,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -715,10 +697,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeStart": {
             "IsDynamic": false,
@@ -769,10 +747,6 @@
         },
         {
           "$type": "RPG.GameCore.AnimSetParameter",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "ParameterName": "TriggerColorChange",
           "ParameterType": "Trigger"
         },
@@ -885,10 +859,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "BlurRadius": 0.6,
           "Iteration": 8,
           "BlurStart": 0.01,
@@ -918,10 +888,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "Active": false
         },
         {
@@ -959,10 +925,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 2.91,
                 "Y": 0.25,
@@ -1051,10 +1013,6 @@
                   "CameraConfig": {
                     "NormalConfig": {
                       "CameraState": "CameraMotion",
-                      "AnchorTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "AimTargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "Caster"
@@ -1068,10 +1026,6 @@
                 },
                 {
                   "$type": "RPG.GameCore.AnimSetParameter",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "ParameterName": "TriggerColorChange_Fast",
                   "ParameterType": "Trigger"
                 }
@@ -1199,10 +1153,6 @@
                 },
                 {
                   "$type": "RPG.GameCore.RadialBlurEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "None"
-                  },
                   "BlurRadius": 1,
                   "Iteration": 8,
                   "BlurStart": 0.01,
@@ -1229,10 +1179,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "Active": false
         },
         {

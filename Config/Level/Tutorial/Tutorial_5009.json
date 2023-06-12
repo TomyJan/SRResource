@@ -63,6 +63,10 @@
             "TextPath": "Contents/Text",
             "Text": "TutorialTextmap_300201_pc"
           }
+        },
+        {
+          "$type": "RPG.GameCore.WaitFrame",
+          "WaitFrameCount": 10
         }
       ]
     },
@@ -291,6 +295,10 @@
           "SkipCheck": true
         },
         {
+          "$type": "RPG.GameCore.WaitSecond",
+          "WaitTime": 1
+        },
+        {
           "$type": "RPG.GameCore.ShowTutorialUI",
           "AssociatedUIName": "HandbookPage"
         },
@@ -349,6 +357,7 @@
         {
           "$type": "RPG.GameCore.WaitUINodeOpen",
           "NodeID": "NewDailyMissionPage.SelectedIcon.HandbookGuide",
+          "SkipCheck": true,
           "Reverse": true
         },
         {
@@ -369,6 +378,10 @@
           "CopyAnchorAndSale": true,
           "OffsetY": -30,
           "PCGuide": {}
+        },
+        {
+          "$type": "RPG.GameCore.WaitFrame",
+          "WaitFrameCount": 3
         }
       ]
     },
@@ -416,8 +429,7 @@
       "TaskList": [
         {
           "$type": "RPG.GameCore.WaitUINodeOpen",
-          "NodeID": "NewDailyMissionPage.1002",
-          "SkipCheck": true
+          "NodeID": "NewDailyMissionPage.1002"
         },
         {
           "$type": "RPG.GameCore.ShowGuide",

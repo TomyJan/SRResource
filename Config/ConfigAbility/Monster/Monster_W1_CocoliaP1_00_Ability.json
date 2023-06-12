@@ -117,18 +117,10 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -277,69 +269,9 @@
     {
       "Modifiers": {
         "Boss_Cocolia_IceValueManage": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "InsertController",
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "Monster_W1_CocoliaP1_00_RemoveOneMore"
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "OneMorePerTurn"
-            }
-          ],
-          "OnBeforeBeingHit": [],
-          "OnAfterBeingHit": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByIsDamageType",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "DamageTypeList": [
-                      "Fire"
-                    ]
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "LeftHandAlive",
-                    "ContextScope": "TargetEntity",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
-                    }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.DefineDynamicValue",
                   "TargetType": {
@@ -347,130 +279,234 @@
                     "Alias": "Caster"
                   },
                   "DynamicKey": "InsertController",
-                  "ResetValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
                   "ContextScope": "TargetEntity"
-                }
-              ]
-            }
-          ],
-          "OnAfterBeingAttacked": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "InsertController",
-                    "ContextScope": "TargetEntity",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByAny",
-                    "PredicateList": [
-                      {
-                        "$type": "RPG.GameCore.ByCurrentSkillType",
-                        "SkillType": "Skill"
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByCurrentSkillType",
-                        "SkillType": "Ultra"
-                      }
-                    ]
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+                },
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "ModifierName": "Boss_Cocolia_IceValueShow"
+                  "ModifierName": "Monster_W1_CocoliaP1_00_RemoveOneMore"
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "OneMorePerTurn"
                 }
               ]
             },
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Boss_Cocolia_P1_Insert",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              }
-            }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Skill06_WeaponStart.prefab"
+            "OnBeforeBeingHit": {
+              "CallbackConfig": []
             },
-            {
-              "$type": "RPG.GameCore.SetAttachmentVisibility",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AttachPoints": [
+            "OnAfterBeingHit": {
+              "CallbackConfig": [
                 {
-                  "Name": "Weapon_B"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsDamageType",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "DamageTypeList": [
+                          "Fire"
+                        ]
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "LeftHandAlive",
+                        "ContextScope": "TargetEntity",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "DynamicKey": "InsertController",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    }
+                  ]
                 }
-              ],
-              "Visibility": true
+              ]
             },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Unuse_03.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Skill03_Camera.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+            "OnAfterBeingAttacked": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "InsertController",
+                        "ContextScope": "TargetEntity",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
+                          }
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByAny",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByCurrentSkillType",
+                            "SkillType": "Skill"
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByCurrentSkillType",
+                            "SkillType": "Ultra"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "Boss_Cocolia_IceValueShow"
+                    }
+                  ]
                 },
-                "ModifierName": "Boss_Cocolia_P1_Skill05_Buff"
-              },
-              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Boss_Cocolia_P1_Insert",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  }
+                }
+              ]
+            },
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Skill06_WeaponStart.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.SetAttachmentVisibility",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AttachPoints": [
+                    {
+                      "Name": "Weapon_B"
+                    }
+                  ],
+                  "Visibility": true
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Unuse_03.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Skill03_Camera.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "ModifierName": "Boss_Cocolia_P1_Skill05_Buff"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.CharacterChangePhase",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "PhaseName": "Phase1",
+                      "PhaseAnimConfig": {
+                        "StandBy": "StandBy",
+                        "StandByLowHP": "StandBy",
+                        "ModifierBehaviorVisuals": [
+                          {
+                            "Flag": "Break",
+                            "ModifierBehaviorVisualPriority": "MonsterStanceBreak",
+                            "AnimOccur": "Stagger_Charge",
+                            "AnimLoop": "Stagger_Loop",
+                            "AnimRecover": "Stagger_Recover",
+                            "AnimOccurTransition": 0,
+                            "ForecHitH": true,
+                            "ReactionAnims": {
+                              "$type": "RPG.GameCore.CharacterReactionAnimConfig",
+                              "HitH": "Hit_H_Break",
+                              "HitFlyRecover": "Hit_Fly_Recover_Break"
+                            }
+                          }
+                        ],
+                        "Hit": "Hit",
+                        "Die": "Die"
+                      }
+                    }
+                  ],
+                  "FailedTaskList": []
+                },
+                {
+                  "$type": "RPG.GameCore.GlobalMainIntensityEffect",
+                  "IsRevert": true,
+                  "FadeDuration": 3
+                }
+              ]
+            },
+            "OnEndBreak": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.CharacterChangePhase",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "PhaseName": "Phase1",
+                  "PhaseName": "Phase0",
                   "PhaseAnimConfig": {
                     "StandBy": "StandBy",
                     "StandByLowHP": "StandBy",
@@ -478,7 +514,7 @@
                       {
                         "Flag": "Break",
                         "ModifierBehaviorVisualPriority": "MonsterStanceBreak",
-                        "AnimOccur": "Stagger_Charge",
+                        "AnimOccur": "Stagger",
                         "AnimLoop": "Stagger_Loop",
                         "AnimRecover": "Stagger_Recover",
                         "AnimOccurTransition": 0,
@@ -494,47 +530,9 @@
                     "Die": "Die"
                   }
                 }
-              ],
-              "FailedTaskList": []
-            },
-            {
-              "$type": "RPG.GameCore.GlobalMainIntensityEffect",
-              "IsRevert": true,
-              "FadeDuration": 3
+              ]
             }
-          ],
-          "OnEndBreak": [
-            {
-              "$type": "RPG.GameCore.CharacterChangePhase",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "PhaseName": "Phase0",
-              "PhaseAnimConfig": {
-                "StandBy": "StandBy",
-                "StandByLowHP": "StandBy",
-                "ModifierBehaviorVisuals": [
-                  {
-                    "Flag": "Break",
-                    "ModifierBehaviorVisualPriority": "MonsterStanceBreak",
-                    "AnimOccur": "Stagger",
-                    "AnimLoop": "Stagger_Loop",
-                    "AnimRecover": "Stagger_Recover",
-                    "AnimOccurTransition": 0,
-                    "ForecHitH": true,
-                    "ReactionAnims": {
-                      "$type": "RPG.GameCore.CharacterReactionAnimConfig",
-                      "HitH": "Hit_H_Break",
-                      "HitFlyRecover": "Hit_Fly_Recover_Break"
-                    }
-                  }
-                ],
-                "Hit": "Hit",
-                "Die": "Die"
-              }
-            }
-          ],
+          },
           "Count": 1
         }
       },
@@ -618,10 +616,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "EnemyTeamCenter"
         },
         {
@@ -649,10 +643,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -663,10 +653,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -681,10 +667,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -860,10 +842,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "EnemyTeamCenter"
         },
         {
@@ -897,10 +875,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -918,10 +892,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03_Loop",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -932,10 +902,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03_End",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -952,10 +918,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -970,10 +932,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1302,10 +1260,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1319,10 +1273,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill04",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -1339,10 +1289,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -1529,10 +1475,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill05",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -1549,10 +1491,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1601,10 +1539,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1619,10 +1553,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -1798,18 +1728,10 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         }
       ]
@@ -1966,7 +1888,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.LoopExecuteTaskList",
+          "$type": "RPG.GameCore.LoopExecuteTaskListWithInterval",
           "MaxLoopCount": {
             "IsDynamic": false,
             "FixedValue": {
@@ -2038,10 +1960,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "EnemyTeamCenter"
         },
         {
@@ -2064,10 +1982,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill07",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -2078,10 +1992,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -2096,10 +2006,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -2140,87 +2046,89 @@
     {
       "Modifiers": {
         "ListenHPRatio_Modifier": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.LockHP",
-              "Threshold": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 721334122
-                  }
-                ]
-              }
-            }
-          ],
-          "OnLockHPThresholdReached": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "Blizzard_Trigger_Times",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.LockHP",
+                  "Threshold": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 721334122
+                      }
+                    ]
                   }
                 }
-              },
-              "SuccessTaskList": [
+              ]
+            },
+            "OnLockHPThresholdReached": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "StanceBreakState"
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValueByAddValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Key": "Blizzard_Trigger_Times",
-                  "AddValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "Blizzard_Trigger_Times",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
                     }
                   },
-                  "Min": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "StanceBreakState"
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Key": "Blizzard_Trigger_Times",
+                      "AddValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "Min": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      "Max": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Boss_Cocolia_P1_Skill08_Phase01"
                     }
-                  },
-                  "Max": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "ContextScope": "TargetEntity"
-                },
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Boss_Cocolia_P1_Skill08_Phase01",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Boss_Cocolia_P1_LockHP",
@@ -2254,10 +2162,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "EnemyTeamCenter"
         },
         {
@@ -2280,10 +2184,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill08",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -2294,10 +2194,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -2312,10 +2208,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -2593,10 +2485,6 @@
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "Phase_Flag",
             "CompareType": "Equal",
             "CompareValue": {
@@ -2646,83 +2534,24 @@
     {
       "Modifiers": {
         "M_Monster_W1_CocoliaP1_00_LimboHandleEffect": {
-          "OnBeingLimbo": [
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Unuse_03.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Skill03_Camera.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.GlobalMainIntensityEffect",
-              "IsRevert": true,
-              "IsDurable": true,
-              "FadeDuration": 3
-            }
-          ]
-        },
-        "Straight_AIControl": {
-          "OnBeforeDying": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "ModifierName": "Boss_Cocolia_P1_Skill05_Buff"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeingLimbo": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleAchievement",
-                  "AchievementID": 30006,
-                  "TagMatch": true
-                }
-              ]
-            }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "ModifierName": "Boss_Cocolia_P1_Skill05_Buff"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetBattleAchievement",
-                  "AchievementID": 30006,
-                  "TagMatch": true
-                },
-                {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "$type": "RPG.GameCore.RemoveEffect",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "DynamicKey": "AIFlag",
-                  "ResetValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 5
-                    }
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Unuse_03.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
                   },
-                  "ContextScope": "TargetEntity"
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Skill03_Camera.prefab"
                 },
                 {
                   "$type": "RPG.GameCore.GlobalMainIntensityEffect",
@@ -2730,10 +2559,79 @@
                   "IsDurable": true,
                   "FadeDuration": 3
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
+        },
+        "Straight_AIControl": {
+          "_CallbackList": {
+            "OnBeforeDying": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "ModifierName": "Boss_Cocolia_P1_Skill05_Buff"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleAchievement",
+                      "AchievementID": 30006,
+                      "TagMatch": true
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "ModifierName": "Boss_Cocolia_P1_Skill05_Buff"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleAchievement",
+                      "AchievementID": 30006,
+                      "TagMatch": true
+                    },
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "DynamicKey": "AIFlag",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 5
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.GlobalMainIntensityEffect",
+                      "IsRevert": true,
+                      "IsDurable": true,
+                      "FadeDuration": 3
+                    }
+                  ],
+                  "FailedTaskList": []
+                }
+              ]
+            }
+          }
         }
       },
       "Name": "Boss_Cocolia_P1_AIControlAndHPLock",
@@ -2762,24 +2660,30 @@
     {
       "Modifiers": {
         "HideMonsterHUD": {
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.MakeCharacterHUDVisible",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
+          "_CallbackList": {
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.MakeCharacterHUDVisible",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                }
+              ]
+            },
+            "OnAllowAction": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.MakeCharacterHUDVisible",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                }
+              ]
             }
-          ],
-          "OnAllowAction": [
-            {
-              "$type": "RPG.GameCore.MakeCharacterHUDVisible",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            }
-          ]
+          }
         }
       },
       "Name": "Boss_Cocolia_P2_BossModifier",
@@ -2808,97 +2712,101 @@
   ],
   "GlobalModifiers": {
     "Monster_W1_CocoliaP1_00_RemoveOneMore": {
-      "OnActionEnd": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAny",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "AIFlag",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 3
-                  }
-                }
-              },
-              {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "AIFlag",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 5
-                  }
-                }
-              },
-              {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "AIFlag",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 6
-                  }
-                }
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "OneMorePerTurn"
-            }
-          ],
-          "FailedTaskList": [
+      "_CallbackList": {
+        "OnActionEnd": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "OneMorePerTurn"
+                "$type": "RPG.GameCore.ByAny",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "AIFlag",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 3
+                      }
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "AIFlag",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 5
+                      }
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "AIFlag",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 6
+                      }
+                    }
+                  }
+                ]
               },
-              "FailedTaskList": [
+              "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
+                  "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "ModifierOwnerEntity"
                   },
                   "ModifierName": "OneMorePerTurn"
                 }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "OneMorePerTurn"
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "OneMorePerTurn"
+                    }
+                  ]
+                }
               ]
             }
           ]
         }
-      ]
+      }
     }
   }
 }

@@ -22,10 +22,22 @@
           "CreateNpcList": [],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "TaskEnabled": false
           },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
+          },
           "SwitchCharacterAnchor": {
+            "TaskEnabled": false
+          },
+          "AdvNpcFaceToPlayer": {
             "TaskEnabled": false
           }
         },
@@ -44,10 +56,22 @@
           "CreateNpcList": [],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "TaskEnabled": false
           },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
+          },
           "SwitchCharacterAnchor": {
+            "TaskEnabled": false
+          },
+          "AdvNpcFaceToPlayer": {
             "TaskEnabled": false
           }
         },
@@ -129,10 +153,47 @@
           "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
-          "$type": "RPG.GameCore.TriggerCustomString",
-          "CustomString": {
-            "Value": "M3_1WilliamRaid_Enter"
+          "$type": "RPG.GameCore.StartDialogueEntityInteract",
+          "LevelGraphPath": "Config/Level/Props/InteractMode/TriggerEvent_TriggerType_07.json",
+          "UseOverrideData": true,
+          "ValueSource": {
+            "Values": [
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Level/Common_Adventure/UseInteractNPC.prefab",
+                "Key": "DialogueEntityInteract_AreaPath"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "UseInteractNPC,UseInteractNPC_Camera",
+                "Key": "DialogueEntityInteract_CameraKey"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "UseInteractNPC",
+                "Key": "DialogueEntityInteract_AreaName"
+              }
+            ]
           }
+        },
+        {
+          "$type": "RPG.GameCore.SetLocalPlayerDitherAlpha"
+        },
+        {
+          "$type": "RPG.GameCore.OpenTreasureChallenge",
+          "RaidID": 4013201,
+          "OnCancel": [
+            {
+              "$type": "RPG.GameCore.EndDialogueEntityInteract",
+              "LevelGraphPath": "Config/Level/Props/InteractMode/TriggerEvent_ExitTriggerType_07.json"
+            },
+            {
+              "$type": "RPG.GameCore.TriggerCustomString",
+              "CustomString": {
+                "Value": "ALL_TALK_END"
+              }
+            }
+          ]
         }
       ]
     },

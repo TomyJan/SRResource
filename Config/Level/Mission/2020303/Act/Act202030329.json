@@ -6,7 +6,6 @@
         {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
           "PerformanceType": "D",
-          "LockCamera": false,
           "CreateCharacterList": [],
           "EntityVisiableList": [],
           "PropVisiableList": [],
@@ -38,9 +37,18 @@
           ],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "AreaName": "MainMission_2020303",
             "AnchorName": "Camera_2020303_1"
+          },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
           },
           "SwitchCharacterAnchor": {
             "IsLocalPlayer": true,
@@ -51,10 +59,13 @@
             "AnchorName": {
               "Value": "Anchor2"
             }
+          },
+          "AdvNpcFaceToPlayer": {
+            "TaskEnabled": false
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032901,
@@ -73,9 +84,6 @@
               "TalkSentenceID": 202032905
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -117,9 +125,18 @@
           ],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "AreaName": "MainMission_2020303",
             "AnchorName": "Camera_2020303_1"
+          },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
           },
           "SwitchCharacterAnchor": {
             "IsLocalPlayer": true,
@@ -130,6 +147,9 @@
             "AnchorName": {
               "Value": "Anchor2"
             }
+          },
+          "AdvNpcFaceToPlayer": {
+            "TaskEnabled": false
           }
         },
         {
@@ -149,7 +169,7 @@
           "FinishImmadiate": true
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032906,
@@ -170,16 +190,6 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
-          "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
-          "CharacterUniqueName": "Daiqing_202030329",
-          "StoryAvatarID": "NPC_Male",
-          "StartMotion": "HoldHead01BS",
-          "StoryMotionID": 100101034
-        },
-        {
           "$type": "RPG.GameCore.PlayOptionTalk",
           "OptionList": [
             {
@@ -193,6 +203,13 @@
               "TriggerCustomString": "TalkSentence_202032915"
             }
           ]
+        },
+        {
+          "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
+          "CharacterUniqueName": "Daiqing_202030329",
+          "StoryAvatarID": "NPC_Male",
+          "StartMotion": "HoldHead01BS",
+          "StoryMotionID": 100101034
         }
       ]
     },
@@ -205,7 +222,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032912,
@@ -224,9 +241,6 @@
               "TalkSentenceID": 202032920
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -254,7 +268,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032916,
@@ -273,9 +287,6 @@
               "TalkSentenceID": 202032920
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -310,7 +321,7 @@
           "StoryMotionID": 100101036
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032923,
@@ -326,9 +337,6 @@
               "TalkSentenceID": 202032926
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -363,7 +371,7 @@
           "StoryMotionID": 1201041
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032928,
@@ -373,9 +381,6 @@
               "TalkSentenceID": 202032932
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
@@ -417,7 +422,7 @@
           "StoryMotionID": 1201041
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032930,
@@ -430,9 +435,6 @@
               "TalkSentenceID": 202032932
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
@@ -467,16 +469,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032935,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -495,7 +494,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032936
@@ -510,9 +509,6 @@
               "TalkSentenceID": 202032939
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -545,7 +541,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 202032943,
@@ -557,9 +553,6 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
           "$type": "RPG.GameCore.PerformanceTransition",
           "CreateNpcList": [],
           "CaptureNpcList": [],
@@ -569,12 +562,24 @@
               "GroupNpcID": 400006
             }
           ],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "AreaName": "MainMission_2020303",
             "AnchorName": "Camera_2020303_1",
             "IsActive": false
           },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
+          },
           "SwitchCharacterAnchor": {
+            "TaskEnabled": false
+          },
+          "AdvNpcFaceToPlayer": {
             "TaskEnabled": false
           }
         },

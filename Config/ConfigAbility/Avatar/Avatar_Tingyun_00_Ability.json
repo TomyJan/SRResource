@@ -26,10 +26,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -111,32 +107,36 @@
     {
       "Modifiers": {
         "MAvatar_Tingyun_Skill01_SkillTree_B2": {
-          "OnBeforeHit": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.BySkillPointActivated",
-                "PointTriggerKey": {
-                  "Hash": 1455742904
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeforeHit": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ModifyDamageData",
-                  "Attacker_AllDamageTypeAddedRatio": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1953698797
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.BySkillPointActivated",
+                    "PointTriggerKey": {
+                      "Hash": 1455742904
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifyDamageData",
+                      "Attacker_AllDamageTypeAddedRatio": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 1953698797
+                          }
+                        ]
                       }
-                    ]
-                  }
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1610876898": {}
@@ -341,10 +341,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -440,10 +436,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "MDF_Target_CurrentAttack",
           "Value": {
             "IsDynamic": true,
@@ -464,10 +456,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "MDF_Tingyun_Attack",
           "Value": {
             "IsDynamic": true,
@@ -490,10 +478,6 @@
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "MDF_Target_CurrentAttack",
             "CompareType": "Greater",
             "CompareValue": {
@@ -509,10 +493,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_Skill02_Attack",
               "Value": {
                 "IsDynamic": true,
@@ -528,10 +508,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_Skill02_Attack",
               "Value": {
                 "IsDynamic": true,
@@ -564,10 +540,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "TingYun_EnergyBarLayer",
           "Value": {
             "IsDynamic": false,
@@ -577,11 +549,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          }
+          "$type": "RPG.GameCore.TriggerEnergyBarEffect"
         },
         {
           "$type": "RPG.GameCore.PredicateTaskList",
@@ -1033,10 +1001,6 @@
         },
         {
           "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "BarType": 3,
           "CurrentState": "Active",
@@ -1106,10 +1070,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "UseSkillPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0,
@@ -1168,10 +1128,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1197,10 +1153,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03"
         },
         {
@@ -1251,25 +1203,29 @@
     {
       "Modifiers": {
         "MAvatar_TingYun_00_Skill03DamageUp": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AllDamageTypeAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 625640552
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AllDamageTypeAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 625640552
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1492,6 +1448,41 @@
       }
     },
     {
+      "Modifiers": {
+        "Skill02PreShowModifier": {
+          "ModifierAffectedPreshowConfig": {
+            "SkillTypes": [
+              "Skill"
+            ],
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "Condition": {
+              "$type": "RPG.GameCore.ByNot",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "ModifierName": "MAvatar_Tingyun_00_SkillTree_B1_SpeedUp"
+              }
+            },
+            "ActionDelayPreshowConfig": {
+              "AddSpeedRatio": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 376156435
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
       "Name": "Avatar_TingYun_PassiveSkill01",
       "TargetInfo": {
         "TargetType": "Caster"
@@ -1506,11 +1497,26 @@
           "ModifierName": "MAvatar_TingYun_ByIsTingYun"
         },
         {
-          "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.BySkillPointActivated",
+            "PointTriggerKey": {
+              "Hash": 1455742903
+            }
           },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Skill02PreShowModifier"
+            }
+          ]
+        },
+        {
+          "$type": "RPG.GameCore.SetEnergyBarState",
           "Active": "True",
           "BarType": 3,
           "CurrentState": "Normal",
@@ -1533,24 +1539,28 @@
     {
       "Modifiers": {
         "MAvatar_Tingyun_Tree03": {
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.ModifySPNew",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AddValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -404659623
+          "_CallbackList": {
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifySPNew",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AddValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -404659623
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Tingyun_SkillTree03",
@@ -1571,273 +1581,328 @@
   ],
   "GlobalModifiers": {
     "MWAvatar_TingYun_00_BPSkill_AttackDelta": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MAvatar_TingYun_00_Passive_LeiLing"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MAvatar_TingYun_00_Passive_LeiLing_Rank01"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MAvatar_TingYun_00_Passive_LeiLing_Rank02"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MAvatar_TingYun_00_Passive_LeiLing_Rank04"
-        },
-        {
-          "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "TingYun_EnergyBarLayer",
-          "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "Active": "True",
-          "BarType": 3,
-          "CurrentState": "Normal",
-          "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1202Passive.png",
-          "MaxCount": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 3
-            }
-          },
-          "CurrentCount": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -616190875
-              }
-            ]
-          }
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "MDF_Rank01_Count",
-            "CompareType": "Equal",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.StackStatusDesc",
-              "TextID": {
-                "Hash": -728159135
-              }
-            }
-          ],
-          "FailedTaskList": []
-        }
-      ]
-    },
-    "MAvatar_TingYun_00_Passive_LeiLing": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Buff_Loop.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackDelta",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1521339462
-              }
-            ]
-          }
-        }
-      ],
-      "OnAfterAttack": [
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AttackTargetList"
-          },
-          "MaxNumber": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "TaskList": [
-            {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
+                "Alias": "ModifierOwnerEntity"
               },
-              "AttackProperty": {
-                "DamageType": "Thunder",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -901161065
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
-              },
-              "CanTriggerLastKill": true
-            }
-          ]
-        }
-      ],
-      "OnListenAfterAttack": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MAvatar_TingYun_PassiveFlag"
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "TurnActionEntitySkillTarget"
-              },
-              "AttackProperty": {
-                "DamageType": "Thunder",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -526088753
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
-              },
-              "CanTriggerLastKill": true
+              "ModifierName": "MAvatar_TingYun_00_Passive_LeiLing"
             },
             {
               "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "ModifierOwnerEntity"
               },
-              "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              "ModifierName": "MAvatar_TingYun_00_Passive_LeiLing_Rank01"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "MAvatar_TingYun_00_Passive_LeiLing_Rank02"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "MAvatar_TingYun_00_Passive_LeiLing_Rank04"
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "TingYun_EnergyBarLayer",
+              "Value": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 0
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.SetEnergyBarState",
+              "Active": "True",
+              "BarType": 3,
+              "CurrentState": "Normal",
+              "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1202Passive.png",
+              "MaxCount": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 3
+                }
+              },
+              "CurrentCount": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -616190875
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "MAvatar_Tingyun_Rank01_Skill03PreShowModifier"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "DynamicKey": "MDF_Rank01_Count",
+                "CompareType": "Equal",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 1
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackStatusDesc",
+                  "TextID": {
+                    "Hash": -728159135
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MAvatar_Tingyun_Rank01_Skill03PreShowModifier"
+                }
+              ],
+              "FailedTaskList": []
             }
           ]
         }
-      ],
-      "OnListenBeforeSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
+      }
+    },
+    "MAvatar_Tingyun_Rank01_Skill03PreShowModifier": {
+      "ModifierAffectedPreshowConfig": {
+        "SkillTypes": [
+          "Ultra"
+        ],
+        "TargetType": {
+          "$type": "RPG.GameCore.TargetAlias",
+          "Alias": "ModifierOwnerEntity"
+        },
+        "Condition": {
+          "$type": "RPG.GameCore.ByNot",
           "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
+            "$type": "RPG.GameCore.ByIsContainModifier",
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "ModifierName": "MAvatar_Tingyun_00_Rank01_SpeedUp"
+          }
+        },
+        "ActionDelayPreshowConfig": {
+          "AddSpeedRatio": {
+            "IsDynamic": true,
+            "Expressions": [
               {
-                "$type": "RPG.GameCore.ByCurrentSkillType"
+                "Type": "DynamicNumber",
+                "DynamicHash": -1958874189
+              }
+            ]
+          }
+        }
+      }
+    },
+    "MAvatar_TingYun_00_Passive_LeiLing": {
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
               },
-              {
+              "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Buff_Loop.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AttackDelta",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1521339462
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "OnAfterAttack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.Retarget",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AttackTargetList"
+              },
+              "MaxNumber": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Thunder",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -901161065
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
+                }
+              ]
+            }
+          ]
+        },
+        "OnListenAfterAttack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MAvatar_TingYun_PassiveFlag"
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "CurrentTurnActionEntity"
+                  "Alias": "ParamEntity"
                 },
-                "ModifierName": "MAvatar_TingYun_ByIsTingYun"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
+                "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
               },
-              "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "TurnActionEntitySkillTarget"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Thunder",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -526088753
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+                }
+              ]
+            }
+          ]
+        },
+        "OnListenBeforeSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCurrentSkillType"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "CurrentTurnActionEntity"
+                    },
+                    "ModifierName": "MAvatar_TingYun_ByIsTingYun"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-526088753": {},
@@ -1847,204 +1912,218 @@
       }
     },
     "MAvatar_TingYun_00_Passive_LeiLing_Rank01": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Buff_Loop.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackDelta",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1521339462
-              }
-            ]
-          }
-        }
-      ],
-      "OnAfterAttack": [
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AttackTargetList"
-          },
-          "MaxNumber": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "TaskList": [
-            {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "AttackProperty": {
-                "DamageType": "Thunder",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -901161065
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
-              },
-              "CanTriggerLastKill": true
-            }
-          ]
-        }
-      ],
-      "OnListenAfterAttack": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MAvatar_TingYun_PassiveFlag"
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "TurnActionEntitySkillTarget"
-              },
-              "AttackProperty": {
-                "DamageType": "Thunder",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -526088753
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
-              },
-              "CanTriggerLastKill": true
-            },
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "ModifierOwnerEntity"
               },
-              "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
             }
           ]
-        }
-      ],
-      "OnListenBeforeSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCurrentSkillType"
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
               },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "CurrentTurnActionEntity"
-                },
-                "ModifierName": "MAvatar_TingYun_ByIsTingYun"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Buff_Loop.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AttackDelta",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1521339462
+                  }
+                ]
               }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
             }
           ]
-        }
-      ],
-      "OnAfterSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCurrentSkillType",
-            "SkillType": "Ultra"
-          },
-          "SuccessTaskList": [
+        },
+        "OnAfterAttack": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
+              "$type": "RPG.GameCore.Retarget",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "AttackTargetList"
               },
-              "ModifierName": "MAvatar_Tingyun_00_Rank01_SpeedUp",
-              "LifeTime": {
+              "MaxNumber": {
                 "IsDynamic": false,
                 "FixedValue": {
                   "Value": 1
                 }
               },
-              "DynamicValues": {
-                "MDF_Rank01_SpeedUp_01": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -2102294272
-                    }
-                  ]
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Thunder",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -901161065
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
                 }
-              }
+              ]
+            }
+          ]
+        },
+        "OnListenAfterAttack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MAvatar_TingYun_PassiveFlag"
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "TurnActionEntitySkillTarget"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Thunder",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -526088753
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+                }
+              ]
+            }
+          ]
+        },
+        "OnListenBeforeSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCurrentSkillType"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "CurrentTurnActionEntity"
+                    },
+                    "ModifierName": "MAvatar_TingYun_ByIsTingYun"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+                }
+              ]
+            }
+          ]
+        },
+        "OnAfterSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCurrentSkillType",
+                "SkillType": "Ultra"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_Tingyun_00_Rank01_SpeedUp",
+                  "LifeTime": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "DynamicValues": {
+                    "MDF_Rank01_SpeedUp_01": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -2102294272
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-526088753": {},
@@ -2055,83 +2134,23 @@
       }
     },
     "MAvatar_TingYun_00_Passive_LeiLing_Rank02": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
-        }
-      ],
-      "OnAllowAction": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Buff_Loop.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackDelta",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1521339462
-              }
-            ]
-          }
-        }
-      ],
-      "OnTriggerDeath": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
-          },
-          "FailedTaskList": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.ModifySPNew",
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "ModifierOwnerEntity"
               },
-              "AddValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1008919655
-                  }
-                ]
-              }
-            },
+              "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
+            }
+          ]
+        },
+        "OnAllowAction": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
@@ -2139,169 +2158,247 @@
               "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
             }
           ]
-        }
-      ],
-      "OnAfterAttack": [
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AttackTargetList"
-          },
-          "MaxNumber": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "TaskList": [
-            {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "AttackProperty": {
-                "DamageType": "Thunder",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -901161065
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
-              },
-              "CanTriggerLastKill": true
-            }
-          ]
-        }
-      ],
-      "OnListenAfterAttack": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MAvatar_TingYun_PassiveFlag"
         },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
-          },
-          "SuccessTaskList": [
+        "OnStack": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
+              "$type": "RPG.GameCore.ModifierAttachEffect",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "TurnActionEntitySkillTarget"
+                "Alias": "ModifierOwnerEntity"
               },
-              "AttackProperty": {
-                "DamageType": "Thunder",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -526088753
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
-              },
-              "CanTriggerLastKill": true
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Buff_Loop.prefab"
             },
             {
-              "$type": "RPG.GameCore.RemoveModifier",
+              "$type": "RPG.GameCore.StackProperty",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "ModifierOwnerEntity"
               },
-              "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              "Property": "AttackDelta",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1521339462
+                  }
+                ]
+              }
             }
           ]
-        }
-      ],
-      "OnListenBeforeSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCurrentSkillType"
-              },
-              {
+        },
+        "OnTriggerDeath": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "CurrentTurnActionEntity"
+                  "Alias": "Caster"
                 },
-                "ModifierName": "MAvatar_TingYun_ByIsTingYun"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
+                "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
               },
-              "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.ModifySPNew",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AddValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1008919655
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
+                }
+              ]
             }
           ]
-        }
-      ],
-      "OnAfterSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCurrentSkillType",
-            "SkillType": "Ultra"
-          },
-          "SuccessTaskList": [
+        },
+        "OnAfterAttack": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
+              "$type": "RPG.GameCore.Retarget",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "AttackTargetList"
               },
-              "ModifierName": "MAvatar_Tingyun_00_Rank01_SpeedUp",
-              "LifeTime": {
+              "MaxNumber": {
                 "IsDynamic": false,
                 "FixedValue": {
                   "Value": 1
                 }
               },
-              "DynamicValues": {
-                "MDF_Rank01_SpeedUp_01": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -2102294272
-                    }
-                  ]
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Thunder",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -901161065
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
                 }
-              }
+              ]
+            }
+          ]
+        },
+        "OnListenAfterAttack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MAvatar_TingYun_PassiveFlag"
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "TurnActionEntitySkillTarget"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Thunder",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -526088753
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+                }
+              ]
+            }
+          ]
+        },
+        "OnListenBeforeSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCurrentSkillType"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "CurrentTurnActionEntity"
+                    },
+                    "ModifierName": "MAvatar_TingYun_ByIsTingYun"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+                }
+              ]
+            }
+          ]
+        },
+        "OnAfterSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCurrentSkillType",
+                "SkillType": "Ultra"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_Tingyun_00_Rank01_SpeedUp",
+                  "LifeTime": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "DynamicValues": {
+                    "MDF_Rank01_SpeedUp_01": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -2102294272
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-526088753": {},
@@ -2313,83 +2410,23 @@
       }
     },
     "MAvatar_TingYun_00_Passive_LeiLing_Rank04": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
-        }
-      ],
-      "OnAllowAction": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Buff_Loop.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackDelta",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1521339462
-              }
-            ]
-          }
-        }
-      ],
-      "OnTriggerDeath": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
-          },
-          "FailedTaskList": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.ModifySPNew",
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "ModifierOwnerEntity"
               },
-              "AddValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1008919655
-                  }
-                ]
-              }
-            },
+              "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
+            }
+          ]
+        },
+        "OnAllowAction": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
@@ -2397,176 +2434,254 @@
               "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
             }
           ]
-        }
-      ],
-      "OnAfterAttack": [
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AttackTargetList"
-          },
-          "MaxNumber": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "TaskList": [
-            {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "AttackProperty": {
-                "DamageType": "Thunder",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -901161065
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 722079702
-                    },
-                    {
-                      "Type": "Add"
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
-              },
-              "CanTriggerLastKill": true
-            }
-          ]
-        }
-      ],
-      "OnListenAfterAttack": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MAvatar_TingYun_PassiveFlag"
         },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
-          },
-          "SuccessTaskList": [
+        "OnStack": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
+              "$type": "RPG.GameCore.ModifierAttachEffect",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "TurnActionEntitySkillTarget"
+                "Alias": "ModifierOwnerEntity"
               },
-              "AttackProperty": {
-                "DamageType": "Thunder",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -526088753
-                    }
-                  ]
-                },
-                "AttackType": "Pursued",
-                "HitAnimation": "Hit",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
-              },
-              "CanTriggerLastKill": true
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Buff_Loop.prefab"
             },
             {
-              "$type": "RPG.GameCore.RemoveModifier",
+              "$type": "RPG.GameCore.StackProperty",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "ModifierOwnerEntity"
               },
-              "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              "Property": "AttackDelta",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1521339462
+                  }
+                ]
+              }
             }
           ]
-        }
-      ],
-      "OnListenBeforeSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCurrentSkillType"
-              },
-              {
+        },
+        "OnTriggerDeath": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "CurrentTurnActionEntity"
+                  "Alias": "Caster"
                 },
-                "ModifierName": "MAvatar_TingYun_ByIsTingYun"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
+                "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
               },
-              "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.ModifySPNew",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AddValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1008919655
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_Tingyun_00_Rank02_CD"
+                }
+              ]
             }
           ]
-        }
-      ],
-      "OnAfterSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCurrentSkillType",
-            "SkillType": "Ultra"
-          },
-          "SuccessTaskList": [
+        },
+        "OnAfterAttack": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
+              "$type": "RPG.GameCore.Retarget",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "AttackTargetList"
               },
-              "ModifierName": "MAvatar_Tingyun_00_Rank01_SpeedUp",
-              "LifeTime": {
+              "MaxNumber": {
                 "IsDynamic": false,
                 "FixedValue": {
                   "Value": 1
                 }
               },
-              "DynamicValues": {
-                "MDF_Rank01_SpeedUp_01": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -2102294272
-                    }
-                  ]
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Thunder",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -901161065
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 722079702
+                        },
+                        {
+                          "Type": "Add"
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
                 }
-              }
+              ]
+            }
+          ]
+        },
+        "OnListenAfterAttack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MAvatar_TingYun_PassiveFlag"
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "TurnActionEntitySkillTarget"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Thunder",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -526088753
+                        }
+                      ]
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+                }
+              ]
+            }
+          ]
+        },
+        "OnListenBeforeSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCurrentSkillType"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "CurrentTurnActionEntity"
+                    },
+                    "ModifierName": "MAvatar_TingYun_ByIsTingYun"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "ModifierName": "MAvatar_TingYun_PassiveATK_Flag"
+                }
+              ]
+            }
+          ]
+        },
+        "OnAfterSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCurrentSkillType",
+                "SkillType": "Ultra"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_Tingyun_00_Rank01_SpeedUp",
+                  "LifeTime": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "DynamicValues": {
+                    "MDF_Rank01_SpeedUp_01": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -2102294272
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-526088753": {},
@@ -2579,121 +2694,113 @@
       }
     },
     "MAvatar_TingYun_ByIsTingYun": {
-      "OnListenTurnEnd": [
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
-          },
-          "MaxNumber": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "TaskList": [
+      "_CallbackList": {
+        "OnListenTurnEnd": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
+              "$type": "RPG.GameCore.Retarget",
+              "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
+                "Alias": "AllLightTeam"
               },
-              "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta",
-              "ValueType": "LifeTime",
-              "Multiplier": {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
+              },
+              "MaxNumber": {
                 "IsDynamic": false,
                 "FixedValue": {
                   "Value": 1
                 }
               },
-              "DynamicKey": "TingYun_EnergyBarLayer"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "ModifierName": "MWAvatar_TingYun_00_BPSkill_AttackDelta",
+                  "ValueType": "LifeTime",
+                  "Multiplier": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "DynamicKey": "TingYun_EnergyBarLayer"
                 },
-                "DynamicKey": "TingYun_EnergyBarLayer",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Active": "True",
-                  "BarType": 3,
-                  "CurrentState": "Normal",
-                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1202Passive.png",
-                  "MaxCount": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 3
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "TingYun_EnergyBarLayer",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
                     }
                   },
-                  "CurrentCount": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -616190875
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "Active": "True",
+                      "BarType": 3,
+                      "CurrentState": "Normal",
+                      "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1202Passive.png",
+                      "MaxCount": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 3
+                        }
+                      },
+                      "CurrentCount": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -616190875
+                          }
+                        ]
                       }
-                    ]
-                  }
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Active": "True",
-                  "BarType": 3,
-                  "CurrentState": "Active",
-                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1202Passive.png",
-                  "MaxCount": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 3
                     }
-                  },
-                  "CurrentCount": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -616190875
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "Active": "True",
+                      "BarType": 3,
+                      "CurrentState": "Active",
+                      "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1202Passive.png",
+                      "MaxCount": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 3
+                        }
+                      },
+                      "CurrentCount": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -616190875
+                          }
+                        ]
                       }
-                    ]
-                  }
+                    }
+                  ]
                 }
               ]
             }
           ]
         }
-      ]
+      }
     },
     "MAvatar_TingYun_PassiveATK_Flag": {},
     "MAvatar_TingYun_PassiveFlag": {},
@@ -2702,25 +2809,29 @@
       "BehaviorFlagList": [
         "STAT_SpeedUp"
       ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "SpeedAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1935276870
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "SpeedAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1935276870
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
         "Values": {
@@ -2733,25 +2844,29 @@
       "BehaviorFlagList": [
         "STAT_SpeedUp"
       ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "SpeedAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 784892657
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "SpeedAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 784892657
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
         "Values": {

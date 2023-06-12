@@ -3,43 +3,47 @@
     {
       "Modifiers": {
         "StageAbility_MazeProp_BossArea_Modifier": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
                   },
-                  "ModifierName": "MCommon_DOT_Poison",
-                  "LifeTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 3
-                    }
-                  },
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0.5000000004656613
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MCommon_DOT_Poison",
+                      "LifeTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 3
+                        }
+                      },
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.5000000004656613
+                          }
+                        }
                       }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_MazeProp_BossArea",

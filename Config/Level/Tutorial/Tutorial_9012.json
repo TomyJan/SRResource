@@ -161,12 +161,25 @@
           }
         },
         {
+          "$type": "RPG.GameCore.TutorialForbidAutoBattle",
+          "IsForbid": true
+        },
+        {
+          "$type": "RPG.GameCore.LockBattleOperation",
+          "OperationWhiteList": []
+        },
+        {
           "$type": "RPG.GameCore.WaitUINodeOpen",
           "NodeID": "BattleGamePhaseUI.BattleSkillSpecialButton"
         },
         {
           "$type": "RPG.GameCore.WaitTurnCount",
-          "TaskList": []
+          "TaskList": [
+            {
+              "$type": "RPG.GameCore.PauseGame",
+              "Pause": true
+            }
+          ]
         },
         {
           "$type": "RPG.GameCore.ShowGuide",
@@ -185,8 +198,6 @@
           "NodeID": "BattleGamePhaseUI.BattleSkillSpecialButton",
           "Show": true,
           "Text": "TutorialTextmap_901201",
-          "CopyAnchorAndSale": true,
-          "Follow": false,
           "OffsetX": -50,
           "OffsetY": 75,
           "PCGuide": {}
@@ -226,8 +237,6 @@
           "NodeID": "BattleGamePhaseUI.BattleSkillSpecialButton",
           "Show": true,
           "Text": "TutorialTextmap_901202",
-          "CopyAnchorAndSale": true,
-          "Follow": false,
           "OffsetX": -50,
           "OffsetY": 75,
           "PCGuide": {}
@@ -239,7 +248,11 @@
         {
           "$type": "RPG.GameCore.WaitTutorial",
           "Event": "ActionPress",
-          "OnSuccessImmediate": []
+          "OnSuccessImmediate": [
+            {
+              "$type": "RPG.GameCore.PauseGame"
+            }
+          ]
         },
         {
           "$type": "RPG.GameCore.ShowGuide",
@@ -268,6 +281,14 @@
             "UseAnim": true,
             "InitScale": 1.2
           }
+        },
+        {
+          "$type": "RPG.GameCore.LockBattleOperation",
+          "IsLock": false,
+          "OperationWhiteList": []
+        },
+        {
+          "$type": "RPG.GameCore.TutorialForbidAutoBattle"
         },
         {
           "$type": "RPG.GameCore.ShowTutorialUI",

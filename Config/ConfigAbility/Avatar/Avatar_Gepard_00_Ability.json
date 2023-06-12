@@ -26,10 +26,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -326,10 +322,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -790,21 +782,13 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
-          "CustomFormationName": "Gepard_00_Skill03_Ready",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "CustomFormationName": "Gepard_00_Skill03_Ready"
         },
         {
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "UseSkillPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": -0.01,
@@ -846,10 +830,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "UseSkillPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": -0.31,
@@ -898,10 +878,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -936,10 +912,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03"
         },
         {
@@ -995,10 +967,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1014,11 +982,7 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
-          "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationType": "LightTeamNormal"
         }
       ]
     },
@@ -1130,43 +1094,14 @@
     {
       "Modifiers": {
         "MAvatar_Gepard_00_Rank04": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeamMember"
-              },
-              "ModifierName": "MAvatar_Gepard_00_Rank04_AddStatusResistance",
-              "DynamicValues": {
-                "MDF_AddStatusResistance": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1474420534
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsTeammate",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "AllTeamMember"
                   },
                   "ModifierName": "MAvatar_Gepard_00_Rank04_AddStatusResistance",
                   "DynamicValues": {
@@ -1182,120 +1117,139 @@
                   }
                 }
               ]
-            }
-          ],
-          "OnBeforeDying": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetConcat",
-                "Targets": [
-                  {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllTeamMember"
-                  },
-                  {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllUnselectable"
-                  }
-                ]
-              },
-              "ModifierName": "MAvatar_Gepard_00_Rank04_AddStatusResistance",
-              "OnlyRemoveCasterAdded": true
-            }
-          ]
-        },
-        "MAvatar_Gepard_00_PassiveSkill_UnDead": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "Active": "True",
-              "BarType": 3,
-              "CurrentState": "Active",
-              "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1104Passive.png",
-              "MaxCount": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "CurrentCount": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              }
             },
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "_Gepard_00_PassiveSkill_InsertController",
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "Gepard_00_PassiveSkillSuccess",
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Modifier_Gepard_00_Ratio",
-              "Value": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -330553393
-                  }
-                ]
-              }
-            }
-          ],
-          "LimboWaitHealPriority": "AvatarReviveSelf",
-          "OnLimboWaitHeal": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "_Gepard_00_PassiveSkill_InsertController",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareHP",
+                    "$type": "RPG.GameCore.ByIsTeammate",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MAvatar_Gepard_00_Rank04_AddStatusResistance",
+                      "DynamicValues": {
+                        "MDF_AddStatusResistance": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1474420534
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnBeforeDying": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetConcat",
+                    "Targets": [
+                      {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllTeamMember"
+                      },
+                      {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllUnselectable"
+                      }
+                    ]
+                  },
+                  "ModifierName": "MAvatar_Gepard_00_Rank04_AddStatusResistance",
+                  "OnlyRemoveCasterAdded": true
+                }
+              ]
+            }
+          }
+        },
+        "MAvatar_Gepard_00_PassiveSkill_UnDead": {
+          "LimboWaitHealPriority": "AvatarReviveSelf",
+          "UIConfig": {
+            "UIPosition": "UI_Middle"
+          },
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetEnergyBarState",
+                  "Active": "True",
+                  "BarType": 3,
+                  "CurrentState": "Active",
+                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1104Passive.png",
+                  "MaxCount": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "CurrentCount": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "_Gepard_00_PassiveSkill_InsertController",
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "Gepard_00_PassiveSkillSuccess",
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "Modifier_Gepard_00_Ratio",
+                  "Value": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -330553393
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "OnLimboWaitHeal": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ModifierOwnerEntity"
                     },
-                    "CompareType": "LessEqual",
+                    "DynamicKey": "_Gepard_00_PassiveSkill_InsertController",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
                     "CompareValue": {
                       "IsDynamic": false,
                       "FixedValue": {
@@ -1305,77 +1259,85 @@
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.DefineDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "DynamicKey": "Gepard_00_PassiveSkillSuccess",
-                      "ResetValue": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 1
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareHP",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "CompareType": "LessEqual",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
                         }
                       },
-                      "ContextScope": "TargetEntity"
-                    },
-                    {
-                      "$type": "RPG.GameCore.DispelStatus",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "OnlyAlive": false
-                    },
-                    {
-                      "$type": "RPG.GameCore.TriggerAnimState",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "AnimStateName": "Skill_Passive01",
-                      "NormalizedTransitionDuration": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.10000000009313226
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.DefineDynamicValue",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "DynamicKey": "Gepard_00_PassiveSkillSuccess",
+                          "ResetValue": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 1
+                            }
+                          },
+                          "ContextScope": "TargetEntity"
+                        },
+                        {
+                          "$type": "RPG.GameCore.DispelStatus",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "OnlyAlive": false
+                        },
+                        {
+                          "$type": "RPG.GameCore.TriggerAnimState",
+                          "AnimStateName": "Skill_Passive01",
+                          "NormalizedTransitionDuration": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 0.10000000009313226
+                            }
+                          }
+                        },
+                        {
+                          "$type": "RPG.GameCore.TurnInsertAbility",
+                          "AbilityName": "Gepard_00_PassiveSkill_1_Insert",
+                          "InsertAbilityPriority": "AvatarReviveSelf",
+                          "OwnerAliveState": "Mask_AliveOrLimbo",
+                          "ShowInActionBar": true
+                        },
+                        {
+                          "$type": "RPG.GameCore.DefineDynamicValue",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "DynamicKey": "_Gepard_00_PassiveSkill_InsertController",
+                          "ResetValue": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 1
+                            }
+                          },
+                          "ContextScope": "TargetEntity"
                         }
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.TurnInsertAbility",
-                      "AbilityName": "Gepard_00_PassiveSkill_1_Insert",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "InsertAbilityPriority": "AvatarReviveSelf",
-                      "OwnerAliveState": "Mask_AliveOrLimbo",
-                      "ShowInActionBar": true
-                    },
-                    {
-                      "$type": "RPG.GameCore.DefineDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "DynamicKey": "_Gepard_00_PassiveSkill_InsertController",
-                      "ResetValue": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 1
-                        }
-                      },
-                      "ContextScope": "TargetEntity"
+                      ],
+                      "FailedTaskList": []
                     }
                   ],
                   "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ],
-          "UIConfig": {
-            "UIPosition": "UI_Middle"
           },
           "Count": 1,
           "DynamicValues": {
@@ -1409,10 +1371,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_Rank01_P1_Chance",
               "Value": {
                 "IsDynamic": true,
@@ -1453,11 +1411,15 @@
           "BehaviorFlagList": [
             "OneMore"
           ],
-          "OnBeforeSkillUse": [
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
+          "_CallbackList": {
+            "OnBeforeSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster"
         }
       },
@@ -1489,10 +1451,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "Skill_Passive02"
         },
@@ -1544,10 +1502,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "UseSkillPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0.01,
@@ -1723,18 +1677,10 @@
           "ModifyFunction": "Add"
         },
         {
-          "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          }
+          "$type": "RPG.GameCore.TriggerEnergyBarEffect"
         },
         {
           "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "CurrentState": "Disable",
           "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1104Passive.png",
@@ -1780,10 +1726,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy",
           "NormalizedTransitionDuration": {
@@ -1804,77 +1746,81 @@
       "Modifiers": {
         "Avatar_Gepard_00_Maze_Modifier": {
           "EnterBattlePriority": "CharacterBuff",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
-                  "DynamicKey": "Avatar_Gepard_BaseDefenceValue",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Value": "Defence"
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllTeamMember"
-                  },
-                  "ModifierName": "MAvatar_Gepard_00_Ultra_Shield",
-                  "LifeStepImmediately": true,
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 6414886
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
                       }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "MDF_ShowValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1608153226
-                        },
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -109213083
-                        },
-                        {
-                          "Type": "Mul"
-                        },
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1994873621
-                        },
-                        {
-                          "Type": "Add"
-                        }
-                      ]
                     }
                   },
-                  "IsShowUIMessageFromModel": false
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                      "DynamicKey": "Avatar_Gepard_BaseDefenceValue",
+                      "ReadTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Value": "Defence"
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllTeamMember"
+                      },
+                      "ModifierName": "MAvatar_Gepard_00_Ultra_Shield",
+                      "LifeStepImmediately": true,
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 6414886
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MDF_ShowValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1608153226
+                            },
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -109213083
+                            },
+                            {
+                              "Type": "Mul"
+                            },
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1994873621
+                            },
+                            {
+                              "Type": "Add"
+                            }
+                          ]
+                        }
+                      },
+                      "IsShowUIMessageFromModel": false
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Gepard_00_SkillMazeInLevel",
@@ -1929,112 +1875,118 @@
     {
       "Modifiers": {
         "M_Gepard_AttackConvert": {
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "Avatar_Gepard_DefenceValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Value": "Defence"
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "Avatar_Gepard_DefenceConvert",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Value": "DefenceConvert"
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "Avatar_Gepard_Passive02_AttackDeltaUp",
-              "DynamicValues": {
-                "MDF_PropertyValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1316963685
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -2083367191
-                    },
-                    {
-                      "Type": "Sub"
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1316363322
-                    },
-                    {
-                      "Type": "Mul"
+          "_CallbackList": {
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "Avatar_Gepard_DefenceValue",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Value": "Defence"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "Avatar_Gepard_DefenceConvert",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Value": "DefenceConvert"
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "Avatar_Gepard_Passive02_AttackDeltaUp",
+                  "DynamicValues": {
+                    "MDF_PropertyValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 1316963685
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -2083367191
+                        },
+                        {
+                          "Type": "Sub"
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1316363322
+                        },
+                        {
+                          "Type": "Mul"
+                        }
+                      ]
                     }
-                  ]
+                  }
                 }
-              }
-            }
-          ],
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "Avatar_Gepard_DefenceValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Value": "Defence"
+              ]
             },
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "Avatar_Gepard_DefenceConvert",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Value": "DefenceConvert"
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "Avatar_Gepard_Passive02_AttackDeltaUp",
-              "DynamicValues": {
-                "MDF_PropertyValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1316963685
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -2083367191
-                    },
-                    {
-                      "Type": "Sub"
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1316363322
-                    },
-                    {
-                      "Type": "Mul"
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "Avatar_Gepard_DefenceValue",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Value": "Defence"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "Avatar_Gepard_DefenceConvert",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Value": "DefenceConvert"
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "Avatar_Gepard_Passive02_AttackDeltaUp",
+                  "DynamicValues": {
+                    "MDF_PropertyValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 1316963685
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -2083367191
+                        },
+                        {
+                          "Type": "Sub"
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1316363322
+                        },
+                        {
+                          "Type": "Mul"
+                        }
+                      ]
                     }
-                  ]
+                  }
                 }
-              }
+              ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1316363322": {}
@@ -2074,54 +2026,62 @@
       "BehaviorFlagList": [
         "Shield"
       ],
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.SetResilience"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierOverrideOnHitEffect",
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Gepard/Eff_Avatar_Gepard_00_Common_Shield.prefab",
-          "ModifierOverrideOnHitEffectPriority": "ModifyOthers",
-          "HitEffectStacking": "Multiple",
-          "OverrideOffset": true,
-          "Offset": {
-            "X": 0,
-            "Y": 1,
-            "Z": 0.6
-          }
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveShield",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          }
-        },
-        {
-          "$type": "RPG.GameCore.SetResilience",
-          "DoReset": true
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.InitShield",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ShieldValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -295141034
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetResilience"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierOverrideOnHitEffect",
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Gepard/Eff_Avatar_Gepard_00_Common_Shield.prefab",
+              "ModifierOverrideOnHitEffectPriority": "ModifyOthers",
+              "HitEffectStacking": "Multiple",
+              "OverrideOffset": true,
+              "Offset": {
+                "X": 0,
+                "Y": 1,
+                "Z": 0.6
               }
-            ]
-          }
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveShield",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.SetResilience",
+              "DoReset": true
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.InitShield",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ShieldValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -295141034
+                  }
+                ]
+              }
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace",
       "DynamicValues": {
         "Values": {
@@ -2130,25 +2090,29 @@
       }
     },
     "Avatar_Gepard_Passive02_AttackDeltaUp": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackConvert",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 2128130574
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AttackConvert",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 2128130574
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
         "Values": {
@@ -2157,69 +2121,73 @@
       }
     },
     "MAvatar_Gepard_00_Rank02_Delay": {
-      "OnListenModifierRemove": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "MCommon_CTRL_Frozen",
-                "CasterFilter": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                }
-              },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "MAvatar_Gepard_00_Rank02_Delay"
-              }
-            ]
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnListenModifierRemove": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MAvatar_Gepard_00_Rank02_SpeedDown",
-              "LifeTime": {
-                "IsDynamic": true,
-                "Expressions": [
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
                   {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1820618355
+                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "ModifierName": "MCommon_CTRL_Frozen",
+                    "CasterFilter": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "ModifierName": "MAvatar_Gepard_00_Rank02_Delay"
                   }
                 ]
               },
-              "DynamicValues": {
-                "MDF_PropertyRaito": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 2117287519
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MAvatar_Gepard_00_Rank02_SpeedDown",
+                  "LifeTime": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1820618355
+                      }
+                    ]
+                  },
+                  "DynamicValues": {
+                    "MDF_PropertyRaito": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 2117287519
+                        }
+                      ]
                     }
-                  ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
                 }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "2117287519": {},
@@ -2231,34 +2199,38 @@
       "BehaviorFlagList": [
         "STAT_SpeedDown"
       ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "SpeedAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "FixedNumber",
-                "FixedValue": {
-                  "Value": 0
-                }
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
               },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 562042366
-              },
-              {
-                "Type": "Sub"
+              "Property": "SpeedAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "FixedNumber",
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  },
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 562042366
+                  },
+                  {
+                    "Type": "Sub"
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace",
       "DynamicValues": {
         "Values": {
@@ -2267,25 +2239,29 @@
       }
     },
     "MAvatar_Gepard_00_Rank04_AddStatusResistance": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "StatusResistanceBase",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1562405204
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "StatusResistanceBase",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1562405204
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
         "Values": {

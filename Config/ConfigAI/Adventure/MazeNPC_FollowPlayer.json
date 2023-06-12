@@ -5,6 +5,13 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Follow Player",
+      "RootTask": {
+        "$type": "RPG.GameCore.AdvNpcFollowPlayer",
+        "WaitProtectTime": 1,
+        "WaitActionTime": 5,
+        "KeepDistance": 5,
+        "FollowDistance": 8
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "Weight": {
         "Value": 4
@@ -20,18 +27,19 @@
             "Value": 1
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.AdvNpcFollowPlayer",
-        "WaitProtectTime": 1,
-        "WaitActionTime": 5,
-        "KeepDistance": 5,
-        "FollowDistance": 8
-      }
+      ]
     },
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Follow By Player",
+      "RootTask": {
+        "$type": "RPG.GameCore.AdvNpcFollowByPlayer",
+        "KeepDistance": 10,
+        "FollowDistance": 4,
+        "WaitProtectTime": 1,
+        "WaitActionTime": 5,
+        "Waypath": "TaskFollow"
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "Weight": {
         "Value": 4
@@ -47,15 +55,7 @@
             "Value": 1
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.AdvNpcFollowByPlayer",
-        "KeepDistance": 10,
-        "FollowDistance": 4,
-        "WaitProtectTime": 1,
-        "WaitActionTime": 5,
-        "Waypath": "TaskFollow"
-      }
+      ]
     }
   ],
   "OnDisable": {

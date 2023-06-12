@@ -6,25 +6,29 @@
   ],
   "GlobalModifiers": {
     "TurnEventMDF_AddDamage": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "Level_AllDamageAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 284336111
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "Level_AllDamageAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 284336111
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -37,24 +41,28 @@
       }
     },
     "TurnEventMDF_HealSP": {
-      "OnPhase1": [
-        {
-          "$type": "RPG.GameCore.ModifySPNew",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "AddValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 284336111
+      "_CallbackList": {
+        "OnPhase1": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifySPNew",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "AddValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 284336111
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -67,21 +75,25 @@
       }
     },
     "TurnEventMDF_DecreaseBP": {
-      "OnPhase1": [
-        {
-          "$type": "RPG.GameCore.ModifyTeamBoostPoint",
-          "ModifyFunction": "Add",
-          "ModifyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 284336111
+      "_CallbackList": {
+        "OnPhase1": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifyTeamBoostPoint",
+              "ModifyFunction": "Add",
+              "ModifyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 284336111
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -94,25 +106,29 @@
       }
     },
     "TurnEventMDF_HealCommon": {
-      "OnPhase1": [
-        {
-          "$type": "RPG.GameCore.HealHP",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "FormulaType": "HealByTargetMaxHP",
-          "HealPercentage": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 284336111
+      "_CallbackList": {
+        "OnPhase1": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.HealHP",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "FormulaType": "HealByTargetMaxHP",
+              "HealPercentage": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 284336111
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -125,45 +141,49 @@
       }
     },
     "TurnEventMDF_AttackWithFrozen": {
-      "OnAfterAttack": [
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "TurnActionEntitySkillTarget"
-          },
-          "TaskList": [
+      "_CallbackList": {
+        "OnAfterAttack": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
+              "$type": "RPG.GameCore.Retarget",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
+                "Alias": "TurnActionEntitySkillTarget"
               },
-              "ModifierName": "MCommon_CTRL_Frozen",
-              "Chance": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "LifeTime": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "DynamicValues": {
-                "Modifier_Frozen_DamagePercentage": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.5000000004656613
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "ModifierName": "MCommon_CTRL_Frozen",
+                  "Chance": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "LifeTime": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "DynamicValues": {
+                    "Modifier_Frozen_DamagePercentage": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0.5000000004656613
+                      }
+                    }
                   }
                 }
-              }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -176,22 +196,26 @@
       }
     },
     "TurnEventMDF_Corrupt": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": -1
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AttackAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": -1
+                }
+              }
             }
-          }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -204,26 +228,30 @@
       }
     },
     "TurnEventMDF_Dispel": {
-      "OnAfterHit": [
-        {
-          "$type": "RPG.GameCore.DispelStatus",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "BuffType": "Buff",
-          "Numbers": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 284336111
-              }
-            ]
-          },
-          "Order": "LastAdded"
+      "_CallbackList": {
+        "OnAfterHit": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.DispelStatus",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "BuffType": "Buff",
+              "Numbers": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 284336111
+                  }
+                ]
+              },
+              "Order": "LastAdded"
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -236,25 +264,29 @@
       }
     },
     "TurnEventMDF_purify": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.DispelStatus",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "Numbers": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 284336111
-              }
-            ]
-          },
-          "Order": "LastAdded"
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.DispelStatus",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "Numbers": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 284336111
+                  }
+                ]
+              },
+              "Order": "LastAdded"
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -267,25 +299,29 @@
       }
     },
     "TurnEventMDF_DecreaseAttack": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "Level_AllDamageAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 284336111
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "Level_AllDamageAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 284336111
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -298,37 +334,43 @@
       }
     },
     "TurnEventMDF_NoBPCost": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "SkillType": "ControlSkill02",
-          "Properties": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "PropertyType": "BPNeed",
-              "OperatorType": "Unset"
+              "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "SkillType": "ControlSkill02",
+              "Properties": [
+                {
+                  "PropertyType": "BPNeed",
+                  "OperatorType": "Unset"
+                }
+              ]
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "SkillType": "ControlSkill02",
+              "Properties": [
+                {
+                  "PropertyType": "BPNeed"
+                }
+              ]
             }
           ]
         }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "SkillType": "ControlSkill02",
-          "Properties": [
-            {
-              "PropertyType": "BPNeed"
-            }
-          ]
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -341,66 +383,72 @@
       }
     },
     "VanishTest_Modifier": {
-      "OnPhase1": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCompareTurnActionEntityTeamType",
-                "Team": "TeamLight"
-              }
-            ]
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnPhase1": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCompareTurnActionEntityTeamType",
+                    "Team": "TeamLight"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "VanishAttack_Modifier_TeamLight",
+                  "LifeTime": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "DynamicValues": {
+                    "AddSPValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 284336111
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "FailedTaskList": []
+            }
+          ]
+        },
+        "OnListenTurnEnd": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "AllLightTeam"
               },
-              "ModifierName": "VanishAttack_Modifier_TeamLight",
-              "LifeTime": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
+              "ModifierName": "VanishAttack_Modifier_TeamLight"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
               },
-              "DynamicValues": {
-                "AddSPValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 284336111
-                    }
-                  ]
-                }
-              }
+              "ModifierName": "VanishAttack_CD"
             }
-          ],
-          "FailedTaskList": []
+          ]
         }
-      ],
-      "OnListenTurnEnd": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "VanishAttack_Modifier_TeamLight"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "VanishAttack_CD"
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -413,185 +461,201 @@
       }
     },
     "VanishAttack_Modifier_TeamLight": {
-      "OnAfterAttack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByNot",
-            "Predicate": {
-              "$type": "RPG.GameCore.ByIsContainModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "VanishAttack_CD"
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnAfterAttack": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.ModifySPNew",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetSequence",
-                "Sequence": [
-                  {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByNot",
+                "Predicate": {
+                  "$type": "RPG.GameCore.ByIsContainModifier",
+                  "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "BattleEventEntityList"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "$type": "RPG.GameCore.TargetFilter",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsContainModifier",
-                      "TargetType": {
+                  "ModifierName": "VanishAttack_CD"
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ModifySPNew",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetSequence",
+                    "Sequence": [
+                      {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
+                        "Alias": "BattleEventEntityList"
                       },
-                      "ModifierName": "W_BattleEvent_Vanish_00_PassiveAbility"
+                      {
+                        "$type": "RPG.GameCore.TargetFilter",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsContainModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "ModifierName": "W_BattleEvent_Vanish_00_PassiveAbility"
+                        }
+                      }
+                    ]
+                  },
+                  "FixedAddValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1827764251
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "VanishAttack_CD",
+                  "LifeTime": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
                     }
                   }
-                ]
-              },
-              "FixedAddValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1827764251
-                  }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "VanishAttack_CD",
-              "LifeTime": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
                 }
-              }
+              ],
+              "FailedTaskList": []
             }
-          ],
-          "FailedTaskList": []
+          ]
         }
-      ]
+      }
     },
     "VanishAttack_Modifier_TeamDark": {
-      "OnAfterHit": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByNot",
-            "Predicate": {
-              "$type": "RPG.GameCore.ByIsContainModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "VanishAttack_CD"
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnAfterHit": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Welt/Eff_Avatar_Welt_00_Skill01_Hit.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.ModifyActionDelay",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "AddNormalizedValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByNot",
+                "Predicate": {
+                  "$type": "RPG.GameCore.ByIsContainModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "VanishAttack_CD"
                 }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
               },
-              "ModifierName": "VanishAttack_CD",
-              "LifeTime": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Welt/Eff_Avatar_Welt_00_Skill01_Hit.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.ModifyActionDelay",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AddNormalizedValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "VanishAttack_CD",
+                  "LifeTime": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  }
                 }
-              }
+              ],
+              "FailedTaskList": []
             }
-          ],
-          "FailedTaskList": []
+          ]
         }
-      ]
+      }
     },
     "VanishAttack_CD": {
       "LifeTime": 1
     },
     "TurnEventMDF_BPAdvance": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "SkillType": "ControlSkill02",
-          "Properties": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "PropertyType": "BPNeed",
-              "OperatorType": "Unset"
-            }
-          ]
-        }
-      ],
-      "OnBeforeHit": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAttackType",
-            "AttackTypes": [
-              "BPSkill"
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.ModifyDamageData",
-              "Attacker_AllDamageTypeAddedRatio": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 2
+              "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "SkillType": "ControlSkill02",
+              "Properties": [
+                {
+                  "PropertyType": "BPNeed",
+                  "OperatorType": "Unset"
                 }
-              }
+              ]
             }
           ]
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "SkillType": "ControlSkill02",
-          "Properties": [
+        },
+        "OnBeforeHit": {
+          "CallbackConfig": [
             {
-              "PropertyType": "BPNeed"
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAttackType",
+                "AttackTypes": [
+                  "BPSkill"
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ModifyDamageData",
+                  "Attacker_AllDamageTypeAddedRatio": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 2
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "SkillType": "ControlSkill02",
+              "Properties": [
+                {
+                  "PropertyType": "BPNeed"
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {
@@ -604,54 +668,60 @@
       }
     },
     "TurnEventMDF_CreatedEvent_DamageUP": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "SkillType": "ControlSkill02",
-          "Properties": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "PropertyType": "BPNeed",
-              "OperatorType": "Unset"
+              "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "SkillType": "ControlSkill02",
+              "Properties": [
+                {
+                  "PropertyType": "BPNeed",
+                  "OperatorType": "Unset"
+                }
+              ]
             }
           ]
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "Level_AllDamageAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 284336111
-              }
-            ]
-          }
         },
-        {
-          "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "SkillType": "ControlSkill02",
-          "Properties": [
+        "OnStack": {
+          "CallbackConfig": [
             {
-              "PropertyType": "BPNeed"
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "Level_AllDamageAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 284336111
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "RPG.GameCore.ModifySkillPropertyBySlot",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "SkillType": "ControlSkill02",
+              "Properties": [
+                {
+                  "PropertyType": "BPNeed"
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "284336111": {

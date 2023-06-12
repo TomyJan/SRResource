@@ -8,69 +8,55 @@
           ]
         },
         "Monster_BattleEvent_W1_Colossus_00_Skill08_Show_Modifier_1": {
-          "OnAllowAction": [
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeamMember"
-              },
-              "ModifierName": "Monster_BattleEvent_W1_Colossus_00_Skill08_Show_Modifier_1"
+          "_CallbackList": {
+            "OnAllowAction": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllTeamMember"
+                  },
+                  "ModifierName": "Monster_BattleEvent_W1_Colossus_00_Skill08_Show_Modifier_1"
+                }
+              ]
             }
-          ]
+          }
         },
         "Monster_BattleEvent_W1_Colossus_00_Skill08_Show_Modifier": {
-          "OnAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByAddValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Key": "Skill_UseTime",
-              "AddValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "Min": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              },
-              "Max": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 2
-                }
-              },
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
+          "_CallbackList": {
+            "OnAfterSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Key": "Skill_UseTime",
+                  "AddValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "Min": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  },
+                  "Max": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 2
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
                 },
-                "DynamicKey": "Skill_UseTime",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
@@ -85,16 +71,38 @@
                     "CompareValue": {
                       "IsDynamic": false,
                       "FixedValue": {
-                        "Value": 2
+                        "Value": 1
                       }
                     }
                   },
                   "SuccessTaskList": [],
-                  "FailedTaskList": []
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "DynamicKey": "Skill_UseTime",
+                        "ContextScope": "TargetEntity",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 2
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [],
+                      "FailedTaskList": []
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_BattleEvent_W1_Colossus_00_PassiveSkill01",
@@ -192,10 +200,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -206,10 +210,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         }

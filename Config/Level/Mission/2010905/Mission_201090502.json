@@ -4,38 +4,26 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.PerformanceTransition",
-          "CreateNpcList": [
-            {
-              "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 58
-                }
-              },
-              "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400008
-                }
-              },
-              "CreateList": []
+          "$type": "RPG.GameCore.CreateNPC",
+          "GroupID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 58
             }
-          ],
-          "CaptureNpcList": [],
-          "DestroyNpcList": [
-            {
-              "GroupID": 58,
-              "GroupNpcID": 400001,
-              "DestroyList": []
-            }
-          ],
-          "ActiveVirtualCamera": {
-            "TaskEnabled": false
           },
-          "SwitchCharacterAnchor": {
-            "TaskEnabled": false
-          }
+          "GroupNpcID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 400008
+            }
+          },
+          "CreateList": []
+        },
+        {
+          "$type": "RPG.GameCore.DestroyNPC",
+          "GroupID": 58,
+          "GroupNpcID": 400001,
+          "DestroyList": []
         }
       ]
     },

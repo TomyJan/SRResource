@@ -16,21 +16,6 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Decision01",
-      "ScoreEvaluatorType": "DefaultDSE",
-      "Weight": {
-        "Value": 0.5000000004656613
-      },
-      "ConsiderAxisList": [
-        {
-          "$type": "RPG.GameCore.CheckSkillUsabilityAxis",
-          "SkillName": "Skill01",
-          "InitialCD": 1,
-          "CD": 1,
-          "CheckScore": {
-            "Value": 0.10000000009313226
-          }
-        }
-      ],
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -64,10 +49,6 @@
                 "$type": "RPG.GameCore.PredicateTaskList",
                 "Predicate": {
                   "$type": "RPG.GameCore.ByCompareDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "Monster_W2_Abomi01_00_AIFlag_DanHeng",
                   "ContextScope": "TargetEntity",
                   "CompareType": "Equal",
@@ -120,7 +101,22 @@
             ]
           }
         ]
-      }
+      },
+      "ScoreEvaluatorType": "DefaultDSE",
+      "Weight": {
+        "Value": 0.5000000004656613
+      },
+      "ConsiderAxisList": [
+        {
+          "$type": "RPG.GameCore.CheckSkillUsabilityAxis",
+          "SkillName": "Skill01",
+          "InitialCD": 1,
+          "CD": 1,
+          "CheckScore": {
+            "Value": 0.10000000009313226
+          }
+        }
+      ]
     }
   ]
 }

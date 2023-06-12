@@ -244,7 +244,8 @@
           "CustomString": {
             "Value": "Maze_CargoShip_SetCamera02"
           },
-          "WaitOwnerOnly": true
+          "WaitOwnerOnly": true,
+          "GoNextImmediately": true
         },
         {
           "$type": "RPG.GameCore.WaitSecond",
@@ -286,10 +287,22 @@
               "CreateNpcList": [],
               "CaptureNpcList": [],
               "DestroyNpcList": [],
+              "CreateProp": {
+                "TaskEnabled": false
+              },
+              "DestroyProp": {
+                "TaskEnabled": false
+              },
               "ActiveVirtualCamera": {
                 "TaskEnabled": false
               },
+              "ActiveTemplateVirtualCamera": {
+                "TaskEnabled": false
+              },
               "SwitchCharacterAnchor": {
+                "TaskEnabled": false
+              },
+              "AdvNpcFaceToPlayer": {
                 "TaskEnabled": false
               }
             },
@@ -348,23 +361,6 @@
                   "Key": "PuzzleCompass_CargoChest01"
                 }
               }
-            },
-            {
-              "$type": "RPG.GameCore.PropTriggerEffectList",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetFetchAdvPropEx",
-                "FetchType": "SinglePropByPropKey",
-                "SinglePropKey": {
-                  "Custom": true,
-                  "Key": "PuzzleCompass_CargoChest01"
-                }
-              },
-              "EffectList": [
-                {
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Scene/Interactive Object/Eff_Common_PropBlockade_Idle_Locked.prefab",
-                  "AttachPoint": "Root"
-                }
-              ]
             },
             {
               "$type": "RPG.GameCore.SetEntityVisible",

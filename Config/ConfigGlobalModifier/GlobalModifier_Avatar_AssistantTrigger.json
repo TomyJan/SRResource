@@ -1,69 +1,65 @@
 {
   "ModifierMap": {
     "MAssistant_Trigger_EnemyDelayChange": {
-      "OnListenModifierAdd": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Flag": "STAT_SpeedDown"
-              },
-              {
-                "$type": "RPG.GameCore.ByNot",
-                "Predicate": {
-                  "$type": "RPG.GameCore.ByIsTeammate",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  }
-                }
-              }
-            ]
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnListenModifierAdd": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.TurnInsertAssistantAbility",
-              "AssistantAbilityID": {
-                "IsDynamic": true,
-                "Expressions": [
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
                   {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 640129697
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Flag": "STAT_SpeedDown"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByNot",
+                    "Predicate": {
+                      "$type": "RPG.GameCore.ByIsTeammate",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      }
+                    }
                   }
                 ]
               },
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AbilityTarget": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "AbortBehaviorFlags": [
-                "STAT_CTRL",
-                "DisableAction"
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.TurnInsertAssistantAbility",
+                  "AssistantAbilityID": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 640129697
+                      }
+                    ]
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AbortBehaviorFlags": [
+                    "STAT_CTRL",
+                    "DisableAction"
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.SetModifierValue",
+                  "ModifierName": "MAvatar_Assistant_EnemyDelayChange",
+                  "ModifyFunction": "Add"
+                }
               ]
-            },
-            {
-              "$type": "RPG.GameCore.SetModifierValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MAvatar_Assistant_EnemyDelayChange",
-              "ModifyFunction": "Add"
             }
           ]
         }
-      ],
+      },
       "Count": 1,
       "DynamicValues": {
         "Values": {
@@ -72,69 +68,65 @@
       }
     },
     "MAssistant_Trigger_EnemyStatusChangeToBurn": {
-      "OnListenModifierAdd": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Flag": "STAT_DOT_Burn"
-              },
-              {
-                "$type": "RPG.GameCore.ByNot",
-                "Predicate": {
-                  "$type": "RPG.GameCore.ByIsTeammate",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  }
-                }
-              }
-            ]
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnListenModifierAdd": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.TurnInsertAssistantAbility",
-              "AssistantAbilityID": {
-                "IsDynamic": true,
-                "Expressions": [
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
                   {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 640129697
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Flag": "STAT_DOT_Burn"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByNot",
+                    "Predicate": {
+                      "$type": "RPG.GameCore.ByIsTeammate",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      }
+                    }
                   }
                 ]
               },
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AbilityTarget": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "AbortBehaviorFlags": [
-                "STAT_CTRL",
-                "DisableAction"
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.TurnInsertAssistantAbility",
+                  "AssistantAbilityID": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 640129697
+                      }
+                    ]
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AbortBehaviorFlags": [
+                    "STAT_CTRL",
+                    "DisableAction"
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.SetModifierValue",
+                  "ModifierName": "MAssistant_Trigger_EnemyStatusChangeToBurn",
+                  "ModifyFunction": "Add"
+                }
               ]
-            },
-            {
-              "$type": "RPG.GameCore.SetModifierValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MAssistant_Trigger_EnemyStatusChangeToBurn",
-              "ModifyFunction": "Add"
             }
           ]
         }
-      ],
+      },
       "Count": 2,
       "DynamicValues": {
         "Values": {
@@ -143,31 +135,91 @@
       }
     },
     "MAssistant_Trigger_AllEnemyBeingHitByFire": {
-      "OnListenBreak": [
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerAllEnemy"
-          },
-          "Predicate": {
-            "$type": "RPG.GameCore.ByNot",
-            "Predicate": {
-              "$type": "RPG.GameCore.ByIsCharacterWeaknessActivated",
+      "_CallbackList": {
+        "OnListenBreak": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.Retarget",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              }
+                "Alias": "ModifierOwnerAllEnemy"
+              },
+              "Predicate": {
+                "$type": "RPG.GameCore.ByNot",
+                "Predicate": {
+                  "$type": "RPG.GameCore.ByIsCharacterWeaknessActivated",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  }
+                }
+              },
+              "MaxNumber": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 5
+                }
+              },
+              "TaskList": [],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.TurnInsertAssistantAbility",
+                  "AssistantAbilityID": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 640129697
+                      }
+                    ]
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AbortBehaviorFlags": [
+                    "STAT_CTRL",
+                    "DisableAction"
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.SetModifierValue",
+                  "ModifierName": "MAssistant_Trigger_AllEnemyBeingHitByFire",
+                  "ModifyFunction": "Add"
+                }
+              ]
             }
-          },
-          "MaxNumber": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 5
+          ]
+        }
+      },
+      "Count": 2,
+      "DynamicValues": {
+        "Values": {
+          "640129697": {}
+        }
+      }
+    },
+    "MAssistant_Trigger_AvatarHPLoss": {
+      "_CallbackList": {
+        "OnBeforeAttack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "MAssistant_Trigger_AvatarHPLoss_Add"
             }
-          },
-          "TaskList": [],
-          "FailedTaskList": [
+          ]
+        }
+      },
+      "Count": 2
+    },
+    "MAssistant_Trigger_AvatarHPLoss_Add": {
+      "_CallbackList": {
+        "OnAfterBeingHitAll": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.TurnInsertAssistantAbility",
               "AssistantAbilityID": {
@@ -181,11 +233,11 @@
               },
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "Caster"
               },
               "AbilityTarget": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
+                "Alias": "ModifierOwnerEntity"
               },
               "AbortBehaviorFlags": [
                 "STAT_CTRL",
@@ -196,70 +248,14 @@
               "$type": "RPG.GameCore.SetModifierValue",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "Caster"
               },
-              "ModifierName": "MAssistant_Trigger_AllEnemyBeingHitByFire",
+              "ModifierName": "MAssistant_Trigger_AvatarHPLoss",
               "ModifyFunction": "Add"
             }
           ]
         }
-      ],
-      "Count": 2,
-      "DynamicValues": {
-        "Values": {
-          "640129697": {}
-        }
-      }
-    },
-    "MAssistant_Trigger_AvatarHPLoss": {
-      "OnBeforeAttack": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "MAssistant_Trigger_AvatarHPLoss_Add"
-        }
-      ],
-      "Count": 2
-    },
-    "MAssistant_Trigger_AvatarHPLoss_Add": {
-      "OnAfterBeingHitAll": [
-        {
-          "$type": "RPG.GameCore.TurnInsertAssistantAbility",
-          "AssistantAbilityID": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 640129697
-              }
-            ]
-          },
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AbilityTarget": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "AbortBehaviorFlags": [
-            "STAT_CTRL",
-            "DisableAction"
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.SetModifierValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "MAssistant_Trigger_AvatarHPLoss",
-          "ModifyFunction": "Add"
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "640129697": {}
@@ -268,41 +264,41 @@
     },
     "MAssistant_Trigger_OnAfterMazeSkill": {
       "EnterBattlePriority": "AvatarInsertAbility",
-      "OnEnterBattle": [
-        {
-          "$type": "RPG.GameCore.TurnInsertAssistantAbility",
-          "AssistantAbilityID": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 640129697
-              }
-            ]
-          },
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "AbilityTarget": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "AbortBehaviorFlags": [
-            "STAT_CTRL",
-            "DisableAction"
+      "_CallbackList": {
+        "OnEnterBattle": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TurnInsertAssistantAbility",
+              "AssistantAbilityID": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 640129697
+                  }
+                ]
+              },
+              "AbilityTarget": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "AbortBehaviorFlags": [
+                "STAT_CTRL",
+                "DisableAction"
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.SetModifierValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "MAssistant_Trigger_OnAfterMazeSkill",
+              "ModifyFunction": "Add"
+            }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.SetModifierValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "MAssistant_Trigger_OnAfterMazeSkill",
-          "ModifyFunction": "Add"
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "640129697": {}

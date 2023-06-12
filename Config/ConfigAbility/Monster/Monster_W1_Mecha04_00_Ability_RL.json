@@ -3,130 +3,142 @@
     {
       "Modifiers": {
         "Monster_W1_Mecha04_00_InsertControl": {
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "Monster_W1_Mecha04_00_InsertFlag",
-              "ContextScope": "TargetEntity"
-            }
-          ],
-          "OnEndBreak": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareMonsterPhase",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "GreaterEqual",
-                "CompareValue": 2
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeingBreak": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.Retarget",
+                  "$type": "RPG.GameCore.DefineDynamicValue",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllLightTeam"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByAny",
-                    "PredicateList": [
-                      {
-                        "$type": "RPG.GameCore.ByIsContainModifier",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "ModifierName": "Monster_W1_Mecha04_00_Sign01"
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByIsContainModifier",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "ModifierName": "Monster_W1_Mecha04_00_Sign02"
-                      }
-                    ]
-                  },
-                  "MaxNumber": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "TaskList": [
-                    {
-                      "$type": "RPG.GameCore.AddModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedUpAgain"
-                    }
-                  ]
+                  "DynamicKey": "Monster_W1_Mecha04_00_InsertFlag",
+                  "ContextScope": "TargetEntity"
                 }
-              ],
-              "FailedTaskList": [
+              ]
+            },
+            "OnEndBreak": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.Retarget",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllLightTeam"
-                  },
+                  "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "$type": "RPG.GameCore.ByCompareMonsterPhase",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
+                      "Alias": "ModifierOwnerEntity"
                     },
-                    "ModifierName": "Sign_W1_Mecha02"
+                    "CompareType": "GreaterEqual",
+                    "CompareValue": 2
                   },
-                  "MaxNumber": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "TaskList": [
+                  "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.AddModifier",
+                      "$type": "RPG.GameCore.Retarget",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
+                        "Alias": "AllLightTeam"
                       },
-                      "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedUpAgain"
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByAny",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByIsContainModifier",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "ModifierName": "Monster_W1_Mecha04_00_Sign01"
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByIsContainModifier",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "ModifierName": "Monster_W1_Mecha04_00_Sign02"
+                          }
+                        ]
+                      },
+                      "MaxNumber": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedUpAgain"
+                        }
+                      ]
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.Retarget",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllLightTeam"
+                      },
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "ModifierName": "Sign_W1_Mecha02"
+                      },
+                      "MaxNumber": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedUpAgain"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ]
+          }
         },
         "HideMonsterHUD": {
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.MakeCharacterHUDVisible",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
+          "_CallbackList": {
+            "OnPhase1": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.MakeCharacterHUDVisible",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                }
+              ]
+            },
+            "OnAllowAction": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.MakeCharacterHUDVisible",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                }
+              ]
             }
-          ],
-          "OnAllowAction": [
-            {
-              "$type": "RPG.GameCore.MakeCharacterHUDVisible",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            }
-          ]
+          }
         },
         "WMonster_Mecha_02_MuteHitFly": {
           "BehaviorFlagList": [
@@ -134,170 +146,184 @@
           ]
         },
         "MMonster_W1_Mecha04_00_ChainSawSpeedController": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "ModifierName": "StanceBreakState"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "Flag": "STAT_Confine"
-                  }
-                ]
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAny",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "ModifierName": "StanceBreakState"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "Flag": "STAT_Confine"
+                      }
+                    ]
                   },
-                  "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedNormal"
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedNormal"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnModifierAdd": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAny",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "Flag": "STAT_Confine"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "Flag": "STAT_CTRL_Frozen"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "Flag": "Break"
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedNormal"
+                    }
+                  ],
+                  "FailedTaskList": []
+                }
+              ]
+            },
+            "OnModifierRemove": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAny",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "Flag": "STAT_Confine"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "Flag": "STAT_CTRL_Frozen"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "Flag": "Break"
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedNormal"
+                    }
+                  ]
                 }
               ]
             }
-          ],
-          "OnModifierAdd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "Flag": "STAT_Confine"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "Flag": "STAT_CTRL_Frozen"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "Flag": "Break"
-                  }
-                ]
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedNormal"
-                }
-              ],
-              "FailedTaskList": []
-            }
-          ],
-          "OnModifierRemove": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "Flag": "STAT_Confine"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "Flag": "STAT_CTRL_Frozen"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "Flag": "Break"
-                  }
-                ]
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedNormal"
-                }
-              ]
-            }
-          ]
+          }
         },
         "MMonster_W1_Mecha04_00_ChainSawSpeedNormal": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.SetEffectAnimSpeed",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AnimSpeed": -0.3
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetEffectAnimSpeed",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AnimSpeed": -0.3
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Skill01_Start01.prefab"
+                }
+              ]
             },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Skill01_Start01.prefab"
+            "OnDestroy": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetEffectAnimSpeed",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Skill01_Start01.prefab"
+                }
+              ]
             }
-          ],
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.SetEffectAnimSpeed",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Skill01_Start01.prefab"
-            }
-          ]
+          }
         },
         "Monster_W1_Mecha04_00_PassiveMDF": {
           "UIConfig": {
@@ -386,10 +412,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -478,10 +500,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -803,10 +821,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill07",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -918,10 +932,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -1101,10 +1111,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "Mecha04_Aim_Flag",
                 "ContextScope": "TargetEntity",
                 "CompareType": "Equal",
@@ -1198,10 +1204,6 @@
             "PredicateList": [
               {
                 "$type": "RPG.GameCore.ByCompareMonsterPhase",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "CompareType": "Equal",
                 "CompareValue": 3
               }
@@ -1261,10 +1263,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1279,10 +1277,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1365,10 +1359,6 @@
             },
             {
               "$type": "RPG.GameCore.LookAt",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": "TeamFormation",
               "CustomTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
@@ -1377,10 +1367,6 @@
             },
             {
               "$type": "RPG.GameCore.LookAt",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": "TeamFormation",
               "CustomTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
@@ -1392,10 +1378,6 @@
               "CameraConfig": {
                 "NormalConfig": {
                   "CameraState": "CastAnimation",
-                  "AnchorTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "AnchorOffset": {
                     "X": 2,
                     "Y": 0,
@@ -1493,10 +1475,6 @@
               "CameraConfig": {
                 "NormalConfig": {
                   "CameraState": "CastAnimation",
-                  "AnchorTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "AnchorOffset": {
                     "X": -1.5,
                     "Y": 0.05,
@@ -1523,10 +1501,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimStateName": "ChangePhaseEnd",
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
@@ -1793,10 +1767,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimLogicState": "Idle"
             },
             {
@@ -1862,10 +1832,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -1873,10 +1839,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 2,
                 "Y": 0,
@@ -1910,10 +1872,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 0,
                 "Y": 0.05,
@@ -1940,10 +1898,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "ChangePhaseEnd02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -2104,10 +2058,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         },
         {
@@ -2124,10 +2074,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -2148,10 +2094,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 2,
                 "Y": 0,
@@ -2186,19 +2128,626 @@
   "GlobalModifiers": {
     "Monster_W1_Mecha04_00_RL_PhaseController": {
       "LimboWaitHealPriority": "ChangePhase",
-      "OnLimboWaitHeal": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareMonsterPhase",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
+      "_CallbackList": {
+        "OnLimboWaitHeal": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareMonsterPhase",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "CompareType": "Equal",
+                "CompareValue": 1
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeamWithAllUnselectable"
+                  },
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "ModifierName": "Monster_W1_Mecha03_00_RL_PhaseController"
+                  },
+                  "IncludeLimbo": true,
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareMonsterPhase",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "CompareType": "GreaterEqual",
+                        "CompareValue": 1
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByIsContainModifier",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "ModifierName": "Monster_W1_Mecha03_00_RL_Dormancy",
+                            "AddedOrAlive": true
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.PredicateTaskList",
+                              "Predicate": {
+                                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ModifierOwnerEntity"
+                                },
+                                "DynamicKey": "InsertCheck",
+                                "ContextScope": "TargetEntity",
+                                "CompareType": "Equal",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 1
+                                  }
+                                }
+                              },
+                              "SuccessTaskList": [
+                                {
+                                  "$type": "RPG.GameCore.TriggerAnimState",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "AnimStateName": "ChangePhaseStart"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.DispelStatus",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "OnlyAlive": false,
+                                  "IsSlientDispel": true
+                                },
+                                {
+                                  "$type": "RPG.GameCore.AddModifier",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "AliveOnly": false,
+                                  "ModifierName": "Monster_W1_Mecha04_00_RL_Endurance"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.DefineDynamicValue",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "DynamicKey": "InsertCheck",
+                                  "ContextScope": "TargetEntity"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.SetMonsterPhase",
+                                  "SetMode": "Inc"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.SetMonsterPhase",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ParamEntity"
+                                  },
+                                  "SetMode": "Inc"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.TurnInsertAbility",
+                                  "AbilityName": "Monster_W1_Mecha04_00_RL_PassiveSkill_Insert",
+                                  "InsertAbilityPriority": "MonsterChangePhase",
+                                  "OwnerAliveState": "Mask_AliveOrLimbo",
+                                  "TargetAliveState": "Mask_AliveOrLimbo",
+                                  "ShowInActionBar": true
+                                },
+                                {
+                                  "$type": "RPG.GameCore.DispelStatus",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ParamEntity"
+                                  },
+                                  "OnlyAlive": false,
+                                  "IsSlientDispel": true
+                                },
+                                {
+                                  "$type": "RPG.GameCore.AddModifier",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ParamEntity"
+                                  },
+                                  "AliveOnly": false,
+                                  "ModifierName": "Monster_W1_Mecha03_00_RL_Endurance",
+                                  "InheritCaster": "TargetSelf"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.DefineDynamicValue",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ParamEntity"
+                                  },
+                                  "DynamicKey": "InsertCheck",
+                                  "ContextScope": "TargetEntity"
+                                }
+                              ],
+                              "FailedTaskList": []
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.PredicateTaskList",
+                              "Predicate": {
+                                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ModifierOwnerEntity"
+                                },
+                                "DynamicKey": "InsertCheck",
+                                "ContextScope": "TargetEntity",
+                                "CompareType": "Equal",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 1
+                                  }
+                                }
+                              },
+                              "SuccessTaskList": [
+                                {
+                                  "$type": "RPG.GameCore.DispelStatus",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "OnlyAlive": false,
+                                  "IsSlientDispel": true
+                                },
+                                {
+                                  "$type": "RPG.GameCore.SetHP",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "ModifyValue": {
+                                    "IsDynamic": false,
+                                    "FixedValue": {
+                                      "Value": 1
+                                    }
+                                  },
+                                  "ShowText": false
+                                },
+                                {
+                                  "$type": "RPG.GameCore.DefineDynamicValue",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "DynamicKey": "InsertCheck",
+                                  "ContextScope": "TargetEntity"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.ExitBreakState",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "CancelRecoverAnim": true
+                                },
+                                {
+                                  "$type": "RPG.GameCore.ResetStance",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "ForbidWhenEmpty": false
+                                },
+                                {
+                                  "$type": "RPG.GameCore.LockTargetHP",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "Threshold": {
+                                    "IsDynamic": false,
+                                    "FixedValue": {
+                                      "Value": 0.0009999999310821295
+                                    }
+                                  }
+                                },
+                                {
+                                  "$type": "RPG.GameCore.AddModifier",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "AliveOnly": false,
+                                  "ModifierName": "Monster_W1_Mecha04_00_RL_Dormancy"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.RemoveModifier",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedUp"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.RemoveModifier",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "AllLightTeam"
+                                  },
+                                  "ModifierName": "Sign_W1_Mecha02",
+                                  "OnlyRemoveCasterAdded": true
+                                },
+                                {
+                                  "$type": "RPG.GameCore.TriggerAnimState",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "AnimStateName": "ChangePhaseStart"
+                                },
+                                {
+                                  "$type": "RPG.GameCore.DefineDynamicValue",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ModifierOwnerEntity"
+                                  },
+                                  "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
+                                  "ResetValue": {
+                                    "IsDynamic": false,
+                                    "FixedValue": {
+                                      "Value": 1
+                                    }
+                                  },
+                                  "ContextScope": "TargetEntity"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "FailedTaskList": []
+                    }
+                  ]
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "InsertCheck",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.Retarget",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllDarkTeamWithAllUnselectable"
+                      },
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareMonsterID",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "TargetMonsterID": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1013012
+                          }
+                        }
+                      },
+                      "IncludeLimbo": true,
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.DispelStatus",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "OnlyAlive": false,
+                          "IsSlientDispel": true
+                        },
+                        {
+                          "$type": "RPG.GameCore.TriggerAnimState",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "AnimStateName": "ChangePhaseStart02"
+                        },
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "AliveOnly": false,
+                          "ModifierName": "Monster_W1_Mecha03_00_RL_Endurance",
+                          "InheritCaster": "TargetSelf"
+                        },
+                        {
+                          "$type": "RPG.GameCore.DefineDynamicValue",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "DynamicKey": "InsertCheck",
+                          "ContextScope": "TargetEntity"
+                        },
+                        {
+                          "$type": "RPG.GameCore.SetMonsterPhase",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "SetMode": "Inc"
+                        },
+                        {
+                          "$type": "RPG.GameCore.TurnInsertAbility",
+                          "AbilityName": "Monster_W1_Mecha03_00_RL_PassiveSkill_Insert2",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "InsertAbilityPriority": "MonsterChangePhase",
+                          "OwnerAliveState": "Mask_AliveOrLimbo",
+                          "TargetAliveState": "Mask_AliveOrLimbo",
+                          "ShowInActionBar": true
+                        },
+                        {
+                          "$type": "RPG.GameCore.RemoveSelfModifier"
+                        }
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.Retarget",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "AllDarkTeamWithAllUnselectable"
+                          },
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByIsContainModifier",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "ModifierName": "Monster_W1_Mecha03_00_RL_PhaseController"
+                          },
+                          "TaskList": [
+                            {
+                              "$type": "RPG.GameCore.DefineDynamicValue",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "DynamicKey": "TeammateSurvive",
+                              "ContextScope": "TargetEntity"
+                            }
+                          ]
+                        },
+                        {
+                          "$type": "RPG.GameCore.RemoveSelfModifier"
+                        }
+                      ]
+                    }
+                  ],
+                  "FailedTaskList": []
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Monster_W1_Mecha04_00_RL_Dormancy": {
+      "BehaviorFlagList": [
+        "DisableHealHP",
+        "DisableAction"
+      ],
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "Monster_W1_Mecha04_00_RL_Stealth"
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "Monster_W1_Mecha04_00_RL_Stealth"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByProperty",
+              "DynamicKey": "BaseSpeed",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Value": "BaseSpeed"
             },
-            "CompareType": "Equal",
-            "CompareValue": 1
-          },
-          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "SpeedDelta",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "FixedNumber",
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  },
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -906730870
+                  },
+                  {
+                    "Type": "Sub"
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "StanceBreakResistance",
+              "PropertyValue": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "Monster_W1_Mecha04_00_RL_Stealth": {
+      "BehaviorFlagList": [
+        "Stealth",
+        "Endurance"
+      ],
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.MakeCharacterHUDVisible",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "IndependentControl": true
+            },
+            {
+              "$type": "RPG.GameCore.SetEntityUnselectable",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Unselectable": true
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ReleaseCharacterHUDVisibleControl",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.SetEntityUnselectable",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "Monster_W1_Mecha04_00_RL_Endurance": {
+      "BehaviorFlagList": [
+        "Endurance"
+      ],
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackStatusResistance",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "BehaviorFlag": "STAT_CTRL",
+              "Resistance": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "Monster_W1_Mecha04_00_RL_Support": {
+      "_CallbackList": {
+        "OnBeingBreak": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_W1_Mecha04_00_RL_BreakTarget"
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "Monster_W1_Mecha04_00_RL_BreakTarget",
+              "InheritCaster": "TargetSelf"
+            },
             {
               "$type": "RPG.GameCore.Retarget",
               "TargetType": {
@@ -2213,677 +2762,92 @@
                 },
                 "ModifierName": "Monster_W1_Mecha03_00_RL_PhaseController"
               },
-              "IncludeLimbo": true,
               "TaskList": [
                 {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareMonsterPhase",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "CompareType": "GreaterEqual",
-                    "CompareValue": 1
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByIsContainModifier",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "ModifierName": "Monster_W1_Mecha03_00_RL_Dormancy",
-                        "AddedOrAlive": true
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.PredicateTaskList",
-                          "Predicate": {
-                            "$type": "RPG.GameCore.ByCompareDynamicValue",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ModifierOwnerEntity"
-                            },
-                            "DynamicKey": "InsertCheck",
-                            "ContextScope": "TargetEntity",
-                            "CompareType": "Equal",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 1
-                              }
-                            }
-                          },
-                          "SuccessTaskList": [
-                            {
-                              "$type": "RPG.GameCore.TriggerAnimState",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "AnimStateName": "ChangePhaseStart"
-                            },
-                            {
-                              "$type": "RPG.GameCore.DispelStatus",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "OnlyAlive": false,
-                              "IsSlientDispel": true
-                            },
-                            {
-                              "$type": "RPG.GameCore.AddModifier",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "AliveOnly": false,
-                              "ModifierName": "Monster_W1_Mecha04_00_RL_Endurance"
-                            },
-                            {
-                              "$type": "RPG.GameCore.DefineDynamicValue",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "DynamicKey": "InsertCheck",
-                              "ContextScope": "TargetEntity"
-                            },
-                            {
-                              "$type": "RPG.GameCore.SetMonsterPhase",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "Caster"
-                              },
-                              "SetMode": "Inc"
-                            },
-                            {
-                              "$type": "RPG.GameCore.SetMonsterPhase",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ParamEntity"
-                              },
-                              "SetMode": "Inc"
-                            },
-                            {
-                              "$type": "RPG.GameCore.TurnInsertAbility",
-                              "AbilityName": "Monster_W1_Mecha04_00_RL_PassiveSkill_Insert",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "InsertAbilityPriority": "MonsterChangePhase",
-                              "OwnerAliveState": "Mask_AliveOrLimbo",
-                              "TargetAliveState": "Mask_AliveOrLimbo",
-                              "ShowInActionBar": true
-                            },
-                            {
-                              "$type": "RPG.GameCore.DispelStatus",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ParamEntity"
-                              },
-                              "OnlyAlive": false,
-                              "IsSlientDispel": true
-                            },
-                            {
-                              "$type": "RPG.GameCore.AddModifier",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ParamEntity"
-                              },
-                              "AliveOnly": false,
-                              "ModifierName": "Monster_W1_Mecha03_00_RL_Endurance",
-                              "InheritCaster": "TargetSelf"
-                            },
-                            {
-                              "$type": "RPG.GameCore.DefineDynamicValue",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ParamEntity"
-                              },
-                              "DynamicKey": "InsertCheck",
-                              "ContextScope": "TargetEntity"
-                            }
-                          ],
-                          "FailedTaskList": []
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.PredicateTaskList",
-                          "Predicate": {
-                            "$type": "RPG.GameCore.ByCompareDynamicValue",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "ModifierOwnerEntity"
-                            },
-                            "DynamicKey": "InsertCheck",
-                            "ContextScope": "TargetEntity",
-                            "CompareType": "Equal",
-                            "CompareValue": {
-                              "IsDynamic": false,
-                              "FixedValue": {
-                                "Value": 1
-                              }
-                            }
-                          },
-                          "SuccessTaskList": [
-                            {
-                              "$type": "RPG.GameCore.DispelStatus",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "OnlyAlive": false,
-                              "IsSlientDispel": true
-                            },
-                            {
-                              "$type": "RPG.GameCore.SetHP",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "ModifyValue": {
-                                "IsDynamic": false,
-                                "FixedValue": {
-                                  "Value": 1
-                                }
-                              },
-                              "ShowText": false
-                            },
-                            {
-                              "$type": "RPG.GameCore.DefineDynamicValue",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "DynamicKey": "InsertCheck",
-                              "ContextScope": "TargetEntity"
-                            },
-                            {
-                              "$type": "RPG.GameCore.ExitBreakState",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "CancelRecoverAnim": true
-                            },
-                            {
-                              "$type": "RPG.GameCore.ResetStance",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "ForbidWhenEmpty": false
-                            },
-                            {
-                              "$type": "RPG.GameCore.LockTargetHP",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "Threshold": {
-                                "IsDynamic": false,
-                                "FixedValue": {
-                                  "Value": 0.0009999999310821295
-                                }
-                              }
-                            },
-                            {
-                              "$type": "RPG.GameCore.AddModifier",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "AliveOnly": false,
-                              "ModifierName": "Monster_W1_Mecha04_00_RL_Dormancy"
-                            },
-                            {
-                              "$type": "RPG.GameCore.RemoveModifier",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "ModifierName": "MMonster_W1_Mecha04_00_ChainSawSpeedUp"
-                            },
-                            {
-                              "$type": "RPG.GameCore.RemoveModifier",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "AllLightTeam"
-                              },
-                              "ModifierName": "Sign_W1_Mecha02",
-                              "OnlyRemoveCasterAdded": true
-                            },
-                            {
-                              "$type": "RPG.GameCore.TriggerAnimState",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "AnimStateName": "ChangePhaseStart"
-                            },
-                            {
-                              "$type": "RPG.GameCore.DefineDynamicValue",
-                              "TargetType": {
-                                "$type": "RPG.GameCore.TargetAlias",
-                                "Alias": "ModifierOwnerEntity"
-                              },
-                              "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
-                              "ResetValue": {
-                                "IsDynamic": false,
-                                "FixedValue": {
-                                  "Value": 1
-                                }
-                              },
-                              "ContextScope": "TargetEntity"
-                            }
-                          ]
-                        }
-                      ]
+                  "DynamicKey": "Phase2InsertFlag",
+                  "ResetValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
                     }
-                  ],
-                  "FailedTaskList": []
+                  },
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "ModifierName": "W1_Mecha02_AttackBuff"
+                },
+                {
+                  "$type": "RPG.GameCore.SetActionDelay",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "NormalizedValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Monster_W1_Mecha03_00_RL_PassiveSkill_InsertCamera",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "InsertAbilityPriority": "MonsterInsertAttackOthers",
+                  "ShowInActionBar": true
                 }
               ]
             }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "InsertCheck",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.Retarget",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllDarkTeamWithAllUnselectable"
-                  },
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareMonsterID",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "TargetMonsterID": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1013012
-                      }
-                    }
-                  },
-                  "IncludeLimbo": true,
-                  "TaskList": [
-                    {
-                      "$type": "RPG.GameCore.DispelStatus",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "OnlyAlive": false,
-                      "IsSlientDispel": true
-                    },
-                    {
-                      "$type": "RPG.GameCore.TriggerAnimState",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "AnimStateName": "ChangePhaseStart02"
-                    },
-                    {
-                      "$type": "RPG.GameCore.AddModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "AliveOnly": false,
-                      "ModifierName": "Monster_W1_Mecha03_00_RL_Endurance",
-                      "InheritCaster": "TargetSelf"
-                    },
-                    {
-                      "$type": "RPG.GameCore.DefineDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "DynamicKey": "InsertCheck",
-                      "ContextScope": "TargetEntity"
-                    },
-                    {
-                      "$type": "RPG.GameCore.SetMonsterPhase",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "SetMode": "Inc"
-                    },
-                    {
-                      "$type": "RPG.GameCore.TurnInsertAbility",
-                      "AbilityName": "Monster_W1_Mecha03_00_RL_PassiveSkill_Insert2",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "InsertAbilityPriority": "MonsterChangePhase",
-                      "OwnerAliveState": "Mask_AliveOrLimbo",
-                      "TargetAliveState": "Mask_AliveOrLimbo",
-                      "ShowInActionBar": true
-                    },
-                    {
-                      "$type": "RPG.GameCore.RemoveSelfModifier"
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.Retarget",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "AllDarkTeamWithAllUnselectable"
-                      },
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByIsContainModifier",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "ModifierName": "Monster_W1_Mecha03_00_RL_PhaseController"
-                      },
-                      "TaskList": [
-                        {
-                          "$type": "RPG.GameCore.DefineDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "DynamicKey": "TeammateSurvive",
-                          "ContextScope": "TargetEntity"
-                        }
-                      ]
-                    },
-                    {
-                      "$type": "RPG.GameCore.RemoveSelfModifier"
-                    }
-                  ]
-                }
-              ],
-              "FailedTaskList": []
-            }
           ]
         }
-      ]
-    },
-    "Monster_W1_Mecha04_00_RL_Dormancy": {
-      "BehaviorFlagList": [
-        "DisableHealHP",
-        "DisableAction"
-      ],
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "Monster_W1_Mecha04_00_RL_Stealth"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "Monster_W1_Mecha04_00_RL_Stealth"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByProperty",
-          "DynamicKey": "BaseSpeed",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Value": "BaseSpeed"
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "SpeedDelta",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "FixedNumber",
-                "FixedValue": {
-                  "Value": 0
-                }
-              },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -906730870
-              },
-              {
-                "Type": "Sub"
-              }
-            ]
-          }
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "StanceBreakResistance",
-          "PropertyValue": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          }
-        }
-      ]
-    },
-    "Monster_W1_Mecha04_00_RL_Stealth": {
-      "BehaviorFlagList": [
-        "Stealth",
-        "Endurance"
-      ],
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.MakeCharacterHUDVisible",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "IndependentControl": true
-        },
-        {
-          "$type": "RPG.GameCore.SetEntityUnselectable",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Unselectable": true
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.ReleaseCharacterHUDVisibleControl",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          }
-        },
-        {
-          "$type": "RPG.GameCore.SetEntityUnselectable",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          }
-        }
-      ]
-    },
-    "Monster_W1_Mecha04_00_RL_Endurance": {
-      "BehaviorFlagList": [
-        "Endurance"
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackStatusResistance",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "BehaviorFlag": "STAT_CTRL",
-          "Resistance": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          }
-        }
-      ]
-    },
-    "Monster_W1_Mecha04_00_RL_Support": {
-      "OnBeingBreak": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_W1_Mecha04_00_RL_BreakTarget"
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Mecha04_00_RL_BreakTarget",
-          "InheritCaster": "TargetSelf"
-        },
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeamWithAllUnselectable"
-          },
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "Monster_W1_Mecha03_00_RL_PhaseController"
-          },
-          "TaskList": [
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "DynamicKey": "Phase2InsertFlag",
-              "ResetValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "ModifierName": "W1_Mecha02_AttackBuff"
-            },
-            {
-              "$type": "RPG.GameCore.SetActionDelay",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "NormalizedValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Monster_W1_Mecha03_00_RL_PassiveSkill_InsertCamera",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "InsertAbilityPriority": "MonsterInsertAttackOthers",
-              "ShowInActionBar": true
-            }
-          ]
-        }
-      ]
+      }
     },
     "Monster_W1_Mecha04_00_RL_BreakTarget": {},
     "Monster_W1_Mecha04_00_RL_Phase3Passive": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "SpeedAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -422130114
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "SpeedAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -422130114
+                  }
+                ]
               }
-            ]
-          }
-        },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Speedup.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Speedup.prefab"
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-422130114": {}
@@ -2897,72 +2861,68 @@
           "Value": 1
         }
       },
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "MDF_SpeedAddedRatio_PerLayer",
-          "Value": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 2121322792
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "MDF_SpeedAddedRatio_PerLayer",
+              "Value": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 2121322792
+                  }
+                ]
               }
-            ]
-          }
-        },
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ValueType": "Layer",
-          "Multiplier": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+              "ValueType": "Layer",
+              "Multiplier": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "DynamicKey": "ModifierLayers"
+            },
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "SpeedAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 411315149
+                  },
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1458882163
+                  },
+                  {
+                    "Type": "Mul"
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Speedup.prefab"
             }
-          },
-          "DynamicKey": "ModifierLayers"
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "SpeedAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 411315149
-              },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1458882163
-              },
-              {
-                "Type": "Mul"
-              }
-            ]
-          }
-        },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Speedup.prefab"
+          ]
         }
-      ],
+      },
       "Stacking": "Replace",
       "DynamicValues": {
         "Values": {
@@ -2972,77 +2932,216 @@
       }
     },
     "Monster_W1_Mecha04_00_RL_ChargeFlag": {
-      "OnAfterSkillUse": [
-        {
-          "$type": "RPG.GameCore.ModifyCurrentSkillDelayCost",
-          "NormalizedValue": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.010000000009313226
-            }
-          },
-          "ModifyFunction": "Set"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveSelfModifier"
-        }
-      ]
-    },
-    "Monster_Mecha04_00_RL_ResetAI": {
-      "OnActionEnd": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "MDF_ResetValue",
-            "CompareType": "Equal",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 4
-              }
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnAfterSkillUse": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
-              "ResetValue": {
+              "$type": "RPG.GameCore.ModifyCurrentSkillDelayCost",
+              "NormalizedValue": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 4
+                  "Value": 0.010000000009313226
                 }
               },
-              "ContextScope": "TargetEntity"
+              "ModifyFunction": "Set"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveSelfModifier"
             }
-          ],
-          "FailedTaskList": [
+          ]
+        }
+      }
+    },
+    "Monster_Mecha04_00_RL_ResetAI": {
+      "_CallbackList": {
+        "OnActionEnd": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "MDF_ResetValue",
                 "CompareType": "Equal",
                 "CompareValue": {
                   "IsDynamic": false,
                   "FixedValue": {
-                    "Value": 3
+                    "Value": 4
                   }
                 }
               },
               "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
+                  "ResetValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 4
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "MDF_ResetValue",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 3
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 3
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "OnListenTurnEnd": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.Retarget",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAny",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "ModifierName": "Monster_W1_Mecha04_00_Sign01"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "ModifierName": "Monster_W1_Mecha04_00_Sign02"
+                  }
+                ]
+              },
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
+                  "ResetValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "MDF_ResetValue",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "OnListenModifierRemove": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "Monster_W1_Mecha04_00_Sign01"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "MDF_ResetValue",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 4
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
+                  "ResetValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 4
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "Monster_W1_Mecha04_00_Sign02"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "MDF_ResetValue",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 3
+                    }
+                  }
+                },
                 {
                   "$type": "RPG.GameCore.DefineDynamicValue",
                   "TargetType": {
@@ -3062,154 +3161,7 @@
             }
           ]
         }
-      ],
-      "OnListenTurnEnd": [
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAny",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "Monster_W1_Mecha04_00_Sign01"
-              },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "Monster_W1_Mecha04_00_Sign02"
-              }
-            ]
-          },
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
-              "ResetValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "MDF_ResetValue",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            }
-          ]
-        }
-      ],
-      "OnListenModifierRemove": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "Monster_W1_Mecha04_00_Sign01"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "MDF_ResetValue",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 4
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
-              "ResetValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 4
-                }
-              },
-              "ContextScope": "TargetEntity"
-            }
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "Monster_W1_Mecha04_00_Sign02"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "MDF_ResetValue",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 3
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "WMonster_W1_Mecha_02_AIFlag_P2",
-              "ResetValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 3
-                }
-              },
-              "ContextScope": "TargetEntity"
-            }
-          ]
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "825300340": {}
@@ -3217,44 +3169,52 @@
       }
     },
     "Monster_W1_Mecha04_00_RL_Phase02Effect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Phase02.prefab"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Phase02.prefab"
+            }
+          ]
         }
-      ]
+      }
     },
     "Monster_W1_Mecha04_00_RL_Phase03Effect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Phase03_Eye.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Phase03.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Phase03_Hand_R.prefab"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Phase03_Eye.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Phase03.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Mecha04_00/Eff_Monster_W1_Mecha04_00_Phase03_Hand_R.prefab"
+            }
+          ]
         }
-      ]
+      }
     }
   }
 }

@@ -17,10 +17,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -34,10 +30,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -351,10 +343,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -604,10 +592,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "SkillTree01_ThunderChanceAdd",
               "Value": {
                 "IsDynamic": true,
@@ -623,10 +607,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "SkillTree01_ThunderChanceAdd",
               "Value": {
                 "IsDynamic": false,
@@ -728,10 +708,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "DarkTeamCenter"
         },
         {
@@ -751,10 +727,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": -0.62,
@@ -797,10 +769,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": -0.65,
@@ -845,10 +813,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -883,10 +847,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03"
         },
         {
@@ -922,18 +882,10 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamDark",
-          "FormationType": "DarkTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationType": "DarkTeamNormal"
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1190,98 +1142,102 @@
     {
       "Modifiers": {
         "Avatar_Serval_Passive01Modifier": {
-          "OnAfterAttack": [
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllEnemy"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Flag": "STAT_DOT_Electric"
-              },
-              "TaskList": [
+          "_CallbackList": {
+            "OnAfterAttack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TriggerEffect",
+                  "$type": "RPG.GameCore.Retarget",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "AllEnemy"
                   },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Serval/Eff_Avatar_Serval_00_Passive01_Start.prefab"
-                },
-                {
-                  "$type": "RPG.GameCore.DamageByAttackProperty",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  },
-                  "AttackProperty": {
-                    "DamageType": "Thunder",
-                    "DamagePercentage": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1246667513
-                        }
-                      ]
-                    },
-                    "IsIndirect": true,
-                    "AttackType": "Pursued",
-                    "FrameHalt": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0.10000000009313226
-                      }
-                    },
-                    "HitAnimation": "Hit",
-                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Serval/Eff_Avatar_Serval_00_Passive01_Hit.prefab"
-                  },
-                  "CanTriggerLastKill": true,
-                  "DisplayData": {
-                    "UIMessageHeight": 0.8,
-                    "DitherRangeX": 0.01,
-                    "DitherRangeY": 0.01
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.DamagePerformFinish"
-                },
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByRankActivated",
-                    "TriggerKey": {
-                      "Hash": 523552506
-                    }
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Flag": "STAT_DOT_Electric"
                   },
-                  "SuccessTaskList": [
+                  "TaskList": [
                     {
-                      "$type": "RPG.GameCore.ModifySPNew",
+                      "$type": "RPG.GameCore.TriggerEffect",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
+                        "Alias": "ParamEntity"
                       },
-                      "AddValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1919300542
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Serval/Eff_Avatar_Serval_00_Passive01_Start.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.DamageByAttackProperty",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "AttackProperty": {
+                        "DamageType": "Thunder",
+                        "DamagePercentage": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1246667513
+                            }
+                          ]
+                        },
+                        "IsIndirect": true,
+                        "AttackType": "Pursued",
+                        "FrameHalt": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.10000000009313226
                           }
-                        ]
+                        },
+                        "HitAnimation": "Hit",
+                        "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Serval/Eff_Avatar_Serval_00_Passive01_Hit.prefab"
+                      },
+                      "CanTriggerLastKill": true,
+                      "DisplayData": {
+                        "UIMessageHeight": 0.8,
+                        "DitherRangeX": 0.01,
+                        "DitherRangeY": 0.01
                       }
+                    },
+                    {
+                      "$type": "RPG.GameCore.DamagePerformFinish"
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByRankActivated",
+                        "TriggerKey": {
+                          "Hash": 523552506
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.ModifySPNew",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "AddValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1919300542
+                              }
+                            ]
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Serval_PassiveSkill01",
@@ -1334,36 +1290,40 @@
     {
       "Modifiers": {
         "M_Serval_SkillTree03": {
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MAvatar_Serval_00_Tree03_AttackRatioUp",
-              "LifeTime": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -755873381
-                  }
-                ]
-              },
-              "DynamicValues": {
-                "MDF_PropertyValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1867632593
+          "_CallbackList": {
+            "OnTriggerDeath": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MAvatar_Serval_00_Tree03_AttackRatioUp",
+                  "LifeTime": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -755873381
+                      }
+                    ]
+                  },
+                  "DynamicValues": {
+                    "MDF_PropertyValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 1867632593
+                        }
+                      ]
                     }
-                  ]
+                  }
                 }
-              }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Serval_SkillTree03",
@@ -1385,121 +1345,125 @@
       "Modifiers": {
         "StageAbility_Maze_Serval_Modifier": {
           "EnterBattlePriority": "AvatarInsertAbility",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByIsMazeSkillAffectCurrentWave"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareWaveCount",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.Retarget",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
-                  },
-                  "MaxNumber": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "TaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageByAttackProperty",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsMazeSkillAffectCurrentWave"
                       },
-                      "AttackProperty": {
-                        "DamageType": "Thunder",
-                        "DamagePercentage": {
-                          "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": 836547932
-                            }
-                          ]
-                        },
-                        "SPHitRatio": {
+                      {
+                        "$type": "RPG.GameCore.ByCompareWaveCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
                           "IsDynamic": false,
                           "FixedValue": {
                             "Value": 1
                           }
-                        },
-                        "AttackType": "Maze",
-                        "HitAnimation": "Hit",
-                        "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Serval/Eff_Avatar_Serval_00_Skill02_Hit03.prefab"
+                        }
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.Retarget",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
                       },
-                      "CanTriggerLastKill": true,
-                      "DisplayData": {
-                        "UIMessageHeight": 0.8,
-                        "DitherRangeX": 0.01,
-                        "DitherRangeY": 0.04
-                      }
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.DamagePerformFinish"
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
-                  },
-                  "ModifierName": "MCommon_DOT_Electric",
-                  "Chance": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1118926990
-                      }
-                    ]
-                  },
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 702478197
-                      }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "Modifier_Electric_DamagePercentage": {
-                      "IsDynamic": true,
-                      "Expressions": [
+                      "MaxNumber": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "TaskList": [
                         {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1972520842
+                          "$type": "RPG.GameCore.DamageByAttackProperty",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "AttackProperty": {
+                            "DamageType": "Thunder",
+                            "DamagePercentage": {
+                              "IsDynamic": true,
+                              "Expressions": [
+                                {
+                                  "Type": "DynamicNumber",
+                                  "DynamicHash": 836547932
+                                }
+                              ]
+                            },
+                            "SPHitRatio": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 1
+                              }
+                            },
+                            "AttackType": "Maze",
+                            "HitAnimation": "Hit",
+                            "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Serval/Eff_Avatar_Serval_00_Skill02_Hit03.prefab"
+                          },
+                          "CanTriggerLastKill": true,
+                          "DisplayData": {
+                            "UIMessageHeight": 0.8,
+                            "DitherRangeX": 0.01,
+                            "DitherRangeY": 0.04
+                          }
                         }
                       ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.DamagePerformFinish"
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
+                      },
+                      "ModifierName": "MCommon_DOT_Electric",
+                      "Chance": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 1118926990
+                          }
+                        ]
+                      },
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 702478197
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "Modifier_Electric_DamagePercentage": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1972520842
+                            }
+                          ]
+                        }
+                      }
                     }
-                  }
+                  ],
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Serval_00_SkillMazeInLevel",
@@ -1525,33 +1489,37 @@
     {
       "Modifiers": {
         "MAvatar_Serval_00_Rank06": {
-          "OnBeforeHitAll": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Flag": "STAT_DOT_Electric"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeforeHitAll": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ModifyDamageData",
-                  "Attacker_AllDamageTypeAddedRatio": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -299974959
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Flag": "STAT_DOT_Electric"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifyDamageData",
+                      "Attacker_AllDamageTypeAddedRatio": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -299974959
+                          }
+                        ]
                       }
-                    ]
-                  }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Serval_00_Rank06",
@@ -1572,27 +1540,56 @@
   ],
   "GlobalModifiers": {
     "MAvatar_Serval_00_Rank06_Check": {
-      "OnBeforeHit": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAttackType",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "AttackTypes": [
-              "BPSkill",
-              "Normal"
-            ]
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnBeforeHit": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAttackType",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "AttackTypes": [
+                  "BPSkill",
+                  "Normal"
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "MAvatar_Serval_00_Rank06_ShowRatio",
+                  "Value": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 268006135
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.ModifyDamageData",
+                  "Attacker_AllDamageTypeAddedRatio": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1966026461
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MAvatar_Serval_00_Rank06_ShowRatio",
               "Value": {
                 "IsDynamic": true,
@@ -1603,41 +1600,10 @@
                   }
                 ]
               }
-            },
-            {
-              "$type": "RPG.GameCore.ModifyDamageData",
-              "Attacker_AllDamageTypeAddedRatio": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1966026461
-                  }
-                ]
-              }
             }
           ]
         }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "MAvatar_Serval_00_Rank06_ShowRatio",
-          "Value": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 268006135
-              }
-            ]
-          }
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "1966026461": {}
@@ -1645,17 +1611,6 @@
       }
     },
     "MAvatar_Serval_00_Rank06_Check_Show": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByProperty",
-          "DynamicKey": "Serval_Ran06_Judge_MaxSP",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "Value": "MaxSP"
-        }
-      ],
       "OnAbilityPropertyChange": [
         {
           "Property": "CurrentSP",
@@ -1718,7 +1673,22 @@
             }
           ]
         }
-      ]
+      ],
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByProperty",
+              "DynamicKey": "Serval_Ran06_Judge_MaxSP",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "Value": "MaxSP"
+            }
+          ]
+        }
+      }
     }
   }
 }

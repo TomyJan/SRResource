@@ -23,10 +23,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "DarkTeamCenter"
         },
         {
@@ -46,10 +42,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": -0.62,
@@ -92,10 +84,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0.62,
@@ -192,10 +180,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "LoseHP_Sum_620701",
           "Value": {
             "IsDynamic": false,
@@ -237,10 +221,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "LoseHP_Sum_620701",
               "Value": {
                 "IsDynamic": true,
@@ -350,10 +330,6 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "Rouge_620701_Level",
                     "CompareType": "GreaterEqual",
                     "CompareValue": {
@@ -423,114 +399,84 @@
             "BlockDamage",
             "Stealth"
           ],
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.SetEntityUnselectable",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Unselectable": true
-            }
-          ],
-          "OnModifierAdd": [
-            {
-              "$type": "RPG.GameCore.DispelStatus",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "BuffType": "Buff"
-            },
-            {
-              "$type": "RPG.GameCore.DispelStatus",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.DispelStatus",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "BuffType": "Other"
-            }
-          ]
-        },
-        "MAvatar_RogueTestBattleevent_BanBPSkill": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.AttachSkillTypeDisable",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Types": [
-                "Skill"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetEntityUnselectable",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Unselectable": true
+                }
               ]
             },
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "SpeedDelta",
-              "PropertyValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": -1000
+            "OnModifierAdd": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.DispelStatus",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "BuffType": "Buff"
+                },
+                {
+                  "$type": "RPG.GameCore.DispelStatus",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.DispelStatus",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "BuffType": "Other"
                 }
-              }
+              ]
             }
-          ]
+          }
+        },
+        "MAvatar_RogueTestBattleevent_BanBPSkill": {
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AttachSkillTypeDisable",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Types": [
+                    "Skill"
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "SpeedDelta",
+                  "PropertyValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": -1000
+                    }
+                  }
+                }
+              ]
+            }
+          }
         },
         "MAvatar_RogueTestBattleevent_Charge": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.ModifySPNew",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "FixedAddValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 395022026
-                  }
-                ]
-              }
-            }
-          ],
-          "OnListenBeforeSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByAnd",
-                    "PredicateList": [
-                      {
-                        "$type": "RPG.GameCore.ByCompareTurnActionEntityTeamType",
-                        "Team": "TeamLight"
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByNot",
-                        "Predicate": {
-                          "$type": "RPG.GameCore.ByCurrentSkillType",
-                          "SkillType": "Ultra"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.ModifySPNew",
                   "TargetType": {
@@ -542,38 +488,92 @@
                     "Expressions": [
                       {
                         "Type": "DynamicNumber",
-                        "DynamicHash": 2116906935
+                        "DynamicHash": 395022026
                       }
                     ]
                   }
                 }
               ]
+            },
+            "OnListenBeforeSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAny",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByAnd",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByCompareTurnActionEntityTeamType",
+                            "Team": "TeamLight"
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByNot",
+                            "Predicate": {
+                              "$type": "RPG.GameCore.ByCurrentSkillType",
+                              "SkillType": "Ultra"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifySPNew",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "FixedAddValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 2116906935
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
             }
-          ]
+          }
         },
         "MAvatar_RogueTestBattleevent_AutoUseUltraSkill": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.AutoUseUltraSkill",
-              "Target": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "WaitCutinFinished": false
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AutoUseUltraSkill",
+                  "Target": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  },
+                  "WaitCutinFinished": false
+                }
+              ]
             }
-          ]
+          }
         },
         "MAvatar_RogueTestBattleevent_SetLevel": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.SetLevel",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ByStageLevel": true
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetLevel",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ByStageLevel": true
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_RogueTestBattleevent2_PassiveSkill01",

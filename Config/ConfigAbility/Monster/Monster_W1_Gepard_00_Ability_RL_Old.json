@@ -3,36 +3,44 @@
     {
       "Modifiers": {
         "MMonster_W1_Gepard_00_Command": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.TeamAction",
-              "ActionName": "GepardCommand",
-              "ActorPredicate": {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByTargetTeam",
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TeamAction",
+                  "ActionName": "GepardCommand",
+                  "ActorPredicate": {
+                    "$type": "RPG.GameCore.ByAny",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamDark"
+                      }
+                    ]
+                  },
+                  "TargetPredicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
-                    "Team": "TeamDark"
+                    "ModifierName": "Monster_Gepard_Attack_Sign"
                   }
-                ]
-              },
-              "TargetPredicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "Monster_Gepard_Attack_Sign"
-              }
+                }
+              ]
             }
-          ]
+          }
         },
         "MMonster_W1_Gepard_00_ListenSelfBreak": {
-          "OnBeingBreak": []
+          "_CallbackList": {
+            "OnBeingBreak": {
+              "CallbackConfig": []
+            }
+          }
         }
       },
       "Name": "Monster_W1_Gepard_00_RL_Old_PassiveSkillInitiate",
@@ -124,21 +132,25 @@
     {
       "Modifiers": {
         "MMonster_W1_Gepard_00_ExtraDelay": {
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.ModifyActionDelay",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AddNormalizedValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.5000000004656613
+          "_CallbackList": {
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifyActionDelay",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "AddNormalizedValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0.5000000004656613
+                    }
+                  }
                 }
-              }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_W1_Gepard_00_RL_Old_SkillP01",
@@ -173,10 +185,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -247,10 +255,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         }
@@ -420,10 +424,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         }
@@ -460,10 +460,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -545,10 +541,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -559,10 +551,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -573,10 +561,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         }
       ]
@@ -632,10 +616,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -650,10 +630,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "EnemyTeamCenter"
         },
         {
@@ -742,10 +718,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -797,10 +769,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "BlurRadius": 1,
           "Iteration": 10,
           "BlurStart": 0.01,
@@ -872,10 +840,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "Active": false
         },
         {
@@ -939,10 +903,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -1364,10 +1324,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1488,10 +1444,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -1715,10 +1667,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1839,10 +1787,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -2066,10 +2010,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -2160,10 +2100,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -2174,18 +2110,10 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         }
       ]
@@ -2214,10 +2142,6 @@
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareMonsterPhase",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "CompareType": "Equal",
             "CompareValue": 1
           },
@@ -2233,10 +2157,6 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "Gepard_BuffCount",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
@@ -2296,10 +2216,6 @@
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
                         "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
                         "DynamicKey": "Gepard_BuffCount",
                         "ContextScope": "TargetEntity",
                         "CompareType": "Equal",
@@ -2394,10 +2310,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareMonsterPhase",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "CompareType": "Equal",
                 "CompareValue": 2
               },
@@ -2413,10 +2325,6 @@
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
                         "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
                         "DynamicKey": "Gepard_BuffCount",
                         "ContextScope": "TargetEntity",
                         "CompareType": "Equal",
@@ -2476,10 +2384,6 @@
                           "$type": "RPG.GameCore.PredicateTaskList",
                           "Predicate": {
                             "$type": "RPG.GameCore.ByCompareDynamicValue",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "Caster"
-                            },
                             "DynamicKey": "Gepard_BuffCount",
                             "ContextScope": "TargetEntity",
                             "CompareType": "Equal",
@@ -2574,10 +2478,6 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "FinalPhase",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
@@ -2600,10 +2500,6 @@
                           "$type": "RPG.GameCore.PredicateTaskList",
                           "Predicate": {
                             "$type": "RPG.GameCore.ByCompareDynamicValue",
-                            "TargetType": {
-                              "$type": "RPG.GameCore.TargetAlias",
-                              "Alias": "Caster"
-                            },
                             "DynamicKey": "Gepard_BuffCount",
                             "ContextScope": "TargetEntity",
                             "CompareType": "Equal",
@@ -2663,10 +2559,6 @@
                               "$type": "RPG.GameCore.PredicateTaskList",
                               "Predicate": {
                                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                                "TargetType": {
-                                  "$type": "RPG.GameCore.TargetAlias",
-                                  "Alias": "Caster"
-                                },
                                 "DynamicKey": "Gepard_BuffCount",
                                 "ContextScope": "TargetEntity",
                                 "CompareType": "Equal",
@@ -2884,10 +2776,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -3015,10 +2903,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -3100,10 +2984,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -3111,10 +2991,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 2,
                 "Y": 0,
@@ -3197,10 +3073,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 0,
                 "Y": 0.05,
@@ -3227,10 +3099,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "StandBy",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -3355,10 +3223,6 @@
         },
         {
           "$type": "RPG.GameCore.SetMonsterPhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "PhaseNum": 2
         },
         {
@@ -3396,10 +3260,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -3421,10 +3281,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -3432,10 +3288,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 2,
                 "Y": 0,
@@ -3518,10 +3370,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 0,
                 "Y": 0.05,
@@ -3548,10 +3396,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "StandBy",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -3661,10 +3505,6 @@
         },
         {
           "$type": "RPG.GameCore.SetMonsterPhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "PhaseNum": 3
         },
         {
@@ -3710,10 +3550,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         },
         {
@@ -3729,211 +3565,207 @@
         "BlockDamage",
         "MuteBreak"
       ],
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Affected.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.SetResilience"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.SetResilience",
-          "DoReset": true
-        }
-      ],
-      "OnAfterBeingHit": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Trigger.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Trigger_02.prefab"
-        }
-      ],
-      "OnAfterBeingAttacked": [
-        {
-          "$type": "RPG.GameCore.SetModifierValue",
-          "ModifyFunction": "Add"
-        }
-      ],
       "UseSnapshotEntity": true,
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Affected.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.SetResilience"
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetResilience",
+              "DoReset": true
+            }
+          ]
+        },
+        "OnAfterBeingHit": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Trigger.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Trigger_02.prefab"
+            }
+          ]
+        },
+        "OnAfterBeingAttacked": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetModifierValue",
+              "ModifyFunction": "Add"
+            }
+          ]
+        }
+      },
       "Count": 1,
       "Stacking": "ReplaceByCaster"
     },
     "Monster_W1_Gepard_00_RL_PhaseController": {
       "LimboWaitHealPriority": "ChangePhase",
-      "OnLimboWaitHeal": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareMonsterPhase",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "CompareType": "Equal",
-            "CompareValue": 1
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnLimboWaitHeal": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "$type": "RPG.GameCore.ByCompareMonsterPhase",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
                   "Alias": "ModifierOwnerEntity"
                 },
-                "DynamicKey": "InsertCheck",
-                "ContextScope": "TargetEntity",
                 "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
+                "CompareValue": 1
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.TriggerAnimState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "InsertCheck",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
                   },
-                  "AnimLogicState": "Die"
-                },
-                {
-                  "$type": "RPG.GameCore.DispelStatus",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "OnlyAlive": false,
-                  "IsSlientDispel": true
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AliveOnly": false,
-                  "ModifierName": "Monster_W1_Gepard_00_RL_Endurance"
-                },
-                {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "DynamicKey": "InsertCheck",
-                  "ContextScope": "TargetEntity"
-                },
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_W1_Gepard_00_RL_Old_PassiveSkill_Insert",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "InsertAbilityPriority": "MonsterChangePhase",
-                  "OwnerAliveState": "Mask_AliveOrLimbo",
-                  "TargetAliveState": "Mask_AliveOrLimbo",
-                  "ShowInActionBar": true
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerAnimState",
+                      "AnimLogicState": "Die"
+                    },
+                    {
+                      "$type": "RPG.GameCore.DispelStatus",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "OnlyAlive": false,
+                      "IsSlientDispel": true
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AliveOnly": false,
+                      "ModifierName": "Monster_W1_Gepard_00_RL_Endurance"
+                    },
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "InsertCheck",
+                      "ContextScope": "TargetEntity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_W1_Gepard_00_RL_Old_PassiveSkill_Insert",
+                      "InsertAbilityPriority": "MonsterChangePhase",
+                      "OwnerAliveState": "Mask_AliveOrLimbo",
+                      "TargetAliveState": "Mask_AliveOrLimbo"
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
               ],
-              "FailedTaskList": []
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "InsertCheck",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "InsertCheck",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerAnimState",
+                      "AnimLogicState": "Die"
+                    },
+                    {
+                      "$type": "RPG.GameCore.DispelStatus",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "OnlyAlive": false,
+                      "IsSlientDispel": true
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AliveOnly": false,
+                      "ModifierName": "Monster_W1_Gepard_00_RL_Endurance"
+                    },
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "InsertCheck",
+                      "ContextScope": "TargetEntity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_W1_Gepard_00_RL_Old_PassiveSkill_Insert2",
+                      "InsertAbilityPriority": "MonsterChangePhase",
+                      "OwnerAliveState": "Mask_AliveOrLimbo",
+                      "TargetAliveState": "Mask_AliveOrLimbo"
+                    }
+                  ],
+                  "FailedTaskList": []
                 }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.TriggerAnimState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AnimLogicState": "Die"
-                },
-                {
-                  "$type": "RPG.GameCore.DispelStatus",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "OnlyAlive": false,
-                  "IsSlientDispel": true
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AliveOnly": false,
-                  "ModifierName": "Monster_W1_Gepard_00_RL_Endurance"
-                },
-                {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "DynamicKey": "InsertCheck",
-                  "ContextScope": "TargetEntity"
-                },
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_W1_Gepard_00_RL_Old_PassiveSkill_Insert2",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "InsertAbilityPriority": "MonsterChangePhase",
-                  "OwnerAliveState": "Mask_AliveOrLimbo",
-                  "TargetAliveState": "Mask_AliveOrLimbo",
-                  "ShowInActionBar": true
-                }
-              ],
-              "FailedTaskList": []
+              ]
             }
           ]
         }
-      ]
+      }
     },
     "Monster_W1_Gepard_00_RL_Endurance": {
       "BehaviorFlagList": [
@@ -3941,269 +3773,285 @@
       ]
     },
     "Monster_W1_Gepard_00_RL_LowHP": {
-      "OnHPChange": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.3000000002793968
-                  }
-                }
-              },
-              {
-                "$type": "RPG.GameCore.ByCompareMonsterPhase",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "Equal",
-                "CompareValue": 3
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "FinalPhase",
-              "ResetValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "Gepard_SummonCheck",
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "Gepard_BuffCheck",
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "Gepard_AICounter",
-              "ResetValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.SetActionDelay",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "NormalizedValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            },
+      "_CallbackList": {
+        "OnHPChange": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.ShowUIPage",
-                  "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
-                  "UITextNodes": [
-                    {
-                      "TextPath": "AreaInfoPanel/Title/Text",
-                      "TextContent": {
-                        "Hash": 339242960
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0.3000000002793968
                       }
                     }
-                  ],
-                  "LifeTime": 2
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareMonsterPhase",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "Equal",
+                    "CompareValue": 3
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "FinalPhase",
+                  "ResetValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "Gepard_SummonCheck",
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "Gepard_BuffCheck",
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "Gepard_AICounter",
+                  "ResetValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.SetActionDelay",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "NormalizedValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ShowUIPage",
+                      "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
+                      "UITextNodes": [
+                        {
+                          "TextPath": "AreaInfoPanel/Title/Text",
+                          "TextContent": {
+                            "Hash": 339242960
+                          }
+                        }
+                      ],
+                      "LifeTime": 2
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
                 }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
+              ],
+              "FailedTaskList": []
             }
-          ],
-          "FailedTaskList": []
+          ]
         }
-      ]
+      }
     },
     "Monster_W1_Gepard_00_RL_AttackEffect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Characters/WhiteBox/WEffects/WEff_Prefab/WEff_Monster/WEff_Monster_W1_Gepard_00/WEff_Monster_W1_Gepard_00_Skill08_Attack.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Characters/WhiteBox/WEffects/WEff_Prefab/WEff_Monster/WEff_Monster_W1_Gepard_00/WEff_Monster_W1_Gepard_00_Skill08_Attack.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ]
+      }
     },
     "Monster_W1_Gepard_00_RL_AttackLv1": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1_Effect",
-          "DynamicValues": {
-            "MDF_AttackAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1826473127
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1_Effect",
-          "DynamicValues": {
-            "MDF_AttackAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1826473127
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 1403358669
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackEffect"
+            }
+          ]
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1_Effect",
+              "DynamicValues": {
+                "MDF_AttackAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -1826473127
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1_Effect",
+              "DynamicValues": {
+                "MDF_AttackAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -1826473127
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 1403358669
+                  }
+                }
+              ],
+              "LifeTime": 3
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AttackAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1826473127
+                  }
+                ]
               }
             }
-          ],
-          "LifeTime": 3
+          ]
         }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1826473127
-              }
-            ]
-          }
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-1826473127": {}
@@ -4211,25 +4059,29 @@
       }
     },
     "Monster_W1_Gepard_00_RL_AttackLv1_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1826473127
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AttackAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1826473127
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-1826473127": {}
@@ -4237,343 +4089,111 @@
       }
     },
     "Monster_W1_Gepard_00_RL_AttackLv2": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2_Effect",
-          "DynamicValues": {
-            "MDF_AttackAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1826473127
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2_Effect",
-          "DynamicValues": {
-            "MDF_AttackAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1826473127
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 1403358669
-              }
-            }
-          ],
-          "LifeTime": 3
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "AllDarkTeam"
               },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
-                  }
-                ]
-              }
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackEffect"
             }
           ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "-1826473127": {}
-        }
-      }
-    },
-    "Monster_W1_Gepard_00_RL_AttackLv2_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1_Effect"
-          },
-          "SuccessTaskList": [
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "ParamEntity"
               },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2_Effect",
+              "DynamicValues": {
+                "MDF_AttackAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -1826473127
                     }
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                  ]
+                }
               }
             },
             {
-              "$type": "RPG.GameCore.StackStatusDesc",
-              "TextID": {
-                "Hash": -1623323641
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "Caster"
               },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
-                  }
-                ]
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2_Effect",
+              "DynamicValues": {
+                "MDF_AttackAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -1826473127
+                    }
+                  ]
+                }
               }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 1403358669
+                  }
+                }
+              ],
+              "LifeTime": 3
             }
           ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "-1826473127": {}
-        }
-      }
-    },
-    "Monster_W1_Gepard_00_RL_AttackLv3": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv3_Effect",
-          "DynamicValues": {
-            "MDF_AttackAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1826473127
-                }
-              ]
-            }
-          }
         },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv3_Effect",
-          "DynamicValues": {
-            "MDF_AttackAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1826473127
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv3"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv3"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+        "OnStack": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 1403358669
-              }
-            }
-          ],
-          "LifeTime": 3
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
@@ -4581,79 +4201,70 @@
                 },
                 "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1"
               },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1826473127
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "Mul"
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1826473127
+                      }
+                    ]
                   }
-                ]
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
-                  }
-                ]
-              }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-1826473127": {}
         }
       }
     },
-    "Monster_W1_Gepard_00_RL_AttackLv3_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
+    "Monster_W1_Gepard_00_RL_AttackLv2_Effect": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
@@ -4661,71 +4272,336 @@
                 },
                 "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1_Effect"
               },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1826473127
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
                 },
-                "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2_Effect"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
-                  },
-                  {
-                    "Type": "Mul"
+                {
+                  "$type": "RPG.GameCore.StackStatusDesc",
+                  "TextID": {
+                    "Hash": -1623323641
                   }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.StackStatusDesc",
-              "TextID": {
-                "Hash": -1199836138
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1826473127
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
+      "DynamicValues": {
+        "Values": {
+          "-1826473127": {}
+        }
+      }
+    },
+    "Monster_W1_Gepard_00_RL_AttackLv3": {
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackEffect"
+            }
+          ]
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv3_Effect",
+              "DynamicValues": {
+                "MDF_AttackAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -1826473127
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv3_Effect",
+              "DynamicValues": {
+                "MDF_AttackAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -1826473127
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv3"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv3"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 1403358669
+                  }
+                }
+              ],
+              "LifeTime": 3
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1826473127
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1826473127
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "-1826473127": {}
+        }
+      }
+    },
+    "Monster_W1_Gepard_00_RL_AttackLv3_Effect": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1_Effect"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2_Effect"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1826473127
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.StackStatusDesc",
+                  "TextID": {
+                    "Hash": -1199836138
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1826473127
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
       "DynamicValues": {
         "Values": {
           "-1826473127": {}
@@ -4733,134 +4609,146 @@
       }
     },
     "Monster_W1_Gepard_00_RL_DefenceEffect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Characters/WhiteBox/WEffects/WEff_Prefab/WEff_Monster/WEff_Monster_W1_Gepard_00/WEff_Monster_W1_Gepard_00_Skill08_Defence.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Characters/WhiteBox/WEffects/WEff_Prefab/WEff_Monster/WEff_Monster_W1_Gepard_00/WEff_Monster_W1_Gepard_00_Skill08_Defence.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ]
+      }
     },
     "Monster_W1_Gepard_00_RL_DefenceLv1": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1_Effect",
-          "DynamicValues": {
-            "MDF_DefenceAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1849530227
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1_Effect",
-          "DynamicValues": {
-            "MDF_DefenceAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1849530227
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 437539267
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceEffect"
+            }
+          ]
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1_Effect",
+              "DynamicValues": {
+                "MDF_DefenceAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": 1849530227
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1_Effect",
+              "DynamicValues": {
+                "MDF_DefenceAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": 1849530227
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 437539267
+                  }
+                }
+              ],
+              "LifeTime": 3
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "DefenceAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1849530227
+                  }
+                ]
               }
             }
-          ],
-          "LifeTime": 3
+          ]
         }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "DefenceAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1849530227
-              }
-            ]
-          }
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "1849530227": {}
@@ -4868,25 +4756,29 @@
       }
     },
     "Monster_W1_Gepard_00_RL_DefenceLv1_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "DefenceAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1849530227
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "DefenceAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1849530227
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "1849530227": {}
@@ -4894,343 +4786,111 @@
       }
     },
     "Monster_W1_Gepard_00_RL_DefenceLv2": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2_Effect",
-          "DynamicValues": {
-            "MDF_DefenceAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1849530227
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2_Effect",
-          "DynamicValues": {
-            "MDF_DefenceAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1849530227
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 437539267
-              }
-            }
-          ],
-          "LifeTime": 3
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "AllDarkTeam"
               },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
-                  }
-                ]
-              }
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceEffect"
             }
           ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "1849530227": {}
-        }
-      }
-    },
-    "Monster_W1_Gepard_00_RL_DefenceLv2_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1_Effect"
-          },
-          "SuccessTaskList": [
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "ParamEntity"
               },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2_Effect",
+              "DynamicValues": {
+                "MDF_DefenceAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": 1849530227
                     }
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                  ]
+                }
               }
             },
             {
-              "$type": "RPG.GameCore.StackStatusDesc",
-              "TextID": {
-                "Hash": -1623323424
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "Caster"
               },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
-                  }
-                ]
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2_Effect",
+              "DynamicValues": {
+                "MDF_DefenceAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": 1849530227
+                    }
+                  ]
+                }
               }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 437539267
+                  }
+                }
+              ],
+              "LifeTime": 3
             }
           ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "1849530227": {}
-        }
-      }
-    },
-    "Monster_W1_Gepard_00_RL_DefenceLv3": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv3_Effect",
-          "DynamicValues": {
-            "MDF_DefenceAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1849530227
-                }
-              ]
-            }
-          }
         },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv3_Effect",
-          "DynamicValues": {
-            "MDF_DefenceAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1849530227
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv3"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv3"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+        "OnStack": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 437539267
-              }
-            }
-          ],
-          "LifeTime": 3
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
@@ -5238,79 +4898,70 @@
                 },
                 "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1"
               },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1849530227
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "Mul"
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1849530227
+                      }
+                    ]
                   }
-                ]
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
-                  }
-                ]
-              }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "1849530227": {}
         }
       }
     },
-    "Monster_W1_Gepard_00_RL_DefenceLv3_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
+    "Monster_W1_Gepard_00_RL_DefenceLv2_Effect": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
@@ -5318,71 +4969,336 @@
                 },
                 "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1_Effect"
               },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1849530227
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
                 },
-                "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2_Effect"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
-                  },
-                  {
-                    "Type": "Mul"
+                {
+                  "$type": "RPG.GameCore.StackStatusDesc",
+                  "TextID": {
+                    "Hash": -1623323424
                   }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.StackStatusDesc",
-              "TextID": {
-                "Hash": -1199835921
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1849530227
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
+      "DynamicValues": {
+        "Values": {
+          "1849530227": {}
+        }
+      }
+    },
+    "Monster_W1_Gepard_00_RL_DefenceLv3": {
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceEffect"
+            }
+          ]
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv3_Effect",
+              "DynamicValues": {
+                "MDF_DefenceAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": 1849530227
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv3_Effect",
+              "DynamicValues": {
+                "MDF_DefenceAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": 1849530227
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv3"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv3"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 437539267
+                  }
+                }
+              ],
+              "LifeTime": 3
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1849530227
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1849530227
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "1849530227": {}
+        }
+      }
+    },
+    "Monster_W1_Gepard_00_RL_DefenceLv3_Effect": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1_Effect"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2_Effect"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1849530227
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.StackStatusDesc",
+                  "TextID": {
+                    "Hash": -1199835921
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1849530227
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
       "DynamicValues": {
         "Values": {
           "1849530227": {}
@@ -5390,134 +5306,146 @@
       }
     },
     "Monster_W1_Gepard_00_RL_SpeedEffect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Characters/WhiteBox/WEffects/WEff_Prefab/WEff_Monster/WEff_Monster_W1_Gepard_00/WEff_Monster_W1_Gepard_00_Skill08_Speed.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Characters/WhiteBox/WEffects/WEff_Prefab/WEff_Monster/WEff_Monster_W1_Gepard_00/WEff_Monster_W1_Gepard_00_Skill08_Speed.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ]
+      }
     },
     "Monster_W1_Gepard_00_RL_SpeedLv1": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1_Effect",
-          "DynamicValues": {
-            "MDF_SpeedAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -422130114
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1_Effect",
-          "DynamicValues": {
-            "MDF_SpeedAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -422130114
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 1196145968
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedEffect"
+            }
+          ]
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1_Effect",
+              "DynamicValues": {
+                "MDF_SpeedAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -422130114
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1_Effect",
+              "DynamicValues": {
+                "MDF_SpeedAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -422130114
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv1"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv1"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 1196145968
+                  }
+                }
+              ],
+              "LifeTime": 3
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "SpeedAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -422130114
+                  }
+                ]
               }
             }
-          ],
-          "LifeTime": 3
+          ]
         }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "SpeedAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -422130114
-              }
-            ]
-          }
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-422130114": {}
@@ -5525,25 +5453,29 @@
       }
     },
     "Monster_W1_Gepard_00_RL_SpeedLv1_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "SpeedAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -422130114
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "SpeedAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -422130114
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-422130114": {}
@@ -5551,343 +5483,111 @@
       }
     },
     "Monster_W1_Gepard_00_RL_SpeedLv2": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2_Effect",
-          "DynamicValues": {
-            "MDF_SpeedAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -422130114
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2_Effect",
-          "DynamicValues": {
-            "MDF_SpeedAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -422130114
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 1196145968
-              }
-            }
-          ],
-          "LifeTime": 3
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "AllDarkTeam"
               },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -422130114
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -422130114
-                  }
-                ]
-              }
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedEffect"
             }
           ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "-422130114": {}
-        }
-      }
-    },
-    "Monster_W1_Gepard_00_RL_SpeedLv2_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1_Effect"
-          },
-          "SuccessTaskList": [
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "ParamEntity"
               },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -422130114
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2_Effect",
+              "DynamicValues": {
+                "MDF_SpeedAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -422130114
                     }
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                  ]
+                }
               }
             },
             {
-              "$type": "RPG.GameCore.StackStatusDesc",
-              "TextID": {
-                "Hash": -1623323583
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
+              "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+                "Alias": "Caster"
               },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -422130114
-                  }
-                ]
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2_Effect",
+              "DynamicValues": {
+                "MDF_SpeedAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -422130114
+                    }
+                  ]
+                }
               }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv2"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv2"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 1196145968
+                  }
+                }
+              ],
+              "LifeTime": 3
             }
           ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "-422130114": {}
-        }
-      }
-    },
-    "Monster_W1_Gepard_00_RL_SpeedLv3": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedEffect"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv3_Effect",
-          "DynamicValues": {
-            "MDF_SpeedAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -422130114
-                }
-              ]
-            }
-          }
         },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv3_Effect",
-          "DynamicValues": {
-            "MDF_SpeedAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -422130114
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv3"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv3"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+        "OnStack": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 1196145968
-              }
-            }
-          ],
-          "LifeTime": 3
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
@@ -5895,79 +5595,70 @@
                 },
                 "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1"
               },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -422130114
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -422130114
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "Mul"
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -422130114
+                      }
+                    ]
                   }
-                ]
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -422130114
-                  }
-                ]
-              }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-422130114": {}
         }
       }
     },
-    "Monster_W1_Gepard_00_RL_SpeedLv3_Effect": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
+    "Monster_W1_Gepard_00_RL_SpeedLv2_Effect": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
@@ -5975,71 +5666,336 @@
                 },
                 "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1_Effect"
               },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -422130114
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
                 },
-                "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2_Effect"
-              }
-            ]
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -422130114
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 2
-                    }
-                  },
-                  {
-                    "Type": "Mul"
+                {
+                  "$type": "RPG.GameCore.StackStatusDesc",
+                  "TextID": {
+                    "Hash": -1623323583
                   }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.StackStatusDesc",
-              "TextID": {
-                "Hash": -1199836080
-              }
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "SpeedAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -422130114
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -422130114
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
           ]
         }
-      ],
+      },
+      "DynamicValues": {
+        "Values": {
+          "-422130114": {}
+        }
+      }
+    },
+    "Monster_W1_Gepard_00_RL_SpeedLv3": {
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedEffect"
+            }
+          ]
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv3_Effect",
+              "DynamicValues": {
+                "MDF_SpeedAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -422130114
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv3_Effect",
+              "DynamicValues": {
+                "MDF_SpeedAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -422130114
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_DefenceLv3"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_AttackLv3"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": 1196145968
+                  }
+                }
+              ],
+              "LifeTime": 3
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -422130114
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -422130114
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "-422130114": {}
+        }
+      }
+    },
+    "Monster_W1_Gepard_00_RL_SpeedLv3_Effect": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv1_Effect"
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "Monster_W1_Gepard_00_RL_SpeedLv2_Effect"
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -422130114
+                      },
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.StackStatusDesc",
+                  "TextID": {
+                    "Hash": -1199836080
+                  }
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "SpeedAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -422130114
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
       "DynamicValues": {
         "Values": {
           "-422130114": {}
@@ -6047,91 +6003,97 @@
       }
     },
     "Monster_W1_Gepard_00_RL_SpecialEffect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Characters/WhiteBox/WEffects/WEff_Prefab/WEff_Monster/WEff_Monster_W1_Gepard_00/WEff_Monster_W1_Gepard_00_Skill08_Special.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ParamEntity"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpecialLv1",
-          "DynamicValues": {
-            "MDF_SPAddedRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -581951182
-                }
-              ]
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_SpecialLv1_Effect"
-        },
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "Gepard_AICounter",
-          "ResetValue": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 2
-            }
-          },
-          "ContextScope": "TargetEntity"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "ModifierName": "Monster_Gepard_Attack_Sign"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
-          "UITextNodes": [
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": -1890568652
-              }
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Characters/WhiteBox/WEffects/WEff_Prefab/WEff_Monster/WEff_Monster_W1_Gepard_00/WEff_Monster_W1_Gepard_00_Skill08_Special.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
             }
-          ],
-          "LifeTime": 3
+          ]
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpecialLv1",
+              "DynamicValues": {
+                "MDF_SPAddedRatio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -581951182
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_SpecialLv1_Effect"
+            },
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "DynamicKey": "Gepard_AICounter",
+              "ResetValue": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 2
+                }
+              },
+              "ContextScope": "TargetEntity"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "Monster_Gepard_Attack_Sign"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W1_Gepard_00_RL_Resistance"
+            },
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattlePhaseChangeHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": -1890568652
+                  }
+                }
+              ],
+              "LifeTime": 3
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-581951182": {}
@@ -6139,40 +6101,44 @@
       }
     },
     "Monster_W1_Gepard_00_RL_SpecialLv1": {
-      "OnAllowAction": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByProperty",
-          "DynamicKey": "Target_MaxSP",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Value": "MaxSP"
-        },
-        {
-          "$type": "RPG.GameCore.ModifySPNew",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "FixedAddValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -304748635
+      "_CallbackList": {
+        "OnAllowAction": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByProperty",
+              "DynamicKey": "Target_MaxSP",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
               },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -581951182
+              "Value": "MaxSP"
+            },
+            {
+              "$type": "RPG.GameCore.ModifySPNew",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
               },
-              {
-                "Type": "Mul"
+              "FixedAddValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -304748635
+                  },
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -581951182
+                  },
+                  {
+                    "Type": "Mul"
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-581951182": {},
@@ -6182,53 +6148,61 @@
     },
     "Monster_W1_Gepard_00_RL_SpecialLv1_Effect": {},
     "Monster_W1_Gepard_00_RL_Resistance": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Affected.prefab"
-        }
-      ],
-      "OnAfterBeingHit": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Trigger.prefab"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Affected.prefab"
+            }
+          ]
         },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Trigger_02.prefab"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AllDamageTypeResistance",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1691921679
+        "OnAfterBeingHit": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Trigger.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Halo_Trigger_02.prefab"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AllDamageTypeResistance",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1691921679
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-1691921679": {}

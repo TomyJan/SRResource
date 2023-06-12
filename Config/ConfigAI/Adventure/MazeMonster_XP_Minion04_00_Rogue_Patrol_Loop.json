@@ -5,6 +5,22 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Patrol",
+      "RootTask": {
+        "$type": "RPG.GameCore.SequenceConfig",
+        "TaskList": [
+          {
+            "$type": "RPG.GameCore.AdvSetNpcVisionsConfig",
+            "VisionsByName": [
+              "GlobalVisionConfig_XP_Minion04"
+            ]
+          },
+          {
+            "$type": "RPG.GameCore.AdvNPCPatrol",
+            "StayOnWaypoint": true,
+            "StayOnWaypointDuration": 2
+          }
+        ]
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
@@ -22,54 +38,11 @@
             "Value": 1
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.SequenceConfig",
-        "TaskList": [
-          {
-            "$type": "RPG.GameCore.AdvSetNpcVisionsConfig",
-            "VisionsByName": [
-              "GlobalVisionConfig_XP_Minion04"
-            ]
-          },
-          {
-            "$type": "RPG.GameCore.AdvNPCPatrol",
-            "StayOnWaypoint": true,
-            "StayOnWaypointDuration": 2
-          }
-        ]
-      }
+      ]
     },
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Chase",
-      "ScoreEvaluatorType": "DefaultDSE",
-      "Weight": {
-        "Value": 3
-      },
-      "ConsiderAxisList": [
-        {
-          "$type": "RPG.GameCore.CheckPredicateAxis",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByAlertValueInRange",
-                "AlertValueMin": 25,
-                "AlertValueMax": 45
-              },
-              {
-                "$type": "RPG.GameCore.ByNPCStatus",
-                "NPCStatus": "RunAwayPlayer",
-                "Inverse": true
-              }
-            ]
-          },
-          "SuccessScore": {
-            "Value": 1
-          }
-        }
-      ],
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -125,7 +98,34 @@
             ]
           }
         ]
-      }
+      },
+      "ScoreEvaluatorType": "DefaultDSE",
+      "Weight": {
+        "Value": 3
+      },
+      "ConsiderAxisList": [
+        {
+          "$type": "RPG.GameCore.CheckPredicateAxis",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByAnd",
+            "PredicateList": [
+              {
+                "$type": "RPG.GameCore.ByAlertValueInRange",
+                "AlertValueMin": 25,
+                "AlertValueMax": 45
+              },
+              {
+                "$type": "RPG.GameCore.ByNPCStatus",
+                "NPCStatus": "RunAwayPlayer",
+                "Inverse": true
+              }
+            ]
+          },
+          "SuccessScore": {
+            "Value": 1
+          }
+        }
+      ]
     }
   ],
   "OnDisable": {

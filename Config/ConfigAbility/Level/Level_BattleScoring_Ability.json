@@ -3,26 +3,30 @@
     {
       "Modifiers": {
         "MScoring_11001_Listen": {
-          "OnLeaveBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByLocalWin"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnLeaveBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11001,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1200
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByLocalWin"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11001,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1200
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11001",
@@ -40,87 +44,85 @@
     {
       "Modifiers": {
         "MScoring_11002_Listen": {
-          "OnListenCharacterDie": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterDie": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11002",
-                  "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1899571672
-                      },
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
-                          "Value": 1
-                        }
-                      },
-                      {
-                        "Type": "Add"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          ],
-          "OnLeaveBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByLocalWin"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
+                      "Alias": "ParamEntity"
                     },
-                    "DynamicKey": "Scoring_Count_11002",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11002",
+                      "Value": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -1899571672
+                          },
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 1
+                            }
+                          },
+                          {
+                            "Type": "Add"
+                          }
+                        ]
                       }
                     }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+                  ]
+                }
+              ]
+            },
+            "OnLeaveBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11002,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 2000
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByLocalWin"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "Scoring_Count_11002",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11002,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 2000
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11002",
@@ -143,51 +145,55 @@
     {
       "Modifiers": {
         "MScoring_11003_Listen": {
-          "OnLeaveBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByLocalWin"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnLeaveBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValueByDelayCumulate",
-                  "DynamicKey": "Scoring_Count_11003"
-                },
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11003,
-                  "ModifyValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
-                          "Value": 1000
-                        }
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1899571671
-                      },
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
-                          "Value": 10
-                        }
-                      },
-                      {
-                        "Type": "Mul"
-                      },
-                      {
-                        "Type": "Sub"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByLocalWin"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByDelayCumulate",
+                      "DynamicKey": "Scoring_Count_11003"
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11003,
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 1000
+                            }
+                          },
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -1899571671
+                          },
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 10
+                            }
+                          },
+                          {
+                            "Type": "Mul"
+                          },
+                          {
+                            "Type": "Sub"
+                          }
+                        ]
                       }
-                    ]
-                  }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11003",
@@ -210,31 +216,35 @@
     {
       "Modifiers": {
         "MScoring_11004_Listen": {
-          "OnListenBreak": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenBreak": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11004,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 200
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11004,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 200
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11004",
@@ -252,44 +262,48 @@
     {
       "Modifiers": {
         "MScoring_11011_Listen": {
-          "OnListenModifierAdd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByTargetTeam",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "Team": "TeamDark"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "Flag": "STAT_CTRL_Frozen"
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenModifierAdd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11011,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 120
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamDark"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Flag": "STAT_CTRL_Frozen"
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11011,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 120
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11011",
@@ -307,122 +321,114 @@
     {
       "Modifiers": {
         "MScoring_11012_Listen": {
-          "OnListenModifierAdd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenModifierAdd": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
-                    "Flag": "STAT_CTRL_Frozen"
+                    "Team": "TeamDark"
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "Scoring_Count_11012",
-                      "Value": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0
-                        }
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.Retarget",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "AllDarkTeam"
-                      },
+                      "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
                         "TargetType": {
                           "$type": "RPG.GameCore.TargetAlias",
                           "Alias": "ParamEntity"
                         },
                         "Flag": "STAT_CTRL_Frozen"
                       },
-                      "MaxNumber": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 5
-                        }
-                      },
-                      "TaskList": [
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "Scoring_Count_11012",
-                          "Value": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -333487731
-                              },
-                              {
-                                "Type": "FixedNumber",
-                                "FixedValue": {
-                                  "Value": 1
-                                }
-                              },
-                              {
-                                "Type": "Add"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
-                        "DynamicKey": "Scoring_Count_11012",
-                        "CompareType": "GreaterEqual",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 3
-                          }
-                        }
-                      },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.SetBattleScoringItem",
-                          "ScoringID": 11012,
-                          "ModifyValue": {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "Scoring_Count_11012",
+                          "Value": {
                             "IsDynamic": false,
                             "FixedValue": {
-                              "Value": 1500
+                              "Value": 0
                             }
                           }
                         },
                         {
-                          "$type": "RPG.GameCore.RemoveSelfModifier"
+                          "$type": "RPG.GameCore.Retarget",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "AllDarkTeam"
+                          },
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "Flag": "STAT_CTRL_Frozen"
+                          },
+                          "MaxNumber": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 5
+                            }
+                          },
+                          "TaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "Scoring_Count_11012",
+                              "Value": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": -333487731
+                                  },
+                                  {
+                                    "Type": "FixedNumber",
+                                    "FixedValue": {
+                                      "Value": 1
+                                    }
+                                  },
+                                  {
+                                    "Type": "Add"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCompareDynamicValue",
+                            "DynamicKey": "Scoring_Count_11012",
+                            "CompareType": "GreaterEqual",
+                            "CompareValue": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 3
+                              }
+                            }
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetBattleScoringItem",
+                              "ScoringID": 11012,
+                              "ModifyValue": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 1500
+                                }
+                              }
+                            },
+                            {
+                              "$type": "RPG.GameCore.RemoveSelfModifier"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -430,7 +436,7 @@
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11012",
@@ -453,252 +459,238 @@
     {
       "Modifiers": {
         "MScoring_11013_Listen": {
-          "OnListenTurnEnd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Scoring_Count_11013",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenTurnEnd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11013,
-                  "ModifyValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -333487730
-                      },
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
-                          "Value": 5
-                        }
-                      },
-                      {
-                        "Type": "Div"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Scoring_Count_11013",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
                       }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11013",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
                     }
-                  }
-                }
-              ]
-            }
-          ],
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
                   },
-                  "ModifierName": "MScoring_11013_Listen_Sub"
-                }
-              ]
-            }
-          ],
-          "OnListenBeforeSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Scoring_Count_11013",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11013,
-                  "ModifyValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -333487730
-                      },
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
-                          "Value": 5
-                        }
-                      },
-                      {
-                        "Type": "Div"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11013,
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -333487730
+                          },
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 5
+                            }
+                          },
+                          {
+                            "Type": "Div"
+                          }
+                        ]
                       }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11013",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  }
-                }
-              ]
-            }
-          ],
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Scoring_Count_11013",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11013,
-                  "ModifyValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -333487730
-                      },
-                      {
-                        "Type": "FixedNumber",
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11013",
+                      "Value": {
+                        "IsDynamic": false,
                         "FixedValue": {
-                          "Value": 5
+                          "Value": 0
                         }
-                      },
-                      {
-                        "Type": "Div"
                       }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11013",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
                     }
-                  }
+                  ]
+                }
+              ]
+            },
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11013_Listen_Sub"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnListenBeforeSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Scoring_Count_11013",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11013,
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -333487730
+                          },
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 5
+                            }
+                          },
+                          {
+                            "Type": "Div"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11013",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Scoring_Count_11013",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11013,
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -333487730
+                          },
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 5
+                            }
+                          },
+                          {
+                            "Type": "Div"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11013",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11013_Listen_Sub": {
-          "OnAfterBeingHitAll": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "Flag": "STAT_CTRL_Frozen"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterBeingHitAll": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
-                  "DynamicKey": "_FinalDamage",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "Flag": "STAT_CTRL_Frozen"
                   },
-                  "DynamicKey": "Scoring_Count_11013",
-                  "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -333487730
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1318975536
-                      },
-                      {
-                        "Type": "Add"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
+                      "DynamicKey": "_FinalDamage",
+                      "ReadTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
                       }
-                    ]
-                  }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11013",
+                      "Value": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -333487730
+                          },
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -1318975536
+                          },
+                          {
+                            "Type": "Add"
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1318975536": {}
@@ -726,99 +718,65 @@
     {
       "Modifiers": {
         "MScoring_11021_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
                   },
-                  "ModifierName": "MScoring_11021_Listen_Sub"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11021_Listen_Sub"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11021_Listen_Sub": {
-          "OnAfterHit": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAttackType",
-                "AttackTypes": [
-                  "Insert"
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterHit": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAttackType",
+                    "AttackTypes": [
+                      "Insert"
+                    ]
                   },
-                  "DynamicKey": "Flag_11021",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Flag_11021",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
-            }
-          ],
-          "OnBeforeAttack": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Flag_11021",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            }
-          ],
-          "OnAfterAttack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Flag_11021",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+            },
+            "OnBeforeAttack": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "Flag_11021",
                   "Value": {
                     "IsDynamic": false,
@@ -826,20 +784,50 @@
                       "Value": 0
                     }
                   }
-                },
+                }
+              ]
+            },
+            "OnAfterAttack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11021,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 200
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Flag_11021",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
                     }
-                  }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Flag_11021",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11021,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 200
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-382800620": {}
@@ -867,103 +855,113 @@
     {
       "Modifiers": {
         "MScoring_11022_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
                   },
-                  "ModifierName": "MScoring_11022_Listen_Sub"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11022_Listen_Sub"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11022_Listen_Sub": {
-          "OnAfterHitAll": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAttackType",
-                "AttackTypes": [
-                  "Insert"
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterHitAll": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAttackType",
+                    "AttackTypes": [
+                      "Insert"
+                    ]
                   },
-                  "DynamicKey": "Flag_11022",
-                  "ResetValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "Flag_11022",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "Flag_11022",
+                      "ContextScope": "TargetEntity"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnTriggerDeath": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "Flag_11022",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
                     }
                   },
-                  "ContextScope": "TargetEntity"
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "DynamicKey": "Flag_11022",
-                  "ContextScope": "TargetEntity"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11022,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 400
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ],
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "Flag_11022",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11022,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 400
-                    }
-                  }
-                }
-              ]
-            }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11022",
@@ -981,105 +979,56 @@
     {
       "Modifiers": {
         "MScoring_11023_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareMonsterID",
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
-                    "TargetMonsterID": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1003010
-                      }
-                    }
+                    "Team": "TeamDark"
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.AddModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareMonsterID",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "TargetMonsterID": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1003010
+                          }
+                        }
                       },
-                      "ModifierName": "MScoring_11023_Listen_Sub"
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "ModifierName": "MScoring_11023_Listen_Sub"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11023_Listen_Sub": {
-          "OnAfterAttack": [
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "Flag_11023",
-              "ContextScope": "TargetEntity"
-            }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "Flag_11023",
-                "ContextScope": "TargetEntity",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11023,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1000
-                    }
-                  }
-                }
-              ]
-            }
-          ],
-          "OnModifierOnStack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "Flag": "MuteHitH"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterAttack": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.DefineDynamicValue",
                   "TargetType": {
@@ -1087,17 +1036,74 @@
                     "Alias": "ModifierOwnerEntity"
                   },
                   "DynamicKey": "Flag_11023",
-                  "ResetValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
                   "ContextScope": "TargetEntity"
                 }
               ]
+            },
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "Flag_11023",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11023,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1000
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnModifierOnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
+                    "Flag": "MuteHitH"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "Flag_11023",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    }
+                  ]
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11023",
@@ -1120,40 +1126,44 @@
     {
       "Modifiers": {
         "MScoring_11031_Listen": {
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByTargetTeam",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "Team": "TeamLight"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCurrentSkillType",
-                    "SkillType": "Ultra"
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11031,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 500
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamLight"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCurrentSkillType",
+                        "SkillType": "Ultra"
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11031,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 500
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11031",
@@ -1171,105 +1181,99 @@
     {
       "Modifiers": {
         "MScoring_11032_Listen": {
-          "OnListenTurnEnd": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Scoring_Count_11032",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            }
-          ],
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByTargetTeam",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "Team": "TeamLight"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCurrentSkillType",
-                    "SkillType": "Ultra"
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenTurnEnd": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "Scoring_Count_11032",
                   "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 829311683
-                      },
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
-                          "Value": 1
-                        }
-                      },
-                      {
-                        "Type": "Add"
-                      }
-                    ]
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
                   }
-                },
+                }
+              ]
+            },
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "Scoring_Count_11032",
-                    "CompareType": "GreaterEqual",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 4
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamLight"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCurrentSkillType",
+                        "SkillType": "Ultra"
                       }
-                    }
+                    ]
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetBattleScoringItem",
-                      "ScoringID": 11032,
-                      "ModifyValue": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 2000
-                        }
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11032",
+                      "Value": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 829311683
+                          },
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 1
+                            }
+                          },
+                          {
+                            "Type": "Add"
+                          }
+                        ]
                       }
                     },
                     {
-                      "$type": "RPG.GameCore.RemoveSelfModifier"
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "Scoring_Count_11032",
+                        "CompareType": "GreaterEqual",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 4
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetBattleScoringItem",
+                          "ScoringID": 11032,
+                          "ModifyValue": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 2000
+                            }
+                          }
+                        },
+                        {
+                          "$type": "RPG.GameCore.RemoveSelfModifier"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11032",
@@ -1292,110 +1296,104 @@
     {
       "Modifiers": {
         "MScoring_11033_Listen": {
-          "OnListenTurnEnd": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Scoring_Count_11033",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            }
-          ],
-          "OnListenCharacterDie": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByTargetTeam",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "Team": "TeamDark"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareMonsterRank",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "CompareType": "GreaterEqual",
-                    "CompareValue": 3
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenTurnEnd": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "Scoring_Count_11033",
                   "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 829311684
-                      },
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
-                          "Value": 1
-                        }
-                      },
-                      {
-                        "Type": "Add"
-                      }
-                    ]
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
                   }
-                },
+                }
+              ]
+            },
+            "OnListenCharacterDie": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "Scoring_Count_11033",
-                    "CompareType": "GreaterEqual",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 2
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamDark"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareMonsterRank",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "CompareType": "GreaterEqual",
+                        "CompareValue": 3
                       }
-                    }
+                    ]
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetBattleScoringItem",
-                      "ScoringID": 11033,
-                      "ModifyValue": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 3000
-                        }
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11033",
+                      "Value": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 829311684
+                          },
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 1
+                            }
+                          },
+                          {
+                            "Type": "Add"
+                          }
+                        ]
                       }
                     },
                     {
-                      "$type": "RPG.GameCore.RemoveSelfModifier"
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "Scoring_Count_11033",
+                        "CompareType": "GreaterEqual",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 2
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetBattleScoringItem",
+                          "ScoringID": 11033,
+                          "ModifyValue": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 3000
+                            }
+                          }
+                        },
+                        {
+                          "$type": "RPG.GameCore.RemoveSelfModifier"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11033",
@@ -1418,54 +1416,62 @@
     {
       "Modifiers": {
         "MScoring_11041_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
                   },
-                  "ModifierName": "MScoring_11041_Listen_Sub"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11041_Listen_Sub"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11041_Listen_Sub": {
-          "OnAfterBeingHitAll": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAttackType",
-                "AttackTypes": [
-                  "DOT"
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterBeingHitAll": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11041,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 150
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAttackType",
+                    "AttackTypes": [
+                      "DOT"
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11041,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 150
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11041",
@@ -1483,62 +1489,62 @@
     {
       "Modifiers": {
         "MScoring_11042_Listen": {
-          "OnListenModifierAdd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValueByStatusCount",
-                  "DynamicKey": "Debuff_Count_11042",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  }
-                },
+          "_CallbackList": {
+            "OnListenModifierAdd": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
+                      "Alias": "ParamEntity"
                     },
-                    "DynamicKey": "Debuff_Count_11042",
-                    "CompareType": "GreaterEqual",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 5
-                      }
-                    }
+                    "Team": "TeamDark"
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetBattleScoringItem",
-                      "ScoringID": 11042,
-                      "ModifyValue": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 2000
-                        }
+                      "$type": "RPG.GameCore.SetDynamicValueByStatusCount",
+                      "DynamicKey": "Debuff_Count_11042",
+                      "ReadTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
                       }
                     },
                     {
-                      "$type": "RPG.GameCore.RemoveSelfModifier"
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "Debuff_Count_11042",
+                        "CompareType": "GreaterEqual",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 5
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetBattleScoringItem",
+                          "ScoringID": 11042,
+                          "ModifyValue": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 2000
+                            }
+                          }
+                        },
+                        {
+                          "$type": "RPG.GameCore.RemoveSelfModifier"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-567467701": {}
@@ -1561,61 +1567,104 @@
     {
       "Modifiers": {
         "MScoring_11043_Listen": {
-          "OnListenCharacterDie": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterDie": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareMonsterID",
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
-                    "TargetMonsterID": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1014010
-                      }
-                    }
+                    "Team": "TeamDark"
                   },
                   "SuccessTaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "$type": "RPG.GameCore.ByCompareMonsterID",
                         "TargetType": {
                           "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
+                          "Alias": "ParamEntity"
                         },
-                        "DynamicKey": "Scoring_Count_11043",
-                        "CompareType": "Equal",
-                        "CompareValue": {
+                        "TargetMonsterID": {
                           "IsDynamic": false,
                           "FixedValue": {
-                            "Value": 1
+                            "Value": 1014010
                           }
                         }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.SetBattleScoringItem",
-                          "ScoringID": 11043,
-                          "ModifyValue": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 3000
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCompareDynamicValue",
+                            "DynamicKey": "Scoring_Count_11043",
+                            "CompareType": "Equal",
+                            "CompareValue": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 1
+                              }
                             }
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetBattleScoringItem",
+                              "ScoringID": 11043,
+                              "ModifyValue": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 3000
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareMonsterID",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "TargetMonsterID": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1014010
                           }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "ModifierName": "MScoring_11043_Listen_Sub"
                         }
                       ]
                     }
@@ -1623,93 +1672,48 @@
                 }
               ]
             }
-          ],
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          }
+        },
+        "MScoring_11043_Listen_Sub": {
+          "_CallbackList": {
+            "OnAfterBeingHitAll": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareMonsterID",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "TargetMonsterID": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1014010
-                      }
-                    }
+                    "$type": "RPG.GameCore.ByAttackType",
+                    "AttackTypes": [
+                      "DOT"
+                    ]
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.AddModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "ModifierName": "MScoring_11043_Listen_Sub"
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11043",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11043",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
                     }
                   ]
                 }
               ]
             }
-          ]
-        },
-        "MScoring_11043_Listen_Sub": {
-          "OnAfterBeingHitAll": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAttackType",
-                "AttackTypes": [
-                  "DOT"
-                ]
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11043",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11043",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  }
-                }
-              ]
-            }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11043",
@@ -1732,56 +1736,64 @@
     {
       "Modifiers": {
         "MScoring_11051_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
                   },
-                  "ModifierName": "MScoring_11051_Listen_Sub"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11051_Listen_Sub"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11051_Listen_Sub": {
-          "OnBeforeBeingAttacked": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "Flag": "Shield"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeforeBeingAttacked": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11051,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 120
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "Flag": "Shield"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11051,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 120
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11051",
@@ -1799,50 +1811,54 @@
     {
       "Modifiers": {
         "MScoring_11052_Listen": {
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareMonsterID",
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
-                    "TargetMonsterID": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 8013010
-                      }
-                    }
+                    "Team": "TeamDark"
                   },
                   "SuccessTaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByCurrentSkillName",
-                        "SkillName": "Skill05"
+                        "$type": "RPG.GameCore.ByCompareMonsterID",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "TargetMonsterID": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 8013010
+                          }
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.SetBattleScoringItem",
-                          "ScoringID": 11052,
-                          "ModifyValue": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 500
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCurrentSkillName",
+                            "SkillName": "Skill05"
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetBattleScoringItem",
+                              "ScoringID": 11052,
+                              "ModifyValue": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 500
+                                }
+                              }
                             }
-                          }
+                          ]
                         }
                       ]
                     }
@@ -1850,7 +1866,7 @@
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11052",
@@ -1868,184 +1884,172 @@
     {
       "Modifiers": {
         "MScoring_11053_Listen": {
-          "OnListenTurnEnd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Scoring_Count_11053",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenTurnEnd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11053,
-                  "ModifyValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1635880738
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Scoring_Count_11053",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
                       }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11053",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
                     }
-                  }
-                }
-              ]
-            }
-          ],
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
                   },
-                  "ModifierName": "MScoring_11053_Listen_Sub"
-                }
-              ]
-            }
-          ],
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Scoring_Count_11053",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11053,
-                  "ModifyValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1635880738
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11053,
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 1635880738
+                          }
+                        ]
                       }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11053",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11053",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
                     }
-                  }
+                  ]
+                }
+              ]
+            },
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11053_Listen_Sub"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Scoring_Count_11053",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11053,
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 1635880738
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11053",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11053_Listen_Sub": {
-          "OnAfterBeingHitAll": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
-              "DynamicKey": "_ShieldDamage",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "Result_ShieldDamage"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "_ShieldDamage",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterBeingHitAll": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
+                  "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
+                  "DynamicKey": "_ShieldDamage",
+                  "ReadTargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "DynamicKey": "Scoring_Count_11053",
-                  "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1635880738
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1559801287
-                      },
-                      {
-                        "Type": "Add"
+                  "Property": "Result_ShieldDamage"
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "_ShieldDamage",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
                       }
-                    ]
-                  }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11053",
+                      "Value": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 1635880738
+                          },
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 1559801287
+                          },
+                          {
+                            "Type": "Add"
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "1559801287": {}
@@ -2073,137 +2077,125 @@
     {
       "Modifiers": {
         "MScoring_11061_Listen": {
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11061",
-                  "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1232596209
-                      },
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
-                          "Value": 1
-                        }
-                      },
-                      {
-                        "Type": "Add"
-                      }
-                    ]
-                  }
-                },
+          "_CallbackList": {
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
+                      "Alias": "ParamEntity"
                     },
-                    "DynamicKey": "Scoring_Count_11061",
-                    "CompareType": "GreaterEqual",
-                    "CompareValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1712504147
-                        }
-                      ]
-                    }
+                    "Team": "TeamLight"
                   },
                   "SuccessTaskList": [
                     {
                       "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "Scoring_Record_11061",
+                      "DynamicKey": "Scoring_Count_11061",
                       "Value": {
                         "IsDynamic": true,
                         "Expressions": [
                           {
                             "Type": "DynamicNumber",
                             "DynamicHash": 1232596209
+                          },
+                          {
+                            "Type": "FixedNumber",
+                            "FixedValue": {
+                              "Value": 1
+                            }
+                          },
+                          {
+                            "Type": "Add"
                           }
                         ]
                       }
                     },
                     {
-                      "$type": "RPG.GameCore.SetBattleScoringItem",
-                      "ScoringID": 11061,
-                      "ModifyFunction": "Set",
-                      "ModifyValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1712504147
-                          },
-                          {
-                            "Type": "FixedNumber",
-                            "FixedValue": {
-                              "Value": 400
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "Scoring_Count_11061",
+                        "CompareType": "GreaterEqual",
+                        "CompareValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1712504147
                             }
-                          },
-                          {
-                            "Type": "Mul"
+                          ]
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "Scoring_Record_11061",
+                          "Value": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1232596209
+                              }
+                            ]
                           }
-                        ]
+                        },
+                        {
+                          "$type": "RPG.GameCore.SetBattleScoringItem",
+                          "ScoringID": 11061,
+                          "ModifyFunction": "Set",
+                          "ModifyValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1712504147
+                              },
+                              {
+                                "Type": "FixedNumber",
+                                "FixedValue": {
+                                  "Value": 400
+                                }
+                              },
+                              {
+                                "Type": "Mul"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11061",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
                       }
                     }
                   ]
                 }
               ]
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11061",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  }
-                }
-              ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11061",
@@ -2227,48 +2219,52 @@
     {
       "Modifiers": {
         "MScoring_11062_Listen": {
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareMonsterID",
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
-                    "TargetMonsterID": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1004010
-                      }
-                    }
+                    "Team": "TeamDark"
                   },
                   "SuccessTaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByCurrentSkillName",
-                        "SkillName": "Skill05"
+                        "$type": "RPG.GameCore.ByCompareMonsterID",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "TargetMonsterID": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1004010
+                          }
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCurrentSkillName",
+                            "SkillName": "Skill05"
                           },
-                          "ModifierName": "MScoring_11062_Listen_Sub"
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "ModifierName": "MScoring_11062_Listen_Sub"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -2276,38 +2272,44 @@
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11062_Listen_Sub": {
-          "OnAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCurrentSkillName",
-                "SkillName": "Skill03"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnAfterSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCurrentSkillName",
+                    "SkillName": "Skill03"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveSelfModifier"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetBattleScoringItem",
+                  "ScoringID": 11062,
+                  "ModifyValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 3000
+                    }
+                  }
+                },
                 {
                   "$type": "RPG.GameCore.RemoveSelfModifier"
                 }
               ]
             }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.SetBattleScoringItem",
-              "ScoringID": 11062,
-              "ModifyValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 3000
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
-            }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11062",
@@ -2325,84 +2327,94 @@
     {
       "Modifiers": {
         "MScoring_11063_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByAny",
-                    "PredicateList": [
-                      {
-                        "$type": "RPG.GameCore.ByCompareMonsterID",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "TargetMonsterID": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 1002011
-                          }
-                        }
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByCompareMonsterID",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "TargetMonsterID": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 1002012
-                          }
-                        }
-                      }
-                    ]
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.AddModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByAny",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByCompareMonsterID",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "TargetMonsterID": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 1002011
+                              }
+                            }
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByCompareMonsterID",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "TargetMonsterID": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 1002012
+                              }
+                            }
+                          }
+                        ]
                       },
-                      "ModifierName": "MScoring_11063_Listen_Sub"
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "ModifierName": "MScoring_11063_Listen_Sub"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11063_Listen_Sub": {
-          "OnBeforeDying": [
-            {
-              "$type": "RPG.GameCore.SetBattleScoringItem",
-              "ScoringID": 11063,
-              "ModifyValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1000
+          "_CallbackList": {
+            "OnBeforeDying": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetBattleScoringItem",
+                  "ScoringID": 11063,
+                  "ModifyValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1000
+                    }
+                  }
                 }
-              }
+              ]
+            },
+            "OnAfterSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
+                }
+              ]
             }
-          ],
-          "OnAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
-            }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11063",
@@ -2420,71 +2432,75 @@
     {
       "Modifiers": {
         "MScoring_11071_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
                   },
-                  "ModifierName": "MScoring_11071_Listen_Sub"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11071_Listen_Sub"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11071_Listen_Sub": {
-          "OnPhase2": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByHPRatio",
-              "DynamicKey": "_HPRatio",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "_HPRatio",
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.5000000004656613
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnPhase2": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11071,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 250
-                    }
+                  "$type": "RPG.GameCore.SetDynamicValueByHPRatio",
+                  "DynamicKey": "_HPRatio",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "_HPRatio",
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0.5000000004656613
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11071,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 250
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "912879638": {}
@@ -2507,57 +2523,61 @@
     {
       "Modifiers": {
         "MScoring_11072_Listen": {
-          "OnListenModifierAdd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByTargetTeam",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "Team": "TeamLight"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByAny",
+          "_CallbackList": {
+            "OnListenModifierAdd": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
                     "PredicateList": [
                       {
-                        "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
+                        "$type": "RPG.GameCore.ByTargetTeam",
                         "TargetType": {
                           "$type": "RPG.GameCore.TargetAlias",
                           "Alias": "ParamEntity"
                         },
-                        "Flag": "STAT_CTRL_Frozen"
+                        "Team": "TeamLight"
                       },
                       {
-                        "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "Flag": "STAT_DOT_Burn"
+                        "$type": "RPG.GameCore.ByAny",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "Flag": "STAT_CTRL_Frozen"
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "Flag": "STAT_DOT_Burn"
+                          }
+                        ]
                       }
                     ]
-                  }
-                ]
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11072,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 400
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11072,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 400
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11072",
@@ -2575,147 +2595,137 @@
     {
       "Modifiers": {
         "MScoring_11073_Listen": {
-          "OnListenHPChange": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenHPChange": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.Retarget",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllLightTeam"
-                  },
+                  "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByIsPropertyValueMinOrMax",
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
-                    "CompareTargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "AllLightTeam"
-                    },
-                    "MinOrMax": "Max",
-                    "PropertyRatioType": "HPRatio"
+                    "Team": "TeamLight"
                   },
-                  "MaxNumber": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "TaskList": [
+                  "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetDynamicValueByHPRatio",
-                      "DynamicKey": "_HPRatio",
-                      "ReadTargetType": {
+                      "$type": "RPG.GameCore.Retarget",
+                      "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
+                        "Alias": "AllLightTeam"
+                      },
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "$type": "RPG.GameCore.ByIsPropertyValueMinOrMax",
                         "TargetType": {
                           "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
+                          "Alias": "ParamEntity"
                         },
-                        "DynamicKey": "_HPRatio",
-                        "CompareType": "Greater",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 0.5000000004656613
-                          }
+                        "CompareTargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "AllLightTeam"
+                        },
+                        "MinOrMax": "Max",
+                        "PropertyRatioType": "HPRatio"
+                      },
+                      "MaxNumber": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
                         }
                       },
-                      "SuccessTaskList": [
+                      "TaskList": [
                         {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
+                          "$type": "RPG.GameCore.SetDynamicValueByHPRatio",
+                          "DynamicKey": "_HPRatio",
+                          "ReadTargetType": {
                             "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "Flag_11073",
-                          "Value": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 0
-                            }
+                            "Alias": "ParamEntity"
                           }
-                        }
-                      ],
-                      "FailedTaskList": [
+                        },
                         {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "Flag_11073",
-                          "Value": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 1
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCompareDynamicValue",
+                            "DynamicKey": "_HPRatio",
+                            "CompareType": "Greater",
+                            "CompareValue": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 0.5000000004656613
+                              }
                             }
-                          }
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "Flag_11073",
+                              "Value": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 0
+                                }
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "Flag_11073",
+                              "Value": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 1
+                                }
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
               ]
-            }
-          ],
-          "OnLeaveBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByLocalWin"
+            },
+            "OnLeaveBattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByLocalWin"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "Flag_11073",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
+                          }
+                        }
+                      }
+                    ]
                   },
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "Flag_11073",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11073,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 3000
+                        }
                       }
                     }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11073,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 3000
-                    }
-                  }
+                  ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "779998791": {},
@@ -2739,52 +2749,60 @@
     {
       "Modifiers": {
         "MScoring_11081_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
                   },
-                  "ModifierName": "MScoring_11081_Listen_Sub"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11081_Listen_Sub"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11081_Listen_Sub": {
-          "OnModifierOnStack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareCurrentModifierStatusType",
-                "TargetStatusType": "Debuff"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnModifierOnStack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11081,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 100
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareCurrentModifierStatusType",
+                    "TargetStatusType": "Debuff"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11081,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 100
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11081",
@@ -2802,52 +2820,60 @@
     {
       "Modifiers": {
         "MScoring_11082_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
                   },
-                  "ModifierName": "MScoring_11082_Listen_Sub"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11082_Listen_Sub"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11082_Listen_Sub": {
-          "OnModifierOnStack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareCurrentModifierStatusType",
-                "TargetStatusType": "Buff"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnModifierOnStack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11082,
-                  "ModifyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 50
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareCurrentModifierStatusType",
+                    "TargetStatusType": "Buff"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11082,
+                      "ModifyValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 50
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Scoring_11082",
@@ -2865,151 +2891,141 @@
     {
       "Modifiers": {
         "MScoring_11083_Listen": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamDark"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamDark"
                   },
-                  "ModifierName": "MScoring_11083_Listen_Sub"
-                }
-              ]
-            }
-          ],
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Scoring_Count_11083",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
+                  "SuccessTaskList": [
                     {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1419663745
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MScoring_11083_Listen_Sub"
                     }
                   ]
                 }
-              },
-              "SuccessTaskList": [
+              ]
+            },
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Record_11083",
-                  "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1543341311
-                      }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11083",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Scoring_Count_11083",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1419663745
+                        }
+                      ]
                     }
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetBattleScoringItem",
-                  "ScoringID": 11083,
-                  "ModifyFunction": "Set",
-                  "ModifyValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1419663745
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Record_11083",
+                      "Value": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -1543341311
+                          }
+                        ]
                       }
-                    ]
-                  }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11083",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetBattleScoringItem",
+                      "ScoringID": 11083,
+                      "ModifyFunction": "Set",
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -1419663745
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MScoring_11083_Listen_Sub": {
-          "OnAfterBeingHitAll": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
-              "DynamicKey": "_FinalDamage",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnAfterBeingHitAll": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
+                  "DynamicKey": "_FinalDamage",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
                 },
-                "DynamicKey": "_FinalDamage",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "_FinalDamage",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1543341311
+                        }
+                      ]
+                    }
+                  },
+                  "SuccessTaskList": [
                     {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1543341311
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Scoring_Count_11083",
+                      "Value": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -1318975536
+                          }
+                        ]
+                      }
                     }
                   ]
                 }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Scoring_Count_11083",
-                  "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1318975536
-                      }
-                    ]
-                  }
-                }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1318975536": {}

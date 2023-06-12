@@ -16,25 +16,17 @@
           "MarkStreamingItems": []
         },
         {
-          "$type": "RPG.GameCore.PerformanceTransition",
-          "SwitchKeepTime": 0.2,
-          "SwitchOutTime": -1,
-          "CreateNpcList": [],
-          "CaptureNpcList": [],
-          "DestroyNpcList": [],
-          "ActiveVirtualCamera": {
-            "TaskEnabled": false
-          },
-          "SwitchCharacterAnchor": {
-            "TaskEnabled": false
-          }
-        },
-        {
           "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
           "GroupID": 99,
           "GroupNpcID": 400001,
           "StopLookAtOnGraphEnd": false,
           "TurnBackOnGraphEnd": false,
+          "FinishImmadiate": true
+        },
+        {
+          "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
+          "GroupID": 99,
+          "GroupNpcID": 400001,
           "FinishImmadiate": true
         },
         {
@@ -44,10 +36,22 @@
           "CreateNpcList": [],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "TaskEnabled": false
           },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
+          },
           "SwitchCharacterAnchor": {
+            "TaskEnabled": false
+          },
+          "AdvNpcFaceToPlayer": {
             "TaskEnabled": false
           }
         },
@@ -77,6 +81,15 @@
               "TriggerCustomString": "TalkSentence_401080006"
             }
           ]
+        },
+        {
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "SimpleTalkList": [
+            {
+              "TalkSentenceID": 401080002,
+              "ProtectTime": 0.3
+            }
+          ]
         }
       ]
     },
@@ -89,16 +102,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401080004,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -117,16 +127,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401080006,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -145,7 +152,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401080007,
@@ -160,9 +167,6 @@
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -214,7 +218,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401080011,
@@ -223,20 +227,47 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
-          "$type": "RPG.GameCore.TriggerCustomString",
-          "CustomString": {
-            "Value": "ALL_TALK_END"
-          },
-          "TaskEnabled": false
-        },
-        {
-          "$type": "RPG.GameCore.TriggerCustomString",
-          "CustomString": {
-            "Value": "M3_1WilliamRaid_Enter"
+          "$type": "RPG.GameCore.StartDialogueEntityInteract",
+          "LevelGraphPath": "Config/Level/Props/InteractMode/TriggerEvent_TriggerType_07.json",
+          "UseOverrideData": true,
+          "ValueSource": {
+            "Values": [
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Level/Common_Adventure/UseInteractNPC.prefab",
+                "Key": "DialogueEntityInteract_AreaPath"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "UseInteractNPC,UseInteractNPC_Camera",
+                "Key": "DialogueEntityInteract_CameraKey"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "UseInteractNPC",
+                "Key": "DialogueEntityInteract_AreaName"
+              }
+            ]
           }
+        },
+        {
+          "$type": "RPG.GameCore.SetLocalPlayerDitherAlpha"
+        },
+        {
+          "$type": "RPG.GameCore.OpenTreasureChallenge",
+          "RaidID": 4013201,
+          "OnCancel": [
+            {
+              "$type": "RPG.GameCore.EndDialogueEntityInteract",
+              "LevelGraphPath": "Config/Level/Props/InteractMode/TriggerEvent_ExitTriggerType_07.json"
+            },
+            {
+              "$type": "RPG.GameCore.TriggerCustomString",
+              "CustomString": {
+                "Value": "ALL_TALK_END"
+              }
+            }
+          ]
         }
       ]
     },
@@ -250,16 +281,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401080013,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -279,16 +307,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401080015,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",

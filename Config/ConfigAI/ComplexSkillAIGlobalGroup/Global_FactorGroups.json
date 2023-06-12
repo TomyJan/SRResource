@@ -354,6 +354,28 @@
         }
       ]
     },
+    "Add01_Common_RandomWeight01": {
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAISourceRandom01"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 1
+                },
+                "ymax": {
+                  "Value": 100
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
     "AddPp_Ren_BpSkillHPPercent": {
       "Factors": [
         {
@@ -2013,6 +2035,89 @@
         }
       ]
     },
+    "Add_Luka_ChargePoint": {
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAISourceDynamicValue",
+            "IsTarget": false,
+            "DynamicValueKey": "BulletCount"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 2
+                },
+                "ymax": {
+                  "Value": 50
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 2
+                },
+                "ymin": {
+                  "Value": 50
+                },
+                "xmax": {
+                  "Value": 4
+                },
+                "ymax": {
+                  "Value": 800
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Add01_Argenti_BpSkillEnemysNumber": {
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAIBattleGlobalData",
+            "DataType": "EnemyAlive"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 2
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 2
+                },
+                "xmax": {
+                  "Value": 3
+                },
+                "ymax": {
+                  "Value": 60
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 3
+                },
+                "ymin": {
+                  "Value": 60
+                },
+                "xmax": {
+                  "Value": 5
+                },
+                "ymax": {
+                  "Value": 100
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
     "BaseWeight": {
       "Factors": [
         {
@@ -2221,6 +2326,40 @@
                 },
                 "xmax": {
                   "Value": 1
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Add01_1021212_YanqingATKFlag": {
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAIContainModifier",
+            "ModifilerName": "TrialPlayer_1021209_Yanqing_Flag_Modifier"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 0.5000000004656613
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 0.5000000004656613
+                },
+                "ymin": {
+                  "Value": 100
+                },
+                "xmax": {
+                  "Value": 1
+                },
+                "ymax": {
+                  "Value": 100
                 }
               }
             ]

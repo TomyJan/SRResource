@@ -16,6 +16,15 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "UseSkill01",
+      "RootTask": {
+        "$type": "RPG.GameCore.SequenceConfig",
+        "TaskList": [
+          {
+            "$type": "RPG.GameCore.UseSkill",
+            "SkillName": "Skill01"
+          }
+        ]
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
@@ -27,7 +36,11 @@
             "Value": 0.10000000009313226
           }
         }
-      ],
+      ]
+    },
+    {
+      "$type": "RPG.GameCore.AIDecisionConfig",
+      "DecisionName": "UseSkill01-2",
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -36,11 +49,7 @@
             "SkillName": "Skill01"
           }
         ]
-      }
-    },
-    {
-      "$type": "RPG.GameCore.AIDecisionConfig",
-      "DecisionName": "UseSkill01-2",
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
@@ -57,63 +66,11 @@
             "Value": 0.5000000004656613
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.SequenceConfig",
-        "TaskList": [
-          {
-            "$type": "RPG.GameCore.UseSkill",
-            "SkillName": "Skill01"
-          }
-        ]
-      }
+      ]
     },
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "UseSkill02",
-      "ScoreEvaluatorType": "DefaultDSE",
-      "ConsiderAxisList": [
-        {
-          "$type": "RPG.GameCore.CheckPredicateAxis",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareCharacterNumber",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "AllTeammate"
-            },
-            "Predicate": {
-              "$type": "RPG.GameCore.ByNot",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported"
-              }
-            },
-            "CompareType": "GreaterEqual",
-            "CompareNumber": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            }
-          },
-          "SuccessScore": {
-            "Value": 1
-          }
-        },
-        {
-          "$type": "RPG.GameCore.CheckSkillUsabilityAxis",
-          "SkillName": "Skill02",
-          "InitialCD": 2,
-          "CD": 2,
-          "CheckScore": {
-            "Value": 0.20000000018626451
-          }
-        }
-      ],
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -173,7 +130,50 @@
             "SkillName": "Skill02"
           }
         ]
-      }
+      },
+      "ScoreEvaluatorType": "DefaultDSE",
+      "ConsiderAxisList": [
+        {
+          "$type": "RPG.GameCore.CheckPredicateAxis",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByCompareCharacterNumber",
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "AllTeammate"
+            },
+            "Predicate": {
+              "$type": "RPG.GameCore.ByNot",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported"
+              }
+            },
+            "CompareType": "GreaterEqual",
+            "CompareNumber": {
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 1
+              }
+            }
+          },
+          "SuccessScore": {
+            "Value": 1
+          }
+        },
+        {
+          "$type": "RPG.GameCore.CheckSkillUsabilityAxis",
+          "SkillName": "Skill02",
+          "InitialCD": 2,
+          "CD": 2,
+          "CheckScore": {
+            "Value": 0.20000000018626451
+          }
+        }
+      ]
     }
   ]
 }

@@ -10,6 +10,7 @@
             404011604,
             404011609
           ],
+          "MainMissionIDList": [],
           "PerformanceIDList": []
         },
         {
@@ -33,9 +34,20 @@
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
-            "$type": "RPG.GameCore.ByCompareSubMissionState",
-            "SubMissionID": 404011604,
-            "SubMissionState": "Started"
+            "$type": "RPG.GameCore.ByAnd",
+            "PredicateList": [
+              {
+                "$type": "RPG.GameCore.ByCompareSubMissionState",
+                "SubMissionID": 404011604,
+                "SubMissionState": "Started"
+              },
+              {
+                "$type": "RPG.GameCore.ByCompareSubMissionState",
+                "SubMissionID": 404011609,
+                "SubMissionState": "Started",
+                "Inverse": true
+              }
+            ]
           },
           "SuccessTaskList": [
             {

@@ -16,6 +16,15 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "UseSkill01",
+      "RootTask": {
+        "$type": "RPG.GameCore.SequenceConfig",
+        "TaskList": [
+          {
+            "$type": "RPG.GameCore.UseSkill",
+            "SkillName": "Skill01"
+          }
+        ]
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
@@ -37,80 +46,11 @@
             "Value": 0.5000000004656613
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.SequenceConfig",
-        "TaskList": [
-          {
-            "$type": "RPG.GameCore.UseSkill",
-            "SkillName": "Skill01"
-          }
-        ]
-      }
+      ]
     },
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "UseSkill02",
-      "ScoreEvaluatorType": "DefaultDSE",
-      "ConsiderAxisList": [
-        {
-          "$type": "RPG.GameCore.CheckPredicateAxis",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "ModifierName": "OneMore",
-                "Inverse": true
-              },
-              {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "W2_Abomi04_00_AICounter",
-                    "ContextScope": "TargetEntity",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 3
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "W2_Abomi04_00_AICounter",
-                    "ContextScope": "TargetEntity",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 6
-                      }
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "SuccessScore": {
-            "Value": 0.5000000004656613
-          }
-        }
-      ],
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -146,11 +86,7 @@
             "SkillName": "Skill02"
           }
         ]
-      }
-    },
-    {
-      "$type": "RPG.GameCore.AIDecisionConfig",
-      "DecisionName": "UseSkill03",
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
@@ -172,49 +108,25 @@
                 "PredicateList": [
                   {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "W2_Abomi04_00_AICounter",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
                     "CompareValue": {
                       "IsDynamic": false,
                       "FixedValue": {
-                        "Value": 2
+                        "Value": 3
                       }
                     }
                   },
                   {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "W2_Abomi04_00_AICounter",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
                     "CompareValue": {
                       "IsDynamic": false,
                       "FixedValue": {
-                        "Value": 4
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "W2_Abomi04_00_AICounter",
-                    "ContextScope": "TargetEntity",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 7
+                        "Value": 6
                       }
                     }
                   }
@@ -226,7 +138,11 @@
             "Value": 0.5000000004656613
           }
         }
-      ],
+      ]
+    },
+    {
+      "$type": "RPG.GameCore.AIDecisionConfig",
+      "DecisionName": "UseSkill03",
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -234,10 +150,6 @@
             "$type": "RPG.GameCore.PredicateTaskList",
             "Predicate": {
               "$type": "RPG.GameCore.ByCompareDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "W2_Abomi04_00_AICounter",
               "ContextScope": "TargetEntity",
               "CompareType": "Equal",
@@ -300,11 +212,7 @@
             "SkillName": "Skill03"
           }
         ]
-      }
-    },
-    {
-      "$type": "RPG.GameCore.AIDecisionConfig",
-      "DecisionName": "UseSkill04",
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
@@ -326,33 +234,37 @@
                 "PredicateList": [
                   {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "W2_Abomi04_00_AICounter",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
                     "CompareValue": {
                       "IsDynamic": false,
                       "FixedValue": {
-                        "Value": 1
+                        "Value": 2
                       }
                     }
                   },
                   {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "W2_Abomi04_00_AICounter",
                     "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
                     "CompareValue": {
                       "IsDynamic": false,
                       "FixedValue": {
-                        "Value": 5
+                        "Value": 4
+                      }
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "W2_Abomi04_00_AICounter",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 7
                       }
                     }
                   }
@@ -364,7 +276,11 @@
             "Value": 0.5000000004656613
           }
         }
-      ],
+      ]
+    },
+    {
+      "$type": "RPG.GameCore.AIDecisionConfig",
+      "DecisionName": "UseSkill04",
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -400,7 +316,59 @@
             "SkillName": "Skill04"
           }
         ]
-      }
+      },
+      "ScoreEvaluatorType": "DefaultDSE",
+      "ConsiderAxisList": [
+        {
+          "$type": "RPG.GameCore.CheckPredicateAxis",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByAnd",
+            "PredicateList": [
+              {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "ModifierName": "OneMore",
+                "Inverse": true
+              },
+              {
+                "$type": "RPG.GameCore.ByAny",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "W2_Abomi04_00_AICounter",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "W2_Abomi04_00_AICounter",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 5
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "SuccessScore": {
+            "Value": 0.5000000004656613
+          }
+        }
+      ]
     }
   ]
 }

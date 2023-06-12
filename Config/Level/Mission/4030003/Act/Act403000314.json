@@ -6,7 +6,6 @@
         {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
           "PerformanceType": "D",
-          "LockCamera": false,
           "CreateCharacterList": [],
           "EntityVisiableList": [],
           "PropVisiableList": [],
@@ -20,7 +19,16 @@
           "CreateNpcList": [],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
+            "TaskEnabled": false
+          },
+          "ActiveTemplateVirtualCamera": {
             "TaskEnabled": false
           },
           "SwitchCharacterAnchor": {
@@ -32,6 +40,9 @@
             "AnchorName": {
               "Value": "Anchor1"
             }
+          },
+          "AdvNpcFaceToPlayer": {
+            "TaskEnabled": false
           }
         },
         {
@@ -41,7 +52,7 @@
           "FinishImmadiate": true
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 403012208,
@@ -56,9 +67,6 @@
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -86,7 +94,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 403030406,
@@ -95,10 +103,11 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
+          "$type": "RPG.GameCore.EndPerformance"
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.TriggerUINotify",
+          "NotifyTypeName": "AutoTriggerRogueEntryProp"
         }
       ]
     },

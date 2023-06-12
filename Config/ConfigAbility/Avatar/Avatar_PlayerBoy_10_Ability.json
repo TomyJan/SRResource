@@ -26,10 +26,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity",
           "Duration": 0.1
         },
@@ -155,10 +151,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         }
@@ -200,10 +192,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "Iteration": 2,
           "BlurStart": 0.01,
           "BlurFeather": 0.01
@@ -246,10 +234,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "BlurStart": 0.01,
           "BlurFeather": 0.01
         },
@@ -432,10 +416,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                 "CompareType": "GreaterEqual",
                 "CompareValue": {
@@ -451,10 +431,6 @@
               "SuccessTaskList": [
                 {
                   "$type": "RPG.GameCore.SetModifierValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
                   "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                   "Value": {
                     "IsDynamic": true,
@@ -473,10 +449,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                 "CompareType": "Greater",
                 "CompareValue": {
@@ -528,10 +500,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
               "Multiplier": {
                 "IsDynamic": false,
@@ -566,10 +534,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_Energy_Count",
               "Value": {
                 "IsDynamic": false,
@@ -584,10 +548,6 @@
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "MDF_Energy_Count",
             "CompareType": "GreaterEqual",
             "CompareValue": {
@@ -599,18 +559,10 @@
           },
           "SuccessTaskList": [
             {
-              "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              }
+              "$type": "RPG.GameCore.TriggerEnergyBarEffect"
             },
             {
               "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "Active": "True",
               "BarType": 2,
               "CurrentState": "Active",
@@ -644,10 +596,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "Active": "True",
               "BarType": 2,
               "CD": {
@@ -780,10 +728,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -856,10 +800,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         }
@@ -868,25 +808,29 @@
     {
       "Modifiers": {
         "MWAvatar_PlayerBoy_10_DefenceUp": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -13500116
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -13500116
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_PlayerBoy_10_Skill11_Phase02",
@@ -1314,10 +1258,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                 "CompareType": "Greater",
                 "CompareValue": {
@@ -1374,10 +1314,6 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareModifierValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                     "CompareType": "Greater",
                     "CompareValue": {
@@ -1408,10 +1344,6 @@
                 },
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "MDF_Energy_Count",
                   "Value": {
                     "IsDynamic": true,
@@ -1458,10 +1390,6 @@
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "MDF_Energy_Count",
             "CompareType": "GreaterEqual",
             "CompareValue": {
@@ -1473,18 +1401,10 @@
           },
           "SuccessTaskList": [
             {
-              "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              }
+              "$type": "RPG.GameCore.TriggerEnergyBarEffect"
             },
             {
               "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "Active": "True",
               "BarType": 2,
               "CurrentState": "Active",
@@ -1518,10 +1438,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "Active": "True",
               "BarType": 2,
               "CurrentState": "Normal",
@@ -1592,10 +1508,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02"
         },
         {
@@ -1658,10 +1570,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1684,104 +1592,114 @@
       "Modifiers": {
         "MWAvatar_PlayerBoy_10_NullifyAggro_Aura": {
           "LifeStepMoment": "ModifierPhase1End",
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetConcat",
-                "Targets": [
-                  {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllTeamMember"
+          "_CallbackList": {
+            "OnDestroy": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetConcat",
+                    "Targets": [
+                      {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllTeamMember"
+                      },
+                      {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllUnselectable"
+                      }
+                    ]
                   },
-                  {
+                  "ModifierName": "MWAvatar_PlayerBoy_10_NullifyAggro"
+                }
+              ]
+            },
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllUnselectable"
-                  }
-                ]
-              },
-              "ModifierName": "MWAvatar_PlayerBoy_10_NullifyAggro"
+                    "Alias": "AllTeammate"
+                  },
+                  "ModifierName": "MWAvatar_PlayerBoy_10_NullifyAggro"
+                }
+              ]
             }
-          ],
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeammate"
-              },
-              "ModifierName": "MWAvatar_PlayerBoy_10_NullifyAggro"
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster"
         },
         "MWAvatar_PlayerBoy_10_NullifyAggro": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "Target_AggroAddedRatio",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Value": "AggroAddedRatio"
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "Target_AggroDelta",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Value": "AggroDelta"
-            },
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AggroAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
-                      "Value": 1
-                    }
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "Target_AggroAddedRatio",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1323230253
+                  "Value": "AggroAddedRatio"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "Target_AggroDelta",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "Add"
+                  "Value": "AggroDelta"
+                },
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "Sub"
+                  "Property": "AggroAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1323230253
+                      },
+                      {
+                        "Type": "Add"
+                      },
+                      {
+                        "Type": "Neg"
+                      }
+                    ]
                   }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AggroDelta",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 446387248
+                },
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AggroDelta",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 446387248
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_PlayerBoy_10_Skill02_Phase02",
@@ -1908,10 +1826,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                 "CompareType": "GreaterEqual",
                 "CompareValue": {
@@ -1927,10 +1841,6 @@
               "SuccessTaskList": [
                 {
                   "$type": "RPG.GameCore.SetModifierValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
                   "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                   "Value": {
                     "IsDynamic": true,
@@ -1949,10 +1859,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                 "CompareType": "Greater",
                 "CompareValue": {
@@ -1977,10 +1883,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
               "Multiplier": {
                 "IsDynamic": false,
@@ -2002,10 +1904,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "MDF_Energy_Count",
               "Value": {
                 "IsDynamic": false,
@@ -2020,10 +1918,6 @@
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "MDF_Energy_Count",
             "CompareType": "GreaterEqual",
             "CompareValue": {
@@ -2035,18 +1929,10 @@
           },
           "SuccessTaskList": [
             {
-              "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              }
+              "$type": "RPG.GameCore.TriggerEnergyBarEffect"
             },
             {
               "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "Active": "True",
               "BarType": 2,
               "CurrentState": "Active",
@@ -2080,10 +1966,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "Active": "True",
               "BarType": 2,
               "CD": {
@@ -2301,10 +2183,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "DarkTeamCenter"
         },
         {
@@ -2328,10 +2206,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": -0.5,
@@ -2373,10 +2247,6 @@
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
               "AttackType": "RangeAttack",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0.1,
@@ -2438,10 +2308,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -2467,10 +2333,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03"
         },
         {
@@ -2616,11 +2478,7 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamDark",
-          "FormationType": "DarkTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationType": "DarkTeamNormal"
         },
         {
           "$type": "RPG.GameCore.ShowBattleUI",
@@ -2628,10 +2486,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -2764,10 +2618,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
               "Multiplier": {
                 "IsDynamic": false,
@@ -2780,18 +2630,10 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          }
+          "$type": "RPG.GameCore.TriggerEnergyBarEffect"
         },
         {
           "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "BarType": 2,
           "CurrentState": "Active",
@@ -3015,100 +2857,80 @@
     {
       "Modifiers": {
         "MAvatar_PlayerBoy_10_PointB3": {
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "Flag": "Shield"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnPhase1": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ModifySPNew",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "Flag": "Shield"
                   },
-                  "AddValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1364738401
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifySPNew",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AddValue": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -1364738401
+                          }
+                        ]
                       }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_MAZ_RecoverSP.prefab"
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MWAvatar_PlayerBoy_10_AttackRatioUp",
-                  "LifeStepImmediately": true,
-                  "LifeTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -1852840176
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_MAZ_RecoverSP.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MWAvatar_PlayerBoy_10_AttackRatioUp",
+                      "LifeStepImmediately": true,
+                      "LifeTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
                         }
-                      ]
+                      },
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -1852840176
+                            }
+                          ]
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MWAvatar_PlayerBoy_10_Passive": {
-          "OnAfterBeingAttacked": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetModifierValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
-                  "ModifyFunction": "Add",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
-                },
+          "_CallbackList": {
+            "OnAfterBeingAttacked": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
@@ -3117,8 +2939,116 @@
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "Caster"
                     },
-                    "ModifierName": "MAvatar_PlayerBoy_10_WeaponCharge_Free"
+                    "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge"
                   },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetModifierValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                      "ModifyFunction": "Add",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "ModifierName": "MAvatar_PlayerBoy_10_WeaponCharge_Free"
+                      },
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "ModifierName": "MAvatar_PlayerBoy_Weapon_Effect"
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareModifierValue",
+                        "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                        "CompareType": "GreaterEqual",
+                        "CompareValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1521685235
+                            }
+                          ]
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetModifierValue",
+                          "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                          "Value": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1521685235
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "FailedTaskList": []
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareModifierValue",
+                        "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                        "CompareType": "Greater",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 3.5000000004656613
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "AliveOnly": false,
+                          "ModifierName": "MAvatar_PlayerBoy_10_ChangeAttack"
+                        }
+                      ],
+                      "FailedTaskList": []
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+                      "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                      "Multiplier": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "DynamicKey": "MDF_Energy_Count"
+                    }
+                  ],
                   "FailedTaskList": [
                     {
                       "$type": "RPG.GameCore.AddModifier",
@@ -3126,39 +3056,51 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "Caster"
                       },
-                      "ModifierName": "MAvatar_PlayerBoy_Weapon_Effect"
+                      "AliveOnly": false,
+                      "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge"
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "MDF_Energy_Count",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
                   ]
                 },
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareModifierValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "MDF_Energy_Count",
                     "CompareType": "GreaterEqual",
                     "CompareValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1521685235
-                        }
-                      ]
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 4
+                      }
                     }
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetModifierValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
+                      "$type": "RPG.GameCore.TriggerEnergyBarEffect"
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "Active": "True",
+                      "BarType": 2,
+                      "CurrentState": "Active",
+                      "CD": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
                       },
-                      "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
-                      "Value": {
+                      "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon8003Passive.png",
+                      "MaxCount": {
                         "IsDynamic": true,
                         "Expressions": [
                           {
@@ -3166,58 +3108,131 @@
                             "DynamicHash": 1521685235
                           }
                         ]
-                      }
-                    }
-                  ],
-                  "FailedTaskList": []
-                },
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareModifierValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
-                    "CompareType": "Greater",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 3.5000000004656613
-                      }
-                    }
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.AddModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
                       },
-                      "AliveOnly": false,
-                      "ModifierName": "MAvatar_PlayerBoy_10_ChangeAttack"
+                      "CurrentCount": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -205849644
+                          }
+                        ]
+                      }
                     }
                   ],
-                  "FailedTaskList": []
-                },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "Active": "True",
+                      "BarType": 2,
+                      "CD": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon8003Passive.png",
+                      "MaxCount": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 1521685235
+                          }
+                        ]
+                      },
+                      "CurrentCount": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -205849644
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnBeingRevived": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-                  "ReadTargetType": {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
-                  "Multiplier": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
+                  "ModifierName": "MAvatar_PlayerBoy_Weapon_Effect"
+                }
+              ]
+            }
+          }
+        },
+        "MWAvatar_PlayerBoy_10_AttackRatioUp": {
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 2128130574
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "Stacking": "ReplaceByCaster",
+          "DynamicValues": {
+            "Values": {
+              "2128130574": {}
+            }
+          }
+        },
+        "MWAvatar_PlayerBoy_10_ShieldAfterBeingHit": {
+          "_CallbackList": {
+            "OnAfterBeingAttacked": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MWAvatar_PlayerBoy_10_Shield",
+                  "LifeTime": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1460099747
+                      }
+                    ]
+                  },
+                  "DynamicValues": {
+                    "MWAvatar_PlayerBoy_10_Shield_Value01": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 1674863148
+                        }
+                      ]
                     }
                   },
-                  "DynamicKey": "MDF_Energy_Count"
-                }
-              ],
-              "FailedTaskList": [
+                  "IsShowUIMessageFromModel": false
+                },
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
@@ -3228,202 +3243,11 @@
                   "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge"
                 },
                 {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "MDF_Energy_Count",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "MDF_Energy_Count",
-                "CompareType": "GreaterEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 4
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Active": "True",
-                  "BarType": 2,
-                  "CurrentState": "Active",
-                  "CD": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  },
-                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon8003Passive.png",
-                  "MaxCount": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1521685235
-                      }
-                    ]
-                  },
-                  "CurrentCount": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -205849644
-                      }
-                    ]
-                  }
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Active": "True",
-                  "BarType": 2,
-                  "CD": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  },
-                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon8003Passive.png",
-                  "MaxCount": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1521685235
-                      }
-                    ]
-                  },
-                  "CurrentCount": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -205849644
-                      }
-                    ]
-                  }
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
                 }
               ]
             }
-          ],
-          "OnBeingRevived": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MAvatar_PlayerBoy_Weapon_Effect"
-            }
-          ]
-        },
-        "MWAvatar_PlayerBoy_10_AttackRatioUp": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
-              }
-            }
-          ],
-          "Stacking": "ReplaceByCaster",
-          "DynamicValues": {
-            "Values": {
-              "2128130574": {}
-            }
-          }
-        },
-        "MWAvatar_PlayerBoy_10_ShieldAfterBeingHit": {
-          "OnAfterBeingAttacked": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MWAvatar_PlayerBoy_10_Shield",
-              "LifeTime": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1460099747
-                  }
-                ]
-              },
-              "DynamicValues": {
-                "MWAvatar_PlayerBoy_10_Shield_Value01": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1674863148
-                    }
-                  ]
-                }
-              },
-              "IsShowUIMessageFromModel": false
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AliveOnly": false,
-              "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
-            }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "1674863148": {}
@@ -3438,10 +3262,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "Rank06_Max_Layer",
           "Value": {
             "IsDynamic": true,
@@ -3463,10 +3283,6 @@
         },
         {
           "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "BarType": 2,
           "CurrentState": "Normal",
@@ -3504,10 +3320,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Rank01_Ratio",
               "Value": {
                 "IsDynamic": true,
@@ -3521,10 +3333,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Rank01_ExtraRatio",
               "Value": {
                 "IsDynamic": true,
@@ -3540,10 +3348,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Rank01_Ratio",
               "Value": {
                 "IsDynamic": false,
@@ -3554,10 +3358,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Rank01_ExtraRatio",
               "Value": {
                 "IsDynamic": false,
@@ -3579,10 +3379,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Rank02_Ratio",
               "Value": {
                 "IsDynamic": true,
@@ -3596,10 +3392,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Rank02_Value",
               "Value": {
                 "IsDynamic": true,
@@ -3615,10 +3407,6 @@
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Rank02_Ratio",
               "Value": {
                 "IsDynamic": false,
@@ -3629,10 +3417,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Rank02_Value",
               "Value": {
                 "IsDynamic": false,
@@ -3679,10 +3463,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
               "Multiplier": {
                 "IsDynamic": false,
@@ -3720,10 +3500,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                 "CompareType": "Greater",
                 "CompareValue": {
@@ -3744,18 +3520,10 @@
                   "ModifierName": "MAvatar_PlayerBoy_10_ChangeAttack"
                 },
                 {
-                  "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  }
+                  "$type": "RPG.GameCore.TriggerEnergyBarEffect"
                 },
                 {
                   "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "Active": "True",
                   "BarType": 2,
                   "CurrentState": "Active",
@@ -3789,10 +3557,6 @@
               "FailedTaskList": [
                 {
                   "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "Active": "True",
                   "BarType": 2,
                   "CD": {
@@ -3850,129 +3614,141 @@
       "Modifiers": {
         "StageAbility_Maze_PlayerBoy_10_Modifier": {
           "EnterBattlePriority": "CharacterBuff",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
-                  "DynamicKey": "CasterDefence",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Value": "Defence"
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "ModifierName": "MAvatar_PlayerBoy_10_MazeSkill_Shield",
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -776703872
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
                       }
-                    ]
-                  },
-                  "DynamicValues": {
-                    "MWAvatar_PlayerBoy_10_Shield_Value02": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -866033058
-                        },
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 2123907767
-                        },
-                        {
-                          "Type": "Mul"
-                        },
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -242132937
-                        },
-                        {
-                          "Type": "Add"
-                        }
-                      ]
                     }
-                  }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                      "DynamicKey": "CasterDefence",
+                      "ReadTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Value": "Defence"
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MAvatar_PlayerBoy_10_MazeSkill_Shield",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -776703872
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MWAvatar_PlayerBoy_10_Shield_Value02": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -866033058
+                            },
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 2123907767
+                            },
+                            {
+                              "Type": "Mul"
+                            },
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -242132937
+                            },
+                            {
+                              "Type": "Add"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MAvatar_PlayerBoy_10_MazeSkill_Shield": {
           "LifeTime": 1,
           "BehaviorFlagList": [
             "Shield"
           ],
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.SetResilience"
-            },
-            {
-              "$type": "RPG.GameCore.ModifierOverrideOnHitEffect",
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_Halo_Trigger.prefab",
-              "ModifierOverrideOnHitEffectPriority": "ModifyOthers",
-              "HitEffectStacking": "Multiple",
-              "OverrideOffset": true,
-              "Offset": {
-                "X": 0,
-                "Y": 0.85,
-                "Z": 0.6
-              }
-            }
-          ],
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.RemoveShield",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetResilience",
-              "DoReset": true
-            }
-          ],
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.InitShield",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ShieldValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1463289729
-                  }
-                ]
-              }
-            }
-          ],
           "UseSnapshotEntity": true,
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetResilience"
+                },
+                {
+                  "$type": "RPG.GameCore.ModifierOverrideOnHitEffect",
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_Halo_Trigger.prefab",
+                  "ModifierOverrideOnHitEffectPriority": "ModifyOthers",
+                  "HitEffectStacking": "Multiple",
+                  "OverrideOffset": true,
+                  "Offset": {
+                    "X": 0,
+                    "Y": 0.85,
+                    "Z": 0.6
+                  }
+                }
+              ]
+            },
+            "OnDestroy": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveShield",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.SetResilience",
+                  "DoReset": true
+                }
+              ]
+            },
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.InitShield",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ShieldValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1463289729
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -4006,47 +3782,51 @@
           "Value": 1
         }
       },
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ValueType": "Layer",
-          "Multiplier": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "DynamicKey": "MDF_Layer"
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "DefenceAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1849530227
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
               },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1662446059
+              "ValueType": "Layer",
+              "Multiplier": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
               },
-              {
-                "Type": "Mul"
+              "DynamicKey": "MDF_Layer"
+            },
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "DefenceAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1849530227
+                  },
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1662446059
+                  },
+                  {
+                    "Type": "Mul"
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
         "Values": {
@@ -4057,171 +3837,85 @@
     },
     "MAvatar_PlayerBoy_10_WeaponCharge_Free": {},
     "MAvatar_PlayerBoy_10_ChangeAttack": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.SetControlSkillMapping",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "SkillTriggerKey": "Skill01"
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetControlSkillMapping",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "SkillTriggerKey": "Skill01"
+            },
+            {
+              "$type": "RPG.GameCore.ShowBattleSkillEnhanced",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              }
+            }
+          ]
         },
-        {
-          "$type": "RPG.GameCore.ShowBattleSkillEnhanced",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          }
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetControlSkillMapping",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "SkillTriggerKey": "Skill11"
+            },
+            {
+              "$type": "RPG.GameCore.ShowBattleSkillEnhanced",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "IsShow": true
+            }
+          ]
         }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetControlSkillMapping",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "SkillTriggerKey": "Skill11"
-        },
-        {
-          "$type": "RPG.GameCore.ShowBattleSkillEnhanced",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "IsShow": true
-        }
-      ],
+      },
       "Stacking": "ReplaceByCaster"
     },
     "MWAvatar_PlayerBoy_10_WeaponCharge": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
-        }
-      ],
-      "OnBeforeDying": [
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
-        }
-      ],
       "UIConfig": {
         "UIPosition": "UI_Middle"
+      },
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
+            }
+          ]
+        },
+        "OnBeforeDying": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
+            }
+          ]
+        }
       },
       "Count": 1
     },
     "MWAvatar_PlayerBoy_10_DamageResistance": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "OnlyAlive": false,
-          "PhaseName": "Phase1",
-          "PhaseAnimConfig": {
-            "StandBy": "StandBy",
-            "StandByLowHP": "StandBy",
-            "Hit": "Hit",
-            "HitH": "Hit_H"
-          }
-        }
-      ],
-      "OnAfterBeingHitAll": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_DefenceHit.prefab",
-          "PositionOffset": {
-            "X": 0,
-            "Y": 0.5,
-            "Z": 0
-          }
-        },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_BeAttack_02.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_BeAttack.prefab"
-        }
-      ],
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "OnlyAlive": false,
-          "PhaseName": "Phase1",
-          "PhaseAnimConfig": {
-            "StandBy": "StandBy",
-            "StandByLowHP": "StandBy",
-            "Hit": "Hit",
-            "HitH": "Hit_H"
-          }
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "Property": "AllDamageReduce",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1844321531
-              }
-            ]
-          }
-        }
-      ],
-      "OnBeforeDying": [
-        {
-          "$type": "RPG.GameCore.RemoveSelfModifier"
-        }
-      ],
-      "OnModifierAdd": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByContainBehaviorFlag",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "Flag": "AvatarBreak"
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.CharacterChangePhase",
               "TargetType": {
@@ -4232,12 +3926,124 @@
               "PhaseName": "Phase1",
               "PhaseAnimConfig": {
                 "StandBy": "StandBy",
-                "StandByLowHP": "StandBy"
+                "StandByLowHP": "StandBy",
+                "Hit": "Hit",
+                "HitH": "Hit_H"
               }
             }
           ]
+        },
+        "OnAfterBeingHitAll": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_DefenceHit.prefab",
+              "PositionOffset": {
+                "X": 0,
+                "Y": 0.5,
+                "Z": 0
+              }
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_BeAttack_02.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_BeAttack.prefab"
+            }
+          ]
+        },
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.CharacterChangePhase",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "OnlyAlive": false,
+              "PhaseName": "Phase1",
+              "PhaseAnimConfig": {
+                "StandBy": "StandBy",
+                "StandByLowHP": "StandBy",
+                "Hit": "Hit",
+                "HitH": "Hit_H"
+              }
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "Property": "AllDamageReduce",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1844321531
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "OnBeforeDying": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveSelfModifier"
+            }
+          ]
+        },
+        "OnModifierAdd": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "Flag": "AvatarBreak"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.CharacterChangePhase",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "OnlyAlive": false,
+                  "PhaseName": "Phase1",
+                  "PhaseAnimConfig": {
+                    "StandBy": "StandBy",
+                    "StandByLowHP": "StandBy"
+                  }
+                }
+              ]
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
         "Values": {
@@ -4246,25 +4052,29 @@
       }
     },
     "MAvatar_PlayerBoy_10_DamageResistance_Team": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AllDamageReduce",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1235822520
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AllDamageReduce",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1235822520
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
         "Values": {
@@ -4277,61 +4087,69 @@
       "BehaviorFlagList": [
         "Shield"
       ],
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.SetResilience"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierOverrideOnHitEffect",
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_Halo_Trigger.prefab",
-          "ModifierOverrideOnHitEffectPriority": "ModifyOthers",
-          "HitEffectStacking": "Multiple",
-          "OverrideOffset": true,
-          "Offset": {
-            "X": 0,
-            "Y": 0.85,
-            "Z": 0.6
-          }
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveShield",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          }
-        },
-        {
-          "$type": "RPG.GameCore.SetResilience",
-          "DoReset": true
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.InitShield",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ShieldValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1866574256
-              }
-            ]
-          },
-          "DisplayData": {
-            "DitherRangeX": 0,
-            "DitherRangeY": 0,
-            "AttachPoint": "SelectRoot",
-            "FixedPosition": false
-          }
-        }
-      ],
       "UseSnapshotEntity": true,
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetResilience"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierOverrideOnHitEffect",
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_Halo_Trigger.prefab",
+              "ModifierOverrideOnHitEffectPriority": "ModifyOthers",
+              "HitEffectStacking": "Multiple",
+              "OverrideOffset": true,
+              "Offset": {
+                "X": 0,
+                "Y": 0.85,
+                "Z": 0.6
+              }
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveShield",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.SetResilience",
+              "DoReset": true
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.InitShield",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ShieldValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1866574256
+                  }
+                ]
+              },
+              "DisplayData": {
+                "DitherRangeX": 0,
+                "DitherRangeY": 0,
+                "AttachPoint": "SelectRoot",
+                "FixedPosition": false
+              }
+            }
+          ]
+        }
+      },
       "Stacking": "Replace",
       "DynamicValues": {
         "Values": {
@@ -4340,55 +4158,19 @@
       }
     },
     "MAvatar_PlayerBoy_Weapon_Effect": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareModifierValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
-            "CompareType": "GreaterEqual",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 4
-              }
-            }
-          },
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3_Light.prefab"
-            },
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                 "CompareType": "GreaterEqual",
                 "CompareValue": {
                   "IsDynamic": false,
                   "FixedValue": {
-                    "Value": 3
+                    "Value": 4
                   }
                 }
               },
@@ -4399,22 +4181,26 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "ModifierOwnerEntity"
                   },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab"
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3_Light.prefab"
                 },
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareModifierValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                     "CompareType": "GreaterEqual",
                     "CompareValue": {
                       "IsDynamic": false,
                       "FixedValue": {
-                        "Value": 2
+                        "Value": 3
                       }
                     }
                   },
@@ -4425,22 +4211,18 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab"
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab"
                     },
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
                         "$type": "RPG.GameCore.ByCompareModifierValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
                         "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
                         "CompareType": "GreaterEqual",
                         "CompareValue": {
                           "IsDynamic": false,
                           "FixedValue": {
-                            "Value": 1
+                            "Value": 2
                           }
                         }
                       },
@@ -4451,7 +4233,31 @@
                             "$type": "RPG.GameCore.TargetAlias",
                             "Alias": "ModifierOwnerEntity"
                           },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab"
+                        },
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCompareModifierValue",
+                            "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                            "CompareType": "GreaterEqual",
+                            "CompareValue": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 1
+                              }
+                            }
+                          },
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.RemoveEffect",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -4460,189 +4266,59 @@
               ]
             }
           ]
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "ModifierName": "MAvatar_PlayerBoy_10_WeaponCharge_Free"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3RD_Light.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3_Light.prefab"
-            }
-          ],
-          "FailedTaskList": [
+        },
+        "OnStack": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByCompareModifierValue",
+                "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+                  "Alias": "ModifierOwnerEntity"
                 },
-                "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
-                "CompareType": "GreaterEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 2
-                  }
-                }
+                "ModifierName": "MAvatar_PlayerBoy_10_WeaponCharge_Free"
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.TriggerEffect",
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab",
-                  "MinMutexTime": -1,
-                  "MinMutexType": "Entity"
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
-                "CompareType": "GreaterEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 3
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab",
-                  "MinMutexTime": -1,
-                  "MinMutexType": "Entity"
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareModifierValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
-                "CompareType": "GreaterEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 4
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab",
-                  "MinMutexTime": -1,
-                  "MinMutexType": "Entity"
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3RD_Light.prefab"
                 },
                 {
                   "$type": "RPG.GameCore.TriggerEffect",
@@ -4650,57 +4326,179 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "ModifierOwnerEntity"
                   },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3_Light.prefab",
-                  "MinMutexTime": -1,
-                  "MinMutexType": "Entity"
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3_Light.prefab"
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareModifierValue",
+                    "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                    "CompareType": "GreaterEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 2
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab",
+                      "MinMutexTime": -1,
+                      "MinMutexType": "Entity"
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareModifierValue",
+                    "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                    "CompareType": "GreaterEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 3
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab",
+                      "MinMutexTime": -1,
+                      "MinMutexType": "Entity"
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareModifierValue",
+                    "ModifierName": "MWAvatar_PlayerBoy_10_WeaponCharge",
+                    "CompareType": "GreaterEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 4
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab",
+                      "MinMutexTime": -1,
+                      "MinMutexType": "Entity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3_Light.prefab",
+                      "MinMutexTime": -1,
+                      "MinMutexType": "Entity"
+                    }
+                  ]
                 }
               ]
             }
           ]
+        },
+        "OnBeforeDying": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3_Light.prefab"
+            }
+          ]
         }
-      ],
-      "OnBeforeDying": [
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V0.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V1.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V2.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_WeaponEffect_V3.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_PlayerBoy_10/Eff_Avatar_PlayerBoy_10_Common_V3_Light.prefab"
-        }
-      ],
+      },
       "Stacking": "ReplaceByCaster"
     }
   }

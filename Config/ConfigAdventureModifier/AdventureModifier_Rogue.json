@@ -853,6 +853,16 @@
     "ADV_StageAbility_631024": {},
     "ADV_StageAbility_631025": {},
     "ADV_StageAbility_631026": {
+      "OnDestroy": [
+        {
+          "$type": "RPG.GameCore.RemoveAdventureModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllLightTeam"
+          },
+          "ModifierName": "ADV_StageAbility_631026_Sub"
+        }
+      ],
       "OnStack": [
         {
           "$type": "RPG.GameCore.AddAdventureModifier",
@@ -866,6 +876,18 @@
       "Stacking": "Replace"
     },
     "ADV_StageAbility_631026_Sub": {
+      "OnDestroy": [
+        {
+          "$type": "RPG.GameCore.ModifyAdventureCharacterRunSpeedRatio",
+          "UniqueKey": "TaskEnabled",
+          "SpeedRatioMultiplier": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 1
+            }
+          }
+        }
+      ],
       "OnStack": [
         {
           "$type": "RPG.GameCore.ModifyAdventureCharacterRunSpeedRatio",

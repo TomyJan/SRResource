@@ -71,44 +71,26 @@
           "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
           "FromDialog": false,
           "GroupID": 54,
-          "GroupNpcID": 400002
+          "GroupNpcID": 400001,
+          "TurnBackOnGraphEnd": false,
+          "FinishImmadiate": true
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
+          "FromDialog": false,
+          "GroupID": 54,
+          "GroupNpcID": 400002,
+          "PlayerLookAtNpc": false,
+          "TurnBackOnGraphEnd": false,
+          "FinishImmadiate": true
+        },
+        {
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010201
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
-          "$type": "RPG.GameCore.AdvEntityFaceTo",
-          "SourceType": {
-            "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
-            "FetchType": "SingleNpcByNpcID",
-            "SingleNpcID": {
-              "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 54
-                }
-              },
-              "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
-                }
-              }
-            }
-          },
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvLocalPlayer",
-            "IncludeStoryPlayer": true
-          },
-          "FinishImmediately": true
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -138,83 +120,11 @@
           "StoryMotionID": 1201020
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010203
-            }
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
-          "$type": "RPG.GameCore.AdvEntityFaceTo",
-          "SourceType": {
-            "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
-            "FetchType": "SingleNpcByNpcID",
-            "SingleNpcID": {
-              "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 54
-                }
-              },
-              "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400002
-                }
-              }
-            }
-          },
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
-            "FetchType": "SingleNpcByNpcID",
-            "SingleNpcID": {
-              "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 54
-                }
-              },
-              "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
-                }
-              }
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.AdvEntityFaceTo",
-          "SourceType": {
-            "$type": "RPG.GameCore.TargetFetchAdvLocalPlayer",
-            "IncludeStoryPlayer": true
-          },
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
-            "FetchType": "SingleNpcByNpcID",
-            "SingleNpcID": {
-              "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 54
-                }
-              },
-              "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
-                }
-              }
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
-          "SimpleTalkList": [
+            },
             {
               "TalkSentenceID": 204010204
             },
@@ -228,9 +138,6 @@
               "TalkSentenceID": 204010207
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -270,15 +177,12 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010209
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -297,7 +201,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010211
@@ -306,9 +210,6 @@
               "TalkSentenceID": 204010212
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -327,7 +228,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010214
@@ -336,9 +237,6 @@
               "TalkSentenceID": 204010215
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -364,15 +262,12 @@
           "StoryMotionID": 100101036
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010216
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -400,7 +295,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010255
@@ -409,9 +304,6 @@
               "TalkSentenceID": 204010254
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -470,7 +362,7 @@
           "StoryMotionID": 100101034
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010219
@@ -482,9 +374,6 @@
               "TalkSentenceID": 204010221
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
@@ -518,7 +407,7 @@
           "StoryMotionID": 100101034
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010223
@@ -527,9 +416,6 @@
               "TalkSentenceID": 204010224
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
@@ -563,15 +449,12 @@
           "StoryMotionID": 100101034
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010226
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -606,15 +489,12 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010228
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -634,7 +514,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010230
@@ -643,9 +523,6 @@
               "TalkSentenceID": 204010231
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -672,7 +549,7 @@
           "StoryMotionID": 1201020
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010233
@@ -687,9 +564,6 @@
               "TalkSentenceID": 204010236
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -708,7 +582,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010237
@@ -717,9 +591,6 @@
               "TalkSentenceID": 204010238
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -772,15 +643,12 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010240
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -833,15 +701,12 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010244
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -908,7 +773,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 204010247
@@ -926,9 +791,6 @@
               "TalkSentenceID": 204010250
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",

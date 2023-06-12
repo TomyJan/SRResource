@@ -16,6 +16,15 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "UseSkill08",
+      "RootTask": {
+        "$type": "RPG.GameCore.SequenceConfig",
+        "TaskList": [
+          {
+            "$type": "RPG.GameCore.UseSkill",
+            "SkillName": "Skill08"
+          }
+        ]
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
@@ -27,16 +36,7 @@
             "Value": 1
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.SequenceConfig",
-        "TaskList": [
-          {
-            "$type": "RPG.GameCore.UseSkill",
-            "SkillName": "Skill08"
-          }
-        ]
-      }
+      ]
     }
   ]
 }

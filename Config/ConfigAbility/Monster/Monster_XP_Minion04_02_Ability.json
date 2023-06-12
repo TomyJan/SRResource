@@ -26,10 +26,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -40,10 +36,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy_Charge01"
         }
@@ -181,10 +173,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -195,10 +183,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy_Charge02"
         }
@@ -315,10 +299,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -507,30 +487,34 @@
       "Modifiers": {
         "MMonster_XP_Minion04_02_P01_EnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.ExitBreakState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "CancelRecoverAnim": true
-            },
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Huimie",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AbilityTarget": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "InsertAbilityPriority": "MonsterBattleCry",
-              "ShowInActionBar": true
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ExitBreakState",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "CancelRecoverAnim": true
+                },
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Huimie",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "InsertAbilityPriority": "MonsterBattleCry",
+                  "ShowInActionBar": true
+                }
+              ]
             }
-          ]
+          }
         },
         "MMonster_XP_Minion04_02_Introduce": {}
       },
@@ -549,10 +533,6 @@
         },
         {
           "$type": "RPG.GameCore.SetMonsterEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "CenterStyle": 2,
           "OuterState": 2,
@@ -907,10 +887,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy",
           "NormalizedTransitionDuration": {
@@ -938,20 +914,12 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -1016,11 +984,7 @@
           "WaitTime": 0.1
         },
         {
-          "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          }
+          "$type": "RPG.GameCore.TriggerEnergyBarEffect"
         },
         {
           "$type": "RPG.GameCore.TriggerEffect",
@@ -1043,7 +1007,7 @@
           "WaitTime": 0.3
         },
         {
-          "$type": "RPG.GameCore.LoopExecuteTaskList",
+          "$type": "RPG.GameCore.LoopExecuteTaskListWithInterval",
           "MaxLoopCount": {
             "IsDynamic": true,
             "Expressions": [
@@ -1125,10 +1089,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         }
@@ -1138,30 +1098,34 @@
       "Modifiers": {
         "MMonster_XP_Minion04_02_P01_EnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.ExitBreakState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "CancelRecoverAnim": true
-            },
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Fengrao",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AbilityTarget": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "InsertAbilityPriority": "MonsterBattleCry",
-              "ShowInActionBar": true
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ExitBreakState",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "CancelRecoverAnim": true
+                },
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Fengrao",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "InsertAbilityPriority": "MonsterBattleCry",
+                  "ShowInActionBar": true
+                }
+              ]
             }
-          ]
+          }
         },
         "MMonster_XP_Minion04_03_Introduce": {}
       },
@@ -1180,10 +1144,6 @@
         },
         {
           "$type": "RPG.GameCore.SetMonsterEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "CenterStyle": 2,
           "OuterState": 2,
@@ -1216,364 +1176,344 @@
         "MMonster_XP_Minion04_02_Fengrao_Mark": {},
         "MMonster_XP_Minion04_02_Fengrao_BeHit": {},
         "MMonster_XP_Minion04_02_Fengrao_Minion": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "_CasterHP",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "Value": "MaxHP"
-            }
-          ],
-          "OnAfterBeingHitAll": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
-              "DynamicKey": "_Damage",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "_TotalDamage",
-              "Value": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1964565558
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 350439254
-                  },
-                  {
-                    "Type": "Add"
-                  }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "_TotalDamage",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "_CasterHP",
+                  "ReadTargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                    "Alias": "Caster"
                   },
-                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
+                  "Value": "MaxHP"
                 }
               ]
-            }
-          ],
-          "OnBeforeBeingAttacked": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "_TotalDamage",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            }
-          ],
-          "OnAfterBeingAttacked": [],
-          "OnListenModifierAdd": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
+            },
+            "OnAfterBeingHitAll": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
+                  "DynamicKey": "_Damage",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  }
                 },
-                "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Trigger1"
-              },
-              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "_TotalDamage",
+                  "Value": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1964565558
+                      },
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 350439254
+                      },
+                      {
+                        "Type": "Add"
+                      }
+                    ]
+                  }
+                },
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
                     "DynamicKey": "_TotalDamage",
                     "CompareType": "Greater",
                     "CompareValue": {
                       "IsDynamic": false,
                       "FixedValue": {
-                        "Value": 0.5000000004656613
+                        "Value": 0
                       }
                     }
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.TriggerEffect",
+                      "$type": "RPG.GameCore.AddModifier",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_Hit.prefab"
-                    }
-                  ],
-                  "FailedTaskList": []
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "MMonster_XP_Minion04_02_Fengrao_SelfDamage"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "_TotalDamage",
-                    "CompareType": "Greater",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0.5000000004656613
-                      }
-                    }
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.LoseHPByRatio",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "RatioType": "MaxHP",
-                      "Ratio": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1964565558
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1294382107
-                          },
-                          {
-                            "Type": "Div"
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1247153623
-                          },
-                          {
-                            "Type": "Mul"
-                          }
-                        ]
-                      },
-                      "Floor": {
-                        "Value": 1
-                      },
-                      "DisplayData": {
-                        "UIMessageHeight": 0.8,
-                        "DitherRangeX": 0.04,
-                        "DitherRangeY": 0.04
-                      }
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.LoseHPByRatio",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "RatioType": "MaxHP",
-                      "Ratio": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1964565558
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1294382107
-                          },
-                          {
-                            "Type": "Div"
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1247153623
-                          },
-                          {
-                            "Type": "Mul"
-                          }
-                        ]
-                      },
-                      "Floor": {
-                        "Value": 1
-                      },
-                      "DisplayData": {
-                        "UIMessageHeight": 0.8,
-                        "DitherRangeX": 0.04,
-                        "DitherRangeY": 0.04
-                      }
+                      "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
                     }
                   ]
                 }
               ]
             },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Trigger"
-              },
-              "SuccessTaskList": [
+            "OnBeforeBeingAttacked": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "_TotalDamage",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "OnAfterBeingAttacked": {
+              "CallbackConfig": []
+            },
+            "OnListenModifierAdd": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
+                      "Alias": "ParamEntity"
                     },
-                    "DynamicKey": "_TotalDamage",
-                    "CompareType": "Greater",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0.5000000004656613
-                      }
-                    }
+                    "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Trigger1"
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.HealHP",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "FormulaType": "HealByTargetMaxHP",
-                      "ModifyValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1964565558
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1195887508
-                          },
-                          {
-                            "Type": "Mul"
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "_TotalDamage",
+                        "CompareType": "Greater",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.5000000004656613
                           }
-                        ]
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "_TotalDamage",
-                      "Value": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0
                         }
-                      }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.TriggerEffect",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_Hit.prefab"
+                        }
+                      ],
+                      "FailedTaskList": []
                     }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.HealHP",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "FormulaType": "HealByTargetMaxHP",
-                      "ModifyValue": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1964565558
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1195887508
-                          },
-                          {
-                            "Type": "Mul"
-                          }
-                        ]
-                      }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
                     },
+                    "ModifierName": "MMonster_XP_Minion04_02_Fengrao_SelfDamage"
+                  },
+                  "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "DynamicKey": "_TotalDamage",
-                      "Value": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "_TotalDamage",
+                        "CompareType": "Greater",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.5000000004656613
+                          }
                         }
-                      }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.LoseHPByRatio",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "RatioType": "MaxHP",
+                          "Ratio": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1964565558
+                              },
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1294382107
+                              },
+                              {
+                                "Type": "Div"
+                              },
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1247153623
+                              },
+                              {
+                                "Type": "Mul"
+                              }
+                            ]
+                          },
+                          "Floor": {
+                            "Value": 1
+                          },
+                          "DisplayData": {
+                            "UIMessageHeight": 0.8,
+                            "DitherRangeX": 0.04,
+                            "DitherRangeY": 0.04
+                          }
+                        }
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.LoseHPByRatio",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "RatioType": "MaxHP",
+                          "Ratio": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1964565558
+                              },
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": -1294382107
+                              },
+                              {
+                                "Type": "Div"
+                              },
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1247153623
+                              },
+                              {
+                                "Type": "Mul"
+                              }
+                            ]
+                          },
+                          "Floor": {
+                            "Value": 1
+                          },
+                          "DisplayData": {
+                            "UIMessageHeight": 0.8,
+                            "DitherRangeX": 0.04,
+                            "DitherRangeY": 0.04
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Trigger"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "_TotalDamage",
+                        "CompareType": "Greater",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.5000000004656613
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.HealHP",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "FormulaType": "HealByTargetMaxHP",
+                          "ModifyValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1964565558
+                              },
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1195887508
+                              },
+                              {
+                                "Type": "Mul"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "_TotalDamage",
+                          "Value": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 0
+                            }
+                          }
+                        }
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.HealHP",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "FormulaType": "HealByTargetMaxHP",
+                          "ModifyValue": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1964565558
+                              },
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 1195887508
+                              },
+                              {
+                                "Type": "Mul"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValue",
+                          "DynamicKey": "_TotalDamage",
+                          "Value": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 0
+                            }
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "350439254": {},
@@ -1585,85 +1525,91 @@
           }
         },
         "MMonster_XP_Minion04_02_Fengrao_Caster": {
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Minion"
-            }
-          ],
-          "OnListenAfterAttack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByTargetTeam",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "Team": "TeamDark"
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareCharacterNumber",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "AllDarkTeam"
-                    },
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsContainModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
-                    },
-                    "CompareType": "Greater",
-                    "CompareNumber": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
-                    }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_Fengrao",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AbilityTarget": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "InsertAbilityPriority": "MonsterChangeState",
-                  "ShowInActionBar": true
-                }
-              ],
-              "FailedTaskList": [
+          "_CallbackList": {
+            "OnDestroy": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "AllDarkTeam"
                   },
-                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Minion"
+                }
+              ]
+            },
+            "OnListenAfterAttack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByTargetTeam",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "Team": "TeamDark"
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareCharacterNumber",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "AllDarkTeam"
+                        },
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsContainModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
+                        },
+                        "CompareType": "Greater",
+                        "CompareNumber": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_Fengrao",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbilityTarget": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "InsertAbilityPriority": "MonsterChangeState",
+                      "ShowInActionBar": true
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllDarkTeam"
+                      },
+                      "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Fengrao",
@@ -2053,10 +1999,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimLogicState": "Idle",
               "AnimStateName": "StandBy",
               "NormalizedTransitionDuration": {
@@ -2094,10 +2036,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -2105,10 +2043,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AimTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "AllTeamMember"
@@ -2151,11 +2085,7 @@
           "ModifierName": "MMonster_XP_Minion04_02_Fengrao_SelfDamage"
         },
         {
-          "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          }
+          "$type": "RPG.GameCore.TriggerEnergyBarEffect"
         },
         {
           "$type": "RPG.GameCore.WaitSecond",
@@ -2257,10 +2187,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         },
@@ -2278,30 +2204,34 @@
       "Modifiers": {
         "MMonster_XP_Minion04_02_P01_EnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.ExitBreakState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "CancelRecoverAnim": true
-            },
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Fengrao_02",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AbilityTarget": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "InsertAbilityPriority": "MonsterBattleCry",
-              "ShowInActionBar": true
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ExitBreakState",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "CancelRecoverAnim": true
+                },
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Fengrao_02",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "InsertAbilityPriority": "MonsterBattleCry",
+                  "ShowInActionBar": true
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_XP_Minion04_02_SkillP01_Fengrao_02",
@@ -2322,440 +2252,412 @@
     {
       "Modifiers": {
         "MMonster_XP_Minion04_02_Fengrao_02_Minion": {
-          "OnAfterBeingHit": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
+          "_CallbackList": {
+            "OnAfterBeingHit": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
+                }
+              ]
             }
-          ]
+          }
         },
         "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit": {},
         "MMonster_XP_Minion04_02_Fengrao_02_Caster": {
-          "OnCreate": [],
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": []
             },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion"
-            }
-          ],
-          "OnListenAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "CurrentCount",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareHPRatio",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "CompareType": "Less",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  }
-                ]
-              },
-              "MaxNumber": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 20
-                }
-              },
-              "TaskList": [
+            "OnDestroy": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValueByHPRatio",
-                  "DynamicKey": "CostCount",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.LoopExecuteTaskList",
-                  "MaxLoopCount": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 10
-                    }
-                  },
-                  "TaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
-                        "DynamicKey": "CostCount",
-                        "CompareType": "Less",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 1
-                          }
-                        }
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "CurrentCount",
-                          "Value": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -1851115926
-                              },
-                              {
-                                "Type": "FixedNumber",
-                                "FixedValue": {
-                                  "Value": 1
-                                }
-                              },
-                              {
-                                "Type": "Add"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "CostCount",
-                          "Value": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 612864466
-                              },
-                              {
-                                "Type": "FixedNumber",
-                                "FixedValue": {
-                                  "Value": 0.10000000009313226
-                                }
-                              },
-                              {
-                                "Type": "Add"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.HealHP",
+                  "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "AllLightTeam"
                   },
-                  "FormulaType": "HealByTargetMaxHP",
-                  "HealPercentage": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion"
                 }
               ]
             },
-            {
-              "$type": "RPG.GameCore.Retarget",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareHPRatio",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "CompareType": "Less",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  }
-                ]
-              },
-              "MaxNumber": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 20
-                }
-              },
-              "TaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValueByHPRatio",
-                  "DynamicKey": "CostCount",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.LoopExecuteTaskList",
-                  "MaxLoopCount": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 10
-                    }
-                  },
-                  "TaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
-                        "DynamicKey": "CostCount",
-                        "CompareType": "Less",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 1
-                          }
-                        }
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "CurrentCount",
-                          "Value": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -1851115926
-                              },
-                              {
-                                "Type": "FixedNumber",
-                                "FixedValue": {
-                                  "Value": 1
-                                }
-                              },
-                              {
-                                "Type": "Add"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "CostCount",
-                          "Value": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 612864466
-                              },
-                              {
-                                "Type": "FixedNumber",
-                                "FixedValue": {
-                                  "Value": 0.10000000009313226
-                                }
-                              },
-                              {
-                                "Type": "Add"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.HealHP",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  },
-                  "FormulaType": "HealByTargetMaxHP",
-                  "HealPercentage": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Caster",
-              "Multiplier": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "DynamicKey": "CostCount"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "CurrentCount",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 612864466
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "CurrentCount",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareHPRatio",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "CompareType": "Less",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "MaxNumber": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 20
+                    }
+                  },
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByHPRatio",
+                      "DynamicKey": "CostCount",
+                      "ReadTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.LoopExecuteTaskList",
+                      "MaxLoopCount": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 10
+                        }
+                      },
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCompareDynamicValue",
+                            "DynamicKey": "CostCount",
+                            "CompareType": "Less",
+                            "CompareValue": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 1
+                              }
+                            }
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "CurrentCount",
+                              "Value": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": -1851115926
+                                  },
+                                  {
+                                    "Type": "FixedNumber",
+                                    "FixedValue": {
+                                      "Value": 1
+                                    }
+                                  },
+                                  {
+                                    "Type": "Add"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "CostCount",
+                              "Value": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": 612864466
+                                  },
+                                  {
+                                    "Type": "FixedNumber",
+                                    "FixedValue": {
+                                      "Value": 0.10000000009313226
+                                    }
+                                  },
+                                  {
+                                    "Type": "Add"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.HealHP",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "FormulaType": "HealByTargetMaxHP",
+                      "HealPercentage": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  },
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareHPRatio",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "CompareType": "Less",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "MaxNumber": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 20
+                    }
+                  },
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByHPRatio",
+                      "DynamicKey": "CostCount",
+                      "ReadTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.LoopExecuteTaskList",
+                      "MaxLoopCount": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 10
+                        }
+                      },
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByCompareDynamicValue",
+                            "DynamicKey": "CostCount",
+                            "CompareType": "Less",
+                            "CompareValue": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 1
+                              }
+                            }
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "CurrentCount",
+                              "Value": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": -1851115926
+                                  },
+                                  {
+                                    "Type": "FixedNumber",
+                                    "FixedValue": {
+                                      "Value": 1
+                                    }
+                                  },
+                                  {
+                                    "Type": "Add"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "CostCount",
+                              "Value": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": 612864466
+                                  },
+                                  {
+                                    "Type": "FixedNumber",
+                                    "FixedValue": {
+                                      "Value": 0.10000000009313226
+                                    }
+                                  },
+                                  {
+                                    "Type": "Add"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.HealHP",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "FormulaType": "HealByTargetMaxHP",
+                      "HealPercentage": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Minion_Hit"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Caster",
+                  "Multiplier": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "DynamicKey": "CostCount"
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "CurrentCount",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 612864466
+                        }
+                      ]
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "CurrentCount",
+                      "Value": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 612864466
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.SetModifierValue",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "DynamicKey": "CurrentCount",
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Caster",
+                  "ModifyFunction": "Add",
                   "Value": {
                     "IsDynamic": true,
                     "Expressions": [
                       {
                         "Type": "DynamicNumber",
-                        "DynamicHash": 612864466
+                        "DynamicHash": -1851115926
+                      },
+                      {
+                        "Type": "Neg"
                       }
                     ]
                   }
                 }
               ]
-            },
-            {
-              "$type": "RPG.GameCore.SetModifierValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Caster",
-              "ModifyFunction": "Add",
-              "Value": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1851115926
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
-              }
             }
-          ],
+          },
           "Count": 100
         }
       },
@@ -3034,10 +2936,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimLogicState": "Idle",
               "AnimStateName": "StandBy",
               "NormalizedTransitionDuration": {
@@ -3061,30 +2959,34 @@
       "Modifiers": {
         "MMonster_XP_Minion04_02_P01_EnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.ExitBreakState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "CancelRecoverAnim": true
-            },
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Cunhu",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AbilityTarget": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "InsertAbilityPriority": "MonsterBattleCry",
-              "ShowInActionBar": true
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ExitBreakState",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "CancelRecoverAnim": true
+                },
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Cunhu",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "InsertAbilityPriority": "MonsterBattleCry",
+                  "ShowInActionBar": true
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_XP_Minion04_02_SkillP01_Cunhu",
@@ -3364,10 +3266,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy",
           "NormalizedTransitionDuration": {
@@ -3382,65 +3280,71 @@
     {
       "Modifiers": {
         "MMonster_XP_Minion04_02_P01_Xuwu": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.ShowUIPage",
-              "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
-              "UITextNodes": [
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
                 {
-                  "TextPath": "AreaInfoPanel/Title/Text",
-                  "TextContent": {
-                    "Hash": 1974040064
-                  }
-                }
-              ],
-              "LifeTime": 2
-            }
-          ],
-          "OnAfterSkillUse": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "ModifierName": "MMonster_XP_Minion04_02_P01_Xuwu_00"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_Xuwu",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AbilityTarget": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
-                  },
-                  "AbortBehaviorFlags": [
-                    "STAT_CTRL",
-                    "Break",
-                    "DisableAction"
+                  "$type": "RPG.GameCore.ShowUIPage",
+                  "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
+                  "UITextNodes": [
+                    {
+                      "TextPath": "AreaInfoPanel/Title/Text",
+                      "TextContent": {
+                        "Hash": 1974040064
+                      }
+                    }
                   ],
-                  "InsertAbilityPriority": "MonsterInsertAttackSelf",
-                  "ShowInActionBar": true
+                  "LifeTime": 2
                 }
-              ],
-              "FailedTaskList": [
+              ]
+            },
+            "OnAfterSkillUse": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "ModifierName": "MMonster_XP_Minion04_02_P01_Xuwu_00"
                   },
-                  "ModifierName": "MMonster_XP_Minion04_02_P01_Xuwu_00"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_Xuwu",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbilityTarget": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
+                      },
+                      "AbortBehaviorFlags": [
+                        "STAT_CTRL",
+                        "Break",
+                        "DisableAction"
+                      ],
+                      "InsertAbilityPriority": "MonsterInsertAttackSelf",
+                      "ShowInActionBar": true
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MMonster_XP_Minion04_02_P01_Xuwu_00"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "MMonster_XP_Minion04_02_P01_Xuwu_00": {}
       },
@@ -3550,10 +3454,6 @@
           "TaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "DispelSuccess",
               "Value": {
                 "IsDynamic": false,
@@ -3582,10 +3482,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "DispelSuccess",
                 "CompareType": "Greater",
                 "CompareValue": {
@@ -3653,10 +3549,6 @@
           "TaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "DispelSuccess",
               "Value": {
                 "IsDynamic": false,
@@ -3685,10 +3577,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "DispelSuccess",
                 "CompareType": "Greater",
                 "CompareValue": {
@@ -3761,10 +3649,6 @@
           "TaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "DispelSuccess",
               "Value": {
                 "IsDynamic": false,
@@ -3793,10 +3677,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "DispelSuccess",
                 "CompareType": "Greater",
                 "CompareValue": {
@@ -3868,10 +3748,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy"
         }
@@ -3885,327 +3761,64 @@
   ],
   "GlobalModifiers": {
     "MMonster_XP_Minion04_02_Cunhu_Caster": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Effect"
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
-          "UITextNodes": [
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
             {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": -69671596
-              }
-            }
-          ],
-          "LifeTime": 2
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Effect"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff"
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_EffectBreak"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetMonsterEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "Active": "True",
-          "CenterStyle": 3,
-          "OuterState": 2,
-          "IconPath": "SpriteOutput/BuffIcon/Inlevel/IconMonsterKnight.png",
-          "MaxCount": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 20
-            }
-          },
-          "CurrentCount": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 2139120948
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "MMonster_XP_Minion04_02_Cunhu_Effect": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_EffectBreak"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Flags": [
-            "Field",
-            "Resident"
-          ],
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Flags": [
-            "Resident"
-          ],
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_03.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_01.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldS.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        }
-      ]
-    },
-    "MMonster_XP_Minion04_02_Cunhu_EffectBreak": {
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_Breack.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        }
-      ]
-    },
-    "MMonster_XP_Minion04_02_Cunhu_Buff": {
-      "BehaviorFlagList": [
-        "BlockDamage",
-        "MuteBreak"
-      ],
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_02.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.SetResilience"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.SetResilience",
-          "DoReset": true
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Caster"
-        }
-      ],
-      "OnAfterBeingHit": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_Hit.prefab",
-          "MinMutexTime": 0.3
-        },
-        {
-          "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          }
-        },
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
-          "Multiplier": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "DynamicKey": "MDF_Count"
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "MDF_Count",
-            "CompareType": "Less",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1.5000000004656613
-              }
-            }
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.SetMonsterEnergyBarState",
+              "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "Active": "True",
-              "CenterStyle": 2,
-              "OuterState": 0,
-              "IconPath": "SpriteOutput/BuffIcon/Inlevel/IconMonsterKnight.png",
-              "MaxCount": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "CurrentCount": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
+              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Effect"
             },
             {
-              "$type": "RPG.GameCore.TriggerEnergyBarEffect",
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": -69671596
+                  }
+                }
+              ],
+              "LifeTime": 2
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              }
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Effect"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff"
             },
             {
               "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
+                "Alias": "Caster"
               },
               "ModifierName": "MMonster_XP_Minion04_02_Cunhu_EffectBreak"
-            },
-            {
-              "$type": "RPG.GameCore.SetModifierValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
-              "ModifyFunction": "Add"
             }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.SetModifierValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
-              "ModifyFunction": "Add"
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
-              "Multiplier": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "DynamicKey": "MDF_Count"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEnergyBarEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              }
-            },
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.SetMonsterEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "Active": "True",
               "CenterStyle": 3,
               "OuterState": 2,
@@ -4221,14 +3834,267 @@
                 "Expressions": [
                   {
                     "Type": "DynamicNumber",
-                    "DynamicHash": -2027709849
+                    "DynamicHash": 2139120948
                   }
                 ]
               }
             }
           ]
         }
+      }
+    },
+    "MMonster_XP_Minion04_02_Cunhu_Effect": {
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_EffectBreak"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Flags": [
+                "Field",
+                "Resident"
+              ],
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Flags": [
+                "Resident"
+              ],
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_03.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_01.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldS.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
+        }
+      }
+    },
+    "MMonster_XP_Minion04_02_Cunhu_EffectBreak": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_Breack.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
+        }
+      }
+    },
+    "MMonster_XP_Minion04_02_Cunhu_Buff": {
+      "BehaviorFlagList": [
+        "BlockDamageExcludeDot",
+        "MuteBreak"
       ],
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_02.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.SetResilience"
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetResilience",
+              "DoReset": true
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Caster"
+            }
+          ]
+        },
+        "OnAfterBeingHit": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_ShieldP_Hit.prefab",
+              "MinMutexTime": 0.3
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEnergyBarEffect"
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
+              "Multiplier": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "DynamicKey": "MDF_Count"
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "DynamicKey": "MDF_Count",
+                "CompareType": "Less",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 1.5000000004656613
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetMonsterEnergyBarState",
+                  "Active": "True",
+                  "CenterStyle": 2,
+                  "OuterState": 0,
+                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/IconMonsterKnight.png",
+                  "MaxCount": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "CurrentCount": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEnergyBarEffect"
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Cunhu_EffectBreak"
+                },
+                {
+                  "$type": "RPG.GameCore.SetModifierValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
+                  "ModifyFunction": "Add"
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetModifierValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
+                  "ModifyFunction": "Add"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+                  "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
+                  "Multiplier": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "DynamicKey": "MDF_Count"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEnergyBarEffect"
+                },
+                {
+                  "$type": "RPG.GameCore.SetMonsterEnergyBarState",
+                  "Active": "True",
+                  "CenterStyle": 3,
+                  "OuterState": 2,
+                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/IconMonsterKnight.png",
+                  "MaxCount": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 20
+                    }
+                  },
+                  "CurrentCount": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -2027709849
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
       "Count": 20,
       "DynamicValues": {
         "Values": {
@@ -4238,258 +4104,232 @@
       }
     },
     "MMonster_XP_Minion04_02_Fengrao_Buff": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop02.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop02.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_EffectGround": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "Flags": [
-            "Field",
-            "Resident"
-          ],
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP.prefab",
-          "MinMutexTime": -1
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "Flags": [
+                "Field",
+                "Resident"
+              ],
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP.prefab",
+              "MinMutexTime": -1
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_EffectPaths": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceS.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceS.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_EffectRound": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Flags": [
-            "Resident"
-          ],
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_02.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Flags": [
+                "Resident"
+              ],
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_02.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_EffectTrigger": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_03.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_03.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_EffectTrigger2": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_Hit.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_Hit.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_Buff_Huimie_Caster": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "Huimie_BeHitCounter",
-          "ContextScope": "TargetEntity"
-        },
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "XP_Minion04_02_Huimie_InsertFlag",
-          "ContextScope": "TargetEntity"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion"
-        },
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
-        }
-      ],
-      "OnListenTurnEnd": [
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "Huimie_BeHitCounter",
-          "ContextScope": "TargetEntity"
-        }
-      ],
-      "OnListenAfterAttack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByNot",
-            "Predicate": {
-              "$type": "RPG.GameCore.ByContainsParamFlag",
-              "Flag": "IsFakeAvatarAttack"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "DynamicKey": "Huimie_BeHitCounter",
+              "ContextScope": "TargetEntity"
+            },
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "DynamicKey": "XP_Minion04_02_Huimie_InsertFlag",
+              "ContextScope": "TargetEntity"
             }
-          },
-          "SuccessTaskList": [
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion"
+            },
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
+            }
+          ]
+        },
+        "OnListenTurnEnd": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "DynamicKey": "Huimie_BeHitCounter",
+              "ContextScope": "TargetEntity"
+            }
+          ]
+        },
+        "OnListenAfterAttack": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByTargetTeam",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "Team": "TeamLight"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "Huimie_BeHitCounter",
-                    "ContextScope": "TargetEntity",
-                    "CompareType": "Greater",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0.5000000004656613
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "XP_Minion04_02_Huimie_InsertFlag",
-                    "ContextScope": "TargetEntity",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
-                    }
-                  }
-                ]
+                "$type": "RPG.GameCore.ByNot",
+                "Predicate": {
+                  "$type": "RPG.GameCore.ByContainsParamFlag",
+                  "Flag": "IsFakeAvatarAttack"
+                }
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "XP_Minion04_02_Huimie_InsertFlag",
-                  "ResetValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "ContextScope": "TargetEntity"
-                },
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_Huimie",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AbilityTarget": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
-                  },
-                  "InsertAbilityPriority": "MonsterInsertAttackSelf",
-                  "ShowInActionBar": true
-                }
-              ],
-              "FailedTaskList": [
-                {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "DynamicKey": "XP_Minion04_02_Huimie_InsertFlag",
-                    "ContextScope": "TargetEntity",
-                    "CompareType": "Equal",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamLight"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "Huimie_BeHitCounter",
+                        "ContextScope": "TargetEntity",
+                        "CompareType": "Greater",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.5000000004656613
+                          }
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "XP_Minion04_02_Huimie_InsertFlag",
+                        "ContextScope": "TargetEntity",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
                       }
-                    }
+                    ]
                   },
                   "SuccessTaskList": [
                     {
@@ -4498,290 +4338,380 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "Caster"
                       },
-                      "DynamicKey": "Huimie_BeHitCounter",
+                      "DynamicKey": "XP_Minion04_02_Huimie_InsertFlag",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
                       "ContextScope": "TargetEntity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_Huimie",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbilityTarget": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
+                      },
+                      "InsertAbilityPriority": "MonsterInsertAttackSelf",
+                      "ShowInActionBar": true
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "DynamicKey": "XP_Minion04_02_Huimie_InsertFlag",
+                        "ContextScope": "TargetEntity",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.DefineDynamicValue",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "DynamicKey": "Huimie_BeHitCounter",
+                          "ContextScope": "TargetEntity"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllDarkTeam"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
         }
-      ]
+      }
     },
     "MMonster_XP_Minion04_02_Huimie_EffectGround": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "Flags": [
-            "Field",
-            "Resident"
-          ],
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinP.prefab",
-          "MinMutexTime": -1
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "Flags": [
+                "Field",
+                "Resident"
+              ],
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinP.prefab",
+              "MinMutexTime": -1
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_Huimie_EffectPaths": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinS.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinS.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_Huimie_EffectRound": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Flags": [
-            "Resident"
-          ],
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinP_01.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Flags": [
+                "Resident"
+              ],
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinP_01.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
+        },
+        "OnBeforeDying": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinP_02_02.prefab"
+            }
+          ]
         }
-      ],
-      "OnBeforeDying": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinP_02_02.prefab"
-        }
-      ],
+      },
       "Stacking": "Replace"
     },
     "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On": {
-      "OnCreate": []
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": []
+        }
+      }
     },
     "MMonster_XP_Minion04_02_Buff_Huimie_Minion": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
-        }
-      ],
-      "OnAfterBeingHitAll": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByAttackType",
-                "AttackTypes": [
-                  "DOT",
-                  "Insert",
-                  "Pursued"
-                ],
-                "Inverse": true
-              },
-              {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
-              }
-            ]
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.RemoveModifier",
+              "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
               "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
-            },
+            }
+          ]
+        },
+        "OnAfterBeingHitAll": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.SetDynamicValueByAddValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByAttackType",
+                    "AttackTypes": [
+                      "DOT",
+                      "Insert",
+                      "Pursued"
+                    ],
+                    "Inverse": true
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
+                  }
+                ]
               },
-              "Key": "Huimie_BeHitCounter",
-              "AddValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion_On"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "Key": "Huimie_BeHitCounter",
+                  "AddValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "Min": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  },
+                  "Max": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 6
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
                 }
-              },
-              "Min": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              },
-              "Max": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 6
-                }
-              },
-              "ContextScope": "TargetEntity"
+              ]
             }
           ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster"
     },
     "MMonster_XP_Minion04_02_Buff_Pre": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop02_Start.prefab"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop02_Start.prefab"
+            }
+          ]
         }
-      ]
+      }
     },
     "MMonster_XP_Minion04_02_EscapingCharge01": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "PhaseName": "Charge01",
-          "PhaseAnimConfig": {
-            "StandBy": "StandBy_Charge01",
-            "StandByLowHP": "StandBy_Charge01",
-            "Hit": "Hit_Charge01",
-            "HitH": "Hit_H_Charge01",
-            "HitFly": "Hit_Fly_Charge01",
-            "HitFlyRecover": "Hit_Fly_Recover_Charge01"
-          }
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.CharacterChangePhase",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "PhaseName": "Charge01",
+              "PhaseAnimConfig": {
+                "StandBy": "StandBy_Charge01",
+                "StandByLowHP": "StandBy_Charge01",
+                "Hit": "Hit_Charge01",
+                "HitH": "Hit_H_Charge01",
+                "HitFly": "Hit_Fly_Charge01",
+                "HitFlyRecover": "Hit_Fly_Recover_Charge01"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill01_Loop.prefab"
+            }
+          ]
         },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill01_Loop.prefab"
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.CharacterChangePhase",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "PhaseName": "Normal",
+              "PhaseAnimConfig": {
+                "StandBy": "StandBy",
+                "StandByLowHP": "StandBy_LowHP",
+                "Hit": "Hit",
+                "HitH": "Hit_H",
+                "HitFly": "Hit_Fly",
+                "HitFlyRecover": "Hit_Fly_Recover"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill01_Loop.prefab"
+            }
+          ]
         }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "PhaseName": "Normal",
-          "PhaseAnimConfig": {
-            "StandBy": "StandBy",
-            "StandByLowHP": "StandBy_LowHP",
-            "Hit": "Hit",
-            "HitH": "Hit_H",
-            "HitFly": "Hit_Fly",
-            "HitFlyRecover": "Hit_Fly_Recover"
-          }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill01_Loop.prefab"
-        }
-      ]
+      }
     },
     "MMonster_XP_Minion04_02_EscapingCharge02": {
       "BehaviorFlagList": [
         "MuteHitFly",
         "Endurance"
       ],
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "PhaseName": "Charge02",
-          "PhaseAnimConfig": {
-            "StandBy": "StandBy_Charge02",
-            "StandByLowHP": "StandBy_Charge02",
-            "Hit": "Hit_Charge02",
-            "HitH": "Hit_H_Charge02"
-          }
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.CharacterChangePhase",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "PhaseName": "Charge02",
+              "PhaseAnimConfig": {
+                "StandBy": "StandBy_Charge02",
+                "StandByLowHP": "StandBy_Charge02",
+                "Hit": "Hit_Charge02",
+                "HitH": "Hit_H_Charge02"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill02_Loop.prefab"
+            }
+          ]
         },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill02_Loop.prefab"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill02_Loop.prefab"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackWeakness",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "OPType": "Protected",
-          "WeakList": [
-            "Physical",
-            "Fire",
-            "Ice",
-            "Thunder",
-            "Wind",
-            "Quantum",
-            "Imaginary"
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill02_Loop.prefab"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackWeakness",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "OPType": "Protected",
+              "WeakList": [
+                "Physical",
+                "Fire",
+                "Ice",
+                "Thunder",
+                "Wind",
+                "Quantum",
+                "Imaginary"
+              ]
+            }
           ]
         }
-      ]
+      }
     }
   }
 }

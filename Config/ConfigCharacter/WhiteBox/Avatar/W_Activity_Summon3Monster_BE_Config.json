@@ -1,7 +1,6 @@
 {
-  "ActionIconPath": "SpriteOutput/AvatarIcon/1006.png",
-  "HaveActionDelay": false,
-  "DamageType": "Quantum",
+  "ActionIconPath": "SpriteOutput/AvatarIcon/8001.png",
+  "DamageType": "Physical",
   "IsPlayerControlled": true,
   "AIPath": "Config/ConfigAI/Avatar_ComplexSkilll_AutoFight_AI.json",
   "MaxSP": 100,
@@ -19,9 +18,9 @@
   },
   "SaveModelWhenDead": true,
   "AnimEventConfigList": [
-    "Config/ConfigAnimEvents/Avatar/Designer/Avatar_Bronya_00_Designer_AnimEvent.json",
-    "Config/ConfigAnimEvents/WhiteBox/Avatar/Effect/W_A_SummonMonster_BE_Effect_AnimEvent.json",
-    "Config/ConfigAnimEvents/Avatar/Audio/Avatar_Bronya_00_Audio_AnimEvent.json"
+    "Config/ConfigAnimEvents/Avatar/Designer/Avatar_PlayerGirl_00_Designer_AnimEvent.json",
+    "Config/ConfigAnimEvents/Avatar/Effect/Avatar_PlayerGirl_00_Effect_AnimEvent.json",
+    "Config/ConfigAnimEvents/Avatar/Audio/Avatar_PlayerGirl_00_Audio_AnimEvent.json"
   ],
   "SkillList": [
     {
@@ -71,18 +70,10 @@
       "CameraConfig": {
         "NormalConfig": {
           "CameraState": "SelectLightTeamEntity",
-          "AnchorTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnchorOffset": {
             "X": 0,
             "Y": 1,
             "Z": 0.5
-          },
-          "AimTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "SkillTargetEntityList"
           },
           "FollowDamp": 0.65,
           "NeedCutBlending": true
@@ -135,18 +126,10 @@
       "CameraConfig": {
         "NormalConfig": {
           "CameraState": "SelectLightTeamEntity",
-          "AnchorTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnchorOffset": {
             "X": 0,
             "Y": 1,
             "Z": 0.5
-          },
-          "AimTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "SkillTargetEntityList"
           },
           "FollowDamp": 0.65,
           "NeedCutBlending": true
@@ -186,10 +169,6 @@
           },
           {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "_C_TeamID",
             "CompareType": "NotEqual",
             "CompareValue": {
@@ -214,18 +193,10 @@
       "CameraConfig": {
         "NormalConfig": {
           "CameraState": "SelectLightTeamEntity",
-          "AnchorTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnchorOffset": {
             "X": 0,
             "Y": 1,
             "Z": 0.5
-          },
-          "AimTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "SkillTargetEntityList"
           },
           "FollowDamp": 0.65,
           "NeedCutBlending": true
@@ -265,10 +236,6 @@
           },
           {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "_C_TeamID",
             "CompareType": "NotEqual",
             "CompareValue": {
@@ -302,12 +269,16 @@
       "AbilityList": [
         "W_BattleEvent_Activity_Summon3Monster_00_PassiveSkill01",
         "W_BattleEvent_Activity_Summon3Monster_00_MonsterLeave",
-        "W_BattleEvent_Activity_Summon3Monster_00_MonsterLeaveDeath"
+        "W_BattleEvent_Activity_Summon3Monster_00_MonsterLeaveDeath",
+        "W_BattleEvent_Activity_Summon3Monster_00_SummonAbility_AOE",
+        "W_BattleEvent_Activity_Summon3Monster_00_Wait"
       ]
     }
   ],
   "DynamicValues": {
     "Values": {
+      "1131418466": {},
+      "-1631469270": {},
       "-916091735": {},
       "824399755": {},
       "-1653587924": {},
@@ -334,7 +305,7 @@
       "-1812840144": {}
     }
   },
-  "WeaponType": "WP_Bullet",
+  "WeaponType": "WP_Magic",
   "DisableAnimEventLayers": [
     "Riboon Layer"
   ]

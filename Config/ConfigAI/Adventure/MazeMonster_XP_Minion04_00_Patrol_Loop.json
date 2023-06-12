@@ -5,6 +5,22 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Patrol",
+      "RootTask": {
+        "$type": "RPG.GameCore.SequenceConfig",
+        "TaskList": [
+          {
+            "$type": "RPG.GameCore.AdvSetNpcVisionsConfig",
+            "VisionsByName": [
+              "GlobalVisionConfig_XP_Minion04"
+            ]
+          },
+          {
+            "$type": "RPG.GameCore.AdvNPCPatrol",
+            "StayOnWaypoint": true,
+            "StayOnWaypointDuration": 2
+          }
+        ]
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
@@ -22,27 +38,35 @@
             "Value": 1
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.SequenceConfig",
-        "TaskList": [
-          {
-            "$type": "RPG.GameCore.AdvSetNpcVisionsConfig",
-            "VisionsByName": [
-              "GlobalVisionConfig_XP_Minion04"
-            ]
-          },
-          {
-            "$type": "RPG.GameCore.AdvNPCPatrol",
-            "StayOnWaypoint": true,
-            "StayOnWaypointDuration": 2
-          }
-        ]
-      }
+      ]
     },
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Guarding",
+      "RootTask": {
+        "$type": "RPG.GameCore.SequenceConfig",
+        "TaskList": [
+          {
+            "$type": "RPG.GameCore.LookAt",
+            "TargetType": "CustomTarget",
+            "CustomTargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "AdvLocalPlayer"
+            }
+          },
+          {
+            "$type": "RPG.GameCore.AdvNPCGuarding",
+            "EnableSearch": true,
+            "SearchOffset": 5.5,
+            "OnGuardStart": {
+              "$type": "RPG.GameCore.TaskConfig"
+            },
+            "OnGuardEnd": {
+              "$type": "RPG.GameCore.TaskConfig"
+            }
+          }
+        ]
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "Weight": {
         "Value": 2
@@ -64,61 +88,11 @@
             "Value": 1
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.SequenceConfig",
-        "TaskList": [
-          {
-            "$type": "RPG.GameCore.LookAt",
-            "PerformerType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "TargetType": "CustomTarget",
-            "CustomTargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "AdvLocalPlayer"
-            }
-          },
-          {
-            "$type": "RPG.GameCore.AdvNPCGuarding",
-            "EnableSearch": true,
-            "SearchOffset": 5.5,
-            "OnGuardStart": {
-              "$type": "RPG.GameCore.TaskConfig"
-            },
-            "OnGuardEnd": {
-              "$type": "RPG.GameCore.TaskConfig"
-            }
-          }
-        ]
-      }
+      ]
     },
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Chase",
-      "ScoreEvaluatorType": "DefaultDSE",
-      "Weight": {
-        "Value": 3
-      },
-      "ConsiderAxisList": [
-        {
-          "$type": "RPG.GameCore.CheckPredicateAxis",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAny",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByAlertValueInRange",
-                "AlertValueMin": 25,
-                "AlertValueMax": 45
-              }
-            ]
-          },
-          "SuccessScore": {
-            "Value": 1
-          }
-        }
-      ],
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -163,7 +137,29 @@
             ]
           }
         ]
-      }
+      },
+      "ScoreEvaluatorType": "DefaultDSE",
+      "Weight": {
+        "Value": 3
+      },
+      "ConsiderAxisList": [
+        {
+          "$type": "RPG.GameCore.CheckPredicateAxis",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByAny",
+            "PredicateList": [
+              {
+                "$type": "RPG.GameCore.ByAlertValueInRange",
+                "AlertValueMin": 25,
+                "AlertValueMax": 45
+              }
+            ]
+          },
+          "SuccessScore": {
+            "Value": 1
+          }
+        }
+      ]
     }
   ],
   "OnDisable": {

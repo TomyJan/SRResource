@@ -16,31 +16,6 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "UseSkill01",
-      "ScoreEvaluatorType": "DefaultDSE",
-      "ConsiderAxisList": [
-        {
-          "$type": "RPG.GameCore.CheckPredicateAxis",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "W1_Soldier03_00_AICounter",
-            "ContextScope": "TargetEntity",
-            "CompareType": "Equal",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            }
-          },
-          "SuccessScore": {
-            "Value": 1
-          }
-        }
-      ],
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -64,28 +39,20 @@
             "SkillName": "Skill01"
           }
         ]
-      }
-    },
-    {
-      "$type": "RPG.GameCore.AIDecisionConfig",
-      "DecisionName": "UseSkill07",
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
           "$type": "RPG.GameCore.CheckPredicateAxis",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "W1_Soldier03_00_AICounter",
             "ContextScope": "TargetEntity",
             "CompareType": "Equal",
             "CompareValue": {
               "IsDynamic": false,
               "FixedValue": {
-                "Value": 3
+                "Value": 1
               }
             }
           },
@@ -93,7 +60,11 @@
             "Value": 1
           }
         }
-      ],
+      ]
+    },
+    {
+      "$type": "RPG.GameCore.AIDecisionConfig",
+      "DecisionName": "UseSkill07",
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -117,28 +88,20 @@
             "SkillName": "Skill07"
           }
         ]
-      }
-    },
-    {
-      "$type": "RPG.GameCore.AIDecisionConfig",
-      "DecisionName": "UseSkill06",
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
           "$type": "RPG.GameCore.CheckPredicateAxis",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "W1_Soldier03_00_AICounter",
             "ContextScope": "TargetEntity",
             "CompareType": "Equal",
             "CompareValue": {
               "IsDynamic": false,
               "FixedValue": {
-                "Value": 4
+                "Value": 3
               }
             }
           },
@@ -146,7 +109,11 @@
             "Value": 1
           }
         }
-      ],
+      ]
+    },
+    {
+      "$type": "RPG.GameCore.AIDecisionConfig",
+      "DecisionName": "UseSkill06",
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -178,7 +145,28 @@
             "SkillName": "Skill06"
           }
         ]
-      }
+      },
+      "ScoreEvaluatorType": "DefaultDSE",
+      "ConsiderAxisList": [
+        {
+          "$type": "RPG.GameCore.CheckPredicateAxis",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByCompareDynamicValue",
+            "DynamicKey": "W1_Soldier03_00_AICounter",
+            "ContextScope": "TargetEntity",
+            "CompareType": "Equal",
+            "CompareValue": {
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 4
+              }
+            }
+          },
+          "SuccessScore": {
+            "Value": 1
+          }
+        }
+      ]
     }
   ]
 }

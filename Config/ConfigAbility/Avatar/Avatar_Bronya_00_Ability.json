@@ -26,10 +26,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -42,10 +38,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -65,28 +57,32 @@
     {
       "Modifiers": {
         "M_Bronya_Critcal": {
-          "OnBeforeHit": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAttackType",
-                "AttackTypes": [
-                  "Normal"
-                ]
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnBeforeHit": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.ModifyDamageData",
-                  "Attacker_CriticalChance": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAttackType",
+                    "AttackTypes": [
+                      "Normal"
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.ModifyDamageData",
+                      "Attacker_CriticalChance": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "Bronya_00_Skill01_Phase02",
@@ -233,7 +229,7 @@
                 "DynamicHash": 1244012525
               },
               {
-                "Type": "Sub"
+                "Type": "Neg"
               }
             ]
           }
@@ -282,10 +278,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimStateName": "Skill02_Self",
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
@@ -299,11 +291,7 @@
             {
               "$type": "RPG.GameCore.SetTeamFormation",
               "Team": "TeamLight",
-              "CustomFormationName": "Bronya_00_Skill02_Others",
-              "CustomCenterTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "None"
-              }
+              "CustomFormationName": "Bronya_00_Skill02_Others"
             },
             {
               "$type": "RPG.GameCore.TriggerAbility",
@@ -325,10 +313,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimStateName": "Skill02",
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
@@ -460,10 +444,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Bronya_SpeedUP_Ratio_01",
               "Value": {
                 "IsDynamic": true,
@@ -762,10 +742,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Bronya_SpeedUP_Ratio_01",
               "Value": {
                 "IsDynamic": true,
@@ -934,21 +910,13 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
-          "CustomFormationName": "Bronya_00_Skill03_Ready",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "CustomFormationName": "Bronya_00_Skill03_Ready"
         },
         {
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "UseSkillPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0,
@@ -982,10 +950,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "UseSkillPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 1.6,
@@ -1058,10 +1022,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03"
         },
         {
@@ -1173,10 +1133,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "MDF_CriticalDamageBase_change",
           "Value": {
             "IsDynamic": true,
@@ -1190,10 +1146,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "MDF_CriticalDamageBase_change",
           "Value": {
             "IsDynamic": true,
@@ -1214,10 +1166,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "MDF_CriticalDamageBase_Total",
           "Value": {
             "IsDynamic": true,
@@ -1301,6 +1249,33 @@
       ]
     },
     {
+      "Modifiers": {
+        "Avatar_Bronya_SkillPreshow": {
+          "ModifierAffectedPreshowConfig": {
+            "SkillTypes": [
+              "Normal"
+            ],
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "ActionDelayPreshowConfig": {
+              "AddDelayRatio": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1244012525
+                  },
+                  {
+                    "Type": "Neg"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
       "Name": "Bronya_00_PassiveSkill_1",
       "TargetInfo": {
         "TargetType": "Caster"
@@ -1317,10 +1292,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetEnergyBarState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "Active": "True",
               "BarType": 3,
               "CurrentState": "Active",
@@ -1345,6 +1316,14 @@
               }
             }
           ]
+        },
+        {
+          "$type": "RPG.GameCore.AddModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "ModifierName": "Avatar_Bronya_SkillPreshow"
         }
       ]
     },
@@ -1352,73 +1331,81 @@
       "Modifiers": {
         "Avatar_Bronya_00_Maze_Modifier": {
           "EnterBattlePriority": "CharacterBuff",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllTeamMember"
+                      },
+                      "ModifierName": "MAvatar_Bronya_00_MazeSkill_AttackRatioUp",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -2081277152
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -623091417
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": []
+                }
+              ]
+            }
+          }
+        },
+        "MAvatar_Bronya_00_MazeSkill_AttackRatioUp": {
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllTeamMember"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "MAvatar_Bronya_00_MazeSkill_AttackRatioUp",
-                  "LifeTime": {
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
                     "IsDynamic": true,
                     "Expressions": [
                       {
                         "Type": "DynamicNumber",
-                        "DynamicHash": -2081277152
+                        "DynamicHash": 2128130574
                       }
                     ]
-                  },
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -623091417
-                        }
-                      ]
-                    }
                   }
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
-        },
-        "MAvatar_Bronya_00_MazeSkill_AttackRatioUp": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
-              }
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1452,143 +1439,147 @@
     {
       "Modifiers": {
         "Avatar_Bronya_00_Rank04_Listen": {
-          "OnPhase1": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByRankActivated",
-                "TriggerKey": {
-                  "Hash": 1686351920
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnPhase1": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.SetEnergyBarState",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Active": "True",
-                  "BarType": 3,
-                  "CurrentState": "Active",
-                  "CD": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByRankActivated",
+                    "TriggerKey": {
+                      "Hash": 1686351920
                     }
                   },
-                  "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1101Rank04.png",
-                  "MaxCount": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetEnergyBarState",
+                      "Active": "True",
+                      "BarType": 3,
+                      "CurrentState": "Active",
+                      "CD": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1101Rank04.png",
+                      "MaxCount": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "CurrentCount": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
-                  },
-                  "CurrentCount": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
+                  ]
                 }
               ]
-            }
-          ],
-          "OnPhase2": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "Avatar_Bronya_00_Rank04_ATK_Flag"
-            }
-          ],
-          "OnListenAfterAttack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsTurnActionEntity",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareTurnActionEntityTeamType",
-                    "Team": "TeamLight"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCurrentSkillType"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByHasStanceWeak",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "TurnActionEntitySkillTarget"
-                    },
-                    "WeakType": "Wind"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareHPRatio",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "TurnActionEntitySkillTarget"
-                    },
-                    "CompareType": "Greater",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "ModifierName": "Avatar_Bronya_00_Rank04_ATK_Flag"
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+            },
+            "OnPhase2": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.RemoveModifier",
+                  "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                    "Alias": "ModifierOwnerEntity"
                   },
                   "ModifierName": "Avatar_Bronya_00_Rank04_ATK_Flag"
-                },
+                }
+              ]
+            },
+            "OnListenAfterAttack": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Avatar_Bronya_00_Rank04_ATK",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsTurnActionEntity",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          }
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareTurnActionEntityTeamType",
+                        "Team": "TeamLight"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCurrentSkillType"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByHasStanceWeak",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "TurnActionEntitySkillTarget"
+                        },
+                        "WeakType": "Wind"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareHPRatio",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "TurnActionEntitySkillTarget"
+                        },
+                        "CompareType": "Greater",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "ModifierName": "Avatar_Bronya_00_Rank04_ATK_Flag"
+                      }
+                    ]
                   },
-                  "AbilityTarget": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "TurnActionEntitySkillTarget"
-                  },
-                  "AbortBehaviorFlags": [
-                    "STAT_CTRL",
-                    "DisableAction"
-                  ],
-                  "InsertAbilityPriority": "AvatarInsertAttackSelf",
-                  "ShowInActionBar": true
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "Avatar_Bronya_00_Rank04_ATK_Flag"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Avatar_Bronya_00_Rank04_ATK",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbilityTarget": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "TurnActionEntitySkillTarget"
+                      },
+                      "AbortBehaviorFlags": [
+                        "STAT_CTRL",
+                        "DisableAction"
+                      ],
+                      "InsertAbilityPriority": "AvatarInsertAttackSelf",
+                      "ShowInActionBar": true
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "Avatar_Bronya_00_Rank04_ATK_Flag": {}
       },
@@ -1623,10 +1614,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.SetEnergyBarState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "Active": "True",
           "BarType": 3,
           "CurrentState": "CoolDown",
@@ -1666,18 +1653,10 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01"
         },
         {
@@ -1809,52 +1788,14 @@
     {
       "Modifiers": {
         "M_Bronya_Tree02": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeamMember"
-              },
-              "ModifierName": "Bronya_Tree02_DefenceUp",
-              "LifeTime": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 948615157
-                  }
-                ]
-              },
-              "DynamicValues": {
-                "MDF_DefenceAddedRatio": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1144623638
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsTeammate",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "AllTeamMember"
                   },
                   "ModifierName": "Bronya_Tree02_DefenceUp",
                   "LifeTime": {
@@ -1879,8 +1820,52 @@
                   }
                 }
               ]
+            },
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsTeammate",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "Bronya_Tree02_DefenceUp",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": 948615157
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MDF_DefenceAddedRatio": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1144623638
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Bronya_SkillTree02",
@@ -1901,63 +1886,36 @@
     {
       "Modifiers": {
         "M_Bronya_Tree03": {
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetConcat",
-                "Targets": [
-                  {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllTeamMember"
+          "_CallbackList": {
+            "OnDestroy": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetConcat",
+                    "Targets": [
+                      {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllTeamMember"
+                      },
+                      {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllUnselectable"
+                      }
+                    ]
                   },
-                  {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllUnselectable"
-                  }
-                ]
-              },
-              "ModifierName": "Bronya_Tree03_DamageUp",
-              "OnlyRemoveCasterAdded": true
-            }
-          ],
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeamMember"
-              },
-              "ModifierName": "Bronya_Tree03_DamageUp",
-              "DynamicValues": {
-                "MDF_AllDamageTypeAddedRatio": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 348088544
-                    }
-                  ]
+                  "ModifierName": "Bronya_Tree03_DamageUp",
+                  "OnlyRemoveCasterAdded": true
                 }
-              }
-            }
-          ],
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsTeammate",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                }
-              },
-              "SuccessTaskList": [
+              ]
+            },
+            "OnStack": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "AllTeamMember"
                   },
                   "ModifierName": "Bronya_Tree03_DamageUp",
                   "DynamicValues": {
@@ -1973,8 +1931,43 @@
                   }
                 }
               ]
+            },
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsTeammate",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "Bronya_Tree03_DamageUp",
+                      "DynamicValues": {
+                        "MDF_AllDamageTypeAddedRatio": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 348088544
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Bronya_SkillTree03",
@@ -1995,37 +1988,69 @@
   ],
   "GlobalModifiers": {
     "MAvatar_Bronya_00_BPSkill_Rank02_Listen": {
-      "OnActionEnd": [
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MAvatar_Bronya_00_BPSkill_SpeedUp",
-          "LifeTime": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "DynamicValues": {
-            "Bronya_SpeedUP_Ratio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -308080954
-                }
-              ]
-            }
-          },
-          "IsShowUIMessageFromModel": false
+      "ModifierAffectedPreshowConfig": {
+        "TargetType": {
+          "$type": "RPG.GameCore.TargetAlias",
+          "Alias": "ModifierOwnerEntity"
         },
-        {
-          "$type": "RPG.GameCore.RemoveSelfModifier"
+        "Condition": {
+          "$type": "RPG.GameCore.ByNot",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByIsContainModifier",
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "ModifierOwnerEntity"
+            },
+            "ModifierName": "MAvatar_Bronya_00_BPSkill_SpeedUp"
+          }
+        },
+        "ActionDelayPreshowConfig": {
+          "AddSpeedRatio": {
+            "IsDynamic": true,
+            "Expressions": [
+              {
+                "Type": "DynamicNumber",
+                "DynamicHash": -308080954
+              }
+            ]
+          }
         }
-      ],
+      },
+      "_CallbackList": {
+        "OnAfterSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "MAvatar_Bronya_00_BPSkill_SpeedUp",
+              "LifeTime": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "DynamicValues": {
+                "Bronya_SpeedUP_Ratio": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -308080954
+                    }
+                  ]
+                }
+              },
+              "IsShowUIMessageFromModel": false
+            },
+            {
+              "$type": "RPG.GameCore.RemoveSelfModifier"
+            }
+          ]
+        }
+      },
       "Stacking": "ReplaceByCaster"
     },
     "MAvatar_Bronya_Rank01_CoolDown": {}

@@ -5,7 +5,18 @@
       "TaskList": [
         {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
-          "PerformanceType": "D"
+          "PerformanceType": "D",
+          "CreateCharacterList": [],
+          "EntityVisiableList": [
+            {
+              "GroupID": 44,
+              "GroupNPCID": 400001
+            }
+          ],
+          "PropVisiableList": [],
+          "StreamingCentersInBlackMask": [],
+          "StreamingCentersAfterBlackMask": [],
+          "MarkStreamingItems": []
         },
         {
           "$type": "RPG.GameCore.PerformanceTransition",
@@ -61,7 +72,16 @@
           ],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
+            "TaskEnabled": false
+          },
+          "ActiveTemplateVirtualCamera": {
             "TaskEnabled": false
           },
           "SwitchCharacterAnchor": {
@@ -73,6 +93,9 @@
             "AnchorName": {
               "Value": "Anchor2"
             }
+          },
+          "AdvNpcFaceToPlayer": {
+            "TaskEnabled": false
           }
         },
         {
@@ -123,11 +146,12 @@
           "GroupNpcID": 400006,
           "PlayerInGroupID": 6,
           "PlayerInGroupNpcID": 400008,
+          "TryFaceToFace": false,
           "OnlyPlayerFaceToNpc": true,
           "FinishImmadiate": true
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 102050602,
@@ -140,9 +164,6 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
           "CharacterUniqueName": "Mar_102050106",
           "StoryAvatarID": "NPC_Avatar_Maid_Mar_7th_00",
@@ -150,16 +171,13 @@
           "StoryMotionID": 1001041
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 102050604,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -187,7 +205,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 102050607,
@@ -208,9 +226,6 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
           "$type": "RPG.GameCore.PerformanceTransition",
           "CreateNpcList": [],
           "CaptureNpcList": [],
@@ -228,10 +243,22 @@
               "GroupNpcID": 400008
             }
           ],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "TaskEnabled": false
           },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
+          },
           "SwitchCharacterAnchor": {
+            "TaskEnabled": false
+          },
+          "AdvNpcFaceToPlayer": {
             "TaskEnabled": false
           }
         },

@@ -8,10 +8,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -106,61 +102,61 @@
     {
       "Modifiers": {
         "MAvatar_Herta_Skill01_CheckHp": {
-          "OnBeforeHit": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "MDF_MaxHP",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "Value": "MaxHP"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareAbilityProperty",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
+          "_CallbackList": {
+            "OnBeforeHit": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "MDF_MaxHP",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "Value": "MaxHP"
                 },
-                "Property": "CurrentHP",
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1610876898
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareAbilityProperty",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
                     },
+                    "Property": "CurrentHP",
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1610876898
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -873920944
+                        },
+                        {
+                          "Type": "Mul"
+                        }
+                      ]
+                    }
+                  },
+                  "SuccessTaskList": [
                     {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -873920944
-                    },
-                    {
-                      "Type": "Mul"
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Herta_Skill01_Count",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
                     }
                   ]
                 }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "DynamicKey": "Herta_Skill01_Count",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  }
-                }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1610876898": {}
@@ -265,10 +261,6 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "Herta_Skill01_Count",
                 "CompareType": "Equal",
                 "CompareValue": {
@@ -402,10 +394,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "Herta_Skill01_Count",
           "Value": {
             "IsDynamic": false,
@@ -427,10 +415,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity",
           "Duration": 5
         },
@@ -454,10 +438,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "DarkTeamCenter"
         },
         {
@@ -514,91 +494,95 @@
     {
       "Modifiers": {
         "MAvatar_Herta_Skill02_CheckHp": {
-          "OnBeforeHit": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "MDF_MaxHP",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "Value": "MaxHP"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareAbilityProperty",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
+          "_CallbackList": {
+            "OnBeforeHit": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "MDF_MaxHP",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "Value": "MaxHP"
                 },
-                "Property": "CurrentHP",
-                "CompareType": "GreaterEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1610876898
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 401320331
-                    },
-                    {
-                      "Type": "Mul"
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.BySkillPointActivated",
-                    "PointTriggerKey": {
-                      "Hash": 1455742903
+                    "$type": "RPG.GameCore.ByCompareAbilityProperty",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Property": "CurrentHP",
+                    "CompareType": "GreaterEqual",
+                    "CompareValue": {
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1610876898
+                        },
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": 401320331
+                        },
+                        {
+                          "Type": "Mul"
+                        }
+                      ]
                     }
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.ModifyDamageData",
-                      "Attacker_AllDamageTypeAddedRatio": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 178367017
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 698462076
-                          },
-                          {
-                            "Type": "Add"
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.BySkillPointActivated",
+                        "PointTriggerKey": {
+                          "Hash": 1455742903
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.ModifyDamageData",
+                          "Attacker_AllDamageTypeAddedRatio": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 178367017
+                              },
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 698462076
+                              },
+                              {
+                                "Type": "Add"
+                              }
+                            ]
                           }
-                        ]
-                      }
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.ModifyDamageData",
-                      "Attacker_AllDamageTypeAddedRatio": {
-                        "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 178367017
+                        }
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.ModifyDamageData",
+                          "Attacker_AllDamageTypeAddedRatio": {
+                            "IsDynamic": true,
+                            "Expressions": [
+                              {
+                                "Type": "DynamicNumber",
+                                "DynamicHash": 178367017
+                              }
+                            ]
                           }
-                        ]
-                      }
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1610876898": {}
@@ -817,10 +801,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "DarkTeamCenter"
         },
         {
@@ -841,10 +821,6 @@
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
               "AttackType": "RangeAttack",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": -0.16,
@@ -889,10 +865,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "SelectDarkTeamEntity",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "IsLocalOffset": true,
               "AnchorOffset": {
                 "X": 0.3,
@@ -947,10 +919,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -976,10 +944,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03"
         },
         {
@@ -1103,10 +1067,6 @@
         },
         {
           "$type": "RPG.GameCore.MoveToTargetPosition",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "TeamFormation"
@@ -1124,20 +1084,24 @@
     {
       "Modifiers": {
         "MAvatar_Herta_SkillTree03_AddDamageUp": {
-          "OnBeforeBeingHit": [
-            {
-              "$type": "RPG.GameCore.ModifyDamageData",
-              "Attacker_AllDamageTypeAddedRatio": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1602738012
+          "_CallbackList": {
+            "OnBeforeBeingHit": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifyDamageData",
+                  "Attacker_AllDamageTypeAddedRatio": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1602738012
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1146,25 +1110,29 @@
           }
         },
         "MAvatar_Herta_SkillRank06_AttackUP": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 68164246
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 68164246
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1361,227 +1329,64 @@
     {
       "Modifiers": {
         "MAvatar_Herta_Passive": {
-          "OnListenHPChange": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByProperty",
-              "DynamicKey": "MDF_MaxHP",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ParamEntity"
-              },
-              "Value": "MaxHP"
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareAbilityProperty",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
+          "_CallbackList": {
+            "OnListenHPChange": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "MDF_MaxHP",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "Value": "MaxHP"
                 },
-                "Property": "CurrentHP",
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1610876898
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1052225967
-                    },
-                    {
-                      "Type": "Mul"
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByAnd",
-                    "PredicateList": [
-                      {
-                        "$type": "RPG.GameCore.ByTargetTeam",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity2"
-                        },
-                        "Team": "TeamLight"
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByIsEnemy",
-                        "TargetTypeA": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "TargetTypeB": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        }
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ParamEntity"
-                        },
-                        "DynamicKey": "MAvatar_Herta_Passive_CoolDown",
-                        "CompareType": "Equal",
-                        "CompareValue": {
-                          "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "FixedNumber",
-                              "FixedValue": {
-                                "Value": 0
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByNot",
-                        "Predicate": {
-                          "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "Flag": "STAT_CTRL"
-                        }
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Herta_Count_Insert",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
                       }
-                    ]
+                    }
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByHaveEnemyAlive",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        }
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "ModifierName": "MAvatar_Herta_Passive_ATK"
-                        },
-                        {
-                          "$type": "RPG.GameCore.DefineDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "DynamicKey": "MAvatar_Herta_Passive_CoolDown",
-                          "ResetValue": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 1
-                            }
-                          },
-                          "ContextScope": "TargetEntity"
-                        },
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "Herta_Count",
-                          "Value": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1365782798
-                              },
-                              {
-                                "Type": "FixedNumber",
-                                "FixedValue": {
-                                  "Value": 1
-                                }
-                              },
-                              {
-                                "Type": "Add"
-                              }
-                            ]
-                          }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "Herta_Count",
-                          "Value": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 0
-                            }
-                          }
-                        },
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "DynamicKey": "Scoring_Herta_Count",
-                          "Value": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 0
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.DefineDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "DynamicKey": "MAvatar_Herta_Passive_CoolDown",
-                      "ResetValue": {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Herta_Count_ATK",
+                      "Value": {
                         "IsDynamic": false,
                         "FixedValue": {
-                          "Value": 1
+                          "Value": 0
                         }
-                      },
-                      "ContextScope": "TargetEntity"
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Herta_Count_Insert",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
                     "$type": "RPG.GameCore.ByCompareAbilityProperty",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
                     "Property": "CurrentHP",
-                    "CompareType": "Greater",
+                    "CompareType": "LessEqual",
                     "CompareValue": {
                       "IsDynamic": true,
                       "Expressions": [
@@ -1598,74 +1403,255 @@
                         }
                       ]
                     }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByAnd",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByTargetTeam",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity2"
+                            },
+                            "Team": "TeamLight"
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByIsEnemy",
+                            "TargetTypeA": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "TargetTypeB": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "Caster"
+                            }
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByCompareDynamicValue",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ParamEntity"
+                            },
+                            "DynamicKey": "MAvatar_Herta_Passive_CoolDown",
+                            "CompareType": "Equal",
+                            "CompareValue": {
+                              "IsDynamic": true,
+                              "Expressions": [
+                                {
+                                  "Type": "FixedNumber",
+                                  "FixedValue": {
+                                    "Value": 0
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByNot",
+                            "Predicate": {
+                              "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "Caster"
+                              },
+                              "Flag": "STAT_CTRL"
+                            }
+                          }
+                        ]
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByHaveEnemyAlive",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "Caster"
+                            }
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "Caster"
+                              },
+                              "ModifierName": "MAvatar_Herta_Passive_ATK"
+                            },
+                            {
+                              "$type": "RPG.GameCore.DefineDynamicValue",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ParamEntity"
+                              },
+                              "DynamicKey": "MAvatar_Herta_Passive_CoolDown",
+                              "ResetValue": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 1
+                                }
+                              },
+                              "ContextScope": "TargetEntity"
+                            },
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "Herta_Count",
+                              "Value": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": 1365782798
+                                  },
+                                  {
+                                    "Type": "FixedNumber",
+                                    "FixedValue": {
+                                      "Value": 1
+                                    }
+                                  },
+                                  {
+                                    "Type": "Add"
+                                  }
+                                ]
+                              }
+                            }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "Herta_Count",
+                              "Value": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 0
+                                }
+                              }
+                            },
+                            {
+                              "$type": "RPG.GameCore.SetDynamicValue",
+                              "DynamicKey": "Scoring_Herta_Count",
+                              "Value": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 0
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.DefineDynamicValue",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "DynamicKey": "MAvatar_Herta_Passive_CoolDown",
+                          "ResetValue": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 1
+                            }
+                          },
+                          "ContextScope": "TargetEntity"
+                        }
+                      ]
+                    }
+                  ]
+                },
                 {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByCompareAbilityProperty",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Property": "CurrentHP",
+                        "CompareType": "Greater",
+                        "CompareValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -1610876898
+                            },
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": 1052225967
+                            },
+                            {
+                              "Type": "Mul"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "DynamicKey": "MAvatar_Herta_Passive_CoolDown",
+                      "ContextScope": "TargetEntity"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnWaveMonster": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "Herta_Count",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "Scoring_Herta_Count",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "DynamicKey": "Herta_Count_ATK",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                    "Alias": "Caster"
                   },
-                  "DynamicKey": "MAvatar_Herta_Passive_CoolDown",
-                  "ContextScope": "TargetEntity"
+                  "ModifierName": "MAvatar_Herta_Passive_ATK"
                 }
               ]
             }
-          ],
-          "OnWaveMonster": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Herta_Count",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Scoring_Herta_Count",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Herta_Count_ATK",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MAvatar_Herta_Passive_ATK"
-            }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "-1826473127": {}
@@ -1688,10 +1674,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "Herta_Count",
           "Value": {
             "IsDynamic": false,
@@ -1702,10 +1684,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "Scoring_Herta_Count",
           "Value": {
             "IsDynamic": false,
@@ -1716,10 +1694,6 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "Herta_Skill01_Count",
           "Value": {
             "IsDynamic": false,
@@ -1730,11 +1704,17 @@
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "DynamicKey": "Herta_Count_ATK",
+          "Value": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.SetDynamicValue",
+          "DynamicKey": "Herta_Count_Insert",
           "Value": {
             "IsDynamic": false,
             "FixedValue": {
@@ -1753,47 +1733,51 @@
               "Value": 1
             }
           },
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ValueType": "Layer",
-              "Multiplier": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "DynamicKey": "MDF_Count"
-            },
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "Property": "CriticalChanceBase",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1154995983
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -2027709849
+                  "ValueType": "Layer",
+                  "Multiplier": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
                   },
-                  {
-                    "Type": "Mul"
+                  "DynamicKey": "MDF_Count"
+                },
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "Property": "CriticalChanceBase",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1154995983
+                      },
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -2027709849
+                      },
+                      {
+                        "Type": "Mul"
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -1803,20 +1787,24 @@
           }
         },
         "MAvatar_Herta_SkillRank04_DamageUp": {
-          "OnBeforeHit": [
-            {
-              "$type": "RPG.GameCore.ModifyDamageData",
-              "Attacker_AllDamageTypeAddedRatio": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -524558114
+          "_CallbackList": {
+            "OnBeforeHit": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifyDamageData",
+                  "Attacker_AllDamageTypeAddedRatio": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -524558114
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Avatar_Herta_00_PassiveAtkReady_Ability",
@@ -1824,6 +1812,16 @@
         "TargetType": "Caster"
       },
       "OnStart": [
+        {
+          "$type": "RPG.GameCore.SetDynamicValue",
+          "DynamicKey": "Herta_Count_Insert",
+          "Value": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0
+            }
+          }
+        },
         {
           "$type": "RPG.GameCore.PlayTimeline",
           "TimelineName": "Effects/Eff_Prefab/Eff_Avatar/Eff_Herta/Eff_Avatar_Herta_00_Passive_Timeline.playable"
@@ -1844,11 +1842,7 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamDark",
           "FormationType": "DarkTeamNormal",
-          "RemoveDying": true,
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "RemoveDying": true
         },
         {
           "$type": "RPG.GameCore.TriggerAbility",
@@ -1908,16 +1902,12 @@
           }
         },
         {
-          "$type": "RPG.GameCore.ConditionLoopExecuteTaskList",
+          "$type": "RPG.GameCore.ConditionLoopExecuteTaskListWithInterval",
           "Predicate": {
             "$type": "RPG.GameCore.ByAnd",
             "PredicateList": [
               {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "Herta_Count",
                 "CompareType": "Greater",
                 "CompareValue": {
@@ -1939,10 +1929,6 @@
           "TaskList": [
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Herta_Count",
               "Value": {
                 "IsDynamic": true,
@@ -1965,10 +1951,6 @@
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "DynamicKey": "Scoring_Herta_Count",
               "Value": {
                 "IsDynamic": true,
@@ -2030,10 +2012,6 @@
             },
             {
               "$type": "RPG.GameCore.TriggerAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnimStateName": "Skill_Passive01_Loop1"
             },
             {
@@ -2213,10 +2191,6 @@
                 },
                 {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "DynamicKey": "Scoring_Herta_Count",
                   "Value": {
                     "IsDynamic": false,
@@ -2265,10 +2239,6 @@
                     "PredicateList": [
                       {
                         "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "Caster"
-                        },
                         "DynamicKey": "Herta_Count",
                         "CompareType": "Equal",
                         "CompareValue": {
@@ -2314,10 +2284,6 @@
                     },
                     {
                       "$type": "RPG.GameCore.TriggerAnimState",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "AnimStateName": "Skill_Passive01_End",
                       "NormalizedTimeEnd": {
                         "IsDynamic": false,
@@ -2360,10 +2326,6 @@
                     },
                     {
                       "$type": "RPG.GameCore.SetDynamicValue",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "DynamicKey": "Scoring_Herta_Count",
                       "Value": {
                         "IsDynamic": false,
@@ -2416,10 +2378,6 @@
                     },
                     {
                       "$type": "RPG.GameCore.TriggerAnimState",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "AnimStateName": "Skill_Passive01_Loop2"
                     },
                     {
@@ -2448,73 +2406,81 @@
       "Modifiers": {
         "SkillMaze_Herta_Modifier": {
           "EnterBattlePriority": "CharacterBuff",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareWaveCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareWaveCount",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "ModifierName": "MAvatar_Herta_00_MazeSkill_AttackRatioUp",
+                      "LifeTime": {
+                        "IsDynamic": true,
+                        "Expressions": [
+                          {
+                            "Type": "DynamicNumber",
+                            "DynamicHash": -2081277152
+                          }
+                        ]
+                      },
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": true,
+                          "Expressions": [
+                            {
+                              "Type": "DynamicNumber",
+                              "DynamicHash": -201412227
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": []
+                }
+              ]
+            }
+          }
+        },
+        "MAvatar_Herta_00_MazeSkill_AttackRatioUp": {
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackProperty",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "MAvatar_Herta_00_MazeSkill_AttackRatioUp",
-                  "LifeTime": {
+                  "Property": "AttackAddedRatio",
+                  "PropertyValue": {
                     "IsDynamic": true,
                     "Expressions": [
                       {
                         "Type": "DynamicNumber",
-                        "DynamicHash": -2081277152
+                        "DynamicHash": 2128130574
                       }
                     ]
-                  },
-                  "DynamicValues": {
-                    "MDF_PropertyValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -201412227
-                        }
-                      ]
-                    }
                   }
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
-        },
-        "MAvatar_Herta_00_MazeSkill_AttackRatioUp": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "AttackAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
-              }
-            }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -2541,25 +2507,29 @@
     {
       "Modifiers": {
         "MAvatar_Herta_SkillTree02_Resistance": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.StackStatusResistance",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "BehaviorFlag": "STAT_CTRL",
-              "Resistance": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 741349151
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.StackStatusResistance",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "BehaviorFlag": "STAT_CTRL",
+                  "Resistance": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 741349151
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "DynamicValues": {
             "Values": {
               "741349151": {}
@@ -2603,137 +2573,152 @@
           "Value": 1
         }
       },
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Bronya/Eff_Avatar_Bronya_00_Skill03_Buff_Self.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ValueType": "Layer",
-          "Multiplier": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "DynamicKey": "MDF_Layer"
-        }
-      ],
       "UIConfig": {
         "UIPosition": "UI_Middle"
+      },
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Bronya/Eff_Avatar_Bronya_00_Skill03_Buff_Self.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ValueType": "Layer",
+              "Multiplier": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "DynamicKey": "MDF_Layer"
+            }
+          ]
+        }
       },
       "Stacking": "ReplaceByCaster"
     },
     "MAvatar_Herta_Passive_ATK": {
-      "OnListenAfterAttack": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAnd",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Herta_Count_ATK",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "DynamicKey": "Herta_Count",
-                "CompareType": "Greater",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              }
-            ]
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnListenAfterAttack": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByAnd",
                 "PredicateList": [
                   {
-                    "$type": "RPG.GameCore.ByHaveEnemyAlive",
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Herta_Count_ATK",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "Herta_Count",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByTargetTeam",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    }
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
                   }
                 ]
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByHaveEnemyAlive",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        }
+                      }
+                    ]
                   },
-                  "DynamicKey": "Herta_Count_ATK",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Herta_Count_ATK",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "Herta_Count_Insert",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Avatar_Herta_00_PassiveAtkReady_Ability",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbilityTarget": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
+                      },
+                      "AbortBehaviorFlags": [
+                        "STAT_CTRL",
+                        "DisableAction"
+                      ],
+                      "InsertAbilityPriority": "AvatarInsertAttackSelf",
+                      "ShowInActionBar": true,
+                      "PreCheck": {
+                        "Type": "AbilityOwnerInsertCount",
+                        "Count": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
+                          }
+                        }
+                      }
                     }
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Avatar_Herta_00_PassiveAtkReady_Ability",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AbilityTarget": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
-                  },
-                  "AbortBehaviorFlags": [
-                    "STAT_CTRL",
-                    "DisableAction"
                   ],
-                  "InsertAbilityPriority": "AvatarInsertAttackSelf",
-                  "ShowInActionBar": true
+                  "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
           ]
         }
-      ]
+      }
     }
   }
 }

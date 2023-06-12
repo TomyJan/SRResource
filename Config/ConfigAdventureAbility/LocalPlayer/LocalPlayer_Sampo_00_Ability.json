@@ -31,10 +31,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.LookAt",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": "AbilityTargetEntity",
               "Duration": 0.06
             },
@@ -126,14 +122,6 @@
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerAttack",
-              "AttackTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AbilityTargetEntity"
-              },
-              "AttackRootTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TriggerBattleDelay": 0.1,
               "AttackDetectConfig": {
                 "$type": "RPG.GameCore.AdventureAttackDetectBoxConfig",
@@ -165,7 +153,7 @@
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0.17000000015832484
+                  "Value": 0.11000000010244548
                 }
               }
             }
@@ -242,10 +230,6 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "AllEnemy"
                   },
-                  "AttackRootTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
                   "TriggerBattleDelay": 0.1,
                   "AttackDetectConfig": {
                     "$type": "RPG.GameCore.AdventureAttackDetectBoxConfig",
@@ -277,7 +261,7 @@
                   "NormalizedTimeEnd": {
                     "IsDynamic": false,
                     "FixedValue": {
-                      "Value": 0.17000000015832484
+                      "Value": 0.11000000010244548
                     }
                   }
                 }
@@ -354,10 +338,6 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "AllEnemy"
                       },
-                      "AttackRootTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "TriggerBattleDelay": 0.1,
                       "AttackDetectConfig": {
                         "$type": "RPG.GameCore.AdventureAttackDetectBoxConfig",
@@ -389,7 +369,7 @@
                       "NormalizedTimeEnd": {
                         "IsDynamic": false,
                         "FixedValue": {
-                          "Value": 0.17000000015832484
+                          "Value": 0.11000000010244548
                         }
                       }
                     }
@@ -459,10 +439,6 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "AllEnemy"
                       },
-                      "AttackRootTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "TriggerBattleDelay": 0.1,
                       "AttackDetectConfig": {
                         "$type": "RPG.GameCore.AdventureAttackDetectBoxConfig",
@@ -494,7 +470,7 @@
                       "NormalizedTimeEnd": {
                         "IsDynamic": false,
                         "FixedValue": {
-                          "Value": 0.17000000015832484
+                          "Value": 0.11000000010244548
                         }
                       }
                     }
@@ -520,10 +496,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.LookAt",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": "AbilityTargetEntity",
               "Duration": 0.25
             },
@@ -601,7 +573,7 @@
                 "FlySpeed": 20,
                 "EnableRayCast": true,
                 "Gravity": -25,
-                "MaxLifeTime": 5,
+                "MaxLifeTime": 2,
                 "AttachPoint": "RightHand",
                 "TargetAttachPoint": "Root",
                 "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_Bomb.prefab",
@@ -665,6 +637,11 @@
                   },
                   "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_Camera.prefab",
                   "AttachPoint": "Root"
+                }
+              ],
+              "OnProjectileLifetimeFinish": [
+                {
+                  "$type": "RPG.GameCore.AdventureSubmitSkill"
                 }
               ]
             },
@@ -758,7 +735,7 @@
                 "FlySpeed": 20,
                 "EnableRayCast": true,
                 "Gravity": -25,
-                "MaxLifeTime": 3,
+                "MaxLifeTime": 2,
                 "AttachPoint": "RightHand",
                 "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_Bomb.prefab",
                 "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_Hit.prefab",
@@ -821,6 +798,11 @@
                   },
                   "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_Camera.prefab",
                   "AttachPoint": "Root"
+                }
+              ],
+              "OnProjectileLifetimeFinish": [
+                {
+                  "$type": "RPG.GameCore.AdventureSubmitSkill"
                 }
               ]
             },

@@ -11,10 +11,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -37,10 +33,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -53,10 +45,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -73,10 +61,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -254,10 +238,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -274,10 +254,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -435,274 +411,284 @@
       "Modifiers": {
         "MMonster_W1_Soldier04_00_SkillP01_EnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
-          "OnEnterBattle": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareCharacterNumber",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "AllTeammate"
-                },
-                "CompareType": "Equal",
-                "CompareNumber": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_W1_Soldier04_00_SkillP01_InsertAbility_EnterBattle",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AbilityTarget": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AbortBehaviorFlags": [
-                    "STAT_CTRL",
-                    "Break",
-                    "DisableAction"
-                  ],
-                  "InsertAbilityPriority": "MonsterBattleCry",
-                  "ShowInActionBar": true
-                }
-              ]
-            }
-          ]
-        },
-        "MMonster_W1_Soldier04_00_SkillP01_ListenTeamMateAttack": {
-          "OnListenAfterAttack": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByNot",
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByAny",
-                      "PredicateList": [
-                        {
-                          "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "Flag": "STAT_CTRL"
-                        },
-                        {
-                          "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "Flag": "Break"
-                        },
-                        {
-                          "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "Flag": "DisableAction"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supporting"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported",
-                    "CasterFilter": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    }
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCompareCharacterNumber",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "AllEnemy"
-                    },
-                    "Predicate": {
-                      "$type": "RPG.GameCore.ByIsContainModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget"
-                    },
-                    "CompareType": "GreaterEqual",
-                    "CompareNumber": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
-                      }
-                    }
-                  }
-                ]
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop01_2.prefab"
-                },
-                {
-                  "$type": "RPG.GameCore.Retarget",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
-                  },
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget"
-                  },
-                  "MaxNumber": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "TaskList": [
-                    {
-                      "$type": "RPG.GameCore.TurnInsertAbility",
-                      "AbilityName": "Monster_W1_Soldier04_00_SkillP01_InsertAbility_ListenAttack",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "AbilityTarget": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "AbortBehaviorFlags": [
-                        "STAT_CTRL",
-                        "Break",
-                        "DisableAction"
-                      ],
-                      "InsertAbilityPriority": "MonsterInsertAttackOthers",
-                      "ShowInActionBar": true
-                    },
-                    {
-                      "$type": "RPG.GameCore.RemoveModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "AllEnemy"
-                      },
-                      "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget"
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  },
-                  "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported",
-                  "OnlyRemoveCasterAdded": true
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValueByAddValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "Key": "CurrentSupportNumber",
-                  "AddValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": -1
-                    }
-                  },
-                  "Min": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  },
-                  "Max": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 99
-                    }
-                  },
-                  "ContextScope": "TargetEntity"
-                },
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "$type": "RPG.GameCore.ByCompareCharacterNumber",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
+                      "Alias": "AllTeammate"
                     },
-                    "DynamicKey": "CurrentSupportNumber",
-                    "ContextScope": "TargetEntity",
                     "CompareType": "Equal",
-                    "CompareValue": {
+                    "CompareNumber": {
                       "IsDynamic": false,
                       "FixedValue": {
                         "Value": 0
                       }
                     }
                   },
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_W1_Soldier04_00_SkillP01_InsertAbility_EnterBattle",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbilityTarget": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbortBehaviorFlags": [
+                        "STAT_CTRL",
+                        "Break",
+                        "DisableAction"
+                      ],
+                      "InsertAbilityPriority": "MonsterBattleCry",
+                      "ShowInActionBar": true
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "MMonster_W1_Soldier04_00_SkillP01_ListenTeamMateAttack": {
+          "_CallbackList": {
+            "OnListenAfterAttack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByNot",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByAny",
+                          "PredicateList": [
+                            {
+                              "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "Flag": "STAT_CTRL"
+                            },
+                            {
+                              "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "Flag": "Break"
+                            },
+                            {
+                              "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "Flag": "DisableAction"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supporting"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported",
+                        "CasterFilter": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        }
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCompareCharacterNumber",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "AllEnemy"
+                        },
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByIsContainModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget"
+                        },
+                        "CompareType": "GreaterEqual",
+                        "CompareNumber": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.RemoveModifier",
+                      "$type": "RPG.GameCore.TriggerEffect",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supporting"
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop01_2.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.Retarget",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
+                      },
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget"
+                      },
+                      "MaxNumber": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "TaskList": [
+                        {
+                          "$type": "RPG.GameCore.TurnInsertAbility",
+                          "AbilityName": "Monster_W1_Soldier04_00_SkillP01_InsertAbility_ListenAttack",
+                          "AbilityTarget": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "AbortBehaviorFlags": [
+                            "STAT_CTRL",
+                            "Break",
+                            "DisableAction"
+                          ],
+                          "InsertAbilityPriority": "MonsterInsertAttackOthers",
+                          "ShowInActionBar": true
+                        },
+                        {
+                          "$type": "RPG.GameCore.RemoveModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "AllEnemy"
+                          },
+                          "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget"
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported",
+                      "OnlyRemoveCasterAdded": true
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "Key": "CurrentSupportNumber",
+                      "AddValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": -1
+                        }
+                      },
+                      "Min": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      "Max": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 99
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "DynamicKey": "CurrentSupportNumber",
+                        "ContextScope": "TargetEntity",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.RemoveModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supporting"
+                        }
+                      ],
+                      "FailedTaskList": []
                     }
                   ],
                   "FailedTaskList": []
                 }
-              ],
-              "FailedTaskList": []
+              ]
             }
-          ]
+          }
         },
         "MMonster_W1_Soldier04_00_SkillP01_ListenTeamMateDie": {
-          "OnListenCharacterDie": [
-            {
-              "$type": "RPG.GameCore.IncludeTaskListTemplate",
-              "Name": "TaskList_W1_Soldier04_00_SkillP01_OnDieOrEscape"
+          "_CallbackList": {
+            "OnListenCharacterDie": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.IncludeTaskListTemplate",
+                  "Name": "TaskList_W1_Soldier04_00_SkillP01_OnDieOrEscape"
+                }
+              ]
+            },
+            "OnListenCharacterEscape": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.IncludeTaskListTemplate",
+                  "Name": "TaskList_W1_Soldier04_00_SkillP01_OnDieOrEscape"
+                }
+              ]
             }
-          ],
-          "OnListenCharacterEscape": [
-            {
-              "$type": "RPG.GameCore.IncludeTaskListTemplate",
-              "Name": "TaskList_W1_Soldier04_00_SkillP01_OnDieOrEscape"
-            }
-          ],
+          },
           "TaskListTemplate": [
             {
               "Name": "TaskList_W1_Soldier04_00_SkillP01_OnDieOrEscape",
@@ -801,47 +787,55 @@
           ]
         },
         "MMonster_W1_Soldier04_00_SkillP01_ListenSelfDie": {
-          "OnBeingLimbo": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeammate"
-              },
-              "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported",
-              "OnlyRemoveCasterAdded": true
+          "_CallbackList": {
+            "OnBeingLimbo": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllTeammate"
+                  },
+                  "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported",
+                  "OnlyRemoveCasterAdded": true
+                }
+              ]
             }
-          ]
+          }
         },
         "MMonster_W1_Soldier04_00_SkillP01_ListenSelfBreak": {
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supporting"
-            },
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "CurrentSupportNumber",
-              "ContextScope": "TargetEntity"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeammate"
-              },
-              "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported",
-              "OnlyRemoveCasterAdded": true
+          "_CallbackList": {
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supporting"
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "DynamicKey": "CurrentSupportNumber",
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllTeammate"
+                  },
+                  "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_Supported",
+                  "OnlyRemoveCasterAdded": true
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_W1_Soldier04_00_SkillP01_Initiate",
@@ -910,20 +904,12 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamDark",
           "FormationType": "DarkTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -931,10 +917,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CastAnimation",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "AnchorOffset": {
                 "X": 1.5,
                 "Y": -0.5,
@@ -960,10 +942,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeStart": {
             "IsDynamic": false,
@@ -1006,10 +984,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -1403,10 +1377,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1722,10 +1692,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy",
           "NormalizedTransitionDuration": {
@@ -1740,121 +1706,78 @@
   ],
   "GlobalModifiers": {
     "MMonster_W1_Soldier04_00_SkillP01_Supporting": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop01.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        }
-      ]
-    },
-    "MMonster_W1_Soldier04_00_SkillP01_Supported": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop02.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        },
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "DynamicKey": "SupportAttackCounter",
-          "ContextScope": "TargetEntity"
-        },
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "DynamicKey": "SupportAttackTriggerFlag",
-          "ContextScope": "TargetEntity"
-        }
-      ],
-      "OnPhase1": [
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "DynamicKey": "SupportAttackCounter",
-          "ResetValue": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "ContextScope": "TargetEntity"
-        }
-      ],
-      "OnPhase2": [
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "DynamicKey": "SupportAttackCounter",
-          "ContextScope": "TargetEntity"
-        },
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "DynamicKey": "SupportAttackTriggerFlag",
-          "ResetValue": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "ContextScope": "TargetEntity"
-        }
-      ],
-      "OnAfterHit": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "DynamicKey": "SupportAttackCounter",
-            "ContextScope": "TargetEntity",
-            "CompareType": "Equal",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.AddModifier",
+              "$type": "RPG.GameCore.ModifierAttachEffect",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "TurnActionEntitySkillTarget"
+                "Alias": "ModifierOwnerEntity"
               },
-              "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop01.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            }
+          ]
+        }
+      }
+    },
+    "MMonster_W1_Soldier04_00_SkillP01_Supported": {
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop02.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
             },
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "DynamicKey": "SupportAttackCounter",
+              "ContextScope": "TargetEntity"
+            },
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "DynamicKey": "SupportAttackTriggerFlag",
+              "ContextScope": "TargetEntity"
+            }
+          ]
+        },
+        "OnPhase1": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "DynamicKey": "SupportAttackCounter",
+              "ResetValue": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "ContextScope": "TargetEntity"
+            }
+          ]
+        },
+        "OnPhase2": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.DefineDynamicValue",
               "TargetType": {
@@ -1880,24 +1803,89 @@
               "ContextScope": "TargetEntity"
             }
           ]
+        },
+        "OnAfterHit": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "DynamicKey": "SupportAttackCounter",
+                "ContextScope": "TargetEntity",
+                "CompareType": "Equal",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 1
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "TurnActionEntitySkillTarget"
+                  },
+                  "ModifierName": "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget"
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "SupportAttackCounter",
+                  "ContextScope": "TargetEntity"
+                },
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "SupportAttackTriggerFlag",
+                  "ResetValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
+                }
+              ]
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "ReplaceByCaster"
     },
     "MMonster_W1_Soldier04_00_SkillP01_Supported_Effect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop02_Start.prefab"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill02_Loop02_Start.prefab"
+            }
+          ]
         }
-      ]
+      }
     },
     "MMonster_W1_Soldier04_00_SkillP01_SupportAttackTarget": {
-      "OnCreate": []
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": []
+        }
+      }
     }
   }
 }

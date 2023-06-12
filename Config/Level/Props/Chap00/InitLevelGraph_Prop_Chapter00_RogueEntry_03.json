@@ -81,6 +81,30 @@
       ]
     },
     {
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.WaitAutoTriggerRogueEntrancePropInteract"
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByCompareSubMissionState",
+            "SubMissionID": 403000300,
+            "SubMissionState": "Finish"
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.TriggerCustomString",
+              "CustomString": {
+                "Value": "Rogue_Entry_Interact"
+              }
+            }
+          ],
+          "FailedTaskList": []
+        }
+      ]
+    },
+    {
       "IsLoop": true,
       "TaskList": [
         {

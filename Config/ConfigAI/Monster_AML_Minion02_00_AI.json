@@ -16,18 +16,6 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "UseSkill01",
-      "ScoreEvaluatorType": "DefaultDSE",
-      "ConsiderAxisList": [
-        {
-          "$type": "RPG.GameCore.CheckSkillUsabilityAxis",
-          "SkillName": "Skill01",
-          "InitialCD": 1,
-          "CD": 1,
-          "CheckScore": {
-            "Value": 0.10000000009313226
-          }
-        }
-      ],
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -44,23 +32,23 @@
             "SkillName": "Skill01"
           }
         ]
-      }
-    },
-    {
-      "$type": "RPG.GameCore.AIDecisionConfig",
-      "DecisionName": "UseSkill02",
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "ConsiderAxisList": [
         {
           "$type": "RPG.GameCore.CheckSkillUsabilityAxis",
-          "SkillName": "Skill02",
-          "InitialCD": 2,
-          "CD": 2,
+          "SkillName": "Skill01",
+          "InitialCD": 1,
+          "CD": 1,
           "CheckScore": {
-            "Value": 0.20000000018626451
+            "Value": 0.10000000009313226
           }
         }
-      ],
+      ]
+    },
+    {
+      "$type": "RPG.GameCore.AIDecisionConfig",
+      "DecisionName": "UseSkill02",
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -77,7 +65,19 @@
             "SkillName": "Skill02"
           }
         ]
-      }
+      },
+      "ScoreEvaluatorType": "DefaultDSE",
+      "ConsiderAxisList": [
+        {
+          "$type": "RPG.GameCore.CheckSkillUsabilityAxis",
+          "SkillName": "Skill02",
+          "InitialCD": 2,
+          "CD": 2,
+          "CheckScore": {
+            "Value": 0.20000000018626451
+          }
+        }
+      ]
     }
   ]
 }

@@ -8,39 +8,19 @@
           "LockCameraControl": false
         },
         {
-          "$type": "RPG.GameCore.AdventureCameraLookAt",
-          "PlayerTurnTo": true,
+          "$type": "RPG.GameCore.AdventureCameraLookAtSimple",
           "LookAtTargetAreaName": {
             "Value": "MainMission_2000201"
           },
           "LookAtTargetAnchorName": {
             "Value": "Camera_Tutorial_Lookat_02"
           },
-          "AxisOffset": {
-            "X": -15,
-            "Y": 0
-          },
           "LookAtTransitionDuration": 1,
-          "LookAtTransitionCurvePath": "Camera/BlendCurve/Blend_FastToSlow_TalkBlend.asset",
+          "LookAtTransitionCurvePath": "Camera/BlendCurve/Blend_N1CameraTest.asset",
           "LockCameraInput": true,
-          "LookAtDuration": 999,
-          "MaxAngle": 360,
-          "ExtraFreelook3rdConfig": {
-            "ExportToJson": true,
-            "LookAtOffsetChangeParam": {
-              "ExportToJson": true,
-              "TargetValue": {
-                "X": 1,
-                "Y": -0.5,
-                "Z": 1
-              },
-              "Time": 1,
-              "ChangeCurvePath": "Camera/BlendCurve/Blend_N1CameraTest.asset",
-              "RecoveryTime": 999,
-              "RecoveryCurvePath": "Camera/BlendCurve/Blend_N1CameraTest.asset",
-              "UsePlayerToLookAtTargetForward": true
-            }
-          }
+          "LookAtDuration": -1,
+          "LookAtRecoverDuration": 1,
+          "LookAtRecoverCurvePath": "Camera/BlendCurve/Blend_N1CameraTest.asset"
         },
         {
           "$type": "RPG.GameCore.ShowTutorialUI"
@@ -81,7 +61,8 @@
         },
         {
           "$type": "RPG.GameCore.WaitUINodeOpen",
-          "NodeID": "MazeMainPage.AttackTarget"
+          "NodeID": "MazeMainPage.AttackTarget",
+          "SkipCheck": true
         },
         {
           "$type": "RPG.GameCore.WaitSecond",

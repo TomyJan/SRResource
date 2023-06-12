@@ -8,10 +8,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity",
           "Duration": 0.2
         },
@@ -60,7 +56,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.1500000001396984
+              "Value": 0.14290000055916607
             }
           }
         },
@@ -72,8 +68,8 @@
           },
           "Projectile": {
             "Behavior": "Static",
-            "MaxLifeTime": 4,
-            "FlyEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_MazeAttack_Hit.prefab"
+            "MaxLifeTime": 3,
+            "FlyEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Maze_Hit.prefab"
           }
         },
         {
@@ -84,7 +80,8 @@
           },
           "Projectile": {
             "Behavior": "Static",
-            "MaxLifeTime": 0.883
+            "MaxLifeTime": 0.98,
+            "TargetAttachPoint": "Origin"
           },
           "OnProjectileLifetimeFinish": [
             {
@@ -100,11 +97,12 @@
               "TriggerBattleDelay": 0.2,
               "AttackDetectConfig": {
                 "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
-                "MaxRadius": 0.8,
+                "MaxRadius": 0.5,
                 "FanAngle": 360
               },
               "HitConfig": {
-                "HitAnimation": "Hit"
+                "HitAnimation": "Hit",
+                "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Hit.prefab"
               }
             }
           ]
@@ -119,7 +117,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.45000000041909516
+              "Value": 0.5000000004656613
             }
           }
         },
@@ -139,9 +137,43 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
+              "Value": 0.8000000007450581
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "AnimStateName": "Attack",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
               "Value": 1
             }
           }
+        }
+      ]
+    },
+    {
+      "Name": "MazeMonster_XP_Elite02_02_Passive",
+      "TargetInfo": {
+        "TargetType": "Caster"
+      },
+      "OnAdd": [
+        {
+          "$type": "RPG.GameCore.SetAttachmentVisibility",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "AttachPoints": [
+            {
+              "Name": "Book"
+            }
+          ]
         }
       ]
     }

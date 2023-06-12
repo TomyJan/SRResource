@@ -3,19 +3,55 @@
     {
       "Modifiers": {
         "MMonster_W1_Soldier01_02_BreakEffectController": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByIsContainModifier",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "ModifierName": "StanceBreakState"
+                  },
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MMonster_W1_Soldier01_02_IceEffectController"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MMonster_W1_Soldier01_02_IceEffectController"
                 },
-                "ModifierName": "StanceBreakState"
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MMonster_W1_Soldier01_02_MaterialsChange"
+                }
+              ]
+            },
+            "OnEndBreak": {
+              "CallbackConfig": [
                 {
                   "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
@@ -23,113 +59,112 @@
                     "Alias": "ModifierOwnerEntity"
                   },
                   "ModifierName": "MMonster_W1_Soldier01_02_IceEffectController"
-                }
-              ]
-            }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MMonster_W1_Soldier01_02_IceEffectController"
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MMonster_W1_Soldier01_02_MaterialsChange"
-            }
-          ],
-          "OnEndBreak": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MMonster_W1_Soldier01_02_IceEffectController"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MMonster_W1_Soldier01_02_MaterialsChange"
-            }
-          ]
-        },
-        "MMonster_W1_Soldier01_02_MaterialsChange": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.ReplaceCharacterMaterial",
-              "ReplaceConfig": [
-                {
-                  "NodePath": "Body",
-                  "SourcePath": "Characters/Monster/W1_Soldier01_02/Materials/W1_Soldier01_02_Mat.mat"
                 },
                 {
-                  "NodePath": "Weapon",
-                  "SourcePath": "Characters/Monster/W1_Soldier01_02/Materials/W1_Soldier01_02_Mat_Weapon.mat"
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MMonster_W1_Soldier01_02_MaterialsChange"
                 }
               ]
             }
-          ],
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.ReplaceCharacterMaterial",
-              "IsReset": true
+          }
+        },
+        "MMonster_W1_Soldier01_02_MaterialsChange": {
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_PassiveSkill_Mat_Change.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_PassiveSkill_Mat_Change_Weapon.prefab"
+                }
+              ]
+            },
+            "OnDestroy": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_PassiveSkill_Mat_Change.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_PassiveSkill_Mat_Change_Weapon.prefab"
+                }
+              ]
             }
-          ]
+          }
         },
         "MMonster_W1_Soldier01_02_IceEffectController": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.ModifierAttachEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_Common_Ice_Axe_All_JNT.prefab",
-              "MinMutexTime": -1,
-              "MutexType": "Entity"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.ModifierAttachEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_Common_Ice_Axe_All_JNT.prefab",
+                  "MinMutexTime": -1,
+                  "MutexType": "Entity"
+                },
+                {
+                  "$type": "RPG.GameCore.ModifierAttachEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_Common_Chest_M.prefab",
+                  "MinMutexTime": -1,
+                  "MutexType": "Entity"
+                },
+                {
+                  "$type": "RPG.GameCore.ModifierAttachEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_Common_Knee_R.prefab",
+                  "MinMutexTime": -1,
+                  "MutexType": "Entity"
+                }
+              ]
             },
-            {
-              "$type": "RPG.GameCore.ModifierAttachEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_Common_Chest_M.prefab",
-              "MinMutexTime": -1,
-              "MutexType": "Entity"
-            },
-            {
-              "$type": "RPG.GameCore.ModifierAttachEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_Common_Knee_R.prefab",
-              "MinMutexTime": -1,
-              "MutexType": "Entity"
+            "OnDestroy": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_Common_Remove.prefab"
+                }
+              ]
             }
-          ],
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier01_02/Eff_Monster_W1_Soldier01_02_Common_Remove.prefab"
-            }
-          ]
+          }
         }
       },
       "Name": "Monster_W1_Soldier01_02_PassiveSkillInitiate",
@@ -173,10 +208,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill05_Charge",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -193,10 +224,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -272,10 +299,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,

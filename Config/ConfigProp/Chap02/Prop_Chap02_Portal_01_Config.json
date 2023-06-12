@@ -10,6 +10,9 @@
       "Behavior": "DisableTrigger"
     }
   ],
+  "AnimEventConfigList": [
+    "Config/ConfigAnimEvents/Prop/Effect/Prop_Chap02_Portal_01_Effect_AnimEvent.json"
+  ],
   "DisableAnimEventLayers": [
     "Emission Layer",
     "LightLayer"
@@ -23,7 +26,7 @@
       ],
       "OnEnter": [
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -37,7 +40,7 @@
       ],
       "OnExit": [
         {
-          "$type": "RPG.GameCore.PropRemoveEffect",
+          "$type": "RPG.GameCore.RemoveEffect",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -62,7 +65,7 @@
       ],
       "OnEnter": [
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -74,15 +77,7 @@
           ]
         }
       ],
-      "OnExit": [
-        {
-          "$type": "RPG.GameCore.PropRemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Scene/Interactive Object/Eff_Common_MAZ_Prop_Portal_01_Opened_Lod0.prefab"
-        }
-      ]
+      "OnExit": []
     },
     {
       "States": [
@@ -92,23 +87,11 @@
       ],
       "OnEnter": [
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-          },
-          "EffectList": [
-            {
-              "EffectPath": "Effects/Eff_Prefab/Eff_Scene/Interactive Object/Eff_Common_MAZ_Prop_Portal_01_Connected_Lod0.prefab",
-              "AttachPoint": "EffectRoot"
-            }
-          ]
-        },
-        {
           "$type": "RPG.GameCore.TriggerSound",
           "SoundName": "Ev_sfx_xianzhou_teleportgate_matching"
         },
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -122,14 +105,14 @@
       ],
       "OnExit": [
         {
-          "$type": "RPG.GameCore.PropRemoveEffect",
+          "$type": "RPG.GameCore.RemoveEffect",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
           "EffectPath": "Effects/Eff_Prefab/Eff_Scene/Interactive Object/Eff_Common_MAZ_Prop_Portal_01_Connected_Lod0.prefab"
         },
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -154,7 +137,7 @@
       ],
       "OnEnter": [
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -166,7 +149,7 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -184,14 +167,14 @@
       ],
       "OnExit": [
         {
-          "$type": "RPG.GameCore.PropRemoveEffect",
+          "$type": "RPG.GameCore.RemoveEffect",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
           "EffectPath": "Effects/Eff_Prefab/Eff_Scene/Interactive Object/Eff_Common_MAZ_Prop_Portal_01_Connecting_Lod0.prefab"
         },
         {
-          "$type": "RPG.GameCore.PropRemoveEffect",
+          "$type": "RPG.GameCore.RemoveEffect",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -207,7 +190,7 @@
       ],
       "OnEnter": [
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -219,7 +202,7 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -233,14 +216,14 @@
       ],
       "OnExit": [
         {
-          "$type": "RPG.GameCore.PropRemoveEffect",
+          "$type": "RPG.GameCore.RemoveEffect",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
           "EffectPath": "Effects/Eff_Prefab/Eff_Scene/Interactive Object/Eff_Common_MAZ_Prop_Portal_01_Disconnecting_Lod0.prefab"
         },
         {
-          "$type": "RPG.GameCore.PropRemoveEffect",
+          "$type": "RPG.GameCore.RemoveEffect",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },

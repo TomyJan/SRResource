@@ -36,6 +36,11 @@
                       "$type": "RPG.GameCore.LockPlayerControl"
                     },
                     {
+                      "$type": "RPG.GameCore.BlockInputController",
+                      "Enable": true,
+                      "ActionNameList": []
+                    },
+                    {
                       "$type": "RPG.GameCore.AdvForceNpcGoBack"
                     },
                     {
@@ -231,6 +236,10 @@
                               "$type": "RPG.GameCore.HideTopPage"
                             },
                             {
+                              "$type": "RPG.GameCore.BlockInputController",
+                              "ActionNameList": []
+                            },
+                            {
                               "$type": "RPG.GameCore.UnLockPlayerControl"
                             },
                             {
@@ -347,6 +356,10 @@
                             },
                             {
                               "$type": "RPG.GameCore.HideTopPage"
+                            },
+                            {
+                              "$type": "RPG.GameCore.BlockInputController",
+                              "ActionNameList": []
                             },
                             {
                               "$type": "RPG.GameCore.UnLockPlayerControl"
@@ -467,6 +480,10 @@
                               "$type": "RPG.GameCore.HideTopPage"
                             },
                             {
+                              "$type": "RPG.GameCore.BlockInputController",
+                              "ActionNameList": []
+                            },
+                            {
                               "$type": "RPG.GameCore.UnLockPlayerControl"
                             },
                             {
@@ -585,6 +602,107 @@
                               "$type": "RPG.GameCore.HideTopPage"
                             },
                             {
+                              "$type": "RPG.GameCore.BlockInputController",
+                              "ActionNameList": []
+                            },
+                            {
+                              "$type": "RPG.GameCore.UnLockPlayerControl"
+                            },
+                            {
+                              "$type": "RPG.GameCore.TriggerCustomString",
+                              "CustomString": {
+                                "Value": "302Block_Act_Over"
+                              }
+                            },
+                            {
+                              "$type": "RPG.GameCore.PropReqInteract",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                              },
+                              "InteractID": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 1100
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "$type": "RPG.GameCore.PropStateExecute",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+                            "FetchType": "SinglePropByPropID",
+                            "SinglePropID": {
+                              "GroupID": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 5
+                                }
+                              },
+                              "ID": {
+                                "IsDynamic": false,
+                                "FixedValue": {
+                                  "Value": 300005
+                                }
+                              }
+                            }
+                          },
+                          "State": "CustomState05",
+                          "Execute": [
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 3
+                            },
+                            {
+                              "$type": "RPG.GameCore.PlayScreenTransfer",
+                              "Mode": "SwitchOut",
+                              "CustomTime": 0.5
+                            },
+                            {
+                              "$type": "RPG.GameCore.ActiveVirtualCamera",
+                              "AreaName": "Chap01_MAZ_M302_LevelArea",
+                              "AnchorName": "FogDoor_Cam_01",
+                              "IsActive": false,
+                              "BlendConfig": {
+                                "ExportToJson": true,
+                                "BlendType": "Cut"
+                              }
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.5
+                            },
+                            {
+                              "$type": "RPG.GameCore.SetForceStreamingThisFrame",
+                              "StartLoadingTick": true
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitStreamingJobFinished",
+                              "StopLoadingTick": true
+                            },
+                            {
+                              "$type": "RPG.GameCore.WaitSecond",
+                              "WaitTime": 0.5
+                            },
+                            {
+                              "$type": "RPG.GameCore.PlayScreenTransfer",
+                              "CustomTime": 0.5
+                            },
+                            {
+                              "$type": "RPG.GameCore.EnableNPCMonsterAI",
+                              "Enable": true,
+                              "GroupMonsterIDs": [],
+                              "UniqueNames": []
+                            },
+                            {
+                              "$type": "RPG.GameCore.HideTopPage"
+                            },
+                            {
+                              "$type": "RPG.GameCore.BlockInputController",
+                              "ActionNameList": []
+                            },
+                            {
                               "$type": "RPG.GameCore.UnLockPlayerControl"
                             },
                             {
@@ -614,6 +732,7 @@
               ]
             }
           ],
+          "OverrideTargetTypes": [],
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           }

@@ -49,11 +49,7 @@
         {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
-          "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          }
+          "FormationType": "LightTeamNormal"
         },
         {
           "$type": "RPG.GameCore.TriggerAbility",
@@ -75,10 +71,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill04",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -95,10 +87,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -128,10 +116,6 @@
         },
         {
           "$type": "RPG.GameCore.AnimSetParameter",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "ParameterName": "TriggerChangeSpeed2",
           "ParameterType": "Trigger"
         },
@@ -188,10 +172,6 @@
         },
         {
           "$type": "RPG.GameCore.AnimSetParameter",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "ParameterName": "TriggerChangeSpeed1",
           "ParameterType": "Trigger"
         },
@@ -203,87 +183,95 @@
   ],
   "GlobalModifiers": {
     "MMonster_W1_CocoliaP2_01_StandByEffect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP2_00/Eff_Monster_W1_CocoliaP2_01_Common_StandBy.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP2_00/Eff_Monster_W1_CocoliaP2_01_Common_StandBy_Ground.prefab"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP2_00/Eff_Monster_W1_CocoliaP2_01_Common_StandBy.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP2_00/Eff_Monster_W1_CocoliaP2_01_Common_StandBy_Ground.prefab"
+            }
+          ]
         }
-      ]
+      }
     },
     "MMonster_W1_CocoliaP2_01_SpinSpeedController": {
-      "OnBeingLimbo": [
-        {
-          "$type": "RPG.GameCore.AnimSetParameter",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ParameterName": "TriggerChangeSpeed0",
-          "ParameterType": "Trigger"
+      "_CallbackList": {
+        "OnBeingLimbo": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AnimSetParameter",
+              "ParameterName": "TriggerChangeSpeed0",
+              "ParameterType": "Trigger"
+            }
+          ]
+        },
+        "OnBeingBreak": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AnimSetParameter",
+              "ParameterName": "TriggerChangeSpeed0",
+              "ParameterType": "Trigger"
+            }
+          ]
+        },
+        "OnEndBreak": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AnimSetParameter",
+              "ParameterName": "TriggerChangeSpeed1",
+              "ParameterType": "Trigger"
+            }
+          ]
         }
-      ],
-      "OnBeingBreak": [
-        {
-          "$type": "RPG.GameCore.AnimSetParameter",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ParameterName": "TriggerChangeSpeed0",
-          "ParameterType": "Trigger"
-        }
-      ],
-      "OnEndBreak": [
-        {
-          "$type": "RPG.GameCore.AnimSetParameter",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ParameterName": "TriggerChangeSpeed1",
-          "ParameterType": "Trigger"
-        }
-      ]
+      }
     },
     "MMonster_W1_CocoliaP2_01_BeHitEffect": {
-      "OnBeforeBeingHit": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP2_00/Eff_Monster_W1_CocoliaP2_01_Common_BeAttacked.prefab"
+      "_CallbackList": {
+        "OnBeforeBeingHit": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP2_00/Eff_Monster_W1_CocoliaP2_01_Common_BeAttacked.prefab"
+            }
+          ]
         }
-      ]
+      }
     },
     "MMonster_W1_CocoliaP2_01_DieWithoutEffect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "PhaseName": "Phase2",
-          "PhaseAnimConfig": {
-            "Die": "Die_NoEffect",
-            "DieHit": "Die_NoEffect"
-          }
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.CharacterChangePhase",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "PhaseName": "Phase2",
+              "PhaseAnimConfig": {
+                "Die": "Die_NoEffect",
+                "DieHit": "Die_NoEffect"
+              }
+            }
+          ]
         }
-      ]
+      }
     }
   }
 }

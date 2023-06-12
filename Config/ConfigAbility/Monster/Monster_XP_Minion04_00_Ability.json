@@ -3,12 +3,16 @@
     {
       "Modifiers": {
         "MMonster_XP_Minion04_00_BeHitSoundController": {
-          "OnBeforeBeingHit": [
-            {
-              "$type": "RPG.GameCore.TriggerSound",
-              "SoundName": "Ev_sfx_monster_hurt_xp_minion04_00"
+          "_CallbackList": {
+            "OnBeforeBeingHit": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TriggerSound",
+                  "SoundName": "Ev_sfx_monster_hurt_xp_minion04_00"
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_XP_Minion04_00_PassiveSkillInitiate",
@@ -23,6 +27,30 @@
             "Alias": "Caster"
           },
           "ModifierName": "MMonster_XP_Minion04_00_BeHitSoundController"
+        }
+      ]
+    },
+    {
+      "Name": "Monster_XP_Minion04_00_PassiveSkill_Tutorial",
+      "TargetInfo": {
+        "TargetType": "Caster"
+      },
+      "OnStart": [
+        {
+          "$type": "RPG.GameCore.TutorialTaskUnlock",
+          "TriggerParam": "6033"
+        }
+      ]
+    },
+    {
+      "Name": "Monster_XP_Minion04_08_PassiveSkill_Tutorial",
+      "TargetInfo": {
+        "TargetType": "Caster"
+      },
+      "OnStart": [
+        {
+          "$type": "RPG.GameCore.TutorialTaskUnlock",
+          "TriggerParam": "6034"
         }
       ]
     },
@@ -52,10 +80,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -66,10 +90,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy_Charge01"
         }
@@ -151,10 +171,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -165,10 +181,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "AnimStateName": "StandBy_Charge02"
         }
@@ -285,10 +297,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -373,122 +381,138 @@
   ],
   "GlobalModifiers": {
     "MMonster_XP_Minion04_00_EscapingCharge01": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "PhaseName": "Charge01",
-          "PhaseAnimConfig": {
-            "StandBy": "StandBy_Charge01",
-            "StandByLowHP": "StandBy_Charge01",
-            "Hit": "Hit_Charge01",
-            "HitH": "Hit_H_Charge01",
-            "HitFly": "Hit_Fly_Charge01",
-            "HitFlyRecover": "Hit_Fly_Recover_Charge01"
-          }
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.CharacterChangePhase",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "PhaseName": "Charge01",
+              "PhaseAnimConfig": {
+                "StandBy": "StandBy_Charge01",
+                "StandByLowHP": "StandBy_Charge01",
+                "Hit": "Hit_Charge01",
+                "HitH": "Hit_H_Charge01",
+                "HitFly": "Hit_Fly_Charge01",
+                "HitFlyRecover": "Hit_Fly_Recover_Charge01"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill01_Loop.prefab"
+            }
+          ]
         },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill01_Loop.prefab"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "PhaseName": "Normal",
-          "PhaseAnimConfig": {
-            "StandBy": "StandBy",
-            "StandByLowHP": "StandBy_LowHP",
-            "Hit": "Hit",
-            "HitH": "Hit_H",
-            "HitFly": "Hit_Fly",
-            "HitFlyRecover": "Hit_Fly_Recover"
-          }
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.CharacterChangePhase",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "PhaseName": "Normal",
+              "PhaseAnimConfig": {
+                "StandBy": "StandBy",
+                "StandByLowHP": "StandBy_LowHP",
+                "Hit": "Hit",
+                "HitH": "Hit_H",
+                "HitFly": "Hit_Fly",
+                "HitFlyRecover": "Hit_Fly_Recover"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill01_Loop.prefab"
+            }
+          ]
         },
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill01_Loop.prefab"
+        "OnBeingBreak": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveSelfModifier"
+            }
+          ]
         }
-      ],
-      "OnBeingBreak": [
-        {
-          "$type": "RPG.GameCore.RemoveSelfModifier"
-        }
-      ]
+      }
     },
     "MMonster_XP_Minion04_00_EscapingCharge02": {
       "BehaviorFlagList": [
         "MuteHitFly",
         "Endurance"
       ],
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.CharacterChangePhase",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "PhaseName": "Charge02",
-          "PhaseAnimConfig": {
-            "StandBy": "StandBy_Charge02",
-            "StandByLowHP": "StandBy_Charge02",
-            "Hit": "Hit_Charge02",
-            "HitH": "Hit_H_Charge02"
-          }
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.CharacterChangePhase",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "PhaseName": "Charge02",
+              "PhaseAnimConfig": {
+                "StandBy": "StandBy_Charge02",
+                "StandByLowHP": "StandBy_Charge02",
+                "Hit": "Hit_Charge02",
+                "HitH": "Hit_H_Charge02"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill02_Loop.prefab"
+            }
+          ]
         },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill02_Loop.prefab"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill02_Loop.prefab"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackWeakness",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "OPType": "Protected",
-          "WeakList": [
-            "Physical",
-            "Fire",
-            "Ice",
-            "Thunder",
-            "Wind",
-            "Quantum",
-            "Imaginary"
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_00/Eff_Monster_XP_Minion04_00_Skill02_Loop.prefab"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackWeakness",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "OPType": "Protected",
+              "WeakList": [
+                "Physical",
+                "Fire",
+                "Ice",
+                "Thunder",
+                "Wind",
+                "Quantum",
+                "Imaginary"
+              ]
+            }
           ]
         }
-      ]
+      }
     }
   }
 }

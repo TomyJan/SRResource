@@ -31,10 +31,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.LookAt",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": "AbilityTargetEntity",
               "Duration": 0.25
             },
@@ -113,14 +109,6 @@
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerAttack",
-              "AttackTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AbilityTargetEntity"
-              },
-              "AttackRootTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TriggerBattleDelay": 0.1,
               "AttackDetectConfig": {
                 "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
@@ -229,10 +217,6 @@
                   "AttackTargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "AllEnemy"
-                  },
-                  "AttackRootTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
                   },
                   "TriggerBattleDelay": 0.1,
                   "AttackDetectConfig": {
@@ -343,10 +327,6 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "AllEnemy"
                       },
-                      "AttackRootTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "TriggerBattleDelay": 0.1,
                       "AttackDetectConfig": {
                         "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
@@ -449,10 +429,6 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "AllEnemy"
                       },
-                      "AttackRootTargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
                       "TriggerBattleDelay": 0.1,
                       "AttackDetectConfig": {
                         "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
@@ -507,10 +483,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.LookAt",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": "AbilityTargetEntity",
               "Duration": 0.25
             },
@@ -601,7 +573,7 @@
                 "Alias": "SkillPointEntity"
               },
               "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
+                "ColliderTemplate": "CapsuleZ_MazeCommonBullet_Big",
                 "Behavior": "LinearWithHitDetect",
                 "FlySpeed": 70,
                 "EnableRayCast": true,
@@ -611,6 +583,7 @@
                 "TargetAttachPoint": "Root",
                 "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Silwolf/Eff_Avatar_Silwolf_00_MazeSkill01_Trail01.prefab",
                 "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Silwolf/Eff_Avatar_Silwolf_00_MazeSkill01_Hit01.prefab",
+                "FlyEffectFadeOut": true,
                 "AlignHitEffect": true,
                 "LinearPitchAngle": {
                   "IsDynamic": false,
@@ -633,7 +606,7 @@
                   "TriggerBattleDelay": 0.1,
                   "AttackDetectConfig": {
                     "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
-                    "MaxRadius": 1,
+                    "MaxRadius": 1.8,
                     "FanAngle": 360,
                     "Hight": 2,
                     "Offset": {
@@ -655,14 +628,26 @@
                       "ID": 100601
                     }
                   ]
+                },
+                {
+                  "$type": "RPG.GameCore.VCameraConfigChange",
+                  "CameraConfig": {
+                    "ShakeConfigV2": {
+                      "ShakeRange": 1,
+                      "ShakeTime": 0.1,
+                      "ShakeDistance": 2,
+                      "ShakeDir": {
+                        "X": 0,
+                        "Y": 0,
+                        "Z": -0.5
+                      },
+                      "BaseCycle": 0.05,
+                      "CycleDamping": 0.5,
+                      "RangeAttenuation": 0.1
+                    }
+                  }
                 }
               ]
-            },
-            {
-              "$type": "RPG.GameCore.VCameraConfigChange",
-              "CameraConfig": {
-                "ShakeTemplateName": "LocalPlayer_Pela_Skill"
-              }
             }
           ],
           "FailedTaskList": [
@@ -753,7 +738,7 @@
                 "Alias": "None"
               },
               "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
+                "ColliderTemplate": "CapsuleZ_MazeCommonBullet_Big",
                 "Behavior": "LinearWithHitDetect",
                 "FlySpeed": 70,
                 "EnableRayCast": true,
@@ -763,6 +748,7 @@
                 "TargetAttachPoint": "Root",
                 "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Silwolf/Eff_Avatar_Silwolf_00_MazeSkill01_Trail01.prefab",
                 "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Silwolf/Eff_Avatar_Silwolf_00_MazeSkill01_Hit01.prefab",
+                "FlyEffectFadeOut": true,
                 "AlignHitEffect": true,
                 "LinearPitchAngle": {
                   "IsDynamic": false,
@@ -785,7 +771,7 @@
                   "TriggerBattleDelay": 0.1,
                   "AttackDetectConfig": {
                     "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
-                    "MaxRadius": 1,
+                    "MaxRadius": 1.8,
                     "FanAngle": 360,
                     "Hight": 2,
                     "Offset": {
@@ -807,6 +793,24 @@
                       "ID": 100601
                     }
                   ]
+                },
+                {
+                  "$type": "RPG.GameCore.VCameraConfigChange",
+                  "CameraConfig": {
+                    "ShakeConfigV2": {
+                      "ShakeRange": 1,
+                      "ShakeTime": 0.1,
+                      "ShakeDistance": 2,
+                      "ShakeDir": {
+                        "X": 0,
+                        "Y": 0,
+                        "Z": -0.5
+                      },
+                      "BaseCycle": 0.05,
+                      "CycleDamping": 0.5,
+                      "RangeAttenuation": 0.1
+                    }
+                  }
                 }
               ],
               "OnProjectileLifetimeFinish": [
@@ -823,7 +827,7 @@
                   "TriggerBattleDelay": 0.1,
                   "AttackDetectConfig": {
                     "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
-                    "MaxRadius": 1,
+                    "MaxRadius": 1.8,
                     "FanAngle": 360,
                     "Hight": 2,
                     "Offset": {
@@ -845,14 +849,26 @@
                       "ID": 100601
                     }
                   ]
+                },
+                {
+                  "$type": "RPG.GameCore.VCameraConfigChange",
+                  "CameraConfig": {
+                    "ShakeConfigV2": {
+                      "ShakeRange": 1,
+                      "ShakeTime": 0.2,
+                      "ShakeDistance": 2,
+                      "ShakeDir": {
+                        "X": 0,
+                        "Y": 0,
+                        "Z": -0.5
+                      },
+                      "BaseCycle": 0.05,
+                      "CycleDamping": 0.5,
+                      "RangeAttenuation": 0.1
+                    }
+                  }
                 }
               ]
-            },
-            {
-              "$type": "RPG.GameCore.VCameraConfigChange",
-              "CameraConfig": {
-                "ShakeTemplateName": "LocalPlayer_Pela_Skill"
-              }
             }
           ]
         }

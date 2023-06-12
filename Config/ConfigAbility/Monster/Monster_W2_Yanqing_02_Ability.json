@@ -26,18 +26,10 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -54,18 +46,10 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         }
       ]
@@ -86,7 +70,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.1500000001396984
+              "Value": 0.05000000004656613
             }
           }
         },
@@ -99,7 +83,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.22000000020489097
+              "Value": 0.09499999973922968
             }
           }
         },
@@ -108,8 +92,7 @@
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "SkillPointEntity"
-          },
-          "TargetAttachPoint": "Root"
+          }
         },
         {
           "$type": "RPG.GameCore.WaitAnimState",
@@ -117,35 +100,94 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.49000000045634806
+              "Value": 0.4110000003129244
             }
           }
         },
         {
-          "$type": "RPG.GameCore.DamageByAttackProperty",
+          "$type": "RPG.GameCore.RemoveModifier",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AbilityTargetEntity"
+            "Alias": "Caster"
           },
-          "AttackProperty": {
-            "DamageType": "Ice",
-            "DamagePercentage": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
-            },
-            "SPHitRatio": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
+          "ModifierName": "MMonster_W2_Yanqing_01_StandByEffect"
+        },
+        {
+          "$type": "RPG.GameCore.RemoveEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Common_Appear.prefab"
+        },
+        {
+          "$type": "RPG.GameCore.RemoveEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_02_Common_Appear.prefab"
+        },
+        {
+          "$type": "RPG.GameCore.FireProjectile",
+          "Projectile": {
+            "FlyTime": 0.11,
+            "AttachPoint": "Skill01Point",
+            "TargetAttachPoint": "SelectRoot",
+            "IgnoreTargetHitbox": true,
+            "FlyEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Skill01_Bullet.prefab",
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Skill01_Hit.prefab",
+            "FlyEffectFadeOut": true
+          },
+          "OnProjectileHit": [
+            {
+              "$type": "RPG.GameCore.DamageByAttackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AbilityTargetEntity"
+              },
+              "AttackProperty": {
+                "DamageType": "Ice",
+                "DamagePercentage": {
+                  "IsDynamic": true,
+                  "Expressions": [
+                    {
+                      "Type": "DynamicNumber",
+                      "DynamicHash": -1126825319
+                    }
+                  ]
+                },
+                "SPHitRatio": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 1
+                  }
+                },
+                "HitAnimation": "Hit"
               }
             },
-            "HitAnimation": "Hit"
-          }
+            {
+              "$type": "RPG.GameCore.VCameraConfigChange",
+              "CameraConfig": {
+                "ShakeTemplateName": "Spike_Light",
+                "OverrideShakeConfigV2": {
+                  "ShakeScale": 0.4,
+                  "ShakeTime": 0.2,
+                  "ShakeDir": {
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0.7
+                  },
+                  "RangeAttenuationDelay": 999,
+                  "RangeAttenuationTarget": 0
+                },
+                "BlendConfig": {
+                  "BlendType": "Cut"
+                }
+              }
+            }
+          ],
+          "WaitProjectileFinish": true
         },
         {
           "$type": "RPG.GameCore.DamagePerformFinish"
@@ -207,12 +249,30 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.7500000006984919
+              "Value": 0.6000000005587935
             }
           }
         },
         {
           "$type": "RPG.GameCore.StopAim"
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "AnimStateName": "Skill01",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.7600000007078052
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.AddModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "ModifierName": "MMonster_W2_Yanqing_01_StandByEffect"
         },
         {
           "$type": "RPG.GameCore.SkillPerformFinish"

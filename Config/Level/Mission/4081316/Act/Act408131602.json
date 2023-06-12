@@ -6,8 +6,14 @@
         {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
           "PerformanceType": "E",
+          "CreateCharacterList": [],
+          "EntityVisiableList": [],
           "HideMunicipalCrowd": false,
-          "HideMunicipalPedestrian": false
+          "HideMunicipalPedestrian": false,
+          "PropVisiableList": [],
+          "StreamingCentersInBlackMask": [],
+          "StreamingCentersAfterBlackMask": [],
+          "MarkStreamingItems": []
         },
         {
           "$type": "RPG.GameCore.PerformanceTransition",
@@ -16,10 +22,22 @@
           "CreateNpcList": [],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "TaskEnabled": false
           },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
+          },
           "SwitchCharacterAnchor": {
+            "TaskEnabled": false
+          },
+          "AdvNpcFaceToPlayer": {
             "TaskEnabled": false
           }
         },
@@ -32,16 +50,34 @@
           "FinishImmadiate": true
         },
         {
+          "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
+          "GroupID": 99,
+          "GroupNpcID": 400001,
+          "FinishImmadiate": true
+        },
+        {
           "$type": "RPG.GameCore.PerformanceTransition",
           "SwitchInTime": -1,
           "SwitchKeepTime": 0.3,
           "CreateNpcList": [],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "TaskEnabled": false
           },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
+          },
           "SwitchCharacterAnchor": {
+            "TaskEnabled": false
+          },
+          "AdvNpcFaceToPlayer": {
             "TaskEnabled": false
           }
         },
@@ -70,6 +106,23 @@
           "CustomString": {
             "Value": "Wait_Option_408131601_21"
           }
+        },
+        {
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "SimpleTalkList": [
+            {
+              "TalkSentenceID": 401070009,
+              "ProtectTime": 0.3
+            },
+            {
+              "TalkSentenceID": 401070010,
+              "ProtectTime": 0.3
+            },
+            {
+              "TalkSentenceID": 401070011,
+              "ProtectTime": 0.3
+            }
+          ]
         }
       ]
     },
@@ -115,7 +168,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401070013,
@@ -124,20 +177,47 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
-          "$type": "RPG.GameCore.TriggerCustomString",
-          "CustomString": {
-            "Value": "ALL_TALK_END"
-          },
-          "TaskEnabled": false
-        },
-        {
-          "$type": "RPG.GameCore.TriggerCustomString",
-          "CustomString": {
-            "Value": "M3_1WilliamRaid_Enter"
+          "$type": "RPG.GameCore.StartDialogueEntityInteract",
+          "LevelGraphPath": "Config/Level/Props/InteractMode/TriggerEvent_TriggerType_07.json",
+          "UseOverrideData": true,
+          "ValueSource": {
+            "Values": [
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Level/Common_Adventure/UseInteractNPC.prefab",
+                "Key": "DialogueEntityInteract_AreaPath"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "UseInteractNPC,UseInteractNPC_Camera",
+                "Key": "DialogueEntityInteract_CameraKey"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "UseInteractNPC",
+                "Key": "DialogueEntityInteract_AreaName"
+              }
+            ]
           }
+        },
+        {
+          "$type": "RPG.GameCore.SetLocalPlayerDitherAlpha"
+        },
+        {
+          "$type": "RPG.GameCore.OpenTreasureChallenge",
+          "RaidID": 4013201,
+          "OnCancel": [
+            {
+              "$type": "RPG.GameCore.EndDialogueEntityInteract",
+              "LevelGraphPath": "Config/Level/Props/InteractMode/TriggerEvent_ExitTriggerType_07.json"
+            },
+            {
+              "$type": "RPG.GameCore.TriggerCustomString",
+              "CustomString": {
+                "Value": "ALL_TALK_END"
+              }
+            }
+          ]
         }
       ]
     },
@@ -151,16 +231,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401070015,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -180,16 +257,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 401070017,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",

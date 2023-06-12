@@ -6,7 +6,8 @@
         {
           "$type": "RPG.GameCore.CollectDataConditions",
           "TaskIDList": [
-            202010301
+            202010301,
+            202030502
           ],
           "PerformanceIDList": [
             202010301
@@ -61,6 +62,22 @@
                   "$type": "RPG.GameCore.FinishLevelGraph"
                 }
               ]
+            }
+          ]
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByCompareSubMissionState",
+            "SubMissionID": 202030502,
+            "SubMissionState": "Started"
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddMenuItem",
+              "MenuItemID": 202030502,
+              "DialoguePath": "Config/Level/Mission/2020305/Act/Act202030502.json",
+              "ExtraInfo": 1
             }
           ]
         }

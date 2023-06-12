@@ -95,9 +95,18 @@
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
-            "$type": "RPG.GameCore.ByCompareSubMissionState",
-            "SubMissionID": 201110514,
-            "SubMissionState": "Finish"
+            "$type": "RPG.GameCore.ByAnd",
+            "PredicateList": [
+              {
+                "$type": "RPG.GameCore.ByCompareSubMissionState",
+                "SubMissionID": 201110514,
+                "SubMissionState": "Finish"
+              },
+              {
+                "$type": "RPG.GameCore.ByCompareFirstPerformance",
+                "PerformanceID": 201110515
+              }
+            ]
           },
           "SuccessTaskList": [
             {

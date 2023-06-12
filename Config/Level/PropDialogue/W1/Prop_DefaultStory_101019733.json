@@ -6,7 +6,6 @@
         {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
           "PerformanceType": "E",
-          "LockCamera": false,
           "CreateCharacterList": [],
           "EntityVisiableList": [],
           "StreamingCentersInBlackMask": [],
@@ -14,6 +13,7 @@
         },
         {
           "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
+          "TryFaceToFace": false,
           "OnlyPlayerFaceToNpc": true,
           "FinishImmadiate": true
         },
@@ -58,6 +58,12 @@
           "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Talk_404010045"
+          }
+        },
+        {
           "$type": "RPG.GameCore.EndPerformance"
         }
       ]
@@ -69,7 +75,7 @@
         },
         {
           "$type": "RPG.GameCore.FinishPerformanceMission",
-          "Key": "EventMission_200045"
+          "Key": "Mission_404018901"
         },
         {
           "$type": "RPG.GameCore.PropReqInteract",
@@ -83,9 +89,6 @@
               "Value": 1011
             }
           }
-        },
-        {
-          "$type": "RPG.GameCore.FinishLevelGraph"
         }
       ]
     }

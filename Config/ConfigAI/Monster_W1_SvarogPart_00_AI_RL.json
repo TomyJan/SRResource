@@ -16,6 +16,33 @@
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Decision1",
+      "RootTask": {
+        "$type": "RPG.GameCore.SequenceConfig",
+        "TaskList": [
+          {
+            "$type": "RPG.GameCore.DefineDynamicValue",
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "Caster"
+            },
+            "DynamicKey": "PartCanUseSkill03",
+            "ContextScope": "TargetEntity"
+          },
+          {
+            "$type": "RPG.GameCore.DefineDynamicValue",
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "CasterSummoner"
+            },
+            "DynamicKey": "CanUseSkill03",
+            "ContextScope": "TargetEntity"
+          },
+          {
+            "$type": "RPG.GameCore.UseSkill",
+            "SkillName": "Skill03"
+          }
+        ]
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "Weight": {
         "Value": 0.5000000004656613
@@ -28,10 +55,6 @@
             "PredicateList": [
               {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "PartDecisionFlag",
                 "ContextScope": "TargetEntity",
                 "CompareType": "Equal",
@@ -44,10 +67,6 @@
               },
               {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
                 "DynamicKey": "PartCanUseSkill03",
                 "ContextScope": "TargetEntity",
                 "CompareType": "Equal",
@@ -132,66 +151,11 @@
             "Value": 0.5000000004656613
           }
         }
-      ],
-      "RootTask": {
-        "$type": "RPG.GameCore.SequenceConfig",
-        "TaskList": [
-          {
-            "$type": "RPG.GameCore.DefineDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "PartCanUseSkill03",
-            "ContextScope": "TargetEntity"
-          },
-          {
-            "$type": "RPG.GameCore.DefineDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "CasterSummoner"
-            },
-            "DynamicKey": "CanUseSkill03",
-            "ContextScope": "TargetEntity"
-          },
-          {
-            "$type": "RPG.GameCore.UseSkill",
-            "SkillName": "Skill03"
-          }
-        ]
-      }
+      ]
     },
     {
       "$type": "RPG.GameCore.AIDecisionConfig",
       "DecisionName": "Decision2",
-      "ScoreEvaluatorType": "DefaultDSE",
-      "Weight": {
-        "Value": 0.5000000004656613
-      },
-      "ConsiderAxisList": [
-        {
-          "$type": "RPG.GameCore.CheckPredicateAxis",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "PartDecisionFlag",
-            "ContextScope": "TargetEntity",
-            "CompareType": "Equal",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            }
-          },
-          "SuccessScore": {
-            "Value": 0.5000000004656613
-          }
-        }
-      ],
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -219,11 +183,7 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "$type": "RPG.GameCore.AIDecisionConfig",
-      "DecisionName": "Decision3",
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "Weight": {
         "Value": 0.5000000004656613
@@ -233,17 +193,13 @@
           "$type": "RPG.GameCore.CheckPredicateAxis",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "PartDecisionFlag",
             "ContextScope": "TargetEntity",
             "CompareType": "Equal",
             "CompareValue": {
               "IsDynamic": false,
               "FixedValue": {
-                "Value": 2
+                "Value": 1
               }
             }
           },
@@ -251,7 +207,11 @@
             "Value": 0.5000000004656613
           }
         }
-      ],
+      ]
+    },
+    {
+      "$type": "RPG.GameCore.AIDecisionConfig",
+      "DecisionName": "Decision3",
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -307,11 +267,7 @@
             ]
           }
         ]
-      }
-    },
-    {
-      "$type": "RPG.GameCore.AIDecisionConfig",
-      "DecisionName": "Decision4",
+      },
       "ScoreEvaluatorType": "DefaultDSE",
       "Weight": {
         "Value": 0.5000000004656613
@@ -321,17 +277,13 @@
           "$type": "RPG.GameCore.CheckPredicateAxis",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "PartDecisionFlag",
             "ContextScope": "TargetEntity",
             "CompareType": "Equal",
             "CompareValue": {
               "IsDynamic": false,
               "FixedValue": {
-                "Value": 3
+                "Value": 2
               }
             }
           },
@@ -339,7 +291,11 @@
             "Value": 0.5000000004656613
           }
         }
-      ],
+      ]
+    },
+    {
+      "$type": "RPG.GameCore.AIDecisionConfig",
+      "DecisionName": "Decision4",
       "RootTask": {
         "$type": "RPG.GameCore.SequenceConfig",
         "TaskList": [
@@ -395,7 +351,31 @@
             ]
           }
         ]
-      }
+      },
+      "ScoreEvaluatorType": "DefaultDSE",
+      "Weight": {
+        "Value": 0.5000000004656613
+      },
+      "ConsiderAxisList": [
+        {
+          "$type": "RPG.GameCore.CheckPredicateAxis",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByCompareDynamicValue",
+            "DynamicKey": "PartDecisionFlag",
+            "ContextScope": "TargetEntity",
+            "CompareType": "Equal",
+            "CompareValue": {
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 3
+              }
+            }
+          },
+          "SuccessScore": {
+            "Value": 0.5000000004656613
+          }
+        }
+      ]
     }
   ]
 }

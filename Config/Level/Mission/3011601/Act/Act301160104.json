@@ -14,16 +14,13 @@
           "FinishImmadiate": true
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 301160101,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -51,7 +48,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 301160103,
@@ -64,12 +61,54 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Option_301160104"
+          }
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Option_301160104"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.PlayOptionTalk",
+          "OptionList": [
+            {
+              "TalkSentenceID": 301160107,
+              "OptionIconType": "ChatContinueIcon",
+              "TriggerCustomString": "TalkSentence_301160108"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "TalkSentence_301160108"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "SimpleTalkList": [
+            {
+              "TalkSentenceID": 301160108,
+              "ProtectTime": 0.3
+            }
+          ]
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
           "CustomString": {
-            "Value": "Wait_Option_301160101_17"
+            "Value": "TalkSentence_301160111"
           }
         }
       ]
@@ -83,16 +122,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 301160106,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -114,11 +150,6 @@
           "$type": "RPG.GameCore.PlayOptionTalk",
           "OptionList": [
             {
-              "TalkSentenceID": 301160107,
-              "OptionIconType": "ChatContinueIcon",
-              "TriggerCustomString": "TalkSentence_301160108"
-            },
-            {
               "TalkSentenceID": 301160109,
               "OptionIconType": "ChatContinueIcon",
               "TriggerCustomString": "TalkSentence_301160110"
@@ -132,39 +163,11 @@
         {
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
-            "Value": "TalkSentence_301160108"
-          }
-        },
-        {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
-          "SimpleTalkList": [
-            {
-              "TalkSentenceID": 301160108,
-              "ProtectTime": 0.3
-            }
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
-          "$type": "RPG.GameCore.TriggerCustomString",
-          "CustomString": {
-            "Value": "TalkSentence_301160111"
-          }
-        }
-      ]
-    },
-    {
-      "TaskList": [
-        {
-          "$type": "RPG.GameCore.WaitCustomString",
-          "CustomString": {
             "Value": "TalkSentence_301160110"
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 301160110,
@@ -173,9 +176,6 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-        },
-        {
           "$type": "RPG.GameCore.TriggerCustomString",
           "CustomString": {
             "Value": "TalkSentence_301160111"
@@ -192,7 +192,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 301160111,
@@ -211,9 +211,6 @@
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
@@ -236,16 +233,13 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PlaySimpleTalk",
+          "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
           "SimpleTalkList": [
             {
               "TalkSentenceID": 301160116,
               "ProtectTime": 0.3
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
         },
         {
           "$type": "RPG.GameCore.ReleaseCharacter",

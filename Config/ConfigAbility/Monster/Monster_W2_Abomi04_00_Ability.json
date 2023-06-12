@@ -3,24 +3,28 @@
     {
       "Modifiers": {
         "Monster_W2_Abomi04_00_PassiveSkill_DanHeng": {
-          "OnTriggerDeath": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "OneMorePerTurn"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "OneMore"
+          "_CallbackList": {
+            "OnTriggerDeath": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "OneMorePerTurn"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "OneMore"
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "Name": "Monster_W2_Abomi04_00_PassiveSkill_DanHeng",
@@ -109,10 +113,6 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "TeamFormation"
         },
         {
@@ -218,10 +218,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -303,10 +299,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -416,19 +408,11 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "EnemyTeamCenter"
         },
         {
           "$type": "RPG.GameCore.SetSkillTargetFormationByPos",
           "Team": "TeamLight",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CenterOffset": {
             "X": 0,
             "Y": 0,
@@ -474,10 +458,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "LightTeamCenter"
         },
         {
@@ -554,10 +534,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle"
         }
       ]
@@ -598,10 +574,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -691,10 +663,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "Duration": 0.5,
           "BlurY": 0.4,
           "BlurRadius": 1,
@@ -725,19 +693,11 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "EnemyTeamCenter"
         },
         {
           "$type": "RPG.GameCore.SetSkillTargetFormationByPos",
           "Team": "TeamLight",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CenterOffset": {
             "X": 0,
             "Y": 0,
@@ -767,10 +727,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "LightTeamCenter"
         },
         {
@@ -795,10 +751,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTimeWait": {
             "IsDynamic": false,
@@ -854,10 +806,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -890,10 +838,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "BlurX": 0.45,
           "BlurY": 0.45,
           "BlurRadius": 1,
@@ -1378,10 +1322,6 @@
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "Duration": 0.3,
           "BlurX": 0.4,
           "BlurRadius": 1,
@@ -1484,10 +1424,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1811,43 +1747,59 @@
   ],
   "GlobalModifiers": {
     "MMonster_W2_Abomi04_00_HitToHeal_Controller": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "DynamicKey": "W2_Abomi04_00_InsertFlag",
-          "ContextScope": "TargetEntity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "DynamicKey": "W2_Abomi04_00_InsertFlag",
+              "ContextScope": "TargetEntity"
+            }
+          ]
+        },
+        "OnListenCharacterDie": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.IncludeTaskListTemplate",
+              "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape"
+            }
+          ]
+        },
+        "OnListenCharacterEscape": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.IncludeTaskListTemplate",
+              "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape"
+            }
+          ]
+        },
+        "OnListenCharacterCreate": {
+          "CallbackConfig": []
+        },
+        "OnListenAfterSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.IncludeTaskListTemplate",
+              "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape"
+            }
+          ]
+        },
+        "OnListenModifierAdd": {
+          "CallbackConfig": []
+        },
+        "OnListenModifierRemove": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.IncludeTaskListTemplate",
+              "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape"
+            }
+          ]
         }
-      ],
-      "OnListenCharacterDie": [
-        {
-          "$type": "RPG.GameCore.IncludeTaskListTemplate",
-          "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape"
-        }
-      ],
-      "OnListenCharacterEscape": [
-        {
-          "$type": "RPG.GameCore.IncludeTaskListTemplate",
-          "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape"
-        }
-      ],
-      "OnListenCharacterCreate": [],
-      "OnListenAfterSkillUse": [
-        {
-          "$type": "RPG.GameCore.IncludeTaskListTemplate",
-          "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape"
-        }
-      ],
-      "OnListenModifierAdd": [],
-      "OnListenModifierRemove": [
-        {
-          "$type": "RPG.GameCore.IncludeTaskListTemplate",
-          "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape"
-        }
-      ],
+      },
       "TaskListTemplate": [
         {
           "Name": "TaskList_W2_Abomi04_00_HitToHeal_Controller_OnDieOrEscape",
@@ -1918,10 +1870,6 @@
                 {
                   "$type": "RPG.GameCore.TurnInsertAbility",
                   "AbilityName": "Monster_W2_Abomi04_00_SkillP01_Insert",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
                   "InsertAbilityPriority": "MonsterChangeState"
                 }
               ],
@@ -1932,115 +1880,127 @@
       ]
     },
     "MMonster_W2_Abomi04_00_HitToHeal": {
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.RemoveModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "MMonster_W2_Abomi04_00_HitToHeal_Effect"
-        }
-      ],
-      "OnAfterHit": [
-        {
-          "$type": "RPG.GameCore.HealHP",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "FormulaType": "HealByTargetMaxHP",
-          "HealPercentage": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 215437623
-              }
-            ]
-          },
-          "DisplayData": {
-            "UIMessageHeight": 1,
-            "DitherRangeX": 0.1,
-            "DitherRangeY": 0.1
-          }
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "MMonster_W2_Abomi04_00_HitToHeal_Effect"
+            }
+          ]
         },
-        {
-          "$type": "RPG.GameCore.TriggerSound",
-          "SoundName": "Ev_sfx_monster_absorb_common"
+        "OnAfterHit": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.HealHP",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "FormulaType": "HealByTargetMaxHP",
+              "HealPercentage": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 215437623
+                  }
+                ]
+              },
+              "DisplayData": {
+                "UIMessageHeight": 1,
+                "DitherRangeX": 0.1,
+                "DitherRangeY": 0.1
+              }
+            },
+            {
+              "$type": "RPG.GameCore.TriggerSound",
+              "SoundName": "Ev_sfx_monster_absorb_common"
+            }
+          ]
         }
-      ]
+      }
     },
     "MMonster_W2_Abomi04_00_HitToHeal_Effect": {
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Flags": [
-            "Resident"
-          ],
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Halo_Loop.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Halo_Loop_02.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Spear_Loop.prefab"
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Spear_Loop_02.prefab"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByContainBehaviorFlag",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Flags": [
+                "Resident"
+              ],
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Halo_Loop.prefab"
             },
-            "Flag": "STAT_CTRL_Frozen"
-          },
-          "SuccessTaskList": [],
-          "FailedTaskList": [
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Halo_Loop_02.prefab"
+            },
             {
               "$type": "RPG.GameCore.TriggerEffect",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Spear_Disappear.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Spear_Loop.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Spear_Loop_02.prefab"
             }
           ]
         },
-        {
-          "$type": "RPG.GameCore.RemoveEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Spear_Loop.prefab"
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "Flag": "STAT_CTRL_Frozen"
+              },
+              "SuccessTaskList": [],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Spear_Disappear.prefab"
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.RemoveEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Abomi04_00/Eff_Monster_W2_Abomi04_00_SkillP01_Spear_Loop.prefab"
+            }
+          ]
         }
-      ]
+      }
     },
     "MMonster_W2_Abomi04_00_SummonedMinions": {}
   }

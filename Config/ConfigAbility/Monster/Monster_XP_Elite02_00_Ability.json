@@ -3,228 +3,228 @@
     {
       "Modifiers": {
         "Monster_XP_Elite02_00_EffectControl": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Cloak_02.prefab"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Cloak_02.prefab"
+                }
+              ]
+            },
+            "OnBeingLimbo": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Cloak_02.prefab"
+                }
+              ]
             }
-          ],
-          "OnBeingLimbo": [
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Cloak_02.prefab"
-            }
-          ]
+          }
         },
         "Monster_XP_Elite02_00_DestroyClear": {
-          "OnDestroy": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "Monster_XP_Elite02_00_Edict01"
+          "_CallbackList": {
+            "OnDestroy": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "Monster_XP_Elite02_00_Edict01"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "Monster_XP_Elite02_00_Edict02"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "Monster_XP_Elite02_00_Edict03"
+                }
+              ]
             },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "Monster_XP_Elite02_00_Edict02"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "Monster_XP_Elite02_00_Edict03"
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "Monster_XP_Elite02_00_Edict01"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "Monster_XP_Elite02_00_Edict02"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "Monster_XP_Elite02_00_Edict03"
+                }
+              ]
             }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "Monster_XP_Elite02_00_Edict01"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "Monster_XP_Elite02_00_Edict02"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllLightTeam"
-              },
-              "ModifierName": "Monster_XP_Elite02_00_Edict03"
-            }
-          ]
+          }
         },
         "Monster_XP_Elite02_00_AIChange": {
-          "OnEndBreak": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "DynamicKey": "Monster_XP_Elite02_00_AIFlag",
-                "ContextScope": "TargetEntity",
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 3
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnEndBreak": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "DynamicKey": "Monster_XP_Elite02_00_AIFlag",
-                  "ResetValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "Monster_XP_Elite02_00_AIFlag",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 3
+                      }
                     }
                   },
-                  "ContextScope": "TargetEntity"
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "DynamicKey": "Monster_XP_Elite02_00_AIFlag",
-                  "ResetValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 3
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "Monster_XP_Elite02_00_AIFlag",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
                     }
-                  },
-                  "ContextScope": "TargetEntity"
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "Monster_XP_Elite02_00_AIFlag",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 3
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    }
+                  ]
                 }
               ]
             }
-          ]
+          }
         },
         "Monster_XP_Elite02_00_AIChange_02": {
-          "OnHPChange": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareHPRatio",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.3500000003259629
-                  }
-                }
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnHPChange": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareHPRatio",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "CompareType": "LessEqual",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0.3500000003259629
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "DynamicKey": "Monster_XP_Elite02_00_AIFlag_02",
+                      "ResetValue": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveSelfModifier"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "Monster_XP_Elite02_00_DebuffEnhance": {
+          "_CallbackList": {
+            "OnListenTurnEnd": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "ModifierOwnerEntity"
                   },
-                  "DynamicKey": "Monster_XP_Elite02_00_AIFlag_02",
-                  "ResetValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1
-                    }
-                  },
-                  "ContextScope": "TargetEntity"
+                  "DynamicKey": "DebuffLastCount",
+                  "Value": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1583180644
+                      }
+                    ]
+                  }
                 },
                 {
-                  "$type": "RPG.GameCore.RemoveSelfModifier"
-                }
-              ]
-            }
-          ]
-        },
-        "Monster_XP_Elite02_00_DebuffEnhance": {
-          "OnListenTurnEnd": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "DebuffLastCount",
-              "Value": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1583180644
+                  "$type": "RPG.GameCore.SetDynamicValueByStatusCount",
+                  "DynamicKey": "DebuffCurrentCount",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByStatusCount",
-              "DynamicKey": "DebuffCurrentCount",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
                 },
-                "DynamicKey": "DebuffCurrentCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1018908773
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
@@ -236,205 +236,207 @@
                     "DynamicKey": "DebuffCurrentCount",
                     "CompareType": "Equal",
                     "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1018908773
+                        }
+                      ]
                     }
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByIsContainModifier",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ModifierOwnerEntity"
-                        },
-                        "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.RemoveModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
-                        }
-                      ],
-                      "FailedTaskList": []
-                    }
-                  ],
+                  "SuccessTaskList": [],
                   "FailedTaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
                         "TargetType": {
                           "$type": "RPG.GameCore.TargetAlias",
                           "Alias": "ModifierOwnerEntity"
                         },
-                        "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
+                        "DynamicKey": "DebuffCurrentCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.RemoveModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
-                        },
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect",
-                          "MaxLayer": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -1691277359
-                              }
-                            ]
-                          },
-                          "DynamicValues": {
-                            "ModifierStackLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -1583180644
-                                }
-                              ]
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByIsContainModifier",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ModifierOwnerEntity"
                             },
-                            "MDF_DefenceAddedRatio_PerLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": 1867525690
-                                }
-                              ]
-                            },
-                            "MDF_MaxLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -1691277359
-                                }
-                              ]
+                            "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.RemoveModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
                             }
-                          }
+                          ],
+                          "FailedTaskList": []
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByIsContainModifier",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ModifierOwnerEntity"
+                            },
+                            "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
                           },
-                          "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect",
-                          "MaxLayer": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -1691277359
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.RemoveModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
+                            },
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect",
+                              "MaxLayer": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": -1691277359
+                                  }
+                                ]
+                              },
+                              "DynamicValues": {
+                                "ModifierStackLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": -1583180644
+                                    }
+                                  ]
+                                },
+                                "MDF_DefenceAddedRatio_PerLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": 1867525690
+                                    }
+                                  ]
+                                },
+                                "MDF_MaxLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": -1691277359
+                                    }
+                                  ]
+                                }
                               }
-                            ]
-                          },
-                          "DynamicValues": {
-                            "ModifierStackLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -1583180644
-                                }
-                              ]
-                            },
-                            "MDF_DefenceAddedRatio_PerLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": 1867525690
-                                }
-                              ]
-                            },
-                            "MDF_MaxLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -1691277359
-                                }
-                              ]
                             }
-                          }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect",
+                              "MaxLayer": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": -1691277359
+                                  }
+                                ]
+                              },
+                              "DynamicValues": {
+                                "ModifierStackLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": -1583180644
+                                    }
+                                  ]
+                                },
+                                "MDF_DefenceAddedRatio_PerLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": 1867525690
+                                    }
+                                  ]
+                                },
+                                "MDF_MaxLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": -1691277359
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
               ]
-            }
-          ],
-          "OnModifierAdd": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "DynamicKey": "DebuffLastCount",
-              "Value": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1583180644
+            },
+            "OnModifierAdd": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "DynamicKey": "DebuffLastCount",
+                  "Value": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": -1583180644
+                      }
+                    ]
                   }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByStatusCount",
-              "DynamicKey": "DebuffCurrentCount",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareDynamicValue",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
                 },
-                "DynamicKey": "DebuffCurrentCount",
-                "CompareType": "Equal",
-                "CompareValue": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1018908773
-                    }
-                  ]
-                }
-              },
-              "SuccessTaskList": [],
-              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByStatusCount",
+                  "DynamicKey": "DebuffCurrentCount",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                },
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
@@ -446,149 +448,173 @@
                     "DynamicKey": "DebuffCurrentCount",
                     "CompareType": "Equal",
                     "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
+                      "IsDynamic": true,
+                      "Expressions": [
+                        {
+                          "Type": "DynamicNumber",
+                          "DynamicHash": -1018908773
+                        }
+                      ]
                     }
                   },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByIsContainModifier",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ModifierOwnerEntity"
-                        },
-                        "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.RemoveModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
-                        }
-                      ],
-                      "FailedTaskList": []
-                    }
-                  ],
+                  "SuccessTaskList": [],
                   "FailedTaskList": [
                     {
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
-                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "$type": "RPG.GameCore.ByCompareDynamicValue",
                         "TargetType": {
                           "$type": "RPG.GameCore.TargetAlias",
                           "Alias": "ModifierOwnerEntity"
                         },
-                        "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
+                        "DynamicKey": "DebuffCurrentCount",
+                        "CompareType": "Equal",
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0
+                          }
+                        }
                       },
                       "SuccessTaskList": [
                         {
-                          "$type": "RPG.GameCore.RemoveModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
-                        },
-                        {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect",
-                          "MaxLayer": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -1691277359
-                              }
-                            ]
-                          },
-                          "DynamicValues": {
-                            "ModifierStackLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -1583180644
-                                }
-                              ]
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByIsContainModifier",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ModifierOwnerEntity"
                             },
-                            "MDF_DefenceAddedRatio_PerLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": 1867525690
-                                }
-                              ]
-                            },
-                            "MDF_MaxLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -1691277359
-                                }
-                              ]
+                            "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
+                          },
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.RemoveModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
                             }
-                          }
+                          ],
+                          "FailedTaskList": []
                         }
                       ],
                       "FailedTaskList": [
                         {
-                          "$type": "RPG.GameCore.AddModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
+                          "$type": "RPG.GameCore.PredicateTaskList",
+                          "Predicate": {
+                            "$type": "RPG.GameCore.ByIsContainModifier",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "ModifierOwnerEntity"
+                            },
+                            "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
                           },
-                          "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect",
-                          "MaxLayer": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -1691277359
+                          "SuccessTaskList": [
+                            {
+                              "$type": "RPG.GameCore.RemoveModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect"
+                            },
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect",
+                              "MaxLayer": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": -1691277359
+                                  }
+                                ]
+                              },
+                              "DynamicValues": {
+                                "ModifierStackLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": -1583180644
+                                    }
+                                  ]
+                                },
+                                "MDF_DefenceAddedRatio_PerLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": 1867525690
+                                    }
+                                  ]
+                                },
+                                "MDF_MaxLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": -1691277359
+                                    }
+                                  ]
+                                }
                               }
-                            ]
-                          },
-                          "DynamicValues": {
-                            "ModifierStackLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -1583180644
-                                }
-                              ]
-                            },
-                            "MDF_DefenceAddedRatio_PerLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": 1867525690
-                                }
-                              ]
-                            },
-                            "MDF_MaxLayer": {
-                              "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -1691277359
-                                }
-                              ]
                             }
-                          }
+                          ],
+                          "FailedTaskList": [
+                            {
+                              "$type": "RPG.GameCore.AddModifier",
+                              "TargetType": {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "ModifierOwnerEntity"
+                              },
+                              "ModifierName": "Monster_XP_Elite02_00_DebuffEnhanceEffect",
+                              "MaxLayer": {
+                                "IsDynamic": true,
+                                "Expressions": [
+                                  {
+                                    "Type": "DynamicNumber",
+                                    "DynamicHash": -1691277359
+                                  }
+                                ]
+                              },
+                              "DynamicValues": {
+                                "ModifierStackLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": -1583180644
+                                    }
+                                  ]
+                                },
+                                "MDF_DefenceAddedRatio_PerLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": 1867525690
+                                    }
+                                  ]
+                                },
+                                "MDF_MaxLayer": {
+                                  "IsDynamic": true,
+                                  "Expressions": [
+                                    {
+                                      "Type": "DynamicNumber",
+                                      "DynamicHash": -1691277359
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
@@ -596,7 +622,7 @@
                 }
               ]
             }
-          ]
+          }
         },
         "Monster_XP_Elite02_00_DebuffEnhanceEffect": {
           "MaxLayer": 10,
@@ -609,64 +635,64 @@
               }
             ]
           },
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-              "ReadTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ValueType": "Layer",
-              "Multiplier": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "DynamicKey": "ModifierLayers"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Decreased_defense.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.StackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "Property": "DefenceAddedRatio",
-              "PropertyValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+                  "ValueType": "Layer",
+                  "Multiplier": {
+                    "IsDynamic": false,
                     "FixedValue": {
-                      "Value": 0
+                      "Value": 1
                     }
                   },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1693774390
+                  "DynamicKey": "ModifierLayers"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1458882163
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Decreased_defense.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
                   },
-                  {
-                    "Type": "Mul"
-                  },
-                  {
-                    "Type": "Sub"
+                  "Property": "DefenceAddedRatio",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "Expressions": [
+                      {
+                        "Type": "FixedNumber",
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1693774390
+                      },
+                      {
+                        "Type": "DynamicNumber",
+                        "DynamicHash": 1458882163
+                      },
+                      {
+                        "Type": "Mul"
+                      },
+                      {
+                        "Type": "Sub"
+                      }
+                    ]
                   }
-                ]
-              }
+                }
+              ]
             }
-          ],
+          },
           "Stacking": "ReplaceByCaster",
           "DynamicValues": {
             "Values": {
@@ -761,18 +787,10 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -783,10 +801,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -936,18 +950,10 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -958,10 +964,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -983,10 +985,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -1321,10 +1319,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill03",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -1335,10 +1329,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1359,10 +1349,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -1408,10 +1394,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "LightTeamCenter"
         },
         {
@@ -1529,10 +1511,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill04",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -1543,10 +1521,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1567,10 +1541,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -1616,10 +1586,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "LightTeamCenter"
         },
         {
@@ -1729,10 +1695,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill05",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -1743,10 +1705,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1767,10 +1725,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -1816,10 +1770,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "LightTeamCenter"
         },
         {
@@ -1929,10 +1879,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill06",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -1943,10 +1889,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -1967,10 +1909,6 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
@@ -2178,18 +2116,10 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill07",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -2200,10 +2130,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -2332,10 +2258,6 @@
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "Monster_XP_Elite02_00_Achievement_02",
             "ContextScope": "TargetEntity",
             "CompareType": "Equal",
@@ -2497,18 +2419,10 @@
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "None"
-          },
           "CustomFormationIgnoreDying": false
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill08",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -2519,10 +2433,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,
@@ -2662,10 +2572,6 @@
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
             "DynamicKey": "Monster_XP_Elite02_00_Achievement_02",
             "ContextScope": "TargetEntity",
             "CompareType": "Equal",
@@ -2784,27 +2690,174 @@
   ],
   "GlobalModifiers": {
     "Monster_XP_Elite02_00_Edict01_Self": {
-      "OnAfterBeingAttacked": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByNot",
-            "Predicate": {
-              "$type": "RPG.GameCore.ByContainsParamFlag",
-              "Flag": "IsFakeAvatarAttack"
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnAfterBeingAttacked": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.ShowBattleAlert",
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByNot",
+                "Predicate": {
+                  "$type": "RPG.GameCore.ByContainsParamFlag",
+                  "Flag": "IsFakeAvatarAttack"
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ShowBattleAlert",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "SkillType": []
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "ModifierName": "Monster_XP_Elite02_00_Edict01",
+                    "CasterFilter": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByCompareMonsterID",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "TargetMonsterID": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 8003031
+                          }
+                        }
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.TurnInsertAbility",
+                          "AbilityName": "Monster_XP_Elite02_00_SkillP02_Phase01",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "AbortBehaviorFlags": [
+                            "DisableAction",
+                            "STAT_CTRL",
+                            "Break"
+                          ],
+                          "InsertAbilityPriority": "MonsterInsertAttackSelf",
+                          "ShowInActionBar": true
+                        },
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "ModifierName": "Monster_XP_Elite02_00_Skill07_Mark"
+                        }
+                      ],
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.TurnInsertAbility",
+                          "AbilityName": "Monster_XP_Elite02_00_SkillP01_Phase01",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "Caster"
+                          },
+                          "AbilityTarget": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "AbortBehaviorFlags": [
+                            "DisableAction",
+                            "STAT_CTRL",
+                            "Break"
+                          ],
+                          "InsertAbilityPriority": "MonsterInsertAttackSelf",
+                          "ShowInActionBar": true
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "Monster_XP_Elite02_00_Edict01"
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByAny",
+                        "PredicateList": [
+                          {
+                            "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "Caster"
+                            },
+                            "Flag": "DisableAction"
+                          },
+                          {
+                            "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                            "TargetType": {
+                              "$type": "RPG.GameCore.TargetAlias",
+                              "Alias": "Caster"
+                            },
+                            "Flag": "STAT_CTRL"
+                          }
+                        ]
+                      },
+                      "FailedTaskList": [
+                        {
+                          "$type": "RPG.GameCore.TriggerEffect",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ModifierOwnerEntity"
+                          },
+                          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill07_03.prefab",
+                          "PositionOffset": {
+                            "X": 0,
+                            "Y": 1.2,
+                            "Z": 0
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "OnListenModifierRemove": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.DefineDynamicValue",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "SkillType": []
+              "DynamicKey": "Monster_XP_Elite02_00_Edict01Num",
+              "ContextScope": "TargetEntity"
             },
             {
-              "$type": "RPG.GameCore.PredicateTaskList",
+              "$type": "RPG.GameCore.Retarget",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
               "Predicate": {
                 "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
@@ -2816,6 +2869,250 @@
                   "$type": "RPG.GameCore.TargetAlias",
                   "Alias": "Caster"
                 }
+              },
+              "ByRandom": false,
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.DefineDynamicValue",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "DynamicKey": "Monster_XP_Elite02_00_Edict01Num",
+                  "ResetValue": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "ContextScope": "TargetEntity"
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "DynamicKey": "Monster_XP_Elite02_00_Edict01Num",
+                "ContextScope": "TargetEntity",
+                "CompareType": "Equal",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 0
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "1486739431": {},
+          "1693774390": {},
+          "530870852": {},
+          "931685943": {},
+          "-1950245386": {}
+        }
+      }
+    },
+    "Monster_XP_Elite02_00_Edict01": {
+      "LifeTime": 1,
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill03_Debuff.prefab"
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ShowBattleAlert",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "SkillType": []
+            }
+          ]
+        },
+        "OnAllowAction": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "ModifierName": "Monster_XP_Elite02_00_Edict01_Self"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ShowBattleAlert",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "SkillType": [],
+                  "IsShow": true
+                }
+              ]
+            }
+          ]
+        },
+        "OnAfterSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCurrentSkillType",
+                "SkillType": "Ultra"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ShowBattleAlert",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "SkillType": []
+                }
+              ]
+            }
+          ]
+        },
+        "OnUltraSkillPrepare": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "ModifierName": "Monster_XP_Elite02_00_Edict01_Self"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ShowBattleAlert",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "SkillType": [],
+                  "IsShow": true
+                }
+              ]
+            }
+          ]
+        },
+        "OnInsertActionStart": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "ModifierName": "Monster_XP_Elite02_00_Edict01_Self"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ShowBattleAlert",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "SkillType": [],
+                  "IsShow": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "-1826473127": {},
+          "-537031323": {}
+        }
+      }
+    },
+    "Monster_XP_Elite02_00_Edict02": {
+      "LifeTime": 1,
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill03_Debuff.prefab"
+            }
+          ]
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ShowBattleAlert",
+              "SkillType": [
+                "Normal"
+              ]
+            }
+          ]
+        },
+        "OnAllowAction": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ShowBattleAlert",
+              "SkillType": [
+                "Normal"
+              ],
+              "IsShow": true
+            }
+          ]
+        },
+        "OnAfterSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCurrentSkillType",
+                "SkillType": "Ultra"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ShowBattleAlert",
+                  "SkillType": [
+                    "Normal"
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCurrentSkillType"
               },
               "SuccessTaskList": [
                 {
@@ -2853,7 +3150,7 @@
                       "$type": "RPG.GameCore.AddModifier",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
+                        "Alias": "ModifierOwnerEntity"
                       },
                       "ModifierName": "Monster_XP_Elite02_00_Skill07_Mark"
                     }
@@ -2868,7 +3165,7 @@
                       },
                       "AbilityTarget": {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
+                        "Alias": "ModifierOwnerEntity"
                       },
                       "AbortBehaviorFlags": [
                         "DisableAction",
@@ -2879,14 +3176,6 @@
                       "ShowInActionBar": true
                     }
                   ]
-                },
-                {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  },
-                  "ModifierName": "Monster_XP_Elite02_00_Edict01"
                 },
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
@@ -2916,7 +3205,7 @@
                       "$type": "RPG.GameCore.TriggerEffect",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
+                        "Alias": "Caster"
                       },
                       "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill07_03.prefab",
                       "PositionOffset": {
@@ -2926,390 +3215,37 @@
                       }
                     }
                   ]
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
                 }
               ]
             }
           ]
-        }
-      ],
-      "OnListenModifierRemove": [
-        {
-          "$type": "RPG.GameCore.DefineDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "Monster_XP_Elite02_00_Edict01Num",
-          "ContextScope": "TargetEntity"
         },
-        {
-          "$type": "RPG.GameCore.Retarget",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AllLightTeam"
-          },
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ParamEntity"
-            },
-            "ModifierName": "Monster_XP_Elite02_00_Edict01",
-            "CasterFilter": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            }
-          },
-          "ByRandom": false,
-          "TaskList": [
-            {
-              "$type": "RPG.GameCore.DefineDynamicValue",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "DynamicKey": "Monster_XP_Elite02_00_Edict01Num",
-              "ResetValue": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "ContextScope": "TargetEntity"
-            }
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "DynamicKey": "Monster_XP_Elite02_00_Edict01Num",
-            "ContextScope": "TargetEntity",
-            "CompareType": "Equal",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0
-              }
-            }
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
-            }
-          ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "1486739431": {},
-          "1693774390": {},
-          "530870852": {},
-          "931685943": {},
-          "-1950245386": {}
-        }
-      }
-    },
-    "Monster_XP_Elite02_00_Edict01": {
-      "LifeTime": 1,
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill03_Debuff.prefab"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "SkillType": []
-        }
-      ],
-      "OnAllowAction": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "ModifierName": "Monster_XP_Elite02_00_Edict01_Self"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.ShowBattleAlert",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "SkillType": [],
-              "IsShow": true
-            }
-          ]
-        }
-      ],
-      "OnAfterSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCurrentSkillType",
-            "SkillType": "Ultra"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.ShowBattleAlert",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "SkillType": []
-            }
-          ]
-        }
-      ],
-      "OnUltraSkillPrepare": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "ModifierName": "Monster_XP_Elite02_00_Edict01_Self"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.ShowBattleAlert",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "SkillType": [],
-              "IsShow": true
-            }
-          ]
-        }
-      ],
-      "OnInsertActionStart": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByIsContainModifier",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "ModifierName": "Monster_XP_Elite02_00_Edict01_Self"
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.ShowBattleAlert",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "SkillType": [],
-              "IsShow": true
-            }
-          ]
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "-1826473127": {},
-          "-537031323": {}
-        }
-      }
-    },
-    "Monster_XP_Elite02_00_Edict02": {
-      "LifeTime": 1,
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill03_Debuff.prefab"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "SkillType": [
-            "Normal"
-          ]
-        }
-      ],
-      "OnAllowAction": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "SkillType": [
-            "Normal"
-          ],
-          "IsShow": true
-        }
-      ],
-      "OnAfterSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCurrentSkillType",
-            "SkillType": "Ultra"
-          },
-          "SuccessTaskList": [
+        "OnUltraSkillPrepare": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.ShowBattleAlert",
               "SkillType": [
                 "Normal"
-              ]
+              ],
+              "IsShow": true
             }
           ]
         },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCurrentSkillType"
-          },
-          "SuccessTaskList": [
+        "OnInsertActionStart": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareMonsterID",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "TargetMonsterID": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 8003031
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_XP_Elite02_00_SkillP02_Phase01",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AbortBehaviorFlags": [
-                    "DisableAction",
-                    "STAT_CTRL",
-                    "Break"
-                  ],
-                  "InsertAbilityPriority": "MonsterInsertAttackSelf",
-                  "ShowInActionBar": true
-                },
-                {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "Monster_XP_Elite02_00_Skill07_Mark"
-                }
+              "$type": "RPG.GameCore.ShowBattleAlert",
+              "SkillType": [
+                "Normal"
               ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_XP_Elite02_00_SkillP01_Phase01",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "AbilityTarget": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "AbortBehaviorFlags": [
-                    "DisableAction",
-                    "STAT_CTRL",
-                    "Break"
-                  ],
-                  "InsertAbilityPriority": "MonsterInsertAttackSelf",
-                  "ShowInActionBar": true
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "Flag": "DisableAction"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "Caster"
-                    },
-                    "Flag": "STAT_CTRL"
-                  }
-                ]
-              },
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill07_03.prefab",
-                  "PositionOffset": {
-                    "X": 0,
-                    "Y": 1.2,
-                    "Z": 0
-                  }
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
+              "IsShow": true
             }
           ]
         }
-      ],
-      "OnUltraSkillPrepare": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "SkillType": [
-            "Normal"
-          ],
-          "IsShow": true
-        }
-      ],
-      "OnInsertActionStart": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "SkillType": [
-            "Normal"
-          ],
-          "IsShow": true
-        }
-      ],
+      },
       "DynamicValues": {
         "Values": {
           "-1826473127": {},
@@ -3324,41 +3260,21 @@
     },
     "Monster_XP_Elite02_00_Edict03": {
       "LifeTime": 1,
-      "OnCreate": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill03_Debuff.prefab"
-        }
-      ],
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "SkillType": [
-            "Skill"
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill03_Debuff.prefab"
+            }
           ]
-        }
-      ],
-      "OnAllowAction": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "SkillType": [
-            "Skill"
-          ],
-          "IsShow": true
-        }
-      ],
-      "OnAfterSkillUse": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCurrentSkillType",
-            "SkillType": "Ultra"
-          },
-          "SuccessTaskList": [
+        },
+        "OnDestroy": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.ShowBattleAlert",
               "SkillType": [
@@ -3367,13 +3283,192 @@
             }
           ]
         },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCurrentSkillType",
-            "SkillType": "Skill"
-          },
-          "SuccessTaskList": [
+        "OnAllowAction": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ShowBattleAlert",
+              "SkillType": [
+                "Skill"
+              ],
+              "IsShow": true
+            }
+          ]
+        },
+        "OnAfterSkillUse": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCurrentSkillType",
+                "SkillType": "Ultra"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ShowBattleAlert",
+                  "SkillType": [
+                    "Skill"
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCurrentSkillType",
+                "SkillType": "Skill"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareMonsterID",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "TargetMonsterID": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 8003031
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_XP_Elite02_00_SkillP02_Phase01",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbortBehaviorFlags": [
+                        "DisableAction",
+                        "STAT_CTRL",
+                        "Break"
+                      ],
+                      "InsertAbilityPriority": "MonsterInsertAttackSelf",
+                      "ShowInActionBar": true
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "Monster_XP_Elite02_00_Skill07_Mark"
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_XP_Elite02_00_SkillP01_Phase01",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbilityTarget": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "AbortBehaviorFlags": [
+                        "DisableAction",
+                        "STAT_CTRL",
+                        "Break"
+                      ],
+                      "InsertAbilityPriority": "MonsterInsertAttackSelf",
+                      "ShowInActionBar": true
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAny",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "DisableAction"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "STAT_CTRL"
+                      }
+                    ]
+                  },
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill07_03.prefab",
+                      "PositionOffset": {
+                        "X": 0,
+                        "Y": 1.2,
+                        "Z": 0
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
+                }
+              ]
+            }
+          ]
+        },
+        "OnUltraSkillPrepare": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ShowBattleAlert",
+              "SkillType": [
+                "Skill"
+              ],
+              "IsShow": true
+            }
+          ]
+        },
+        "OnInsertActionStart": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.ShowBattleAlert",
+              "SkillType": [
+                "Skill"
+              ],
+              "IsShow": true
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "-1826473127": {},
+          "-537031323": {},
+          "1693774390": {},
+          "530870852": {},
+          "1486739431": {},
+          "931685943": {},
+          "-1950245386": {}
+        }
+      }
+    },
+    "Monster_XP_Elite02_00_EdictInsert": {
+      "UIConfig": {
+        "UIEffectPath": "UI/Battle/Widget/TeamInfoStatusEff/TeamInfoStatus_Aimed.prefab",
+        "UIPosition": "UI_TOP"
+      },
+      "_CallbackList": {
+        "OnListenTurnEnd": {
+          "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
@@ -3480,178 +3575,41 @@
             }
           ]
         }
-      ],
-      "OnUltraSkillPrepare": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "SkillType": [
-            "Skill"
-          ],
-          "IsShow": true
-        }
-      ],
-      "OnInsertActionStart": [
-        {
-          "$type": "RPG.GameCore.ShowBattleAlert",
-          "SkillType": [
-            "Skill"
-          ],
-          "IsShow": true
-        }
-      ],
-      "DynamicValues": {
-        "Values": {
-          "-1826473127": {},
-          "-537031323": {},
-          "1693774390": {},
-          "530870852": {},
-          "1486739431": {},
-          "931685943": {},
-          "-1950245386": {}
-        }
-      }
-    },
-    "Monster_XP_Elite02_00_EdictInsert": {
-      "OnListenTurnEnd": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareMonsterID",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "TargetMonsterID": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 8003031
-              }
-            }
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Monster_XP_Elite02_00_SkillP02_Phase01",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AbortBehaviorFlags": [
-                "DisableAction",
-                "STAT_CTRL",
-                "Break"
-              ],
-              "InsertAbilityPriority": "MonsterInsertAttackSelf",
-              "ShowInActionBar": true
-            },
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "Monster_XP_Elite02_00_Skill07_Mark"
-            }
-          ],
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.TurnInsertAbility",
-              "AbilityName": "Monster_XP_Elite02_00_SkillP01_Phase01",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AbilityTarget": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "AbortBehaviorFlags": [
-                "DisableAction",
-                "STAT_CTRL",
-                "Break"
-              ],
-              "InsertAbilityPriority": "MonsterInsertAttackSelf",
-              "ShowInActionBar": true
-            }
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByAny",
-            "PredicateList": [
-              {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "Flag": "DisableAction"
-              },
-              {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "Caster"
-                },
-                "Flag": "STAT_CTRL"
-              }
-            ]
-          },
-          "FailedTaskList": [
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_00/Eff_Monster_XP_Elite02_00_Skill07_03.prefab",
-              "PositionOffset": {
-                "X": 0,
-                "Y": 1.2,
-                "Z": 0
-              }
-            }
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.RemoveSelfModifier"
-        }
-      ],
-      "UIConfig": {
-        "UIEffectPath": "UI/Battle/Widget/TeamInfoStatusEff/TeamInfoStatus_Aimed.prefab",
-        "UIPosition": "UI_TOP"
       }
     },
     "Monster_XP_Elite02_00_Edict_Success": {
       "LifeTime": 2,
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AttackAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1826473127
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AttackAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -1826473127
+                  }
+                ]
               }
-            ]
-          }
-        },
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Increased_attack_power.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Increased_attack_power.prefab"
+            }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace",
       "DynamicValues": {
         "Values": {
@@ -3678,83 +3636,79 @@
           "Value": 0.3000000002793968
         }
       },
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
-          "ReadTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ValueType": "Layer",
-          "Multiplier": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+              "ValueType": "Layer",
+              "Multiplier": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "DynamicKey": "ModifierLayers"
+            },
+            {
+              "$type": "RPG.GameCore.TurnInsertAbility",
+              "AbilityName": "Monster_XP_Elite02_00_SkillP01_Phase01",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "AbilityTarget": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "AbortBehaviorFlags": [
+                "DisableAction",
+                "STAT_CTRL",
+                "Break"
+              ],
+              "InsertAbilityPriority": "MonsterInsertAttackSelf",
+              "ShowInActionBar": true
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "MDF_AggroAddedRatio",
+              "Value": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 530870852
+                  },
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 1458882163
+                  },
+                  {
+                    "Type": "Mul"
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AggroAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 706883385
+                  }
+                ]
+              }
             }
-          },
-          "DynamicKey": "ModifierLayers"
-        },
-        {
-          "$type": "RPG.GameCore.TurnInsertAbility",
-          "AbilityName": "Monster_XP_Elite02_00_SkillP01_Phase01",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AbilityTarget": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "AbortBehaviorFlags": [
-            "DisableAction",
-            "STAT_CTRL",
-            "Break"
-          ],
-          "InsertAbilityPriority": "MonsterInsertAttackSelf",
-          "ShowInActionBar": true
-        },
-        {
-          "$type": "RPG.GameCore.SetDynamicValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "DynamicKey": "MDF_AggroAddedRatio",
-          "Value": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 530870852
-              },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1458882163
-              },
-              {
-                "Type": "Mul"
-              }
-            ]
-          }
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AggroAddedRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 706883385
-              }
-            ]
-          }
+          ]
         }
-      ],
+      },
       "Stacking": "Replace",
       "DynamicValues": {
         "Values": {
@@ -3778,76 +3732,82 @@
           "Value": 1
         }
       },
-      "OnDestroy": [
-        {
-          "$type": "RPG.GameCore.TriggerEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_ConfineOut.prefab"
-        }
-      ],
-      "OnStack": [
-        {
-          "$type": "RPG.GameCore.AttachSkillTypeDisable",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Types": [
-            "Ultra"
-          ],
-          "TextmapID": {
-            "Hash": -1129675816
-          }
-        },
-        {
-          "$type": "RPG.GameCore.ModifierAttachEffect",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Confine.prefab",
-          "MinMutexTime": -1,
-          "MutexType": "Entity"
-        },
-        {
-          "$type": "RPG.GameCore.ModifyActionDelay",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "AddNormalizedValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -2109623552
-              }
-            ]
-          }
-        },
-        {
-          "$type": "RPG.GameCore.StackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "Property": "AllDamageTypeTakenRatio",
-          "PropertyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 2128130574
-              }
-            ]
-          }
-        }
-      ],
       "UIConfig": {
         "UIPosition": "UI_Middle"
+      },
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_ConfineOut.prefab"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AttachSkillTypeDisable",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Types": [
+                "Ultra"
+              ],
+              "TextmapID": {
+                "Hash": -1129675816
+              }
+            },
+            {
+              "$type": "RPG.GameCore.ModifierAttachEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Confine.prefab",
+              "MinMutexTime": -1,
+              "MutexType": "Entity"
+            },
+            {
+              "$type": "RPG.GameCore.ModifyActionDelay",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "AddNormalizedValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": -2109623552
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AllDamageTypeTakenRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "Expressions": [
+                  {
+                    "Type": "DynamicNumber",
+                    "DynamicHash": 2128130574
+                  }
+                ]
+              }
+            }
+          ]
+        }
       },
       "Stacking": "ReplaceByCaster",
       "DynamicValues": {
@@ -3858,34 +3818,38 @@
       }
     },
     "Monster_XP_Elite02_00_AchievementControl": {
-      "OnBeforeDying": [
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareDynamicValue",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "ModifierOwnerEntity"
-            },
-            "DynamicKey": "Monster_XP_Elite02_00_Achievement",
-            "ContextScope": "TargetEntity",
-            "CompareType": "Equal",
-            "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0
-              }
-            }
-          },
-          "SuccessTaskList": [
+      "_CallbackList": {
+        "OnBeforeDying": {
+          "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.SetBattleAchievement",
-              "AchievementID": 30002,
-              "TagMatch": true
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "DynamicKey": "Monster_XP_Elite02_00_Achievement",
+                "ContextScope": "TargetEntity",
+                "CompareType": "Equal",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 0
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.SetBattleAchievement",
+                  "AchievementID": 30002,
+                  "TagMatch": true
+                }
+              ]
             }
           ]
         }
-      ]
+      }
     },
     "Monster_XP_Elite02_00_Skill07_Mark": {}
   }

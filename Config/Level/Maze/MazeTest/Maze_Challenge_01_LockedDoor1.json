@@ -23,14 +23,16 @@
                   "ColliderRelativePath": "Trigger",
                   "ButtonCallback": [
                     {
-                      "$type": "RPG.GameCore.PlayBackgroundTalk",
-                      "BackgroundTalkList": [
+                      "$type": "RPG.GameCore.PlayMissionTalk",
+                      "SimpleTalkList": [
                         {
-                          "AutoSkipTime": 5,
-                          "TalkSentenceID": 901019905
+                          "TalkSentenceID": 901019905,
+                          "ProtectTime": 2
                         }
-                      ],
-                      "InstantFinish": false
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.WaitMissionTalkFinish"
                     }
                   ],
                   "TargetType": {

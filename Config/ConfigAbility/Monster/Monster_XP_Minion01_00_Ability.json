@@ -3,102 +3,102 @@
     {
       "Modifiers": {
         "MMonster_XP_Minion01_00_EffectController": {
-          "OnCreate": [
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_Ball_M.prefab"
+          "_CallbackList": {
+            "OnCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_Ball_M.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameB_02_JNT.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameD_02_JNT.prefab"
+                }
+              ]
             },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameB_02_JNT.prefab"
+            "OnBeingBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AnimSetParameter",
+                  "ParameterName": "TriggerBreak",
+                  "ParameterType": "Trigger"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_Ball_M.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameB_02_JNT.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameD_02_JNT.prefab"
+                }
+              ]
             },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameD_02_JNT.prefab"
+            "OnEndBreak": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AnimSetParameter",
+                  "ParameterName": "TriggerBreakRecover",
+                  "ParameterType": "Trigger"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_Ball_M.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameB_02_JNT.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameD_02_JNT.prefab"
+                }
+              ]
             }
-          ],
-          "OnBeingBreak": [
-            {
-              "$type": "RPG.GameCore.AnimSetParameter",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ParameterName": "TriggerBreak",
-              "ParameterType": "Trigger"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_Ball_M.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameB_02_JNT.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.RemoveEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameD_02_JNT.prefab"
-            }
-          ],
-          "OnEndBreak": [
-            {
-              "$type": "RPG.GameCore.AnimSetParameter",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ParameterName": "TriggerBreakRecover",
-              "ParameterType": "Trigger"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_Ball_M.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameB_02_JNT.prefab"
-            },
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion01_00/Eff_Monster_XP_Minion01_00_Common_flameD_02_JNT.prefab"
-            }
-          ]
+          }
         }
       },
       "Name": "Monster_XP_Minion01_00_PassiveSkillInitiate",
@@ -133,10 +133,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -145,14 +141,6 @@
             "NormalConfig": {
               "CameraState": "CasterToTargetPerform",
               "TemplateName": "Monster_Common_SoloRangeAttack",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AimTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "SkillTargetEntityList"
-              },
               "FollowDamp": 0.01,
               "AimDamp": 0.01,
               "ResetToDefault": false
@@ -167,14 +155,6 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CameraMotion",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AimTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "SkillTargetEntityList"
-              },
               "ResetToDefault": false
             }
           }
@@ -185,10 +165,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimStateName": "Skill02_Ready",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
@@ -271,10 +247,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,

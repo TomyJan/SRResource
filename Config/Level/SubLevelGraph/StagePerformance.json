@@ -10,42 +10,47 @@
           }
         },
         {
-          "$type": "RPG.GameCore.VCameraConfigChange",
-          "CameraConfig": {
-            "NormalConfig": {
-              "CameraState": "CasterToTargetPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "LightTeamCenter"
-              },
-              "IsLocalOffset": true,
-              "AnchorOffset": {
-                "X": 2,
-                "Y": 1.4,
-                "Z": 0.01
-              },
-              "AnchorRatio": 0.1,
-              "AimTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "DarkTeamCenter"
-              },
-              "AimOffset": {
-                "X": 0.5,
-                "Y": 1,
-                "Z": 0.01
-              },
-              "AimRatio": 1
-            },
-            "BlendConfig": {
-              "BlendType": "Cut"
-            },
-            "ShowEntityConfig": {
-              "ShowTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllDarkTeam"
+          "$type": "RPG.GameCore.WaveMonsterPerform",
+          "OnFindPerformMonsterFailed": [
+            {
+              "$type": "RPG.GameCore.VCameraConfigChange",
+              "CameraConfig": {
+                "NormalConfig": {
+                  "CameraState": "CasterToTargetPerform",
+                  "AnchorTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "LightTeamCenter"
+                  },
+                  "IsLocalOffset": true,
+                  "AnchorOffset": {
+                    "X": 2,
+                    "Y": 1.4,
+                    "Z": 0.01
+                  },
+                  "AnchorRatio": 0.1,
+                  "AimTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "DarkTeamCenter"
+                  },
+                  "AimOffset": {
+                    "X": 0.5,
+                    "Y": 1,
+                    "Z": 0.01
+                  },
+                  "AimRatio": 1
+                },
+                "BlendConfig": {
+                  "BlendType": "Cut"
+                },
+                "ShowEntityConfig": {
+                  "ShowTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  }
+                }
               }
             }
-          }
+          ]
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -67,7 +72,6 @@
         },
         {
           "$type": "RPG.GameCore.WaveMonsterPerform",
-          "PerformMonsterWaitTime": 5,
           "OnFindPerformMonsterFailed": [
             {
               "$type": "RPG.GameCore.VCameraConfigChange",
@@ -270,6 +274,114 @@
     },
     {
       "IsLoop": true,
+      "Order": 1,
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Stage_WaveMonster_DelayCreate_Begin"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaveMonsterPerform",
+          "OnFindPerformMonsterFailed": [
+            {
+              "$type": "RPG.GameCore.VCameraConfigChange",
+              "CameraConfig": {
+                "NormalConfig": {
+                  "CameraState": "CasterToTargetPerform",
+                  "AnchorTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "LightTeamCenter"
+                  },
+                  "IsLocalOffset": true,
+                  "AnchorOffset": {
+                    "X": -5,
+                    "Y": 1.4,
+                    "Z": 0.01
+                  },
+                  "AnchorRatio": 0.1,
+                  "AimTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "DarkTeamCenter"
+                  },
+                  "AimOffset": {
+                    "X": -0.5,
+                    "Y": 1,
+                    "Z": 0.01
+                  },
+                  "AimRatio": 1
+                },
+                "CloseupShotConfig": {
+                  "Exit": true
+                },
+                "BlendConfig": {
+                  "BlendType": "Cut"
+                },
+                "ShowEntityConfig": {
+                  "ShowTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.VCameraConfigChange",
+              "CameraConfig": {
+                "NormalConfig": {
+                  "CameraState": "CasterToTargetPerform",
+                  "AnchorTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "LightTeamCenter"
+                  },
+                  "IsLocalOffset": true,
+                  "AnchorOffset": {
+                    "X": 0.01,
+                    "Y": 1.4,
+                    "Z": 0.01
+                  },
+                  "AnchorRatio": 0.1,
+                  "AimTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "DarkTeamCenter"
+                  },
+                  "AimOffset": {
+                    "X": 0.01,
+                    "Y": 1,
+                    "Z": 0.01
+                  },
+                  "AimRatio": 1
+                },
+                "BlendConfig": {
+                  "BlendType": "EaseInOut",
+                  "BlendTime": 1.4
+                },
+                "ShowEntityConfig": {
+                  "ShowTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.WaitSecond",
+              "WaitTime": 1.5
+            }
+          ],
+          "CreateTiming": "DelayCreate"
+        },
+        {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Stage_WaveMonster_DelayCreate_End"
+          }
+        }
+      ]
+    },
+    {
+      "IsLoop": true,
       "TaskList": [
         {
           "$type": "RPG.GameCore.WaitCustomString",
@@ -334,12 +446,14 @@
           "NotifyTypeName": "UIBattleShowRemainAchievement"
         },
         {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Battle/Widget/LastAttackHint.prefab",
-          "WaitShowPageFinish": true
-        },
-        {
-          "$type": "RPG.GameCore.SetLastKillFinish"
+          "$type": "RPG.GameCore.ShowUI",
+          "Name": "Ui.Battle.LastAttackHintDialog",
+          "WaitForExit": true,
+          "OnUICustomEvent": [
+            {
+              "$type": "RPG.GameCore.SetLastKillFinish"
+            }
+          ]
         }
       ]
     },

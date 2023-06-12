@@ -6,7 +6,8 @@
     "Ev_vo_external_story_play",
     "Ev_vo_external_cutscene_play",
     "Ev_sfx_cinematic_cutscene",
-    "Ev_jukebox"
+    "Ev_jukebox",
+    "Ev_global_set_bgm_state"
   ],
   "FullPCkNameSoundBank": "Banks",
   "FullPCkNameMusic": "Music",
@@ -25,6 +26,8 @@
   "EventSFXUnmute": "Ev_global_set_sfx_bus_unmute",
   "EventVOMute": "Ev_global_set_vo_bus_mute",
   "EventVOUnmute": "Ev_global_set_vo_bus_unmute",
+  "EventBattleVOMute": "Ev_global_set_vo_combat_mute",
+  "EventBattleVOUnmute": "Ev_global_set_vo_combat_unmute",
   "EventCGSFXMute": "Ev_global_set_sfx_cg_bus_mute",
   "EventCGSFXUnmute": "Ev_global_set_sfx_cg_bus_unmute",
   "DefaultBGMEvent": "Ev_global_set_bgm_state",
@@ -38,6 +41,7 @@
     "StateGachaResultGold": "State_Menu_Get_Avatar_Loop_Gold",
     "StateChallenge": "State_Menu_Forgotten_Hall",
     "StateBoxingClub": "State_Menu_Boxing_Gym",
+    "StateMuseum": "State_Menu_Season_Ledger_of_Curiosities_Museum",
     "StateRogue": "State_Menu_Rougelite"
   },
   "CombatStateGroupName": "StateGroup_Combat",
@@ -54,6 +58,9 @@
   "BattleSpeedStateGroupName": "State_Battle_Speed",
   "BattleSpeedDoubleState": "Double_Speed",
   "BattleSpeedNormalState": "Normal_Speed",
+  "AutoBattleStateGroupName": "State_Battle_Auto",
+  "AutoBattleOnState": "On",
+  "AutoBattleOffState": "Off",
   "LightHitVODelayTime": 0.1,
   "FootStepSurfaceSwitchGroup": "SwitchGroup_GroundMaterials",
   "ShoesTypeSwitchGroup": "SwitchGroup_ShoesType",
@@ -124,6 +131,13 @@
   "EventBattleUltral": "Ev_sfx_combat_avatar_attack_ultra_skill",
   "EventBattleCheckModeStart": "Ev_sfx_combat_common_mode_check_start",
   "EventBattleCheckModeend": "Ev_sfx_combat_common_mode_check_end",
+  "EventGameObjectFadeOut": "Ev_amb_set_object_volume_fade_out",
+  "EventGameObjectFadeIn": "Ev_amb_set_object_volume_fade_in",
+  "BattleStage": {
+    "StateGroup": "State_Battle_Plot",
+    "DefaultState": "Battle_Normal",
+    "StageStates": {}
+  },
   "BattleStingerEvent": "Ev_global_set_bgm_trigger",
   "ExternalSourceName": "External_Source",
   "CharacterVOEventMap": {
@@ -147,6 +161,9 @@
   "AdventureCharacterVOSpeakerRTPC": "RTPC_Maze_VO_Type",
   "BattleWinVOReduceProb": 0.5,
   "BattleWinVOAddProb": 0.3,
+  "LookAtThreatVOReduceProb": 0.5,
+  "LookAtThreatAddProb": 0.3,
+  "LookAtThreatCD": 30,
   "OpenChestVOProb": 0.5,
   "SolvePuzzleVOProb": 0.5,
   "UIButtonSoundEventMap": {
@@ -196,9 +213,11 @@
   },
   "PlayerSpaceInfo": {
     "SpaceRTPC": "RTPC_Line_Stereo",
+    "SpaceRTPCAvatar": "RTPC_Line_Stereo_Avatar",
     "MaxSpaceRTPC": 10,
     "DefaultSpaceRTPC": 5,
     "LeftRightRTPC": "RTPC_Line_Pan",
+    "LeftRightRTPCAvatar": "RTPC_Line_Pan_Avatar",
     "MaxSideSpaceRTPC": 10,
     "DefaultSideSpaceRTPC": 5,
     "RaycastAroundMaxDistance": 10,

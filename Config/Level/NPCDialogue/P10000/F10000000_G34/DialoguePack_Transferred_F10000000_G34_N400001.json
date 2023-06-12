@@ -10,6 +10,7 @@
             401010531,
             401010509
           ],
+          "MainMissionIDList": [],
           "PerformanceIDList": []
         },
         {
@@ -55,7 +56,27 @@
               "ExtraInfo": 2,
               "MissionID": 401010531
             }
-          ]
+          ],
+          "FailedTaskList": []
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByCompareSubMissionState",
+            "SubMissionID": 401010509,
+            "SubMissionState": "Started"
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddMenuItem",
+              "MenuItemID": 401010531,
+              "MenuIconType": "ChatIcon",
+              "DialoguePath": "Config/Level/Mission/4010105/Talk/Talk_401010510.json",
+              "ExtraInfo": 2,
+              "MissionID": 401010509
+            }
+          ],
+          "FailedTaskList": []
         },
         {
           "$type": "RPG.GameCore.PredicateTaskList",

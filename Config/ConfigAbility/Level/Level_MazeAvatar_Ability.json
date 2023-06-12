@@ -3,43 +3,47 @@
     {
       "Modifiers": {
         "StageAbility_Maze_Geppard_Modifier": {
-          "OnListenCharacterCreate": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByTargetTeam",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                },
-                "Team": "TeamLight"
-              },
-              "SuccessTaskList": [
+          "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByTargetTeam",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "Team": "TeamLight"
                   },
-                  "ModifierName": "MCommon_Protect_Shield",
-                  "LifeTime": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 2
-                    }
-                  },
-                  "DynamicValues": {
-                    "MDF_ShowValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 5000
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MCommon_Protect_Shield",
+                      "LifeTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 2
+                        }
+                      },
+                      "DynamicValues": {
+                        "MDF_ShowValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 5000
+                          }
+                        }
                       }
                     }
-                  }
+                  ]
                 }
               ]
             }
-          ]
+          }
         }
       },
       "Name": "StageAbility_Maze_Geppard",

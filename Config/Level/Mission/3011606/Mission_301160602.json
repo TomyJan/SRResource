@@ -18,20 +18,34 @@
                 "FixedValue": {
                   "Value": 400002
                 }
-              }
+              },
+              "CreateList": []
             }
           ],
           "CaptureNpcList": [],
           "DestroyNpcList": [
             {
               "GroupID": 103,
-              "GroupNpcID": 400001
+              "GroupNpcID": 400001,
+              "DestroyList": []
             }
           ],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
             "TaskEnabled": false
           },
+          "ActiveTemplateVirtualCamera": {
+            "TaskEnabled": false
+          },
           "SwitchCharacterAnchor": {
+            "TaskEnabled": false
+          },
+          "AdvNpcFaceToPlayer": {
             "TaskEnabled": false
           }
         },
@@ -62,13 +76,60 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.ShowFuncBtn",
-          "PuzzleFunc": "Identify",
-          "CDDuration": 1,
-          "CustomString": {
-            "Value": "PhotoGraphGO30160602"
+          "$type": "RPG.GameCore.PropSetupTrigger",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+            "FetchType": "SinglePropByPropID",
+            "SinglePropID": {
+              "GroupID": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 103
+                }
+              },
+              "ID": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 300004
+                }
+              }
+            }
           },
-          "ShowBtnEffect": true
+          "TargetGroupID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 300004
+            }
+          },
+          "TargetID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 300004
+            }
+          },
+          "TargetTypes": [],
+          "OnTriggerEnter": [
+            {
+              "$type": "RPG.GameCore.ShowFuncBtn",
+              "PuzzleFunc": "Identify",
+              "CDDuration": 1,
+              "CustomString": {
+                "Value": "PhotoGraphGO30160602"
+              },
+              "ShowBtnEffect": true
+            }
+          ],
+          "OnTriggerExit": [
+            {
+              "$type": "RPG.GameCore.ShowFuncBtn",
+              "Show": false,
+              "PuzzleFunc": "Identify",
+              "CDDuration": 1,
+              "CustomString": {
+                "Value": "PhotoGraphGO30160602"
+              }
+            }
+          ]
         }
       ]
     },
@@ -82,8 +143,8 @@
           }
         },
         {
-          "$type": "RPG.GameCore.DestroyNPC",
-          "TargetType": {
+          "$type": "RPG.GameCore.HideEntity",
+          "Target": {
             "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
@@ -100,7 +161,8 @@
                 }
               }
             }
-          }
+          },
+          "IsHide": true
         },
         {
           "$type": "RPG.GameCore.PropSetVisibility",
@@ -127,7 +189,13 @@
         },
         {
           "$type": "RPG.GameCore.SwitchPhotoGraphMode",
-          "PhotoGraphMode": "Identify"
+          "PhotoGraphMode": "Identify",
+          "IdentifyRadiusOverride": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0
+            }
+          }
         }
       ]
     },
@@ -180,7 +248,13 @@
           "OnIdentifyFailed": [],
           "OnPreviewFinish": [
             {
-              "$type": "RPG.GameCore.SwitchPhotoGraphMode"
+              "$type": "RPG.GameCore.SwitchPhotoGraphMode",
+              "IdentifyRadiusOverride": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 0
+                }
+              }
             }
           ]
         },
@@ -205,9 +279,6 @@
               }
             ]
           }
-        },
-        {
-          "$type": "RPG.GameCore.SwitchPhotoGraphMode"
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
@@ -251,6 +322,28 @@
           }
         },
         {
+          "$type": "RPG.GameCore.HideEntity",
+          "Target": {
+            "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
+            "FetchType": "SingleNpcByNpcID",
+            "SingleNpcID": {
+              "GroupID": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 103
+                }
+              },
+              "GroupNpcID": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 400002
+                }
+              }
+            }
+          },
+          "IsHide": true
+        },
+        {
           "$type": "RPG.GameCore.DestroyNPC",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
@@ -271,21 +364,6 @@
             }
           },
           "DestroyList": []
-        },
-        {
-          "$type": "RPG.GameCore.CreateNPC",
-          "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 103
-            }
-          },
-          "GroupNpcID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 400001
-            }
-          }
         },
         {
           "$type": "RPG.GameCore.PropSetVisibility",
@@ -310,6 +388,26 @@
           }
         },
         {
+          "$type": "RPG.GameCore.WaitSecond",
+          "WaitTime": 0.3
+        },
+        {
+          "$type": "RPG.GameCore.CreateNPC",
+          "GroupID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 103
+            }
+          },
+          "GroupNpcID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 400001
+            }
+          },
+          "CreateList": []
+        },
+        {
           "$type": "RPG.GameCore.FinishPerformanceMission",
           "Key": "Mission_301160602"
         }
@@ -326,20 +424,25 @@
           "GoNextImmediately": true
         },
         {
-          "$type": "RPG.GameCore.CreateNPC",
-          "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 103
+          "$type": "RPG.GameCore.HideEntity",
+          "Target": {
+            "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
+            "FetchType": "SingleNpcByNpcID",
+            "SingleNpcID": {
+              "GroupID": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 103
+                }
+              },
+              "GroupNpcID": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 400002
+                }
+              }
             }
-          },
-          "GroupNpcID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 400002
-            }
-          },
-          "CreateList": []
+          }
         },
         {
           "$type": "RPG.GameCore.PropSetVisibility",

@@ -117,6 +117,9 @@
     "PerformanceTypeTag": {
       "Hash": 138992204
     },
+    "PerformanceInstanceGuidTag": {
+      "Hash": 1284679918
+    },
     "PlayerTeamReviveStartEvent": "Stage_PlayerTeamReviveStart",
     "PlayerTeamReviveFailedEvent": "Stage_PlayerTeamReviveFailed",
     "LastKillStartEvent": "Stage_LastKillStart",
@@ -190,7 +193,8 @@
         "Hit": "Hit_Stun",
         "HitH": "Stun_Occur",
         "HitFlyRecover": "Hit_Fly_Recover_Stun"
-      }
+      },
+      "EmoAnimName": "Emo_Stun"
     },
     {
       "Flag": "Break",
@@ -221,7 +225,8 @@
         "HitH": "Stagger",
         "HitFlyRecover": "Hit_Fly_Recover_Break"
       },
-      "OnlyAffectPlayer": true
+      "OnlyAffectPlayer": true,
+      "EmoAnimName": "Emo_Stun"
     },
     {
       "Flag": "STAT_CTRL_Frozen_Effect",
@@ -271,6 +276,7 @@
     "MaxShield",
     "MaxStance",
     "SPRatio",
+    "AdditionalBP",
     "Count"
   ],
   "HitForce": 550,
@@ -379,6 +385,11 @@
     }
   },
   "ModifierStatusTypeImmuneMap": {
+    "Dodge": {
+      "StatusTypes": [
+        "Debuff"
+      ]
+    },
     "ResistDebuff": {
       "StatusTypes": [
         "Debuff"
@@ -546,6 +557,8 @@
   "AdventureCommonBtnCD": 0.1,
   "StageTypesNeedQuitVerify": [],
   "PlayOccurAfterFrozen": true,
+  "BreakExtendAnimDelayHitMotion": 0.7,
+  "HitFrameMiniInterval": 2,
   "CinemachineVirtualCameraTemplatePath": "Prefabs/VirtualCameraTestTemplate.prefab",
   "TeammateAttackFormationConfigList": [
     {
@@ -577,5 +590,29 @@
     }
   ],
   "CrazyAIConfigPath": "Config/ConfigAI/Common_Crazy_AI.json",
-  "GameCoreDesignDataVersion": 4268863
+  "FormationAsset": [
+    "Formation/FormationAsset.asset"
+  ],
+  "TimelineDataAsset": [
+    "Camera/TimeLine/TimelineData.asset"
+  ],
+  "GameCoreDesignDataVersion": 4385488,
+  "StanceBreakActionDelayChangeRatio": {
+    "Value": 0.25000000023283064
+  },
+  "SkillDamageTypePreshowConfigs": {
+    "Imaginary": {
+      "StanceBreakActionSpeedChangeRatio": {
+        "Value": -0.10000000009313226
+      },
+      "StanceBreakActionDelayChangeRatio": {
+        "Value": 0.3000000002793968
+      }
+    },
+    "Quantum": {
+      "StanceBreakActionDelayChangeRatio": {
+        "Value": 0.20000000018626451
+      }
+    }
+  }
 }

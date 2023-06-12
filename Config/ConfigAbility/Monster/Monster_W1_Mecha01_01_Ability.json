@@ -3,33 +3,39 @@
     {
       "Modifiers": {
         "Monster_W1_Mecha01_01_KlaraSpecialVictory_LockHP": {
-          "OnStack": [
-            {
-              "$type": "RPG.GameCore.LockHP",
-              "Threshold": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.010000000009313226
+          "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.LockHP",
+                  "Threshold": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0.010000000009313226
+                    }
+                  }
                 }
-              }
-            }
-          ],
-          "OnLockHPThresholdReached": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllEnemy"
-              },
-              "ModifierName": "Monster_W1_Mecha01_01_Instance_DisableAction"
+              ]
             },
-            {
-              "$type": "RPG.GameCore.TriggerCustomString",
-              "CustomString": {
-                "Value": "Level_SpecialWin"
-              }
+            "OnLockHPThresholdReached": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllEnemy"
+                  },
+                  "ModifierName": "Monster_W1_Mecha01_01_Instance_DisableAction"
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "Level_SpecialWin"
+                  }
+                }
+              ]
             }
-          ]
+          }
         },
         "Monster_W1_Mecha01_01_Instance_DisableAction": {
           "BehaviorFlagList": [
@@ -78,10 +84,6 @@
         },
         {
           "$type": "RPG.GameCore.LookAt",
-          "PerformerType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "TargetType": "AbilityTargetEntity"
         },
         {
@@ -168,10 +170,6 @@
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
           "AnimLogicState": "Idle",
           "NormalizedTransitionDuration": {
             "IsDynamic": false,

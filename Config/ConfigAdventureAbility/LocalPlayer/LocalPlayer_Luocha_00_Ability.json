@@ -31,10 +31,6 @@
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.LookAt",
-              "PerformerType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TargetType": "AbilityTargetEntity",
               "Duration": 0.1
             },
@@ -86,13 +82,13 @@
                   "SteerNormalizedTimeStart": {
                     "IsDynamic": false,
                     "FixedValue": {
-                      "Value": 0.010000000009313226
+                      "Value": 0.01799999945797026
                     }
                   },
                   "SteerNormalizedTimeEnd": {
                     "IsDynamic": false,
                     "FixedValue": {
-                      "Value": 0.04299999983049929
+                      "Value": 0.035999999614432454
                     }
                   }
                 }
@@ -141,14 +137,6 @@
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerAttack",
-              "AttackTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AbilityTargetEntity"
-              },
-              "AttackRootTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TriggerBattleDelay": 0.1,
               "AttackDetectConfig": {
                 "$type": "RPG.GameCore.AdventureAttackDetectBoxConfig",
@@ -337,10 +325,6 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "AllEnemy"
               },
-              "AttackRootTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
               "TriggerBattleDelay": 0.1,
               "AttackDetectConfig": {
                 "$type": "RPG.GameCore.AdventureAttackDetectBoxConfig",
@@ -387,6 +371,23 @@
       },
       "OnStart": [
         {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "Freelook3rdConfig": {
+              "DampChangeParam": {
+                "TargetValue": {
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                },
+                "ChangeCurvePath": "Camera/BlendCurve/AttackDampCurve.asset",
+                "RecoveryTime": 0.25,
+                "RecoveryCurvePath": "Camera/BlendCurve/AttackDampRecoverCurve.asset"
+              }
+            }
+          }
+        },
+        {
           "$type": "RPG.GameCore.AdventureTriggerAnimStateWithMove",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
@@ -410,19 +411,6 @@
           }
         },
         {
-          "$type": "RPG.GameCore.VCameraConfigChange",
-          "CameraConfig": {
-            "Freelook3rdConfig": {
-              "ZoomChangeParam": {
-                "TargetValue": -0.15,
-                "Time": 0.45,
-                "ChangeCurvePath": "Camera/BlendCurve/Blend_MazeSkill.asset",
-                "RecoveryCurvePath": "Camera/BlendCurve/BlendCut06.asset"
-              }
-            }
-          }
-        },
-        {
           "$type": "RPG.GameCore.WaitAnimState",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
@@ -432,16 +420,30 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.09299999987706542
+              "Value": 0.12000000011175871
             }
           }
+        },
+        {
+          "$type": "RPG.GameCore.RadialBlurEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Duration": 0.05,
+          "BlurY": 0.2,
+          "BlurRadius": 1,
+          "Iteration": 3,
+          "BlurStart": 0.1,
+          "BlurFeather": 0.3
         },
         {
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
             "Freelook3rdConfig": {
               "ZoomChangeParam": {
-                "ChangeCurvePath": "Camera/BlendCurve/BlendCut06.asset",
+                "Time": 1.5,
+                "ChangeCurvePath": "Camera/BlendCurve/Blend_FastToSlow.asset",
                 "RecoveryCurvePath": "Camera/BlendCurve/BlendCut06.asset"
               }
             }
@@ -476,11 +478,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.AdventureSubmitSkill",
-          "Caster": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          }
+          "$type": "RPG.GameCore.AdventureSubmitSkill"
         }
       ]
     }

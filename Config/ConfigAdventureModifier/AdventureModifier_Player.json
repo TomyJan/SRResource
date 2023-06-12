@@ -164,14 +164,6 @@
           "$type": "RPG.GameCore.AdvFilterNearbyMonsters",
           "TaskList": [
             {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "TaskActionTarget"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_MazeSkill_Stealth.prefab"
-            },
-            {
               "$type": "RPG.GameCore.AdvForceHideBillboard",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
@@ -180,41 +172,12 @@
               "Duration": 1.5
             },
             {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByAnd",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByAlertValueInRange",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "TaskActionTarget"
-                    },
-                    "AlertValueMin": 25,
-                    "AlertValueMax": 100
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByNPCStatus",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "TaskActionTarget"
-                    },
-                    "NPCStatus": "RunAwayPlayer",
-                    "Inverse": true
-                  }
-                ]
+              "$type": "RPG.GameCore.AddMazeBuff",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "TaskActionTarget"
               },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.AdvSetTargetAlertValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "TaskActionTarget"
-                  },
-                  "BehaviourType": "AlertSetTo",
-                  "AlertValue": 24
-                }
-              ]
+              "ID": 1000118
             }
           ]
         }
@@ -227,6 +190,28 @@
       "OnUnstage": [
         {
           "$type": "RPG.GameCore.RemoveSelfModifier"
+        }
+      ],
+      "Count": 1,
+      "Stacking": "Refresh"
+    },
+    "ADV_Modifier_MazeEffect_Stealth": {
+      "LifeTime": 1.5,
+      "OnCreate": [
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "ModifierOwnerEntity"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_MazeSkill_Stealth.prefab"
+        },
+        {
+          "$type": "RPG.GameCore.AdvOnTargetLost",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "ModifierOwnerEntity"
+          }
         }
       ],
       "Count": 1,
@@ -279,15 +264,6 @@
           "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_HitLoop.prefab",
           "MinMutexTime": -1,
           "MutexType": "Entity"
-        },
-        {
-          "$type": "RPG.GameCore.AdvSetTargetAlertValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "BehaviourType": "AlertSetTo",
-          "AlertValue": 15
         }
       ],
       "Count": 1,
@@ -304,6 +280,10 @@
           "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Light.prefab"
         }
       ],
+      "Count": 1,
+      "Stacking": "Merge"
+    },
+    "ADV_StageAbility_Maze_Luka": {
       "Count": 1,
       "Stacking": "Merge"
     },
@@ -381,14 +361,6 @@
           }
         },
         {
-          "$type": "RPG.GameCore.AddMazeBuff",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ID": 120701
-        },
-        {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByAnimatorParam",
@@ -461,14 +433,6 @@
               "Value": 1
             }
           }
-        },
-        {
-          "$type": "RPG.GameCore.RemoveMazeBuff",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ID": 120701
         },
         {
           "$type": "RPG.GameCore.RemoveEffect",
@@ -588,11 +552,50 @@
       "Count": 1,
       "Stacking": "Merge"
     },
+    "ADV_StageAbility_Maze_Guinaifen": {
+      "Count": 1,
+      "Stacking": "Merge"
+    },
     "ADV_StageAbility_Maze_Bailu": {
       "Count": 1,
       "Stacking": "Merge"
     },
+    "ADV_StageAbility_Maze_Jingliu": {
+      "Count": 1,
+      "Stacking": "Merge"
+    },
+    "ADV_StageAbility_Maze_DanHengIL": {
+      "Count": 1,
+      "Stacking": "Merge"
+    },
     "ADV_StageAbility_Maze_Xueyi": {
+      "Count": 1,
+      "Stacking": "Merge"
+    },
+    "ADV_StageAbility_Maze_Hanya": {
+      "Count": 1,
+      "Stacking": "Merge"
+    },
+    "ADV_StageAbility_Maze_Topaz": {
+      "Count": 1,
+      "Stacking": "Merge"
+    },
+    "ADV_StageAbility_Maze_Argenti": {
+      "BehaviorFlagList": [
+        "Stun"
+      ],
+      "OnCreate": [
+        {
+          "$type": "RPG.GameCore.ModifierAttachEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "ModifierOwnerEntity"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_HitLoop.prefab",
+          "MinMutexTime": -1,
+          "MutexType": "Entity"
+        }
+      ],
       "Count": 1,
       "Stacking": "Merge"
     },
@@ -615,15 +618,6 @@
           "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_HitLoop.prefab",
           "MinMutexTime": -1,
           "MutexType": "Entity"
-        },
-        {
-          "$type": "RPG.GameCore.AdvSetTargetAlertValue",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "BehaviourType": "AlertSetTo",
-          "AlertValue": 15
         }
       ],
       "Count": 1,
@@ -634,6 +628,42 @@
         "Tempter"
       ],
       "Count": 1
+    },
+    "ADV_Modifier_Maze_Fear": {
+      "BehaviorFlagList": [
+        "Fear"
+      ],
+      "OnCreate": [
+        {
+          "$type": "RPG.GameCore.ModifierAttachEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "ModifierOwnerEntity"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Sampo/Eff_Avatar_Sampo_00_MazeSkill_HitLoop.prefab",
+          "MinMutexTime": -1,
+          "MutexType": "Entity"
+        }
+      ],
+      "Count": 1
+    },
+    "ADV_StageAbility_Maze_W_BPAdd": {
+      "OnCreate": [],
+      "Count": 1,
+      "Stacking": "Merge"
+    },
+    "ADV_StageAbility_Maze_W_Shajin": {
+      "OnCreate": [],
+      "Count": 1,
+      "Stacking": "Merge"
+    },
+    "ADV_StageAbility_Maze_W_Yayi": {
+      "Count": 1,
+      "Stacking": "Merge"
+    },
+    "ADV_StageAbility_Maze_W_Ratio": {
+      "Count": 1,
+      "Stacking": "Merge"
     }
   }
 }

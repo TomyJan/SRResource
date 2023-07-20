@@ -220,140 +220,22 @@
             "FormulaType": "ByDefence",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "StanceValue": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1659254037
-                }
-              ]
-            },
-            "HitSplitRatio": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0.5000000004656613
-              }
-            },
-            "SPHitRatio": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            },
-            "HitAnimation": "Hit_H",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Yanqing/Eff_Avatar_Yanqing_00_Skill01_Hit.prefab",
-            "HitEffectHeight": 1.3,
-            "HitTimeSlowType": "Puncture",
-            "HitPosHeight": 1.6,
-            "HitAngleHorizontal": 45,
-            "HitAngleVertical": -90
-          }
-        },
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "AnimStateName": "Skill01",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.3620000001974404
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.DamageByAttackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AbilityTargetEntity"
-          },
-          "AttackProperty": {
-            "DamageType": "Imaginary",
-            "FormulaType": "ByDefence",
-            "DamagePercentage": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
-            },
-            "StanceValue": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1659254037
-                }
-              ]
-            },
-            "HitSplitRatio": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0.25000000023283064
-              }
-            },
-            "SPHitRatio": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            },
-            "HitAnimation": "Hit",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Yanqing/Eff_Avatar_Yanqing_00_Skill01_02_Hit.prefab",
-            "HitEffectHeight": 1,
-            "HitPosHeight": 0.8
-          },
-          "CanTriggerLastKill": true
-        },
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "AnimStateName": "Skill01",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.42200000025331974
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.DamageByAttackProperty",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AbilityTargetEntity"
-          },
-          "AttackProperty": {
-            "DamageType": "Imaginary",
-            "FormulaType": "ByDefence",
-            "DamagePercentage": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
-            },
-            "StanceValue": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1659254037
-                }
-              ]
-            },
-            "HitSplitRatio": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0.25000000023283064
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  1659254037
+                ]
               }
             },
             "SPHitRatio": {
@@ -527,29 +409,28 @@
           }
         },
         {
+          "$type": "RPG.GameCore.SetDynamicValueByProperty",
+          "DynamicKey": "MDF_CurrentDefence2",
+          "ReadTargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Value": "Defence"
+        },
+        {
           "$type": "RPG.GameCore.AddModifier",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "AllLightTeam"
           },
-          "ModifierName": "W_Shajin_Skill02_StackPreload",
-          "DynamicValues": {
-            "MDF_MaxShieldRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1317091266
-                }
-              ]
-            },
-            "MDF_MaxShieldValue": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1594842097
-                }
+          "ModifierName": "W_Shajin_StackableShield",
+          "LifeTime": {
+            "IsDynamic": true,
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1019407308
               ]
             }
           }
@@ -560,16 +441,82 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "AllLightTeam"
           },
-          "ModifierName": "W_Shajin_Skill02_Shield",
-          "LifeTime": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1019407308
+          "ModifierName": "W_Shajin_Skill02_StackPreload",
+          "DynamicValues": {
+            "MDF_NewShield": {
+              "IsDynamic": true,
+              "PostfixExpr": {
+                "OpCodes": "AQABAQQBAgIJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  995479797,
+                  583785975,
+                  1089505780
+                ]
               }
-            ]
+            },
+            "MDF_MaxShieldRatio": {
+              "IsDynamic": true,
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1317091266
+                ]
+              }
+            },
+            "MDF_MaxShieldValue": {
+              "IsDynamic": true,
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  1594842097
+                ]
+              }
+            }
           }
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByRankActivated",
+            "TriggerKey": {
+              "Hash": 523552506
+            }
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              },
+              "ModifierName": "W_Shajin_Rank02_Sub",
+              "LifeTime": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2131075020
+                  ]
+                }
+              },
+              "DynamicValues": {
+                "MDF_PropertyValue": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -160721608
+                    ]
+                  }
+                }
+              }
+            }
+          ]
         },
         {
           "$type": "RPG.GameCore.ModifySPNew",
@@ -1100,12 +1047,13 @@
           "ModifierName": "W_Shajin_00_Skill03_AddDefence",
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 238783065
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                238783065
+              ]
+            }
           }
         },
         {
@@ -1119,21 +1067,23 @@
             "FormulaType": "ByDefence",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1137062232
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1137062232
+                ]
+              }
             },
             "StanceValue": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1659254037
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  1659254037
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -1184,12 +1134,13 @@
           "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1207Passive.png",
           "MaxCount": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 703343802
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                703343802
+              ]
+            }
           },
           "CurrentCount": {
             "IsDynamic": false,
@@ -1197,6 +1148,44 @@
               "Value": 0
             }
           }
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByRankActivated",
+            "TriggerKey": {
+              "Hash": 2089636447
+            }
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "W_Shajin_Rank01_Sub"
+            }
+          ]
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByRankActivated",
+            "TriggerKey": {
+              "Hash": 1686351920
+            }
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "W_Shajin_Rank04_Sub"
+            }
+          ]
         }
       ]
     },
@@ -1467,21 +1456,23 @@
                 "FormulaType": "ByDefence",
                 "DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -2146418666
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -2146418666
+                    ]
+                  }
                 },
                 "StanceValue": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1182064154
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1182064154
+                    ]
+                  }
                 },
                 "HitSplitRatio": {
                   "IsDynamic": false,
@@ -1503,6 +1494,91 @@
                 "HitPosHeight": 0.8
               },
               "CanTriggerLastKill": true
+            }
+          ]
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByRankActivated",
+            "TriggerKey": {
+              "Hash": -1445815962
+            }
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.LoopExecuteTaskList",
+              "MaxLoopCount": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1655913806
+                  ]
+                }
+              },
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllEnemy"
+                  },
+                  "MaxNumber": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.DamageByAttackProperty",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
+                      },
+                      "AttackProperty": {
+                        "DamageType": "Imaginary",
+                        "FormulaType": "ByDefence",
+                        "DamagePercentage": {
+                          "IsDynamic": true,
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              1487778557
+                            ]
+                          }
+                        },
+                        "StanceValue": {
+                          "IsDynamic": true,
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              1659254037
+                            ]
+                          }
+                        },
+                        "SPHitRatio": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
+                          }
+                        },
+                        "AttackType": "Insert",
+                        "HitAnimation": "Hit_H",
+                        "HitEffectHeight": 1,
+                        "HitTimeSlowType": "Puncture",
+                        "HitTimeSlowIntensity": "Middle",
+                        "HitPosHeight": 0.8
+                      },
+                      "CanTriggerLastKill": true
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -1531,12 +1607,13 @@
           "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1207Passive.png",
           "MaxCount": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 703343802
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                703343802
+              ]
+            }
           },
           "CurrentCount": {
             "IsDynamic": false,
@@ -1594,12 +1671,13 @@
                       "ModifierName": "W_Avatar_Shajin_00_Maze_Shield",
                       "LifeTime": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -421248890
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -421248890
+                          ]
+                        }
                       }
                     },
                     {
@@ -1611,12 +1689,13 @@
                       "ModifierName": "W_Avatar_Shajin_00_Maze_Taunt",
                       "LifeTime": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -421248890
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -421248890
+                          ]
+                        }
                       }
                     }
                   ],
@@ -1657,21 +1736,23 @@
                   "FormulaType": "ShieldByCasterDefence",
                   "ShieldValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1571924427
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1571924427
+                      ]
+                    }
                   },
                   "ShieldPercentage": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1209404408
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1209404408
+                      ]
+                    }
                   }
                 },
                 {
@@ -1695,12 +1776,13 @@
                   "Property": "AggroAddedRatio",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1749211389
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1749211389
+                      ]
+                    }
                   }
                 }
               ]
@@ -1752,12 +1834,13 @@
                       "DynamicValues": {
                         "MDF_Resistance": {
                           "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": 481594005
-                            }
-                          ]
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              481594005
+                            ]
+                          }
                         }
                       }
                     }
@@ -1785,12 +1868,13 @@
                   "BehaviorFlag": "STAT_CTRL",
                   "Resistance": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 741349151
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        741349151
+                      ]
+                    }
                   }
                 }
               ]
@@ -1838,12 +1922,13 @@
           "DynamicValues": {
             "MDF_Resistance": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 481594005
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  481594005
+                ]
+              }
             }
           }
         }
@@ -1878,16 +1963,7 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "ModifierName": "W_Shajin_SkillTree01",
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -826297499
-                      }
-                    ]
-                  }
+                  "ModifierName": "W_Shajin_SkillTree01_Sub"
                 }
               ]
             }
@@ -2029,21 +2105,23 @@
               "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1207Passive.png",
               "MaxCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 703343802
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    703343802
+                  ]
+                }
               },
               "CurrentCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1662446059
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1662446059
+                  ]
+                }
               }
             },
             {
@@ -2055,20 +2133,16 @@
                 "CompareType": "GreaterEqual",
                 "CompareValue": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 703343802
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      703343802
+                    ]
+                  }
                 }
               },
               "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.DebugLog",
-                  "Level": "Warn",
-                  "Message": "========W_Shajin_Passive_ShieldEnergy=4!!!=============="
-                },
                 {
                   "$type": "RPG.GameCore.TurnInsertAbility",
                   "AbilityName": "W_Shajin_00_PassiveSkill01_InsertAbility",
@@ -2110,147 +2184,180 @@
     },
     "W_Shajin_Skill02_StackPreload": {
       "_CallbackList": {
-        "OnModifierOnStack": {
+        "OnStack": {
           "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "ModifierName": "W_Shajin_StackableShield",
+              "ValueType": "CurrentShield",
+              "Multiplier": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              },
+              "DynamicKey": "CurShield"
+            },
+            {
+              "$type": "RPG.GameCore.DebugLog",
+              "Level": "Warn",
+              "Message": "Cola - StackShield: Cur:{CurShield} New:{MDF_NewShield}"
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "MDF_NewShield",
+              "Value": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQIJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -905379045,
+                    -1018056705
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByProperty",
+              "DynamicKey": "MDF_CurrentDefence",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "Value": "Defence"
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "MDF_ForceShieldValue",
+              "ContextScope": "ContextCater",
+              "Value": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQQBAgIJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -106459293,
+                    -1177161350,
+                    -1598840556
+                  ]
+                }
+              }
+            },
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByAny",
-                "PredicateList": [
-                  {
-                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "W_Shajin_Skill02_Shield"
-                  },
-                  {
-                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "W_Shajin_SkillTree03_Shield"
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "DynamicKey": "MDF_NewShield",
+                "ContextScope": "ContextModifier",
+                "CompareType": "GreaterEqual",
+                "CompareValue": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      2054132361
+                    ]
                   }
-                ]
+                }
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.AddModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ModifierName": "W_Shajin_StackableShield",
-                  "LifeTime": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1019407308
-                      }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.ModifyShieldValueByNewShieldModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "TargetModifierName": "W_Shajin_StackableShield",
-                  "NewModifierName": "ParamModifier"
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
-                  "DynamicKey": "MDF_CurrentShield",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "Value": "Shield"
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
-                  "DynamicKey": "MDF_CurrentDefence",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Value": "Defence"
-                },
-                {
                   "$type": "RPG.GameCore.SetDynamicValue",
-                  "DynamicKey": "MDF_ForceShieldValue",
-                  "ContextScope": "ContextCater",
+                  "DynamicKey": "MDF_NewShield",
                   "Value": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -106459293
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1177161350
-                      },
-                      {
-                        "Type": "Mul"
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1598840556
-                      },
-                      {
-                        "Type": "Add"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ModifierOwnerEntity"
-                    },
-                    "DynamicKey": "MDF_CurrentShield",
-                    "ContextScope": "ContextModifier",
-                    "CompareType": "GreaterEqual",
-                    "CompareValue": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 2054132361
-                        }
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        2054132361
                       ]
                     }
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.AddModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "ModifierName": "W_Shajin_00_Skill02_ForceContrlShield"
-                    }
+                  }
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "MDF_NewShield",
+              "Value": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQMJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1018056705,
+                    -905379045
                   ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.DebugLog",
+              "Level": "Warn",
+              "Message": "Cola - StackShield: FinalAdd:{MDF_NewShield}"
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "DynamicKey": "MDF_NewShield",
+                "ContextScope": "ContextModifier",
+                "CompareType": "Greater",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 0
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.ModifyShield",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ShieldModifiers": [
+                    "W_Shajin_StackableShield"
+                  ],
+                  "AllowExpandMax": true,
+                  "FormulaValue": {
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1018056705
+                      ]
+                    }
+                  }
                 }
               ]
             }
           ]
         }
       },
+      "Stacking": "ReplaceByCaster",
       "DynamicValues": {
         "Values": {
-          "-527113652": {},
           "-106459293": {},
-          "-1177161350": {},
-          "-1598840556": {}
+          "-905379045": {},
+          "-1018056705": {}
         }
       }
     },
@@ -2273,12 +2380,13 @@
               "DynamicKey": "MDF_DefencePercentage",
               "Value": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1598496082
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1598496082
+                  ]
+                }
               }
             },
             {
@@ -2290,12 +2398,13 @@
               "Property": "DefenceAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1598496082
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1598496082
+                  ]
+                }
               }
             }
           ]
@@ -2310,50 +2419,13 @@
     },
     "W_Shajin_SkillTree01": {
       "_CallbackList": {
-        "OnDestroy": {
-          "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeammate"
-              },
-              "ModifierName": "W_Shajin_SkillTree01_Sub"
-            }
-          ]
-        },
         "OnStack": {
           "CallbackConfig": [
             {
               "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeammate"
-              },
-              "ModifierName": "W_Shajin_SkillTree01_Sub"
-            },
-            {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "DynamicKey": "MDF_PropertyValue",
-              "Value": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1108425923
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "OnListenCharacterCreate": {
-          "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeammate"
+                "Alias": "Caster"
               },
               "ModifierName": "W_Shajin_SkillTree01_Sub"
             }
@@ -2368,39 +2440,91 @@
     },
     "W_Shajin_SkillTree01_Sub": {
       "_CallbackList": {
-        "OnBeforeBeingAttacked": {
+        "OnAfterAttack": {
           "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "Flag": "Shield"
+                "$type": "RPG.GameCore.ByCurrentSkillType"
               },
-              "FailedTaskList": [
+              "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.ModifyActionDelay",
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "MDF_CurrentShield",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Value": "Shield"
+                },
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AttackTargetList"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Imaginary",
+                    "DamageValue": {
+                      "IsDynamic": true,
+                      "PostfixExpr": {
+                        "OpCodes": "AQABAQQJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -527113652,
+                          -766591641
+                        ]
+                      }
+                    },
+                    "AttackType": "Pursued",
+                    "HitAnimation": "Hit",
+                    "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Tingyun/Eff_Avatar_Tingyun_00_Skill02_Hit_01.prefab"
+                  },
+                  "CanTriggerLastKill": true
+                },
+                {
+                  "$type": "RPG.GameCore.AddModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
-                  "AddNormalizedValue": {
+                  "ModifierName": "W_Shajin_SkillTree01_CountDown",
+                  "LifeTime": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1108425923
-                      },
-                      {
-                        "Type": "Neg"
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -826297499
+                      ]
+                    }
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.RemoveSelfModifier"
                 }
               ]
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "-527113652": {}
+        }
+      }
+    },
+    "W_Shajin_SkillTree01_CountDown": {
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "W_Shajin_SkillTree01_Sub"
             }
           ]
         }
@@ -2422,62 +2546,6 @@
         }
       }
     },
-    "W_Shajin_Skill02_Shield": {
-      "BehaviorFlagList": [
-        "Shield"
-      ],
-      "_CallbackList": {
-        "OnDestroy": {
-          "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.RemoveShield",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetResilience",
-              "DoReset": true
-            }
-          ]
-        },
-        "OnStack": {
-          "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.InitShield",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "FormulaType": "ShieldByCasterDefence",
-              "ShieldValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1089505780
-                  }
-                ]
-              },
-              "ShieldPercentage": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 583785975
-                  }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetResilience"
-            }
-          ]
-        }
-      },
-      "Stacking": "ReplaceByCaster"
-    },
     "W_Shajin_StackableShield": {
       "BehaviorFlagList": [
         "Shield"
@@ -2496,7 +2564,8 @@
                 "FixedValue": {
                   "Value": 0
                 }
-              }
+              },
+              "ShowText": false
             },
             {
               "$type": "RPG.GameCore.SetResilience"
@@ -2515,35 +2584,6 @@
             {
               "$type": "RPG.GameCore.SetResilience",
               "DoReset": true
-            }
-          ]
-        },
-        "OnModifierAdd": {
-          "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                "ModifierName": "W_Shajin_00_Skill02_ForceContrlShield"
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.InitShield",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "ShieldValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2054132361
-                      }
-                    ]
-                  }
-                }
-              ]
             }
           ]
         }
@@ -2572,27 +2612,71 @@
               "$type": "RPG.GameCore.AddModifier",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeamMember"
+                "Alias": "AllLightTeam"
               },
-              "ModifierName": "W_Shajin_SkillTree03_Shield",
-              "LifeTime": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -752602980
-                  }
-                ]
-              },
+              "ModifierName": "W_Shajin_SkillTree03_AddShield",
               "DynamicValues": {
-                "MDF_CurrentDefence3": {
+                "MDF_LifeTime": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 995479797
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -1019407308
+                    ]
+                  }
+                },
+                "MDF_LifeTime2": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -752602980
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "W_Shajin_Skill02_StackPreload",
+              "DynamicValues": {
+                "MDF_NewShield": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQABAQQBAgIJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      995479797,
+                      1623238753,
+                      -1198431344
+                    ]
+                  }
+                },
+                "MDF_MaxShieldRatio": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -1317091266
+                    ]
+                  }
+                },
+                "MDF_MaxShieldValue": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1594842097
+                    ]
+                  }
                 }
               }
             }
@@ -2606,65 +2690,241 @@
         }
       }
     },
-    "W_Shajin_SkillTree03_Shield": {
-      "BehaviorFlagList": [
-        "Shield"
-      ],
+    "W_Shajin_SkillTree03_AddShield": {
       "_CallbackList": {
-        "OnDestroy": {
-          "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.RemoveShield",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetResilience",
-              "DoReset": true
-            }
-          ]
-        },
         "OnStack": {
           "CallbackConfig": [
             {
-              "$type": "RPG.GameCore.InitShield",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByIsContainModifier",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "ModifierName": "W_Shajin_StackableShield"
               },
-              "ShieldValue": {
-                "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1623238753
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
                   },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 995479796
-                  },
-                  {
-                    "Type": "Mul"
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1198431344
-                  },
-                  {
-                    "Type": "Add"
+                  "ModifierName": "W_Shajin_StackableShield",
+                  "LifeTime": {
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1820617363
+                      ]
+                    }
                   }
-                ]
-              }
-            },
-            {
-              "$type": "RPG.GameCore.SetResilience"
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "ModifierName": "W_Shajin_StackableShield",
+                  "LifeTime": {
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1761690181
+                      ]
+                    }
+                  }
+                }
+              ]
             }
           ]
         }
       },
       "Stacking": "ReplaceByCaster",
+      "DynamicValues": {
+        "Values": {
+          "1820617363": {},
+          "1761690181": {}
+        }
+      }
+    },
+    "W_Shajin_Rank01_Sub": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AggroAddedRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2133476908
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "OnAfterBeingAttacked": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "Flag": "Shield"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "W_Shajin_Passive_ShieldEnergy",
+                  "LayerAddWhenStack": {
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1140469454
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "W_Shajin_Rank02_Sub": {
+      "_CallbackList": {
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "StatusResistanceBase",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "2128130574": {}
+        }
+      }
+    },
+    "W_Shajin_Rank04_Sub": {
+      "EnterBattlePriority": "CharacterBuff",
+      "_CallbackList": {
+        "OnEnterBattle": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "W_Shajin_StackableShield",
+              "LifeTime": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1336719836
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByProperty",
+              "DynamicKey": "MDF_CurrentDefence3",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "Value": "Defence"
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              },
+              "ModifierName": "W_Shajin_Skill02_StackPreload",
+              "DynamicValues": {
+                "MDF_NewShield": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQABAQQBAgIJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      995479796,
+                      -474158746,
+                      -1795213565
+                    ]
+                  }
+                },
+                "MDF_MaxShieldRatio": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -1317091266
+                    ]
+                  }
+                },
+                "MDF_MaxShieldValue": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1594842097
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
       "DynamicValues": {
         "Values": {
           "995479796": {}

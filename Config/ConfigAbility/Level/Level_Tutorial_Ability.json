@@ -199,6 +199,126 @@
           "ModifierName": "TutorialAbility_Danheng_MonsterLockDanheng_Modifier"
         }
       ]
+    },
+    {
+      "Modifiers": {
+        "TutorialAbility_Danheng_MonsterLockDanheng_Modifier": {
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllEnemy"
+                  },
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareCharacterID",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "TargetCharacterID": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1008
+                      }
+                    }
+                  },
+                  "MaxNumber": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "TutorialAbility_Danheng_MonsterLockDanheng_Danheng_Modifier"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "TutorialAbility_Danheng_MonsterLockDanheng_Danheng_Modifier": {}
+      },
+      "Name": "TutorialAbility_Danheng_MonsterLockAlan",
+      "OnAdd": [
+        {
+          "$type": "RPG.GameCore.AddModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "ModifierName": "TutorialAbility_Danheng_MonsterLockDanheng_Modifier"
+        }
+      ]
+    },
+    {
+      "Modifiers": {
+        "TutorialAbility_Danheng_MonsterLockDanheng_Modifier": {
+          "_CallbackList": {
+            "OnEnterBattle": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllEnemy"
+                  },
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareCharacterID",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ParamEntity"
+                    },
+                    "TargetCharacterID": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1107
+                      }
+                    }
+                  },
+                  "MaxNumber": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "TutorialAbility_Danheng_MonsterLockDanheng_Danheng_Modifier"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "TutorialAbility_Danheng_MonsterLockDanheng_Danheng_Modifier": {}
+      },
+      "Name": "TutorialAbility_Danheng_MonsterLockKlara",
+      "OnAdd": [
+        {
+          "$type": "RPG.GameCore.AddModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "ModifierName": "TutorialAbility_Danheng_MonsterLockDanheng_Modifier"
+        }
+      ]
     }
   ]
 }

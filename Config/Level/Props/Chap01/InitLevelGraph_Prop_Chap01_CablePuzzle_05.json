@@ -3,7 +3,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -13,7 +13,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -90,10 +90,7 @@
           "ToState": "Open",
           "OnChange": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerUnlock",
-              "ParameterType": "Trigger",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -101,7 +98,9 @@
                   "Custom": true,
                   "Key": "Chest"
                 }
-              }
+              },
+              "ParameterName": "TriggerUnlock",
+              "ParameterType": "Trigger"
             }
           ],
           "TargetType": {
@@ -113,7 +112,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.PropStateChangeServerListenerConfig",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -195,11 +194,7 @@
               "CanInterrupt": true
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "PropState",
-              "ParameterType": "Int",
-              "FloatValue": 3.402823E+38,
-              "IntegerValue": 1,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -207,7 +202,10 @@
                   "Custom": true,
                   "Key": "Target"
                 }
-              }
+              },
+              "ParameterName": "PropState",
+              "ParameterType": "Int",
+              "Value": 1
             },
             {
               "$type": "RPG.GameCore.EndPropInteract"

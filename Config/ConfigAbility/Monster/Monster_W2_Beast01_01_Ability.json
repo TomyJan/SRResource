@@ -35,12 +35,12 @@
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "Caster"
                     },
-                    "ModifierName": "MCommon_Confine"
+                    "Flag": "STAT_Confine"
                   },
                   "SuccessTaskList": [
                     {
@@ -94,26 +94,157 @@
             "OnEndBreak": {
               "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "STAT_CTRL",
+                        "Inverse": true
+                      }
+                    ]
                   },
-                  "Flags": [
-                    "Resident"
-                  ],
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Common_Trail01.prefab"
-                },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Common_Trail01.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Common_Trail02.prefab"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnModifierAdd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "STAT_CTRL",
+                        "Inverse": true
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "Break",
+                        "Inverse": true
+                      }
+                    ]
                   },
-                  "Flags": [
-                    "Resident"
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Common_Trail01.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Common_Trail02.prefab"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnModifierRemove": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "STAT_CTRL",
+                        "Inverse": true
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByIsTargetValid",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "AliveOnly": true
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "Break",
+                        "Inverse": true
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Common_Trail01.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Common_Trail02.prefab"
+                    }
                   ],
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Common_Trail02.prefab"
+                  "FailedTaskList": []
                 }
               ]
             }
@@ -275,12 +406,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -316,22 +448,24 @@
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1476159857
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1476159857
+              ]
+            }
           },
           "DynamicValues": {
-            "Modifier_Poison_DamagePercentage": {
+            "Modifier_Electric_DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 261917116
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  261917116
+                ]
+              }
             }
           }
         },
@@ -486,9 +620,13 @@
                     "MaxHP"
                   ],
                   "DelayRatio": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.20000000018626451
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -663990795
+                      ]
                     }
                   },
                   "RefreshTeamLocation": false
@@ -511,9 +649,13 @@
                     "MaxHP"
                   ],
                   "DelayRatio": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.20000000018626451
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -663990795
+                      ]
                     }
                   },
                   "RefreshTeamLocation": false

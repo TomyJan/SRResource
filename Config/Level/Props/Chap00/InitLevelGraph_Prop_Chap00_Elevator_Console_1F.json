@@ -4,6 +4,37 @@
     {
       "TaskList": [
         {
+          "$type": "RPG.GameCore.SelectorConfig",
+          "TaskList": [
+            {
+              "$type": "RPG.GameCore.PropStateExecute",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              },
+              "State": "Open",
+              "Execute": [
+                {
+                  "$type": "RPG.GameCore.PropReqInteract",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "InteractID": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1100
+                    }
+                  },
+                  "OnCheckItemFail": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
           "$type": "RPG.GameCore.PropSetupUITrigger",
           "ButtonIcon": "SpriteOutput/TalkIcon/ChatIcon.png",
           "ButtonCallback": [
@@ -31,35 +62,35 @@
                             "Hash": 1218205363
                           },
                           "OptionIconType": "TriggerProp",
-                          "TriggerCustomString": "Maze_Chap00_N201_ElevatorTo2F"
+                          "TriggerCustomString": "Maze_Chap00_N201_Elevator1FTo2F"
                         },
                         {
                           "OptionTextmapID": {
                             "Hash": 742698688
                           },
                           "OptionIconType": "TriggerProp",
-                          "TriggerCustomString": "Elevator_N1"
+                          "TriggerCustomString": "Elevator_1FToN1"
                         },
                         {
                           "OptionTextmapID": {
                             "Hash": 742736801
                           },
                           "OptionIconType": "TriggerProp",
-                          "TriggerCustomString": "Maze_Chap00_N201_ElevatorToCity"
+                          "TriggerCustomString": "Maze_Chap00_N201_Elevator1FToCity"
                         },
                         {
                           "OptionTextmapID": {
                             "Hash": 742698754
                           },
                           "OptionIconType": "TriggerProp",
-                          "TriggerCustomString": "Elevator_N3"
+                          "TriggerCustomString": "Elevator_1FToN3"
                         },
                         {
                           "OptionTextmapID": {
                             "Hash": -2083051010
                           },
                           "OptionIconType": "ChatOutIcon",
-                          "TriggerCustomString": "Maze_Chap00_N201_Elevator_Cancel"
+                          "TriggerCustomString": "Maze_Chap00_N201_Elevator_1FToCancel"
                         }
                       ]
                     }
@@ -97,6 +128,7 @@
               ]
             }
           ],
+          "OverrideTargetTypes": [],
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           }
@@ -124,35 +156,35 @@
                     "Hash": 1218205363
                   },
                   "OptionIconType": "TriggerProp",
-                  "TriggerCustomString": "Maze_Chap00_N201_ElevatorTo2F"
+                  "TriggerCustomString": "Maze_Chap00_N201_Elevator1FTo2F"
                 },
                 {
                   "OptionTextmapID": {
                     "Hash": 742698688
                   },
                   "OptionIconType": "TriggerProp",
-                  "TriggerCustomString": "Elevator_N1"
+                  "TriggerCustomString": "Elevator_1FToN1"
                 },
                 {
                   "OptionTextmapID": {
                     "Hash": 742736801
                   },
                   "OptionIconType": "TriggerProp",
-                  "TriggerCustomString": "Maze_Chap00_N201_ElevatorToCity"
+                  "TriggerCustomString": "Maze_Chap00_N201_Elevator1FToCity"
                 },
                 {
                   "OptionTextmapID": {
                     "Hash": 742698754
                   },
                   "OptionIconType": "TriggerProp",
-                  "TriggerCustomString": "Elevator_N3"
+                  "TriggerCustomString": "Elevator_1FToN3"
                 },
                 {
                   "OptionTextmapID": {
                     "Hash": -2083051010
                   },
                   "OptionIconType": "ChatOutIcon",
-                  "TriggerCustomString": "Maze_Chap00_N201_Elevator_Cancel"
+                  "TriggerCustomString": "Maze_Chap00_N201_Elevator_1FToCancel"
                 }
               ]
             }
@@ -169,42 +201,9 @@
         {
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
-            "Value": "Maze_Chap00_N201_ElevatorToCity"
+            "Value": "Maze_Chap00_N201_ElevatorMove1F"
           },
           "WaitOwnerOnly": true
-        },
-        {
-          "$type": "RPG.GameCore.CaptureLocalPlayer",
-          "CharacterUniqueName": "LocalPlayer"
-        },
-        {
-          "$type": "RPG.GameCore.WaitSecond",
-          "WaitTime": 0.1
-        },
-        {
-          "$type": "RPG.GameCore.CharacterTriggerAnimState",
-          "CharacterUniqueName": {
-            "Value": "LocalPlayer"
-          },
-          "AnimStateName": "UseProp1",
-          "NormalizedTransitionDuration": 0.1
-        },
-        {
-          "$type": "RPG.GameCore.WaitSecond",
-          "WaitTime": 0.75
-        },
-        {
-          "$type": "RPG.GameCore.ReleaseCharacter",
-          "CharacterUniqueName": "LocalPlayer"
-        },
-        {
-          "$type": "RPG.GameCore.PropTriggerAnimState",
-          "AnimStateName": "Open",
-          "TransitionDuration": 0,
-          "WatiAnimFinish": true,
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-          }
         },
         {
           "$type": "RPG.GameCore.SelectorConfig",
@@ -224,7 +223,7 @@
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
                   "CustomString": {
-                    "Value": "Maze_Chap00_N201_Take_Elevator_02"
+                    "Value": "Maze_Chap00_N201_ElevatorArrived1F"
                   }
                 }
               ]
@@ -269,12 +268,29 @@
                 },
                 {
                   "$type": "RPG.GameCore.WaitSecond",
-                  "WaitTime": 0.5
+                  "WaitTime": 0.1
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
                   "CustomString": {
-                    "Value": "Maze_Chap00_N201_Take_Elevator_02"
+                    "Value": "Maze_Chap00_N201_ElevatorArrived1F"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.PropReqInteract",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+                    "FetchType": "SinglePropByPropKey",
+                    "SinglePropKey": {
+                      "Custom": true,
+                      "Key": "Maze_Chap00_N201_Prop_ELevator"
+                    }
+                  },
+                  "InteractID": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 115140
+                    }
                   }
                 }
               ]
@@ -289,14 +305,94 @@
         {
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
-            "Value": "Maze_Chap00_N201_Take_Elevator_02"
+            "Value": "Maze_Chap00_N201_ElevatorPose1F"
+          },
+          "WaitOwnerOnly": true
+        },
+        {
+          "$type": "RPG.GameCore.CaptureLocalPlayer",
+          "CharacterUniqueName": "LocalPlayer"
+        },
+        {
+          "$type": "RPG.GameCore.WaitSecond",
+          "WaitTime": 0.1
+        },
+        {
+          "$type": "RPG.GameCore.CharacterTriggerAnimState",
+          "CharacterUniqueName": {
+            "Value": "LocalPlayer"
+          },
+          "AnimStateName": "UseProp1",
+          "NormalizedTransitionDuration": 0.1
+        },
+        {
+          "$type": "RPG.GameCore.WaitSecond",
+          "WaitTime": 0.75
+        },
+        {
+          "$type": "RPG.GameCore.ReleaseCharacter",
+          "CharacterUniqueName": "LocalPlayer"
+        },
+        {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPoseFinished1F"
+          }
+        }
+      ]
+    },
+    {
+      "IsLoop": true,
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_Elevator1FToCity"
+          },
+          "WaitOwnerOnly": true
+        },
+        {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPose1F"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPoseFinished1F"
+          },
+          "WaitOwnerOnly": true
+        },
+        {
+          "$type": "RPG.GameCore.PropReqInteract",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+          },
+          "InteractID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 1010
+            }
+          },
+          "OnCheckItemFail": []
+        },
+        {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorMove1F"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorArrived1F"
           },
           "WaitOwnerOnly": true
         },
         {
           "$type": "RPG.GameCore.PropTriggerAnimState",
           "AnimStateName": "Open",
-          "WatiAnimFinish": true,
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx",
             "FetchType": "SinglePropByPropKey",
@@ -325,122 +421,158 @@
       ]
     },
     {
-      "IsLoop": true,
       "TaskList": [
         {
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
-            "Value": "Maze_Chap00_N201_ElevatorTo2F"
+            "Value": "Elevator_1FToN1"
           },
           "WaitOwnerOnly": true
         },
         {
-          "$type": "RPG.GameCore.CaptureLocalPlayer",
-          "CharacterUniqueName": "LocalPlayer"
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPose1F"
+          }
         },
         {
-          "$type": "RPG.GameCore.WaitSecond",
-          "WaitTime": 0.1
-        },
-        {
-          "$type": "RPG.GameCore.CharacterTriggerAnimState",
-          "CharacterUniqueName": {
-            "Value": "LocalPlayer"
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPoseFinished1F"
           },
-          "AnimStateName": "UseProp1",
-          "NormalizedTransitionDuration": 0.1
+          "WaitOwnerOnly": true
         },
         {
-          "$type": "RPG.GameCore.WaitSecond",
-          "WaitTime": 0.75
+          "$type": "RPG.GameCore.PropReqInteract",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+          },
+          "InteractID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 1010
+            }
+          },
+          "OnCheckItemFail": []
         },
         {
-          "$type": "RPG.GameCore.ReleaseCharacter",
-          "CharacterUniqueName": "LocalPlayer"
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorMove1F"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorArrived1F"
+          },
+          "WaitOwnerOnly": true
         },
         {
           "$type": "RPG.GameCore.PropTriggerAnimState",
           "AnimStateName": "Open",
-          "TransitionDuration": 0,
-          "WatiAnimFinish": true,
           "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+            "FetchType": "SinglePropByPropKey",
+            "SinglePropKey": {
+              "Custom": true,
+              "Key": "Maze_Chap00_N201_Prop_ELevator"
+            }
           }
         },
         {
-          "$type": "RPG.GameCore.SelectorConfig",
-          "TaskList": [
-            {
-              "$type": "RPG.GameCore.PropStateExecute",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetFetchAdvPropEx",
-                "FetchType": "SinglePropByPropKey",
-                "SinglePropKey": {
-                  "Custom": true,
-                  "Key": "Maze_Chap00_N201_Prop_ELevator"
-                }
-              },
-              "State": "Elevator1",
-              "Execute": [
-                {
-                  "$type": "RPG.GameCore.TriggerCustomString",
-                  "CustomString": {
-                    "Value": "Maze_Chap00_N201_Take_Elevator_01"
-                  }
-                }
-              ]
-            },
-            {
-              "$type": "RPG.GameCore.PropStateExecute",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetFetchAdvPropEx",
-                "FetchType": "SinglePropByPropKey",
-                "SinglePropKey": {
-                  "Custom": true,
-                  "Key": "Maze_Chap00_N201_Prop_ELevator"
-                }
-              },
-              "State": "Elevator2",
-              "Execute": [
-                {
-                  "$type": "RPG.GameCore.TriggerSound",
-                  "SoundName": "Ev_sfx_hertaspacestation_elevator_down"
-                },
-                {
-                  "$type": "RPG.GameCore.PropMoveTo",
-                  "Duration": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1.5000000004656613
-                    }
-                  },
-                  "LevelAreaKey": {
-                    "Custom": true,
-                    "Key": "Maze_Chap00_Elevator_1F"
-                  },
-                  "WaitFinish": true,
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetFetchAdvPropEx",
-                    "FetchType": "SinglePropByPropKey",
-                    "SinglePropKey": {
-                      "Custom": true,
-                      "Key": "Maze_Chap00_N201_Prop_ELevator"
-                    }
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.WaitSecond",
-                  "WaitTime": 0.5
-                },
-                {
-                  "$type": "RPG.GameCore.TriggerCustomString",
-                  "CustomString": {
-                    "Value": "Maze_Chap00_N201_Take_Elevator_01"
-                  }
-                }
-              ]
+          "$type": "RPG.GameCore.WaitSecond",
+          "WaitTime": 0.5
+        },
+        {
+          "$type": "RPG.GameCore.EnterMapByCondition",
+          "EntranceID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 200010103
             }
-          ]
+          }
+        },
+        {
+          "$type": "RPG.GameCore.EndPropInteract"
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Elevator_1FToN3"
+          },
+          "WaitOwnerOnly": true
+        },
+        {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPose1F"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPoseFinished1F"
+          },
+          "WaitOwnerOnly": true
+        },
+        {
+          "$type": "RPG.GameCore.PropReqInteract",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+          },
+          "InteractID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 1010
+            }
+          },
+          "OnCheckItemFail": []
+        },
+        {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorMove1F"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorArrived1F"
+          },
+          "WaitOwnerOnly": true
+        },
+        {
+          "$type": "RPG.GameCore.PropTriggerAnimState",
+          "AnimStateName": "Open",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+            "FetchType": "SinglePropByPropKey",
+            "SinglePropKey": {
+              "Custom": true,
+              "Key": "Maze_Chap00_N201_Prop_ELevator"
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitSecond",
+          "WaitTime": 0.5
+        },
+        {
+          "$type": "RPG.GameCore.EnterMapByCondition",
+          "EntranceID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 200030102
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.EndPropInteract"
         }
       ]
     },
@@ -450,14 +582,52 @@
         {
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
-            "Value": "Maze_Chap00_N201_Take_Elevator_01"
+            "Value": "Maze_Chap00_N201_Elevator1FTo2F"
+          },
+          "WaitOwnerOnly": true
+        },
+        {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPose1F"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorPoseFinished1F"
+          },
+          "WaitOwnerOnly": true
+        },
+        {
+          "$type": "RPG.GameCore.PropReqInteract",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+          },
+          "InteractID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 1010
+            }
+          },
+          "OnCheckItemFail": []
+        },
+        {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorMove1F"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "Maze_Chap00_N201_ElevatorArrived1F"
           },
           "WaitOwnerOnly": true
         },
         {
           "$type": "RPG.GameCore.PropTriggerAnimState",
           "AnimStateName": "Open",
-          "WatiAnimFinish": true,
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx",
             "FetchType": "SinglePropByPropKey",
@@ -475,14 +645,6 @@
           "$type": "RPG.GameCore.PlayScreenTransfer",
           "Mode": "SwitchOut",
           "CustomTime": 0.5
-        },
-        {
-          "$type": "RPG.GameCore.PropTriggerAnimState",
-          "AnimStateName": "Closed",
-          "TransitionDuration": 0,
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-          }
         },
         {
           "$type": "RPG.GameCore.PropTriggerAnimState",
@@ -510,6 +672,19 @@
               "Key": "Maze_Chap00_N201_Prop_ELevator"
             }
           }
+        },
+        {
+          "$type": "RPG.GameCore.PropReqInteract",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+          },
+          "InteractID": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 1100
+            }
+          },
+          "OnCheckItemFail": []
         },
         {
           "$type": "RPG.GameCore.SwitchCharacterAnchor",
@@ -562,7 +737,7 @@
         {
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
-            "Value": "Maze_Chap00_N201_Elevator_Cancel"
+            "Value": "Maze_Chap00_N201_Elevator_1FToCancel"
           },
           "WaitOwnerOnly": true
         },
@@ -575,46 +750,6 @@
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
           "Enable": true
-        }
-      ]
-    },
-    {
-      "TaskList": [
-        {
-          "$type": "RPG.GameCore.WaitCustomString",
-          "CustomString": {
-            "Value": "Elevator_N1"
-          },
-          "WaitOwnerOnly": true
-        },
-        {
-          "$type": "RPG.GameCore.EnterMapByCondition",
-          "EntranceID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 200010103
-            }
-          }
-        }
-      ]
-    },
-    {
-      "TaskList": [
-        {
-          "$type": "RPG.GameCore.WaitCustomString",
-          "CustomString": {
-            "Value": "Elevator_N3"
-          },
-          "WaitOwnerOnly": true
-        },
-        {
-          "$type": "RPG.GameCore.EnterMapByCondition",
-          "EntranceID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 200030102
-            }
-          }
         }
       ]
     }

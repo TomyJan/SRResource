@@ -46,12 +46,12 @@
                 {
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
-                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
                     "TargetType": {
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "Caster"
                     },
-                    "ModifierName": "MCommon_Confine"
+                    "Flag": "STAT_Confine"
                   },
                   "SuccessTaskList": [
                     {
@@ -113,37 +113,187 @@
             "OnEndBreak": {
               "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "STAT_CTRL",
+                        "Inverse": true
+                      }
+                    ]
                   },
-                  "Flags": [
-                    "Resident"
-                  ],
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_TailSky.prefab"
-                },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_TailSky.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_Trail01.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_Trail02.prefab"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnModifierAdd": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "STAT_CTRL",
+                        "Inverse": true
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "Break",
+                        "Inverse": true
+                      }
+                    ]
                   },
-                  "Flags": [
-                    "Resident"
-                  ],
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_Trail01.prefab"
-                },
+                  "SuccessTaskList": [],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.RemoveEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_TailSky.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_Trail01.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.RemoveEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_Trail02.prefab"
+                    }
+                  ]
+                }
+              ]
+            },
+            "OnModifierRemove": {
+              "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "STAT_CTRL",
+                        "Inverse": true
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByIsTargetValid",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "AliveOnly": true
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "Flag": "Break",
+                        "Inverse": true
+                      }
+                    ]
                   },
-                  "Flags": [
-                    "Resident"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_TailSky.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_Trail01.prefab"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "Flags": [
+                        "Resident"
+                      ],
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_Trail02.prefab"
+                    }
                   ],
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_00/Eff_Monster_W2_Beast01_00_Common_Trail02.prefab"
+                  "FailedTaskList": []
                 }
               ]
             }
@@ -219,19 +369,6 @@
       },
       "OnStart": [
         {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
-          "UITextNodes": [
-            {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": 1091894496
-              }
-            }
-          ],
-          "LifeTime": 3
-        },
-        {
           "$type": "RPG.GameCore.TriggerAnimStateWithMove",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
@@ -289,9 +426,6 @@
               ]
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.DamagePerformFinish"
         }
       ]
     },
@@ -449,12 +583,13 @@
             "DamageType": "Wind",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -511,7 +646,8 @@
               "AbilityName": "Monster_W2_Beast01_00_SkillP01_Insert",
               "InsertAbilityPriority": "MonsterDeathRattle",
               "OwnerAliveState": "Mask_AliveOrLimbo",
-              "TargetAliveState": "Mask_AliveOrLimbo"
+              "TargetAliveState": "Mask_AliveOrLimbo",
+              "ShowInActionBar": true
             }
           ]
         }

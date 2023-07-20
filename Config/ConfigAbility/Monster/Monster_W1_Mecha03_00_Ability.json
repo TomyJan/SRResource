@@ -284,7 +284,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.LoopExecuteTaskListWithInterval",
+          "$type": "RPG.GameCore.LoopExecuteTaskList",
           "MaxLoopCount": {
             "IsDynamic": false,
             "FixedValue": {
@@ -301,21 +301,17 @@
               "AttackProperty": {
                 "DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1126825319
-                    },
-                    {
-                      "Type": "FixedNumber",
-                      "FixedValue": {
+                  "PostfixExpr": {
+                    "OpCodes": "AQAAAAQJ",
+                    "FixedValues": [
+                      {
                         "Value": 0.20000000018626451
                       }
-                    },
-                    {
-                      "Type": "Mul"
-                    }
-                  ]
+                    ],
+                    "DynamicHashes": [
+                      -1126825319
+                    ]
+                  }
                 },
                 "SPHitRatio": {
                   "IsDynamic": false,
@@ -481,7 +477,12 @@
               {
                 "$type": "RPG.GameCore.ByCompareMonsterPhase",
                 "CompareType": "Equal",
-                "CompareValue": 3
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 3
+                  }
+                }
               }
             ]
           },
@@ -520,12 +521,13 @@
               "DynamicValues": {
                 "ModifierDamageUpValue": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1569208099
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1569208099
+                    ]
+                  }
                 }
               }
             }
@@ -711,7 +713,12 @@
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareMonsterPhase",
                     "CompareType": "Equal",
-                    "CompareValue": 1
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
                   },
                   "SuccessTaskList": [
                     {
@@ -901,21 +908,17 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -56289053
-                },
-                {
-                  "Type": "FixedNumber",
-                  "FixedValue": {
+              "PostfixExpr": {
+                "OpCodes": "AQAAAAQJ",
+                "FixedValues": [
+                  {
                     "Value": 0.7000000006519258
                   }
-                },
-                {
-                  "Type": "Mul"
-                }
-              ]
+                ],
+                "DynamicHashes": [
+                  -56289053
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -971,21 +974,17 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -56289053
-                },
-                {
-                  "Type": "FixedNumber",
-                  "FixedValue": {
+              "PostfixExpr": {
+                "OpCodes": "AQAAAAQJ",
+                "FixedValues": [
+                  {
                     "Value": 0.3000000002793968
                   }
-                },
-                {
-                  "Type": "Mul"
-                }
-              ]
+                ],
+                "DynamicHashes": [
+                  -56289053
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -1207,21 +1206,23 @@
               "ModifierName": "MCommon_CTRL_Taunt",
               "Chance": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1510361488
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1510361488
+                  ]
+                }
               },
               "LifeTime": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -221247150
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -221247150
+                  ]
+                }
               },
               "FailTaskList": [
                 {
@@ -1520,7 +1521,12 @@
                       {
                         "$type": "RPG.GameCore.ByCompareMonsterPhase",
                         "CompareType": "Equal",
-                        "CompareValue": 2
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 2
+                          }
+                        }
                       }
                     ]
                   },
@@ -1692,7 +1698,12 @@
                               {
                                 "$type": "RPG.GameCore.ByCompareMonsterPhase",
                                 "CompareType": "Equal",
-                                "CompareValue": 1
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 1
+                                  }
+                                }
                               }
                             ]
                           },
@@ -1811,7 +1822,12 @@
                       {
                         "$type": "RPG.GameCore.ByCompareMonsterPhase",
                         "CompareType": "Equal",
-                        "CompareValue": 2
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 2
+                          }
+                        }
                       }
                     ]
                   },
@@ -1983,7 +1999,12 @@
                               {
                                 "$type": "RPG.GameCore.ByCompareMonsterPhase",
                                 "CompareType": "Equal",
-                                "CompareValue": 1
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 1
+                                  }
+                                }
                               }
                             ]
                           },
@@ -2102,7 +2123,12 @@
                   {
                     "$type": "RPG.GameCore.ByCompareMonsterPhase",
                     "CompareType": "Equal",
-                    "CompareValue": 3
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 3
+                      }
+                    }
                   }
                 ]
               },

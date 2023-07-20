@@ -16,11 +16,46 @@
               },
               "ButtonCallback": [
                 {
-                  "$type": "RPG.GameCore.TriggerCustomString",
-                  "CustomString": {
-                    "Custom": true,
-                    "Key": "OnClickString"
+                  "$type": "RPG.GameCore.StartPropInteractMode",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "Mode": "UseInteractiveProp",
+                  "UseOverrideData": true,
+                  "OverrideData01": {
+                    "AreasPath": "Level/Common_Adventure/UseCompassPuzzle.prefab",
+                    "AreaName": "UseCompassPuzzle",
+                    "AnchorName": "PuzzleCompassCam"
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.PropInitPuzzle",
+                  "BoardPath": {
+                    "Custom": true,
+                    "Key": "BoardFilePath"
+                  },
+                  "LocalPosition": {
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.TakenMazePuzzleChallenge",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "MazePuzzleChallengeID": {
+                    "Value": "1018"
+                  },
+                  "AutoClosePuzzle": false,
+                  "AutoResetPuzzle": false,
+                  "AutoFinishChallenge": false,
+                  "OnReset": [],
+                  "OnCancel": []
+                },
+                {
+                  "$type": "RPG.GameCore.SetLocalPlayerDitherAlpha"
                 }
               ],
               "InteractAngleRange": 220,
@@ -30,83 +65,6 @@
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "IsLoop": true,
-      "TaskList": [
-        {
-          "$type": "RPG.GameCore.WaitCustomString",
-          "CustomString": {
-            "Value": "M23_StartPerformance"
-          }
-        },
-        {
-          "$type": "RPG.GameCore.TriggerPerformance",
-          "ValueSource": {},
-          "PerformanceType": "E",
-          "PerformanceID": 101090231
-        },
-        {
-          "$type": "RPG.GameCore.TriggerCustomString",
-          "CustomString": {
-            "Value": "Cable_Start"
-          }
-        }
-      ]
-    },
-    {
-      "IsLoop": true,
-      "TaskList": [
-        {
-          "$type": "RPG.GameCore.WaitCustomString",
-          "CustomString": {
-            "Value": "Cable_Start"
-          },
-          "WaitOwnerOnly": true
-        },
-        {
-          "$type": "RPG.GameCore.StartPropInteractMode",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-          },
-          "Mode": "UseInteractiveProp",
-          "UseOverrideData": true,
-          "OverrideData01": {
-            "AreasPath": "Level/Common_Adventure/UseCompassPuzzle.prefab",
-            "AreaName": "UseCompassPuzzle",
-            "AnchorName": "PuzzleCompassCam"
-          }
-        },
-        {
-          "$type": "RPG.GameCore.PropInitPuzzle",
-          "BoardPath": {
-            "Custom": true,
-            "Key": "BoardFilePath"
-          },
-          "LocalPosition": {
-            "X": 0,
-            "Y": 0,
-            "Z": 0
-          }
-        },
-        {
-          "$type": "RPG.GameCore.TakenMazePuzzleChallenge",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-          },
-          "MazePuzzleChallengeID": {
-            "Value": "1018"
-          },
-          "AutoClosePuzzle": false,
-          "AutoResetPuzzle": false,
-          "AutoFinishChallenge": false,
-          "OnReset": [],
-          "OnCancel": []
-        },
-        {
-          "$type": "RPG.GameCore.SetLocalPlayerDitherAlpha"
         }
       ]
     },
@@ -248,12 +206,6 @@
         "Key": "TargetDoor",
         "Comment": "目标门",
         "EditorHint": "LevelObject"
-      },
-      {
-        "$type": "RPG.GameCore.SharedString",
-        "Value": "Cable_Start",
-        "Key": "OnClickString",
-        "Comment": "任务String或者Cable_Start"
       },
       {
         "$type": "RPG.GameCore.SharedString",

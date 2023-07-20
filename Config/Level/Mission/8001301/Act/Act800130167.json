@@ -7,8 +7,8 @@
           "$type": "RPG.GameCore.CollectDataConditions",
           "TaskIDList": [],
           "MainMissionIDList": [
-            8001225,
-            2011409
+            2011409,
+            8001225
           ],
           "PerformanceIDList": []
         },
@@ -100,8 +100,18 @@
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByCompareMainMissionState",
-                "MainMissionID": 2011409
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCompareMainMissionState",
+                    "MainMissionID": 2011409
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareMainMissionState",
+                    "MainMissionID": 8001225,
+                    "MainMissionState": "Started"
+                  }
+                ]
               },
               "SuccessTaskList": [
                 {

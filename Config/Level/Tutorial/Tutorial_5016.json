@@ -2,23 +2,9 @@
   "OnInitSequece": [],
   "OnStartSequece": [
     {
-      "TaskList": [
-        {
-          "$type": "RPG.GameCore.WaitUINodeOpen",
-          "NodeID": "AbyssMainPage.SwitchBtnBlue"
-        },
-        {
-          "$type": "RPG.GameCore.ShowTutorialUI",
-          "IsHide": true
-        },
-        {
-          "$type": "RPG.GameCore.TutorialFinish",
-          "TutorialID": 5016
-        }
-      ]
+      "TaskList": []
     },
     {
-      "IsLoop": true,
       "TaskList": [
         {
           "$type": "RPG.GameCore.ShowTutorialUI",
@@ -26,13 +12,13 @@
         },
         {
           "$type": "RPG.GameCore.WaitUINodeOpen",
-          "NodeID": "AbyssMainPage.SwitchBtnRed"
+          "NodeID": "BtnAbyssSwitch.0"
         },
         {
           "$type": "RPG.GameCore.ShowGuide",
           "ID": 101,
           "GuideResID": 1,
-          "NodeID": "AbyssMainPage.SwitchBtnRed",
+          "NodeID": "BtnAbyssSwitch.0",
           "Show": true,
           "CopyAnchorAndSale": true,
           "UseOriginRatio": true,
@@ -42,11 +28,11 @@
         {
           "$type": "RPG.GameCore.ShowGuideText",
           "ID": 201,
-          "GuideResID": 15,
-          "NodeID": "AbyssMainPage.SwitchBtnRed",
+          "GuideResID": 6,
+          "NodeID": "BtnAbyssSwitch.0",
           "Show": true,
           "Text": "TutorialTextmap_501601",
-          "OffsetX": -130,
+          "OffsetX": 120,
           "OffsetY": -60,
           "PCGuide": {
             "GuideResID": 5,
@@ -56,9 +42,9 @@
           }
         },
         {
-          "$type": "RPG.GameCore.WaitUINodeOpen",
-          "NodeID": "AbyssMainPage.SwitchBtnRed",
-          "Reverse": true
+          "$type": "RPG.GameCore.WaitTutorial",
+          "Event": "ClickBtnWithPath",
+          "Param": "BtnAbyssSwitch.0"
         },
         {
           "$type": "RPG.GameCore.ShowGuide",
@@ -73,7 +59,7 @@
           "$type": "RPG.GameCore.ShowGuideText",
           "ID": 201,
           "GuideResID": 15,
-          "NodeID": "MazeMainPage.8",
+          "NodeID": "BtnAbyssSwitch.0",
           "Text": "TutorialTextmap_400601",
           "OffsetX": -75,
           "PCGuide": {
@@ -82,6 +68,10 @@
             "TextPath": "Contents/Text",
             "Text": "TutorialTextmap_300201_pc"
           }
+        },
+        {
+          "$type": "RPG.GameCore.TutorialFinish",
+          "TutorialID": 5016
         }
       ]
     },

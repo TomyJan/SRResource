@@ -194,12 +194,13 @@
               "AttackProperty": {
                 "DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1126825319
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -1126825319
+                    ]
+                  }
                 },
                 "SPHitRatio": {
                   "IsDynamic": false,
@@ -438,12 +439,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1847083384
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -493,6 +495,9 @@
           }
         },
         {
+          "$type": "RPG.GameCore.DamagePerformFinish"
+        },
+        {
           "$type": "RPG.GameCore.WaitAnimState",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
@@ -505,9 +510,6 @@
               "Value": 0.6500000006053597
             }
           }
-        },
-        {
-          "$type": "RPG.GameCore.DamagePerformFinish"
         },
         {
           "$type": "RPG.GameCore.SkillPerformFinish"
@@ -640,12 +642,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -56289053
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -56289053
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -792,12 +795,13 @@
           "$type": "RPG.GameCore.SwitchCaseByDynamicValue",
           "Switch": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 967268776
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                967268776
+              ]
+            }
           },
           "CaseTaskList": [
             {
@@ -813,14 +817,7 @@
                   "SummonMonsterDataList": [
                     {
                       "MonsterIDFromCustomValue": {
-                        "Hash": 915966728
-                      },
-                      "LocationType": "BeforeCaster",
-                      "InitAnimStateName": "Appear"
-                    },
-                    {
-                      "MonsterIDFromCustomValue": {
-                        "Hash": 915966728
+                        "Hash": -650117213
                       },
                       "LocationType": "BeforeCaster",
                       "InitAnimStateName": "Appear"
@@ -829,7 +826,25 @@
                   "DelayRatio": {
                     "IsDynamic": false,
                     "FixedValue": {
-                      "Value": 0.7500000006984919
+                      "Value": 0.8000000007450581
+                    }
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.SummonMonster",
+                  "SummonMonsterDataList": [
+                    {
+                      "MonsterIDFromCustomValue": {
+                        "Hash": 915966728
+                      },
+                      "LocationType": "AfterCaster",
+                      "InitAnimStateName": "Appear"
+                    }
+                  ],
+                  "DelayRatio": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0.10000000009313226
                     }
                   }
                 }
@@ -842,7 +857,7 @@
               "SummonMonsterDataList": [
                 {
                   "MonsterIDFromCustomValue": {
-                    "Hash": 915966728
+                    "Hash": -650117213
                   },
                   "LocationType": "BeforeCaster",
                   "InitAnimStateName": "Appear"
@@ -851,7 +866,7 @@
               "DelayRatio": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0.7000000006519258
+                  "Value": 0.8000000007450581
                 }
               }
             },
@@ -860,16 +875,16 @@
               "SummonMonsterDataList": [
                 {
                   "MonsterIDFromCustomValue": {
-                    "Hash": -650117213
+                    "Hash": 915966728
                   },
-                  "LocationType": "First",
+                  "LocationType": "AfterCaster",
                   "InitAnimStateName": "Appear"
                 }
               ],
               "DelayRatio": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0
+                  "Value": 0.10000000009313226
                 }
               }
             }
@@ -962,7 +977,7 @@
     {
       "Name": "WMonster_W2_Yinzhi_00_Skill06_Phase01",
       "TargetInfo": {
-        "TargetType": "Caster"
+        "TargetType": "SkillTargetEntityList"
       },
       "OnStart": [
         {
@@ -1008,7 +1023,7 @@
     {
       "Name": "WMonster_W2_Yinzhi_00_Skill06_Phase02",
       "TargetInfo": {
-        "TargetType": "Caster"
+        "TargetType": "SkillTargetEntityList"
       },
       "OnStart": [
         {
@@ -1038,28 +1053,55 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.5000000004656613
+              "Value": 0.5410000004339963
             }
           }
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Skill04_03_Camera.prefab"
         },
         {
           "$type": "RPG.GameCore.AddModifier",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
+            "Alias": "AbilityTargetEntity"
           },
-          "ModifierName": "WMonster_W2_Yinzhi_00_Skill06_Charge",
-          "DynamicValues": {
-            "MDF_PropertyValue": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1179664878
-                }
+          "ModifierName": "WMonster_W2_Yinzhi_00_Skill06_AttackSign",
+          "LifeTime": {
+            "IsDynamic": true,
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                17011792
               ]
             }
+          },
+          "DynamicValues": {
+            "MDF_AllDamageTakenRatio": {
+              "IsDynamic": true,
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  1539502511
+                ]
+              }
+            }
           }
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllTeammate"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Skill04_02.prefab"
         },
         {
           "$type": "RPG.GameCore.DefineDynamicValue",
@@ -1239,12 +1281,13 @@
           },
           "Max": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 2086853621
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                2086853621
+              ]
+            }
           },
           "ContextScope": "TargetEntity"
         },
@@ -1252,12 +1295,13 @@
           "$type": "RPG.GameCore.SetMonsterEnergyBarState",
           "CurrentCount": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 2103882917
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                2103882917
+              ]
+            }
           }
         },
         {
@@ -1327,12 +1371,13 @@
               "AttackProperty": {
                 "DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -277353506
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -277353506
+                    ]
+                  }
                 },
                 "SPHitRatio": {
                   "IsDynamic": false,
@@ -1381,12 +1426,13 @@
               "$type": "RPG.GameCore.LoopExecuteTaskList",
               "MaxLoopCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1867408545
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1867408545
+                  ]
+                }
               },
               "TaskList": [
                 {
@@ -1428,21 +1474,23 @@
                       "AttackProperty": {
                         "DamagePercentage": {
                           "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": -1307855061
-                            }
-                          ]
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              -1307855061
+                            ]
+                          }
                         },
                         "SPHitRatio": {
                           "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": -621450298
-                            }
-                          ]
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              -621450298
+                            ]
+                          }
                         },
                         "HitAnimation": "Hit"
                       },
@@ -1485,12 +1533,13 @@
               "AttackProperty": {
                 "DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 517559720
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      517559720
+                    ]
+                  }
                 },
                 "SPHitRatio": {
                   "IsDynamic": false,
@@ -1564,22 +1613,24 @@
           "ModifierName": "WMonster_W2_Yinzhi_00_SPShowBuff",
           "Count": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 2103882917
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                2103882917
+              ]
+            }
           },
           "DynamicValues": {
             "MDF_SPCurrent": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 2103882917
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  2103882917
+                ]
+              }
             }
           }
         },
@@ -1741,22 +1792,24 @@
                   "ModifierName": "WMonster_W2_Yinzhi_00_SPShowBuff",
                   "Count": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2103882917
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        2103882917
+                      ]
+                    }
                   },
                   "DynamicValues": {
                     "MDF_SPCurrent": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 2103882917
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          2103882917
+                        ]
+                      }
                     }
                   }
                 }
@@ -1806,7 +1859,21 @@
                 }
               },
               "MaxInclusive": true,
-              "OnEnterRange": []
+              "OnEnterRange": [
+                {
+                  "$type": "RPG.GameCore.ShowUIPage",
+                  "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
+                  "UITextNodes": [
+                    {
+                      "TextPath": "AreaInfoPanel/Title/Text",
+                      "TextContent": {
+                        "Hash": -1507015688
+                      }
+                    }
+                  ],
+                  "LifeTime": 1.5
+                }
+              ]
             }
           ]
         }
@@ -1822,42 +1889,170 @@
               "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon8001Passive.png",
               "MaxCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2086853621
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2086853621
+                  ]
+                }
               },
               "CurrentCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2103882917
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2103882917
+                  ]
+                }
               }
             }
           ]
         },
-        "OnListenCharacterDie": {
+        "OnPhase2": {
           "CallbackConfig": [
             {
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
-                "$type": "RPG.GameCore.ByHasSummonRelation",
-                "SummonerType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ModifierOwnerEntity"
-                },
-                "ServantType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "ParamEntity"
-                }
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "W2_Yinzhi_00_TurnPhaseCounter",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "ModifierName": "WMonster_W2_Yinzhi_00_BeingBreak",
+                    "Inverse": true
+                  }
+                ]
               },
-              "SuccessTaskList": [],
-              "FailedTaskList": []
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "ModifierName": "WMonster_W2_Yinzhi_03_SPGainEnhance"
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "Key": "W2_Yinzhi_00_SPCurrent",
+                      "AddValue": {
+                        "IsDynamic": true,
+                        "PostfixExpr": {
+                          "OpCodes": "AQAAAAQJ",
+                          "FixedValues": [
+                            {
+                              "Value": 2
+                            }
+                          ],
+                          "DynamicHashes": [
+                            1124301102
+                          ]
+                        }
+                      },
+                      "Min": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      "Max": {
+                        "IsDynamic": true,
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            2086853621
+                          ]
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "Key": "W2_Yinzhi_00_SPCurrent",
+                      "AddValue": {
+                        "IsDynamic": true,
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            1124301102
+                          ]
+                        }
+                      },
+                      "Min": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      },
+                      "Max": {
+                        "IsDynamic": true,
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            2086853621
+                          ]
+                        }
+                      },
+                      "ContextScope": "TargetEntity"
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.SetMonsterEnergyBarState",
+                  "CurrentCount": {
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        2103882917
+                      ]
+                    }
+                  }
+                }
+              ]
             }
           ]
         },
@@ -1902,57 +2097,12 @@
                   "DynamicKey": "SPGain_Count"
                 },
                 {
-                  "$type": "RPG.GameCore.SetDynamicValueByAddValue",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "Key": "W2_Yinzhi_00_SPCurrent",
-                  "AddValue": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1124301102
-                      }
-                    ]
-                  },
-                  "Min": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  },
-                  "Max": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2086853621
-                      }
-                    ]
-                  },
-                  "ContextScope": "TargetEntity"
-                },
-                {
                   "$type": "RPG.GameCore.RemoveModifier",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "ParamEntity"
                   },
                   "ModifierName": "WMonster_W2_Yinzhi_00_HitTargetsByThisAttack"
-                },
-                {
-                  "$type": "RPG.GameCore.SetMonsterEnergyBarState",
-                  "CurrentCount": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2103882917
-                      }
-                    ]
-                  }
                 }
               ]
             }
@@ -1988,7 +2138,7 @@
                           "$type": "RPG.GameCore.TargetAlias",
                           "Alias": "Caster"
                         },
-                        "ModifierName": "WMonster_W2_Yinzhi_00_Skill06_Charge"
+                        "ModifierName": "WMonster_W2_Yinzhi_03_SPGainEnhance"
                       }
                     ]
                   },
@@ -2002,12 +2152,17 @@
                       "Key": "W2_Yinzhi_00_SPCurrent",
                       "AddValue": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1179664878
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAAAAQJ",
+                          "FixedValues": [
+                            {
+                              "Value": 2
+                            }
+                          ],
+                          "DynamicHashes": [
+                            -318877476
+                          ]
+                        }
                       },
                       "Min": {
                         "IsDynamic": false,
@@ -2017,12 +2172,13 @@
                       },
                       "Max": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 2086853621
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            2086853621
+                          ]
+                        }
                       },
                       "ContextScope": "TargetEntity"
                     }
@@ -2037,12 +2193,13 @@
                       "Key": "W2_Yinzhi_00_SPCurrent",
                       "AddValue": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -318877476
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -318877476
+                          ]
+                        }
                       },
                       "Min": {
                         "IsDynamic": false,
@@ -2052,12 +2209,13 @@
                       },
                       "Max": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 2086853621
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            2086853621
+                          ]
+                        }
                       },
                       "ContextScope": "TargetEntity"
                     }
@@ -2069,12 +2227,13 @@
               "$type": "RPG.GameCore.SetMonsterEnergyBarState",
               "CurrentCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2103882917
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2103882917
+                  ]
+                }
               }
             }
           ]
@@ -2088,6 +2247,37 @@
                 "Alias": "ModifierOwnerEntity"
               },
               "ModifierName": "WMonster_W2_Yinzhi_00_BeingBreak"
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Key": "W2_Yinzhi_00_SPCurrent",
+              "AddValue": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": -100
+                }
+              },
+              "Min": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 0
+                }
+              },
+              "Max": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2086853621
+                  ]
+                }
+              },
+              "ContextScope": "TargetEntity"
             }
           ]
         },
@@ -2116,7 +2306,7 @@
           "CallbackConfig": [
             {
               "$type": "RPG.GameCore.ShowUIPage",
-              "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
+              "AssetPath": "UI/Common/Widget/BattleSelfStatusHint.prefab",
               "UITextNodes": [
                 {
                   "TextPath": "AreaInfoPanel/Title/Text",
@@ -2156,12 +2346,13 @@
               "Key": "W2_Yinzhi_00_SPCurrent",
               "AddValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1160315635
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1160315635
+                  ]
+                }
               },
               "Min": {
                 "IsDynamic": false,
@@ -2171,12 +2362,13 @@
               },
               "Max": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2086853621
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2086853621
+                  ]
+                }
               },
               "ContextScope": "TargetEntity"
             },
@@ -2188,12 +2380,13 @@
               },
               "CurrentCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2103882917
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2103882917
+                  ]
+                }
               }
             },
             {
@@ -2286,11 +2479,11 @@
                         },
                         "DynamicKey": "W2_Yinzhi_00_AIFlag",
                         "ContextScope": "TargetEntity",
-                        "CompareType": "LessEqual",
+                        "CompareType": "Less",
                         "CompareValue": {
                           "IsDynamic": false,
                           "FixedValue": {
-                            "Value": 1
+                            "Value": 3
                           }
                         }
                       }
@@ -2654,6 +2847,54 @@
               "$type": "RPG.GameCore.RemoveSelfModifier"
             }
           ]
+        }
+      }
+    },
+    "WMonster_W2_Yinzhi_00_Skill06_AttackSign": {
+      "UIConfig": {
+        "UIEffectPath": "UI/Battle/Widget/TeamInfoStatusEff/TeamInfoStatus_Signed.prefab",
+        "UIPosition": "UI_TOP",
+        "ModifierUIPriority": "Buff"
+      },
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Skill04_01.prefab"
+            }
+          ]
+        },
+        "OnStack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.StackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ModifierOwnerEntity"
+              },
+              "Property": "AllDamageTypeTakenRatio",
+              "PropertyValue": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1602738012
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "-1602738012": {}
         }
       }
     }

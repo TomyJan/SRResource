@@ -83,7 +83,7 @@
       ],
       "IsBpGroup": true
     },
-    "BasePp_Common_NormalAttack": {
+    "BasePp_Common_StrongEnemiyPriority": {
       "Factors": [
         {
           "Source": {
@@ -93,28 +93,11 @@
             "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
             "Ranges": [
               {
-                "ymin": {
-                  "Value": 100
-                },
                 "xmax": {
-                  "Value": 0.20000000018626451
+                  "Value": 5
                 },
                 "ymax": {
-                  "Value": 100
-                }
-              },
-              {
-                "xmin": {
-                  "Value": 0.20000000018626451
-                },
-                "ymin": {
-                  "Value": 100
-                },
-                "xmax": {
-                  "Value": 1
-                },
-                "ymax": {
-                  "Value": 1
+                  "Value": 500
                 }
               }
             ]
@@ -224,6 +207,47 @@
               }
             ]
           }
+        },
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAISourceContainBehaviorFlag",
+            "BehaviorFlag": "AITargetLowerPriority"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 0.5000000004656613
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 0.5000000004656613
+                },
+                "ymin": {
+                  "Value": -100
+                },
+                "xmax": {
+                  "Value": 1
+                },
+                "ymax": {
+                  "Value": -100
+                }
+              }
+            ]
+          },
+          "PostProcess": {
+            "$type": "RPG.GameCore.ComplexSkillAIPostProcessBreak",
+            "CompareType": "LessEqual",
+            "CompareValue": {
+              "Value": -100
+            },
+            "IsOverrideFinalScore": true,
+            "FinalScore": {
+              "Value": 0.010000000009313226
+            }
+          }
         }
       ]
     },
@@ -290,6 +314,47 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAISourceContainBehaviorFlag",
+            "BehaviorFlag": "AITargetLowerPriority"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 0.5000000004656613
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 0.5000000004656613
+                },
+                "ymin": {
+                  "Value": -100
+                },
+                "xmax": {
+                  "Value": 1
+                },
+                "ymax": {
+                  "Value": -100
+                }
+              }
+            ]
+          },
+          "PostProcess": {
+            "$type": "RPG.GameCore.ComplexSkillAIPostProcessBreak",
+            "CompareType": "LessEqual",
+            "CompareValue": {
+              "Value": -100
+            },
+            "IsOverrideFinalScore": true,
+            "FinalScore": {
+              "Value": 0.010000000009313226
+            }
           }
         }
       ]
@@ -810,6 +875,20 @@
                 "ymax": {
                   "Value": 100
                 }
+              },
+              {
+                "xmin": {
+                  "Value": 1
+                },
+                "ymin": {
+                  "Value": 100
+                },
+                "xmax": {
+                  "Value": 100
+                },
+                "ymax": {
+                  "Value": 2000
+                }
               }
             ]
           }
@@ -888,18 +967,18 @@
             "Ranges": [
               {
                 "xmax": {
-                  "Value": 0.7500000006984919
+                  "Value": 0.8500000007916242
                 },
                 "ymax": {
-                  "Value": 20
+                  "Value": 10
                 }
               },
               {
                 "xmin": {
-                  "Value": 0.7500000006984919
+                  "Value": 0.8500000007916242
                 },
                 "ymin": {
-                  "Value": 20
+                  "Value": 10
                 },
                 "xmax": {
                   "Value": 1
@@ -935,13 +1014,13 @@
                   "Value": 0.5000000004656613
                 },
                 "ymin": {
-                  "Value": 1.400000000372529
+                  "Value": 1.5000000004656613
                 },
                 "xmax": {
                   "Value": 1.5000000004656613
                 },
                 "ymax": {
-                  "Value": 1.400000000372529
+                  "Value": 1.5000000004656613
                 }
               },
               {
@@ -963,13 +1042,13 @@
                   "Value": 2.5000000004656613
                 },
                 "ymin": {
-                  "Value": 1.3000000002793968
+                  "Value": 1.5000000004656613
                 },
                 "xmax": {
                   "Value": 3.5000000004656613
                 },
                 "ymax": {
-                  "Value": 1.3000000002793968
+                  "Value": 1.5000000004656613
                 }
               },
               {
@@ -977,13 +1056,13 @@
                   "Value": 3.5000000004656613
                 },
                 "ymin": {
-                  "Value": 0.8000000007450581
+                  "Value": 0.10000000009313226
                 },
                 "xmax": {
                   "Value": 4.500000000465661
                 },
                 "ymax": {
-                  "Value": 0.8000000007450581
+                  "Value": 0.10000000009313226
                 }
               },
               {
@@ -991,13 +1070,13 @@
                   "Value": 4.500000000465661
                 },
                 "ymin": {
-                  "Value": 1
+                  "Value": 1.2000000001862645
                 },
                 "xmax": {
                   "Value": 5.500000000465661
                 },
                 "ymax": {
-                  "Value": 1
+                  "Value": 1.2000000001862645
                 }
               },
               {
@@ -1005,13 +1084,13 @@
                   "Value": 5.500000000465661
                 },
                 "ymin": {
-                  "Value": 0.5000000004656613
+                  "Value": 0.10000000009313226
                 },
                 "xmax": {
                   "Value": 6.500000000465661
                 },
                 "ymax": {
-                  "Value": 0.5000000004656613
+                  "Value": 0.10000000009313226
                 }
               },
               {
@@ -1019,13 +1098,156 @@
                   "Value": 6.500000000465661
                 },
                 "ymin": {
-                  "Value": 0.5000000004656613
+                  "Value": 0.10000000009313226
                 },
                 "xmax": {
                   "Value": 7.500000000465661
                 },
                 "ymax": {
+                  "Value": 0.10000000009313226
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Base_Tingyun_CompareDPT": {
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAISourceValueInTeamRatio",
+            "ValueType": "DPT"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 1
+                },
+                "ymax": {
+                  "Value": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "CombineOperator": "Mul",
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAIGetAvatarBaseType"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "ymin": {
+                  "Value": 1
+                },
+                "xmax": {
                   "Value": 0.5000000004656613
+                },
+                "ymax": {
+                  "Value": 1
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 0.5000000004656613
+                },
+                "ymin": {
+                  "Value": 15
+                },
+                "xmax": {
+                  "Value": 1.5000000004656613
+                },
+                "ymax": {
+                  "Value": 15
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 1.5000000004656613
+                },
+                "ymin": {
+                  "Value": 15
+                },
+                "xmax": {
+                  "Value": 2.5000000004656613
+                },
+                "ymax": {
+                  "Value": 15
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 2.5000000004656613
+                },
+                "ymin": {
+                  "Value": 15
+                },
+                "xmax": {
+                  "Value": 3.5000000004656613
+                },
+                "ymax": {
+                  "Value": 15
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 3.5000000004656613
+                },
+                "ymin": {
+                  "Value": 0.10000000009313226
+                },
+                "xmax": {
+                  "Value": 4.500000000465661
+                },
+                "ymax": {
+                  "Value": 0.10000000009313226
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 4.500000000465661
+                },
+                "ymin": {
+                  "Value": 12
+                },
+                "xmax": {
+                  "Value": 5.500000000465661
+                },
+                "ymax": {
+                  "Value": 12
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 5.500000000465661
+                },
+                "ymin": {
+                  "Value": 0.10000000009313226
+                },
+                "xmax": {
+                  "Value": 6.500000000465661
+                },
+                "ymax": {
+                  "Value": 0.10000000009313226
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 6.500000000465661
+                },
+                "ymin": {
+                  "Value": 0.10000000009313226
+                },
+                "xmax": {
+                  "Value": 7.500000000465661
+                },
+                "ymax": {
+                  "Value": 0.10000000009313226
                 }
               }
             ]
@@ -1060,13 +1282,13 @@
                   "Value": 0.5000000004656613
                 },
                 "ymin": {
-                  "Value": 1.400000000372529
+                  "Value": 1.5000000004656613
                 },
                 "xmax": {
                   "Value": 1.5000000004656613
                 },
                 "ymax": {
-                  "Value": 1.400000000372529
+                  "Value": 1.5000000004656613
                 }
               },
               {
@@ -1088,13 +1310,13 @@
                   "Value": 2.5000000004656613
                 },
                 "ymin": {
-                  "Value": 1.3000000002793968
+                  "Value": 1.5000000004656613
                 },
                 "xmax": {
                   "Value": 3.5000000004656613
                 },
                 "ymax": {
-                  "Value": 1.3000000002793968
+                  "Value": 1.5000000004656613
                 }
               },
               {
@@ -1102,13 +1324,13 @@
                   "Value": 3.5000000004656613
                 },
                 "ymin": {
-                  "Value": 0.8000000007450581
+                  "Value": 0.10000000009313226
                 },
                 "xmax": {
                   "Value": 4.500000000465661
                 },
                 "ymax": {
-                  "Value": 0.8000000007450581
+                  "Value": 0.10000000009313226
                 }
               },
               {
@@ -1116,13 +1338,13 @@
                   "Value": 4.500000000465661
                 },
                 "ymin": {
-                  "Value": 1
+                  "Value": 1.2000000001862645
                 },
                 "xmax": {
                   "Value": 5.500000000465661
                 },
                 "ymax": {
-                  "Value": 1
+                  "Value": 1.2000000001862645
                 }
               },
               {
@@ -1130,13 +1352,13 @@
                   "Value": 5.500000000465661
                 },
                 "ymin": {
-                  "Value": 0.5000000004656613
+                  "Value": 0.10000000009313226
                 },
                 "xmax": {
                   "Value": 6.500000000465661
                 },
                 "ymax": {
-                  "Value": 0.5000000004656613
+                  "Value": 0.10000000009313226
                 }
               },
               {
@@ -1144,13 +1366,13 @@
                   "Value": 6.500000000465661
                 },
                 "ymin": {
-                  "Value": 0.5000000004656613
+                  "Value": 0.10000000009313226
                 },
                 "xmax": {
                   "Value": 7.500000000465661
                 },
                 "ymax": {
-                  "Value": 0.5000000004656613
+                  "Value": 0.10000000009313226
                 }
               }
             ]
@@ -1760,6 +1982,7 @@
       "CombineOperator": "Mul",
       "Factors": [
         {
+          "CombineOperator": "Mul",
           "Source": {
             "$type": "RPG.GameCore.ComplexSkillAIContainModifier",
             "ModifilerName": "MWAvatar_TingYun_00_BPSkill_AttackDelta"
@@ -1784,6 +2007,43 @@
                 },
                 "xmax": {
                   "Value": 1
+                }
+              }
+            ]
+          },
+          "PostProcess": {
+            "$type": "RPG.GameCore.ComplexSkillAIPostProcessBreak",
+            "CompareType": "Equal",
+            "IsOverrideFinalScore": true
+          }
+        },
+        {
+          "CombineOperator": "Mul",
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAISourceDynamicValue",
+            "IsTarget": false,
+            "DynamicValueKey": "TingYun_EnergyBarLayer"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "ymin": {
+                  "Value": 100
+                },
+                "xmax": {
+                  "Value": 0.5000000004656613
+                },
+                "ymax": {
+                  "Value": 100
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 0.5000000004656613
+                },
+                "xmax": {
+                  "Value": 10
                 }
               }
             ]
@@ -2039,33 +2299,43 @@
       "Factors": [
         {
           "Source": {
-            "$type": "RPG.GameCore.ComplexSkillAISourceDynamicValue",
-            "IsTarget": false,
-            "DynamicValueKey": "BulletCount"
+            "$type": "RPG.GameCore.ComplexSkillAISourceContainBehaviorFlag",
+            "BehaviorFlag": "STAT_DOT_Bleed"
           },
           "Mapper": {
             "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
             "Ranges": [
               {
                 "xmax": {
-                  "Value": 2
-                },
-                "ymax": {
-                  "Value": 50
+                  "Value": 0.5000000004656613
                 }
               },
               {
                 "xmin": {
-                  "Value": 2
+                  "Value": 0.5000000004656613
                 },
                 "ymin": {
-                  "Value": 50
+                  "Value": 100
                 },
                 "xmax": {
-                  "Value": 4
+                  "Value": 1
                 },
                 "ymax": {
-                  "Value": 800
+                  "Value": 100
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 1
+                },
+                "ymin": {
+                  "Value": 100
+                },
+                "xmax": {
+                  "Value": 100
+                },
+                "ymax": {
+                  "Value": 2000
                 }
               }
             ]
@@ -2416,15 +2686,11 @@
               }
             ]
           }
-        }
-      ]
-    },
-    "Global_SingleDamageSkill": {
-      "Factors": [
+        },
         {
           "Source": {
-            "$type": "RPG.GameCore.ComplexSkillAIContainModifier",
-            "ModifilerName": "Monster_W1_GSMecha_01_Initiate"
+            "$type": "RPG.GameCore.ComplexSkillAISourceContainBehaviorFlag",
+            "BehaviorFlag": "AITargetLowerPriority"
           },
           "Mapper": {
             "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
@@ -2439,13 +2705,321 @@
                   "Value": 0.5000000004656613
                 },
                 "ymin": {
+                  "Value": -100
+                },
+                "xmax": {
+                  "Value": 1
+                },
+                "ymax": {
+                  "Value": -100
+                }
+              }
+            ]
+          },
+          "PostProcess": {
+            "$type": "RPG.GameCore.ComplexSkillAIPostProcessBreak",
+            "CompareType": "LessEqual",
+            "CompareValue": {
+              "Value": -100
+            },
+            "IsOverrideFinalScore": true,
+            "FinalScore": {
+              "Value": 0.010000000009313226
+            }
+          }
+        }
+      ]
+    },
+    "Common_TreasureActivity_Base": {
+      "CombineOperator": "Mul",
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAIBattleGlobalData",
+            "DataType": "TurnCount"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 1.5000000004656613
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 1.5000000004656613
+                },
+                "ymin": {
+                  "Value": 100
+                },
+                "xmax": {
+                  "Value": 99
+                },
+                "ymax": {
+                  "Value": 100
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Add01_TreasureActivity_AddWeak": {
+      "Factors": [
+        {
+          "CombineOperator": "Mul",
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAIGetStrengthLevel"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 5
+                },
+                "ymax": {
+                  "Value": 500
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Add01_TreasureActivity_AllTeamSP": {
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAIAllTargetCombine",
+            "Evaluator": {
+              "$type": "RPG.GameCore.ComplexSkillAISourcePropertyCompareRatio",
+              "PropertyTypeA": "CurrentSP",
+              "PropertyTypeB": "MaxSP"
+            },
+            "ListCombineType": "Max"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 1
+                },
+                "ymax": {
+                  "Value": 100
+                }
+              }
+            ]
+          },
+          "PostProcess": {
+            "$type": "RPG.GameCore.ComplexSkillAIPostProcessBreak",
+            "CompareType": "Less",
+            "CompareValue": {
+              "Value": 99
+            },
+            "IsOverrideFinalScore": true
+          }
+        }
+      ]
+    },
+    "Add01_TreasureActivity_HPPercent": {
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAISourcePropertyCompareRatio",
+            "PropertyTypeA": "CurrentHP",
+            "PropertyTypeB": "MaxHP"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 0.5000000004656613
+                },
+                "ymax": {
+                  "Value": 50
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 0.5000000004656613
+                },
+                "ymin": {
                   "Value": 50
                 },
                 "xmax": {
                   "Value": 1
                 },
                 "ymax": {
-                  "Value": 50
+                  "Value": 100
+                }
+              }
+            ]
+          },
+          "PostProcess": {
+            "$type": "RPG.GameCore.ComplexSkillAIPostProcessBreak",
+            "CompareType": "GreaterEqual",
+            "CompareValue": {
+              "Value": 50
+            },
+            "IsOverrideFinalScore": true
+          }
+        }
+      ]
+    },
+    "Add01_TreasureActivity_CompareDPT": {
+      "Factors": [
+        {
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAISourceValueInTeamRatio",
+            "ValueType": "DPT"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "xmax": {
+                  "Value": 0.8000000007450581
+                },
+                "ymax": {
+                  "Value": 20
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 0.8000000007450581
+                },
+                "ymin": {
+                  "Value": 20
+                },
+                "xmax": {
+                  "Value": 1
+                },
+                "ymax": {
+                  "Value": 100
+                }
+              }
+            ]
+          }
+        },
+        {
+          "CombineOperator": "Mul",
+          "Source": {
+            "$type": "RPG.GameCore.ComplexSkillAIGetAvatarBaseType"
+          },
+          "Mapper": {
+            "$type": "RPG.GameCore.ComplexSkillAIMapperMultiRange",
+            "Ranges": [
+              {
+                "ymin": {
+                  "Value": 0.8000000007450581
+                },
+                "xmax": {
+                  "Value": 0.5000000004656613
+                },
+                "ymax": {
+                  "Value": 0.8000000007450581
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 0.5000000004656613
+                },
+                "ymin": {
+                  "Value": 1.5000000004656613
+                },
+                "xmax": {
+                  "Value": 1.5000000004656613
+                },
+                "ymax": {
+                  "Value": 1.5000000004656613
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 1.5000000004656613
+                },
+                "ymin": {
+                  "Value": 1.5000000004656613
+                },
+                "xmax": {
+                  "Value": 2.5000000004656613
+                },
+                "ymax": {
+                  "Value": 1.5000000004656613
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 2.5000000004656613
+                },
+                "ymin": {
+                  "Value": 1.5000000004656613
+                },
+                "xmax": {
+                  "Value": 3.5000000004656613
+                },
+                "ymax": {
+                  "Value": 1.5000000004656613
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 3.5000000004656613
+                },
+                "ymin": {
+                  "Value": 0.8000000007450581
+                },
+                "xmax": {
+                  "Value": 4.500000000465661
+                },
+                "ymax": {
+                  "Value": 0.8000000007450581
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 4.500000000465661
+                },
+                "ymin": {
+                  "Value": 0.8000000007450581
+                },
+                "xmax": {
+                  "Value": 5.500000000465661
+                },
+                "ymax": {
+                  "Value": 0.8000000007450581
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 5.500000000465661
+                },
+                "ymin": {
+                  "Value": 0.5000000004656613
+                },
+                "xmax": {
+                  "Value": 6.500000000465661
+                },
+                "ymax": {
+                  "Value": 0.5000000004656613
+                }
+              },
+              {
+                "xmin": {
+                  "Value": 6.500000000465661
+                },
+                "ymin": {
+                  "Value": 0.5000000004656613
+                },
+                "xmax": {
+                  "Value": 7.500000000465661
+                },
+                "ymax": {
+                  "Value": 0.5000000004656613
                 }
               }
             ]

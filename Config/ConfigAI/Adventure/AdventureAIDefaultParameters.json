@@ -9,15 +9,15 @@
       "DistanceRange": 30,
       "PitchAngleLimitMin": -30,
       "PitchAngleLimitMax": 30,
-      "Priority": 20,
-      "AlertValueAddSpeed": 30
+      "AlertIntervalLeftValue": 30,
+      "AlertIntervalRightValue": 0
     },
     "GlobalVisionConfig_Front_Slow": {
       "DistanceRange": 15,
       "PitchAngleLimitMin": -30,
       "PitchAngleLimitMax": 30,
-      "Priority": 20,
-      "AlertValueAddSpeed": 35
+      "AlertIntervalLeftValue": 35,
+      "AlertIntervalRightValue": 0
     },
     "GlobalVisionConfig_Front_Back": {
       "VisionID": "default01",
@@ -25,15 +25,16 @@
       "YawAngleRange": 360,
       "PitchAngleLimitMin": -30,
       "PitchAngleLimitMax": 30,
-      "AlertValueAddSpeed": 3
+      "AlertIntervalLeftValue": 3,
+      "AlertIntervalRightValue": 0
     },
     "GlobalVisionConfig_Front_Fast": {
       "VisionID": "default02",
       "DistanceRange": 8,
       "PitchAngleLimitMin": -30,
       "PitchAngleLimitMax": 30,
-      "Priority": 30,
-      "AlertValueAddSpeed": 100
+      "AlertIntervalLeftValue": 100,
+      "AlertIntervalRightValue": 0
     },
     "GlobalVisionConfig_Front_Back_Chase": {
       "VisionID": "default01",
@@ -41,33 +42,36 @@
       "YawAngleRange": 360,
       "PitchAngleLimitMin": -30,
       "PitchAngleLimitMax": 30,
-      "AlertValueAddSpeed": 30
+      "AlertIntervalLeftValue": 30,
+      "AlertIntervalRightValue": 0
     },
     "GlobalVisionConfig_Front_Fast_Chase": {
       "VisionID": "default02",
       "DistanceRange": 8,
       "PitchAngleLimitMin": -30,
       "PitchAngleLimitMax": 30,
-      "Priority": 30,
-      "AlertValueAddSpeed": 30
+      "AlertIntervalLeftValue": 30,
+      "AlertIntervalRightValue": 0
     },
     "GlobalVisionConfig_Around": {
       "DistanceRange": 8,
-      "YawAngleRange": 360
+      "YawAngleRange": 360,
+      "AlertIntervalLeftValue": 10,
+      "AlertIntervalRightValue": 0
     },
     "GlobalVisionConfig_XP_Minion04": {
       "DistanceRange": 12,
       "YawAngleRange": 360,
-      "Priority": 30,
-      "DistanceAttenuation": -1,
-      "AlertValueAddSpeed": 25
+      "AlertIntervalLeftValue": 25,
+      "AlertIntervalRightValue": 25
     },
     "GlobalVisionConfig_GoBack": {
       "DistanceRange": 0,
       "YawAngleRange": 360,
       "PitchAngleLimitMin": -30,
       "PitchAngleLimitMax": 30,
-      "AlertValueAddSpeed": 0
+      "AlertIntervalLeftValue": 0,
+      "AlertIntervalRightValue": 0
     },
     "GlobalVisionConfig_RunAway": {
       "VisionID": "default01",
@@ -75,21 +79,87 @@
       "YawAngleRange": 360,
       "PitchAngleLimitMin": -30,
       "PitchAngleLimitMax": 30,
-      "AlertValueAddSpeed": 0
+      "AlertIntervalLeftValue": 0,
+      "AlertIntervalRightValue": 0
     },
-    "GlobalVisionConfig_WaitTrigger_Fast": {
-      "DistanceRange": 2,
+    "DefaultVision_Relaxed": {
+      "VisionID": "Default",
+      "DistanceRange": 15,
+      "PitchAngleLimitMin": -30,
+      "PitchAngleLimitMax": 30,
+      "AlertIntervalLeftValue": 35,
+      "AlertIntervalRightValue": 0
+    },
+    "DefaultVision_Relaxed_Fast": {
+      "VisionID": "Extra_Fast",
+      "DistanceRange": 8,
+      "PitchAngleLimitMin": -30,
+      "PitchAngleLimitMax": 30,
+      "AlertIntervalLeftValue": 100,
+      "AlertIntervalRightValue": 0
+    },
+    "DefaultVision_Relaxed_Back": {
+      "VisionID": "Extra_Back",
+      "DistanceRange": 4,
       "YawAngleRange": 360,
-      "Priority": 30,
-      "DistanceAttenuation": 45,
-      "AlertValueAddSpeed": 45
+      "PitchAngleLimitMin": -30,
+      "PitchAngleLimitMax": 30,
+      "AlertIntervalLeftValue": 3,
+      "AlertIntervalRightValue": 0
     },
-    "GlobalVisionConfig_TrackedNpc": {
+    "DefaultVision_Chase": {
+      "VisionID": "Default",
+      "DistanceRange": 15,
+      "YawAngleRange": 360,
+      "PitchAngleLimitMin": -30,
+      "PitchAngleLimitMax": 30,
+      "AlertIntervalLeftValue": 30,
+      "AlertIntervalRightValue": 0
+    },
+    "FixedVision_Relaxed": {
+      "VisionID": "Default",
+      "DistanceRange": 15,
+      "PitchAngleLimitMin": -30,
+      "PitchAngleLimitMax": 30,
+      "AlertIntervalLeftValue": 35,
+      "AlertIntervalRightValue": 0,
+      "RayStartPointName": "Vision"
+    },
+    "FixedVision_Relaxed_Fast": {
+      "VisionID": "Extra_Fast",
+      "DistanceRange": 8,
+      "PitchAngleLimitMin": -30,
+      "PitchAngleLimitMax": 30,
+      "AlertIntervalLeftValue": 100,
+      "AlertIntervalRightValue": 0,
+      "RayStartPointName": "Vision"
+    },
+    "FixedVision_Relaxed_Back": {
+      "VisionID": "Extra_Back",
+      "DistanceRange": 4,
+      "YawAngleRange": 360,
+      "PitchAngleLimitMin": -30,
+      "PitchAngleLimitMax": 30,
+      "AlertIntervalLeftValue": 3,
+      "AlertIntervalRightValue": 0,
+      "RayStartPointName": "Vision"
+    },
+    "FixedVision_Chase": {
+      "VisionID": "Default",
+      "DistanceRange": 15,
+      "YawAngleRange": 360,
+      "PitchAngleLimitMin": -30,
+      "PitchAngleLimitMax": 30,
+      "AlertIntervalLeftValue": 30,
+      "AlertIntervalRightValue": 0,
+      "RayStartPointName": "Vision"
+    },
+    "VisionConfig_XP_Minion04": {
+      "VisionID": "Default",
       "DistanceRange": 12,
       "YawAngleRange": 360,
-      "Priority": 30,
-      "DistanceAttenuation": -1,
-      "AlertValueAddSpeed": 5
+      "AlertIntervalLeftValue": 25,
+      "AlertIntervalRightValue": 25
     }
   }
 }

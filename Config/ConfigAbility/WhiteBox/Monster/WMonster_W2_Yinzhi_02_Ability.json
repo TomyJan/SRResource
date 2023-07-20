@@ -202,7 +202,7 @@
             "AttachPoint": "Root",
             "TargetAttachPoint": "Root",
             "FlyEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Bronya_00/Eff_Monster_Bronya_00_Skill04_Bullet.prefab",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Bronya_00/Eff_Monster_Bronya_00_Skill04_Hit01.prefab",
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_CocoliaP1_00/Eff_Monster_W1_CocoliaP1_00_Skill06_Hit01.prefab",
             "AlignHitEffect": true,
             "BoomerangEccentricity": 0.5,
             "BoomerangAngleRoll": -45,
@@ -218,12 +218,13 @@
               "AttackProperty": {
                 "DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1847083384
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -1847083384
+                    ]
+                  }
                 },
                 "SPHitRatio": {
                   "IsDynamic": false,
@@ -243,6 +244,33 @@
                 "UIMessageHeight": 1,
                 "DitherRangeX": 0.02,
                 "DitherRangeY": 0.02
+              }
+            },
+            {
+              "$type": "RPG.GameCore.ShowEntityFloatMessage",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AbilityTargetEntity"
+              },
+              "ContentID": {
+                "Hash": -616767281
+              }
+            },
+            {
+              "$type": "RPG.GameCore.ModifyActionDelay",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AbilityTargetEntity"
+              },
+              "AddNormalizedValue": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -176140990
+                  ]
+                }
               }
             },
             {
@@ -415,21 +443,23 @@
           "ModifierName": "MCommon_CTRL_Taunt",
           "Chance": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -237476217
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -237476217
+              ]
+            }
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 441115021
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                441115021
+              ]
+            }
           }
         },
         {

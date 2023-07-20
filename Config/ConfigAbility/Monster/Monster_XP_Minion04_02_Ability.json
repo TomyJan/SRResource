@@ -488,6 +488,44 @@
         "MMonster_XP_Minion04_02_P01_EnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
           "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Caster"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamDark"
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MMonster_XP_Minion04_02_Buff_Huimie_Minion"
+                    }
+                  ]
+                }
+              ]
+            },
             "OnEnterBattle": {
               "CallbackConfig": [
                 {
@@ -1007,15 +1045,16 @@
           "WaitTime": 0.3
         },
         {
-          "$type": "RPG.GameCore.LoopExecuteTaskListWithInterval",
+          "$type": "RPG.GameCore.LoopExecuteTaskList",
           "MaxLoopCount": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1479908360
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1479908360
+              ]
+            }
           },
           "TaskList": [
             {
@@ -1028,12 +1067,13 @@
                 "DamageType": "Fire",
                 "DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1246667513
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1246667513
+                    ]
+                  }
                 },
                 "HitAnimation": "Hit",
                 "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_RuinHit.prefab",
@@ -1099,6 +1139,66 @@
         "MMonster_XP_Minion04_02_P01_EnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
           "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Caster"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamDark"
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Minion",
+                      "DynamicValues": {
+                        "_HealRatio": {
+                          "IsDynamic": true,
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              -330553393
+                            ]
+                          }
+                        },
+                        "_LoseRatio": {
+                          "IsDynamic": true,
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              -40286587
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
             "OnEnterBattle": {
               "CallbackConfig": [
                 {
@@ -1172,446 +1272,6 @@
       ]
     },
     {
-      "Modifiers": {
-        "MMonster_XP_Minion04_02_Fengrao_Mark": {},
-        "MMonster_XP_Minion04_02_Fengrao_BeHit": {},
-        "MMonster_XP_Minion04_02_Fengrao_Minion": {
-          "_CallbackList": {
-            "OnCreate": {
-              "CallbackConfig": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
-                  "DynamicKey": "_CasterHP",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "Value": "MaxHP"
-                }
-              ]
-            },
-            "OnAfterBeingHitAll": {
-              "CallbackConfig": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
-                  "DynamicKey": "_Damage",
-                  "ReadTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ParamEntity"
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "DynamicKey": "_TotalDamage",
-                  "Value": {
-                    "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1964565558
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 350439254
-                      },
-                      {
-                        "Type": "Add"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareDynamicValue",
-                    "DynamicKey": "_TotalDamage",
-                    "CompareType": "Greater",
-                    "CompareValue": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
-                    }
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.AddModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ModifierOwnerEntity"
-                      },
-                      "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
-                    }
-                  ]
-                }
-              ]
-            },
-            "OnBeforeBeingAttacked": {
-              "CallbackConfig": [
-                {
-                  "$type": "RPG.GameCore.SetDynamicValue",
-                  "DynamicKey": "_TotalDamage",
-                  "Value": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  }
-                }
-              ]
-            },
-            "OnAfterBeingAttacked": {
-              "CallbackConfig": []
-            },
-            "OnListenModifierAdd": {
-              "CallbackConfig": [
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Trigger1"
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "DynamicKey": "_TotalDamage",
-                        "CompareType": "Greater",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 0.5000000004656613
-                          }
-                        }
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.TriggerEffect",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_Hit.prefab"
-                        }
-                      ],
-                      "FailedTaskList": []
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "MMonster_XP_Minion04_02_Fengrao_SelfDamage"
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "DynamicKey": "_TotalDamage",
-                        "CompareType": "Greater",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 0.5000000004656613
-                          }
-                        }
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.LoseHPByRatio",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "RatioType": "MaxHP",
-                          "Ratio": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1964565558
-                              },
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -1294382107
-                              },
-                              {
-                                "Type": "Div"
-                              },
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1247153623
-                              },
-                              {
-                                "Type": "Mul"
-                              }
-                            ]
-                          },
-                          "Floor": {
-                            "Value": 1
-                          },
-                          "DisplayData": {
-                            "UIMessageHeight": 0.8,
-                            "DitherRangeX": 0.04,
-                            "DitherRangeY": 0.04
-                          }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.LoseHPByRatio",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "Caster"
-                          },
-                          "RatioType": "MaxHP",
-                          "Ratio": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1964565558
-                              },
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": -1294382107
-                              },
-                              {
-                                "Type": "Div"
-                              },
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1247153623
-                              },
-                              {
-                                "Type": "Mul"
-                              }
-                            ]
-                          },
-                          "Floor": {
-                            "Value": 1
-                          },
-                          "DisplayData": {
-                            "UIMessageHeight": 0.8,
-                            "DitherRangeX": 0.04,
-                            "DitherRangeY": 0.04
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCheckModifierCallBackName",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Trigger"
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.PredicateTaskList",
-                      "Predicate": {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "DynamicKey": "_TotalDamage",
-                        "CompareType": "Greater",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 0.5000000004656613
-                          }
-                        }
-                      },
-                      "SuccessTaskList": [
-                        {
-                          "$type": "RPG.GameCore.HealHP",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "FormulaType": "HealByTargetMaxHP",
-                          "ModifyValue": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1964565558
-                              },
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1195887508
-                              },
-                              {
-                                "Type": "Mul"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "DynamicKey": "_TotalDamage",
-                          "Value": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 0
-                            }
-                          }
-                        }
-                      ],
-                      "FailedTaskList": [
-                        {
-                          "$type": "RPG.GameCore.HealHP",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ModifierOwnerEntity"
-                          },
-                          "FormulaType": "HealByTargetMaxHP",
-                          "ModifyValue": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1964565558
-                              },
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 1195887508
-                              },
-                              {
-                                "Type": "Mul"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "$type": "RPG.GameCore.SetDynamicValue",
-                          "DynamicKey": "_TotalDamage",
-                          "Value": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 0
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          },
-          "DynamicValues": {
-            "Values": {
-              "350439254": {},
-              "-1294382107": {},
-              "1195887508": {},
-              "1247153623": {},
-              "1964565558": {}
-            }
-          }
-        },
-        "MMonster_XP_Minion04_02_Fengrao_Caster": {
-          "_CallbackList": {
-            "OnDestroy": {
-              "CallbackConfig": [
-                {
-                  "$type": "RPG.GameCore.RemoveModifier",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllDarkTeam"
-                  },
-                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Minion"
-                }
-              ]
-            },
-            "OnListenAfterAttack": {
-              "CallbackConfig": [
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByAnd",
-                    "PredicateList": [
-                      {
-                        "$type": "RPG.GameCore.ByNot",
-                        "Predicate": {
-                          "$type": "RPG.GameCore.ByTargetTeam",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "Team": "TeamDark"
-                        }
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByCompareCharacterNumber",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "AllDarkTeam"
-                        },
-                        "Predicate": {
-                          "$type": "RPG.GameCore.ByIsContainModifier",
-                          "TargetType": {
-                            "$type": "RPG.GameCore.TargetAlias",
-                            "Alias": "ParamEntity"
-                          },
-                          "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
-                        },
-                        "CompareType": "Greater",
-                        "CompareNumber": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 0
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.TurnInsertAbility",
-                      "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_Fengrao",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "AbilityTarget": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "Caster"
-                      },
-                      "InsertAbilityPriority": "MonsterChangeState",
-                      "ShowInActionBar": true
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.RemoveModifier",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "AllDarkTeam"
-                      },
-                      "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        }
-      },
       "Name": "Monster_XP_Minion04_02_SkillP01_InsertAbility_EnterBattle_Fengrao",
       "TargetInfo": {
         "TargetType": "Caster"
@@ -1805,21 +1465,23 @@
                   "DynamicValues": {
                     "_HealRatio": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -330553393
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -330553393
+                        ]
+                      }
                     },
                     "_LoseRatio": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -40286587
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -40286587
+                        ]
+                      }
                     }
                   }
                 }
@@ -1973,21 +1635,23 @@
                           "DynamicValues": {
                             "_HealRatio": {
                               "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -330553393
-                                }
-                              ]
+                              "PostfixExpr": {
+                                "OpCodes": "AQAJ",
+                                "FixedValues": [],
+                                "DynamicHashes": [
+                                  -330553393
+                                ]
+                              }
                             },
                             "_LoseRatio": {
                               "IsDynamic": true,
-                              "Expressions": [
-                                {
-                                  "Type": "DynamicNumber",
-                                  "DynamicHash": -40286587
-                                }
-                              ]
+                              "PostfixExpr": {
+                                "OpCodes": "AQAJ",
+                                "FixedValues": [],
+                                "DynamicHashes": [
+                                  -40286587
+                                ]
+                              }
                             }
                           }
                         }
@@ -2381,21 +2045,17 @@
                               "DynamicKey": "CurrentCount",
                               "Value": {
                                 "IsDynamic": true,
-                                "Expressions": [
-                                  {
-                                    "Type": "DynamicNumber",
-                                    "DynamicHash": -1851115926
-                                  },
-                                  {
-                                    "Type": "FixedNumber",
-                                    "FixedValue": {
+                                "PostfixExpr": {
+                                  "OpCodes": "AQAAAAIJ",
+                                  "FixedValues": [
+                                    {
                                       "Value": 1
                                     }
-                                  },
-                                  {
-                                    "Type": "Add"
-                                  }
-                                ]
+                                  ],
+                                  "DynamicHashes": [
+                                    -1851115926
+                                  ]
+                                }
                               }
                             },
                             {
@@ -2403,21 +2063,17 @@
                               "DynamicKey": "CostCount",
                               "Value": {
                                 "IsDynamic": true,
-                                "Expressions": [
-                                  {
-                                    "Type": "DynamicNumber",
-                                    "DynamicHash": 612864466
-                                  },
-                                  {
-                                    "Type": "FixedNumber",
-                                    "FixedValue": {
+                                "PostfixExpr": {
+                                  "OpCodes": "AQAAAAIJ",
+                                  "FixedValues": [
+                                    {
                                       "Value": 0.10000000009313226
                                     }
-                                  },
-                                  {
-                                    "Type": "Add"
-                                  }
-                                ]
+                                  ],
+                                  "DynamicHashes": [
+                                    612864466
+                                  ]
+                                }
                               }
                             }
                           ]
@@ -2516,21 +2172,17 @@
                               "DynamicKey": "CurrentCount",
                               "Value": {
                                 "IsDynamic": true,
-                                "Expressions": [
-                                  {
-                                    "Type": "DynamicNumber",
-                                    "DynamicHash": -1851115926
-                                  },
-                                  {
-                                    "Type": "FixedNumber",
-                                    "FixedValue": {
+                                "PostfixExpr": {
+                                  "OpCodes": "AQAAAAIJ",
+                                  "FixedValues": [
+                                    {
                                       "Value": 1
                                     }
-                                  },
-                                  {
-                                    "Type": "Add"
-                                  }
-                                ]
+                                  ],
+                                  "DynamicHashes": [
+                                    -1851115926
+                                  ]
+                                }
                               }
                             },
                             {
@@ -2538,21 +2190,17 @@
                               "DynamicKey": "CostCount",
                               "Value": {
                                 "IsDynamic": true,
-                                "Expressions": [
-                                  {
-                                    "Type": "DynamicNumber",
-                                    "DynamicHash": 612864466
-                                  },
-                                  {
-                                    "Type": "FixedNumber",
-                                    "FixedValue": {
+                                "PostfixExpr": {
+                                  "OpCodes": "AQAAAAIJ",
+                                  "FixedValues": [
+                                    {
                                       "Value": 0.10000000009313226
                                     }
-                                  },
-                                  {
-                                    "Type": "Add"
-                                  }
-                                ]
+                                  ],
+                                  "DynamicHashes": [
+                                    612864466
+                                  ]
+                                }
                               }
                             }
                           ]
@@ -2610,12 +2258,13 @@
                     "CompareType": "Greater",
                     "CompareValue": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 612864466
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          612864466
+                        ]
+                      }
                     }
                   },
                   "SuccessTaskList": [
@@ -2624,12 +2273,13 @@
                       "DynamicKey": "CurrentCount",
                       "Value": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 612864466
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            612864466
+                          ]
+                        }
                       }
                     }
                   ]
@@ -2644,15 +2294,13 @@
                   "ModifyFunction": "Add",
                   "Value": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1851115926
-                      },
-                      {
-                        "Type": "Neg"
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAGCQ==",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1851115926
+                      ]
+                    }
                   }
                 }
               ]
@@ -2802,12 +2450,13 @@
               "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Caster",
               "Count": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1328709280
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1328709280
+                  ]
+                }
               }
             },
             {
@@ -2906,12 +2555,13 @@
                       "ModifierName": "MMonster_XP_Minion04_02_Fengrao_02_Caster",
                       "Count": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1328709280
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -1328709280
+                          ]
+                        }
                       }
                     },
                     {
@@ -2960,6 +2610,87 @@
         "MMonster_XP_Minion04_02_P01_EnterBattle": {
           "EnterBattlePriority": "AvatarInsertAbility",
           "_CallbackList": {
+            "OnListenCharacterCreate": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ModifierOwnerEntity"
+                        },
+                        "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Caster"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Team": "TeamDark"
+                      }
+                    ]
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.DefineDynamicValue",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "DynamicKey": "Cunhu_CurrentCount",
+                      "ContextScope": "TargetEntity"
+                    },
+                    {
+                      "$type": "RPG.GameCore.PredicateTaskList",
+                      "Predicate": {
+                        "$type": "RPG.GameCore.ByIsContainModifier",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "Caster"
+                        },
+                        "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff"
+                      },
+                      "SuccessTaskList": [
+                        {
+                          "$type": "RPG.GameCore.SetDynamicValueByModifierValue",
+                          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
+                          "Multiplier": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 1
+                            }
+                          },
+                          "DynamicKey": "Cunhu_CurrentCount"
+                        },
+                        {
+                          "$type": "RPG.GameCore.AddModifier",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "ParamEntity"
+                          },
+                          "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
+                          "Count": {
+                            "IsDynamic": true,
+                            "PostfixExpr": {
+                              "OpCodes": "AQAJ",
+                              "FixedValues": [],
+                              "DynamicHashes": [
+                                1131934392
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
             "OnEnterBattle": {
               "CallbackConfig": [
                 {
@@ -3154,12 +2885,13 @@
               "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
               "Count": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2139120948
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2139120948
+                  ]
+                }
               }
             }
           ],
@@ -3250,12 +2982,13 @@
                       "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Buff",
                       "Count": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 2139120948
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            2139120948
+                          ]
+                        }
                       }
                     }
                   ]
@@ -3501,12 +3234,13 @@
                   "ModifierName": "MCommon_CTRL_Frozen",
                   "Chance": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1808842454
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1808842454
+                      ]
+                    }
                   },
                   "LifeTime": {
                     "IsDynamic": false,
@@ -3517,12 +3251,13 @@
                   "DynamicValues": {
                     "Modifier_Frozen_DamagePercentage": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -1326127266
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -1326127266
+                        ]
+                      }
                     }
                   }
                 }
@@ -3596,33 +3331,36 @@
                   "ModifierName": "MCommon_AttackRatioDown",
                   "Chance": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1808842454
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1808842454
+                      ]
+                    }
                   },
                   "LifeTime": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
+                    "PostfixExpr": {
+                      "OpCodes": "AAAJ",
+                      "FixedValues": [
+                        {
                           "Value": 1
                         }
-                      }
-                    ]
+                      ],
+                      "DynamicHashes": []
+                    }
                   },
                   "DynamicValues": {
                     "MDF_PropertyValue": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -179342663
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -179342663
+                        ]
+                      }
                     }
                   }
                 }
@@ -3696,12 +3434,13 @@
                   "ModifierName": "MCommon_DOT_Burn",
                   "Chance": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1808842454
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1808842454
+                      ]
+                    }
                   },
                   "LifeTime": {
                     "IsDynamic": false,
@@ -3712,12 +3451,13 @@
                   "DynamicValues": {
                     "Modifier_Burn_DamagePercentage": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 359748481
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          359748481
+                        ]
+                      }
                     }
                   }
                 }
@@ -3831,12 +3571,13 @@
               },
               "CurrentCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2139120948
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2139120948
+                  ]
+                }
               }
             }
           ]
@@ -3954,14 +3695,6 @@
             {
               "$type": "RPG.GameCore.SetResilience",
               "DoReset": true
-            },
-            {
-              "$type": "RPG.GameCore.RemoveModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Caster"
             }
           ]
         },
@@ -4082,13 +3815,41 @@
                   },
                   "CurrentCount": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -2027709849
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -2027709849
+                      ]
+                    }
                   }
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareModifierValue",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ModifierOwnerEntity"
+                },
+                "CompareType": "LessEqual",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 0
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Cunhu_Caster"
                 }
               ]
             }
@@ -4222,6 +3983,407 @@
         }
       },
       "Stacking": "Replace"
+    },
+    "MMonster_XP_Minion04_02_Fengrao_Mark": {},
+    "MMonster_XP_Minion04_02_Fengrao_BeHit": {},
+    "MMonster_XP_Minion04_02_Fengrao_Minion": {
+      "_CallbackList": {
+        "OnCreate": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByProperty",
+              "DynamicKey": "_CasterHP",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "Value": "MaxHP"
+            }
+          ]
+        },
+        "OnAfterBeingHitAll": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValueByDamageDataProperty",
+              "DynamicKey": "_Damage",
+              "ReadTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "_TotalDamage",
+              "Value": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQIJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1964565558,
+                    350439254
+                  ]
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "DynamicKey": "_TotalDamage",
+                "CompareType": "Greater",
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 0
+                  }
+                }
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.AddModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
+                }
+              ]
+            }
+          ]
+        },
+        "OnBeforeBeingAttacked": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.SetDynamicValue",
+              "DynamicKey": "_TotalDamage",
+              "Value": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 0
+                }
+              }
+            }
+          ]
+        },
+        "OnAfterBeingAttacked": {
+          "CallbackConfig": []
+        },
+        "OnListenModifierAdd": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Trigger1"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "_TotalDamage",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0.5000000004656613
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerEffect",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Minion04_02_Rogue/Eff_Monster_XP_Minion04_02_Rogue_AbundanceP_Hit.prefab"
+                    }
+                  ],
+                  "FailedTaskList": []
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MMonster_XP_Minion04_02_Fengrao_SelfDamage"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "_TotalDamage",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0.5000000004656613
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.LoseHPByRatio",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "RatioType": "MaxHP",
+                      "Ratio": {
+                        "IsDynamic": true,
+                        "PostfixExpr": {
+                          "OpCodes": "AQABAQUBAgQJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            1964565558,
+                            -1294382107,
+                            1247153623
+                          ]
+                        }
+                      },
+                      "Floor": {
+                        "Value": 1
+                      },
+                      "DisplayData": {
+                        "UIMessageHeight": 0.8,
+                        "DitherRangeX": 0.04,
+                        "DitherRangeY": 0.04
+                      }
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.LoseHPByRatio",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "RatioType": "MaxHP",
+                      "Ratio": {
+                        "IsDynamic": true,
+                        "PostfixExpr": {
+                          "OpCodes": "AQABAQUBAgQJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            1964565558,
+                            -1294382107,
+                            1247153623
+                          ]
+                        }
+                      },
+                      "Floor": {
+                        "Value": 1
+                      },
+                      "DisplayData": {
+                        "UIMessageHeight": 0.8,
+                        "DitherRangeX": 0.04,
+                        "DitherRangeY": 0.04
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCheckModifierCallBackName",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "ParamEntity"
+                },
+                "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Trigger"
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "DynamicKey": "_TotalDamage",
+                    "CompareType": "Greater",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0.5000000004656613
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.HealHP",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "FormulaType": "HealByTargetMaxHP",
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "PostfixExpr": {
+                          "OpCodes": "AQABAQQJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            1964565558,
+                            1195887508
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "_TotalDamage",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.HealHP",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "FormulaType": "HealByTargetMaxHP",
+                      "ModifyValue": {
+                        "IsDynamic": true,
+                        "PostfixExpr": {
+                          "OpCodes": "AQABAQQJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            1964565558,
+                            1195887508
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValue",
+                      "DynamicKey": "_TotalDamage",
+                      "Value": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 0
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "DynamicValues": {
+        "Values": {
+          "350439254": {},
+          "-1294382107": {},
+          "1195887508": {},
+          "1247153623": {},
+          "1964565558": {}
+        }
+      }
+    },
+    "MMonster_XP_Minion04_02_Fengrao_Caster": {
+      "_CallbackList": {
+        "OnDestroy": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.RemoveModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              },
+              "ModifierName": "MMonster_XP_Minion04_02_Fengrao_Minion"
+            }
+          ]
+        },
+        "OnListenAfterAttack": {
+          "CallbackConfig": [
+            {
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByAnd",
+                "PredicateList": [
+                  {
+                    "$type": "RPG.GameCore.ByNot",
+                    "Predicate": {
+                      "$type": "RPG.GameCore.ByTargetTeam",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "Team": "TeamDark"
+                    }
+                  },
+                  {
+                    "$type": "RPG.GameCore.ByCompareCharacterNumber",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "AllDarkTeam"
+                    },
+                    "Predicate": {
+                      "$type": "RPG.GameCore.ByIsContainModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
+                    },
+                    "CompareType": "Greater",
+                    "CompareNumber": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  }
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.TurnInsertAbility",
+                  "AbilityName": "Monster_XP_Minion04_02_SkillP01_InsertAbility_Fengrao",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "AbilityTarget": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "InsertAbilityPriority": "MonsterChangeState",
+                  "ShowInActionBar": true
+                }
+              ],
+              "FailedTaskList": [
+                {
+                  "$type": "RPG.GameCore.RemoveModifier",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllDarkTeam"
+                  },
+                  "ModifierName": "MMonster_XP_Minion04_02_Fengrao_BeHit"
+                }
+              ]
+            }
+          ]
+        }
+      }
     },
     "MMonster_XP_Minion04_02_Buff_Huimie_Caster": {
       "_CallbackList": {

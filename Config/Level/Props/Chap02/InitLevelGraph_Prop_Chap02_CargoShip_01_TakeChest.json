@@ -5,11 +5,11 @@
       "Order": 1,
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -17,7 +17,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -205,14 +205,15 @@
               "$type": "RPG.GameCore.LevelPerformanceInitialize",
               "PerformanceType": "E",
               "CreateCharacterList": [],
+              "CaptureNPCList": [],
               "EntityVisiableList": [],
               "HideMunicipalCrowd": false,
               "HideMunicipalPedestrian": false,
               "HideMunicipalOther": false,
               "HideMonster": false,
               "PropVisiableList": [],
-              "StreamingCentersInBlackMask": [],
-              "StreamingCentersAfterBlackMask": [],
+              "StreamingSourcesInBlackMask": [],
+              "StreamingSourcesAfterBlackMask": [],
               "MarkStreamingItems": []
             },
             {
@@ -223,10 +224,22 @@
               "CreateNpcList": [],
               "CaptureNpcList": [],
               "DestroyNpcList": [],
+              "CreateProp": {
+                "TaskEnabled": false
+              },
+              "DestroyProp": {
+                "TaskEnabled": false
+              },
               "ActiveVirtualCamera": {
                 "TaskEnabled": false
               },
+              "ActiveTemplateVirtualCamera": {
+                "TaskEnabled": false
+              },
               "SwitchCharacterAnchor": {
+                "TaskEnabled": false
+              },
+              "AdvNpcFaceToPlayer": {
                 "TaskEnabled": false
               }
             },
@@ -260,6 +273,22 @@
               "$type": "RPG.GameCore.PropTriggerAnimState",
               "AnimStateName": "Move",
               "WatiAnimFinish": true,
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+                "FetchType": "SinglePropByPropKey",
+                "SinglePropKey": {
+                  "Custom": true,
+                  "Key": "PuzzleCompass_CargoShip"
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.PropSetEntityLodOffset",
+              "LocalOffset": {
+                "X": 45,
+                "Y": 0,
+                "Z": 0
+              },
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -317,11 +346,7 @@
               }
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerDoorOpen",
-              "ParameterType": "Trigger",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -329,7 +354,9 @@
                   "Custom": true,
                   "Key": "PuzzleCompass_CargoShip"
                 }
-              }
+              },
+              "ParameterName": "TriggerDoorOpen",
+              "ParameterType": "Trigger"
             },
             {
               "$type": "RPG.GameCore.WaitSecond",
@@ -400,10 +427,7 @@
           "ToState": "ChestClosed",
           "OnChange": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerUnlock",
-              "ParameterType": "Trigger",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -411,7 +435,9 @@
                   "Custom": true,
                   "Key": "PuzzleCompass_CargoChest01"
                 }
-              }
+              },
+              "ParameterName": "TriggerUnlock",
+              "ParameterType": "Trigger"
             }
           ],
           "TargetType": {
@@ -544,16 +570,28 @@
           "$type": "RPG.GameCore.RandomConfig",
           "OddsList": [
             {
-              "Value": 25
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 25
+              }
             },
             {
-              "Value": 25
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 25
+              }
             },
             {
-              "Value": 25
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 25
+              }
             },
             {
-              "Value": 25
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 25
+              }
             }
           ],
           "TaskList": [

@@ -3,11 +3,11 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPredicateSucc",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SetPropAbilityTriggerEnable",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -155,7 +155,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.PropStateChangeServerListenerConfig",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -170,7 +170,7 @@
           "WaitOwnerOnly": true
         },
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -191,14 +191,13 @@
           "IsNeedFadeOut": false
         },
         {
-          "$type": "RPG.GameCore.PropAnimSetParameter",
-          "ParameterName": "PropState",
-          "ParameterType": "Int",
-          "FloatValue": 3.402823E+38,
-          "IntegerValue": 1,
+          "$type": "RPG.GameCore.AnimSetParameter",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-          }
+          },
+          "ParameterName": "PropState",
+          "ParameterType": "Int",
+          "Value": 1
         },
         {
           "$type": "RPG.GameCore.PropReqInteract",

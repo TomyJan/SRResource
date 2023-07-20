@@ -16,9 +16,14 @@
               "AimDamp": 0.01
             },
             "AdditiveNormalConfig": {
+              "AnchorOffset": {
+                "X": 0.4,
+                "Y": 0,
+                "Z": -0.3
+              },
               "AimOffset": {
                 "X": -1.53,
-                "Y": 0,
+                "Y": 0.2,
                 "Z": 0
               }
             },
@@ -63,6 +68,12 @@
                 "X": 0,
                 "Y": 0,
                 "Z": -6
+              }
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
               }
             }
           }
@@ -112,7 +123,7 @@
               },
               "AimOffset": {
                 "X": 0.18,
-                "Y": 0.95,
+                "Y": 0.25,
                 "Z": 0
               },
               "ResetToDefault": false
@@ -219,7 +230,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.2800000002607703
+              "Value": 0.3200000002980232
             }
           }
         },
@@ -290,8 +301,11 @@
               "AnchorOffset": {
                 "X": 0,
                 "Y": 0,
-                "Z": -6
+                "Z": -10.5
               }
+            },
+            "BlendConfig": {
+              "BlendType": "Cut"
             },
             "ShowEntityConfig": {
               "ShowTargetType": {
@@ -310,7 +324,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.5500000114552677
+              "Value": 0.1049999997485429
             }
           }
         },
@@ -319,17 +333,12 @@
           "CameraConfig": {
             "NormalConfig": {
               "CameraState": "CasterToTargetPerform",
-              "TemplateName": "Monster_Common_Range_AOE",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "LightTeamEntity"
-              },
+              "TemplateName": "Monster_Common_Summon",
               "AnchorOffset": {
                 "X": 0,
-                "Y": 2,
-                "Z": -5
+                "Y": 1,
+                "Z": -3
               },
-              "AnchorRatio": 0.01,
               "AimTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
@@ -338,14 +347,10 @@
               "ResetToDefault": false
             },
             "AdditiveNormalConfig": {
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "LightTeamEntity"
-              },
               "AnchorOffset": {
                 "X": 0,
-                "Y": 0.6,
-                "Z": -0.8
+                "Y": -0.5,
+                "Z": -5
               },
               "AimTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
@@ -353,13 +358,76 @@
               },
               "AimOffset": {
                 "X": 0,
-                "Y": -1.8,
+                "Y": 0.2,
                 "Z": 0
               },
               "ResetToDefault": false
             },
             "BlendConfig": {
-              "BlendType": "Cut"
+              "BlendType": "EaseInOut",
+              "BlendTime": 2
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              }
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchCaster"
+          },
+          "AnimStateName": "Skill04",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.6840000003576279
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "NormalConfig": {
+              "CameraState": "CasterToTargetPerform",
+              "TemplateName": "Monster_Common_Summon",
+              "AnchorOffset": {
+                "X": 0,
+                "Y": 1,
+                "Z": -3
+              },
+              "AimTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "AimRatio": 1,
+              "ResetToDefault": false
+            },
+            "AdditiveNormalConfig": {
+              "AnchorOffset": {
+                "X": 0,
+                "Y": -0.5,
+                "Z": -8
+              },
+              "AimTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ResetToDefault": false
+            },
+            "BlendConfig": {
+              "BlendType": "Custom",
+              "CustomCurveName": "BlendCut_00to1_FastToSlow",
+              "BlendTime": 0.5
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllDarkTeam"
+              }
             }
           }
         }
@@ -396,7 +464,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.4430000002030283
+              "Value": 0.38899999973364174
             }
           }
         },

@@ -42,7 +42,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -52,7 +52,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -78,12 +78,13 @@
                       },
                       "InteractID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -607367851
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -607367851
+                          ]
+                        }
                       },
                       "OnUICancel": [
                         {
@@ -129,6 +130,7 @@
             }
           ],
           "InteractAngleRange": 220,
+          "OverrideTargetTypes": [],
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           }
@@ -152,14 +154,6 @@
             {
               "$type": "RPG.GameCore.WaitSecond",
               "WaitTime": 0.2
-            },
-            {
-              "$type": "RPG.GameCore.PropTriggerAnimState",
-              "AnimStateName": "Open",
-              "TransitionDuration": 0,
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
             },
             {
               "$type": "RPG.GameCore.PropTriggerAnimState",

@@ -125,6 +125,7 @@
     "LastKillStartEvent": "Stage_LastKillStart",
     "LevelLoseEvent": "Stage_LocalLose",
     "LevelWinEvent": "Stage_LocalWin",
+    "LevelBattleQuitEvent": "Stage_ManualBattleQuit",
     "LevelSpecialWinEvent": "Level_SpecialWin",
     "UltraKillFinalMonsterOfWave": "Stage_UltraKillFinalMonster",
     "KillFinalMonsterOfStage": "Stage_KillFinalMonsterOfStage",
@@ -187,6 +188,7 @@
       "AnimLoop": "Stun_Loop",
       "AnimRecover": "Stun_Recover",
       "AnimOccurTransition": 0,
+      "AnimRecoverTransition": 0.3,
       "RepeatOccurAnimWhenBeHitNormalizedTime": 0.7,
       "ReactionAnims": {
         "$type": "RPG.GameCore.CharacterReactionAnimConfig",
@@ -365,6 +367,24 @@
         "STAT_DOT_Poison"
       ],
       "EventType": "DOT_Poison"
+    },
+    {
+      "BehaviorFlags": [
+        "STAT_DOT_Bleed"
+      ],
+      "EventType": "DOT_Bleed"
+    },
+    {
+      "BehaviorFlags": [
+        "CustomEvent_InfiniteRefresh"
+      ],
+      "EventType": "InfiniteRefresh"
+    },
+    {
+      "BehaviorFlags": [
+        "CustomEvent_MonsterChangePhase"
+      ],
+      "EventType": "MonsterChangePhase"
     }
   ],
   "DieAnimTransitDuration": 0,
@@ -596,7 +616,7 @@
   "TimelineDataAsset": [
     "Camera/TimeLine/TimelineData.asset"
   ],
-  "GameCoreDesignDataVersion": 4484562,
+  "GameCoreDesignDataVersion": 4867465,
   "StanceBreakActionDelayChangeRatio": {
     "Value": 0.25000000023283064
   },
@@ -614,5 +634,23 @@
         "Value": 0.20000000018626451
       }
     }
-  }
+  },
+  "MonsterRankScore": {
+    "Minion": {
+      "Value": 0.5000000004656613
+    },
+    "MinionLv2": {
+      "Value": 1
+    },
+    "Elite": {
+      "Value": 1.5000000004656613
+    },
+    "LittleBoss": {
+      "Value": 2
+    },
+    "BigBoss": {
+      "Value": 3
+    }
+  },
+  "EnableModifyDotDamageData": true
 }

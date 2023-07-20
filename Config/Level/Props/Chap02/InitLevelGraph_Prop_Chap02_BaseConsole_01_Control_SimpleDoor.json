@@ -42,7 +42,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -52,7 +52,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -163,23 +163,19 @@
                   "WaitTime": 0.2
                 },
                 {
-                  "$type": "RPG.GameCore.PropAnimSetParameter",
-                  "ParameterName": "TriggerOpen",
-                  "ParameterType": "Trigger",
-                  "FloatValue": 3.402823E+38,
+                  "$type": "RPG.GameCore.AnimSetParameter",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                  }
+                  },
+                  "ParameterName": "TriggerOpen",
+                  "ParameterType": "Trigger"
                 },
                 {
                   "$type": "RPG.GameCore.WaitSecond",
                   "WaitTime": 0.5
                 },
                 {
-                  "$type": "RPG.GameCore.PropAnimSetParameter",
-                  "ParameterName": "TriggerOpen",
-                  "ParameterType": "Trigger",
-                  "FloatValue": 3.402823E+38,
+                  "$type": "RPG.GameCore.AnimSetParameter",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                     "FetchType": "SinglePropByPropKey",
@@ -187,7 +183,9 @@
                       "Custom": true,
                       "Key": "Maze_Prop_Chap02_OpenDoor"
                     }
-                  }
+                  },
+                  "ParameterName": "TriggerOpen",
+                  "ParameterType": "Trigger"
                 },
                 {
                   "$type": "RPG.GameCore.EndPropInteract"

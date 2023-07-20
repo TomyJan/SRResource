@@ -40,6 +40,11 @@
           "$type": "RPG.GameCore.PuzzleBoxmanInBoard",
           "OnPlayerEnter": [
             {
+              "$type": "RPG.GameCore.SetHudTemplate",
+              "TemplateID": 1002,
+              "EnableTemplate": true
+            },
+            {
               "$type": "RPG.GameCore.ActiveVirtualCamera",
               "LevelAreaCameraKey": {
                 "Custom": true,
@@ -106,6 +111,10 @@
             }
           ],
           "OnPlayerLeave": [
+            {
+              "$type": "RPG.GameCore.SetHudTemplate",
+              "TemplateID": 1002
+            },
             {
               "$type": "RPG.GameCore.ActiveVirtualCamera",
               "LevelAreaCameraKey": {
@@ -234,6 +243,10 @@
               "CustomTime": 0.5
             },
             {
+              "$type": "RPG.GameCore.SetHudTemplate",
+              "TemplateID": 1002
+            },
+            {
               "$type": "RPG.GameCore.FinishMazePuzzleChallenge",
               "MazePuzzleChallengeID": {
                 "Value": "1006"
@@ -325,7 +338,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.PropStateChangeServerListenerConfig",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]

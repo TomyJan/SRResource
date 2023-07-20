@@ -32,7 +32,7 @@
             },
             "AdditiveNormalConfig": {
               "AnchorOffset": {
-                "X": -1,
+                "X": -0.5,
                 "Y": 0,
                 "Z": 0.5
               },
@@ -44,7 +44,7 @@
             "ShowEntityConfig": {
               "ShowTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "CasterWithAbilityTargetEntity"
+                "Alias": "AllTeamMemberWithAbilityTargetEntity"
               }
             }
           }
@@ -53,159 +53,6 @@
     },
     {
       "Name": "Monster_SW_Boss_00_Skill02_Camera",
-      "TargetInfo": {
-        "TargetType": "SkillTargetEntityList",
-        "MaxTargetCount": 3
-      },
-      "OnStart": [
-        {
-          "$type": "RPG.GameCore.VCameraConfigChange",
-          "CameraConfig": {
-            "NormalConfig": {
-              "CameraState": "CastAnimation"
-            },
-            "ShowEntityConfig": {
-              "ShowTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AllTeamMember"
-              }
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "AnimStateName": "Skill02",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.4710800948087126
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.VCameraConfigChange",
-          "CameraConfig": {
-            "NormalConfig": {
-              "CameraState": "CasterToTargetPerform",
-              "TemplateName": "Monster_Common_Range_Adjoin",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AbilityTargetEntity"
-              },
-              "IsLocalOffset": true,
-              "AimTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "FollowDamp": 0.01,
-              "AimDamp": 0.01,
-              "Dutch": 2,
-              "ResetToDefault": false
-            },
-            "AdditiveNormalConfig": {
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AbilityTargetEntity"
-              },
-              "AnchorOffset": {
-                "X": 0.9,
-                "Y": 0.7,
-                "Z": -5
-              },
-              "AimTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AimOffset": {
-                "X": 0,
-                "Y": -0.1,
-                "Z": 0
-              },
-              "ResetToDefault": false
-            },
-            "BlendConfig": {
-              "BlendType": "Cut",
-              "BlendTime": 0.02
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "AnimStateName": "Skill02",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.4763652684632689
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.VCameraConfigChange",
-          "CameraConfig": {
-            "NormalConfig": {
-              "CameraState": "CasterToTargetPerform",
-              "TemplateName": "Monster_Common_Range_Adjoin",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AbilityTargetEntity"
-              },
-              "IsLocalOffset": true,
-              "AimTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "FollowDamp": 0.01,
-              "AimDamp": 0.01,
-              "Dutch": 2,
-              "ResetToDefault": false
-            },
-            "AdditiveNormalConfig": {
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AbilityTargetEntity"
-              },
-              "AnchorOffset": {
-                "X": 0.9,
-                "Y": 0.7,
-                "Z": -6.78
-              },
-              "AimTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AimOffset": {
-                "X": 0,
-                "Y": -0.1,
-                "Z": 0
-              },
-              "ResetToDefault": false
-            },
-            "BlendConfig": {
-              "BlendType": "Linear",
-              "BlendTime": 0.059999
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "AnimStateName": "Skill02",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.47846785257570446
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.VCameraConfigChange",
-          "CameraConfig": {
-            "ShakeTemplateName": "Punch_Middle"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Monster_SW_Boss_00_Skill03_Camera",
       "TargetInfo": {
         "TargetType": "SkillTargetEntityList"
       },
@@ -236,7 +83,7 @@
             },
             "AdditiveNormalConfig": {
               "AnchorOffset": {
-                "X": -0.6,
+                "X": -0.2,
                 "Y": -0.01,
                 "Z": 0.3
               },
@@ -248,7 +95,7 @@
             "ShowEntityConfig": {
               "ShowTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "CasterWithAbilityTargetEntity"
+                "Alias": "AllTeamMemberWithAbilityTargetEntity"
               }
             }
           }
@@ -256,11 +103,127 @@
       ]
     },
     {
-      "Name": "Monster_SW_Boss_00_Skill04_Camera",
+      "Name": "Monster_SW_Boss_00_Skill03_Camera",
       "TargetInfo": {
         "TargetType": "AllEnemy"
       },
       "OnStart": [
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "NormalConfig": {
+              "CameraState": "UseSkillPerform",
+              "TemplateName": "Monster_Common_UseSkill",
+              "IsLocalOffset": true,
+              "AnchorOffset": {
+                "X": -1,
+                "Y": 0,
+                "Z": 0
+              },
+              "AimTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "FollowPoleAngle": 90,
+              "FollowElevationAngle": -4.52,
+              "FollowRadius": 5,
+              "FollowDamp": 0.1,
+              "AimDamp": 0.1,
+              "ForbidDynamicOffset": false,
+              "ResetToDefault": false
+            },
+            "AdditiveNormalConfig": {
+              "AnchorOffset": {
+                "X": 1,
+                "Y": 0.01,
+                "Z": 2
+              },
+              "AimOffset": {
+                "X": 0.01,
+                "Y": -0.3,
+                "Z": 0
+              }
+            },
+            "BlendConfig": {
+              "BlendType": "Cut"
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              }
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "AnimStateName": "Skill03",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.010000000009313226
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "NormalConfig": {
+              "CameraState": "UseSkillPerform",
+              "TemplateName": "Monster_Common_UseSkill",
+              "IsLocalOffset": true,
+              "AnchorOffset": {
+                "X": -1,
+                "Y": 0,
+                "Z": 0
+              },
+              "AimTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "FollowPoleAngle": 90,
+              "FollowElevationAngle": -4.52,
+              "FollowRadius": 5,
+              "FollowDamp": 0.1,
+              "AimDamp": 0.1,
+              "ForbidDynamicOffset": false,
+              "ResetToDefault": false
+            },
+            "AdditiveNormalConfig": {
+              "AnchorOffset": {
+                "X": 1,
+                "Y": 0.01,
+                "Z": -1
+              },
+              "AimOffset": {
+                "X": -0.9,
+                "Y": 0.01,
+                "Z": 0
+              }
+            },
+            "BlendConfig": {
+              "BlendType": "Custom",
+              "CustomCurveName": "BlendCut_00to1",
+              "BlendTime": 0.7
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              }
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "AnimStateName": "Skill03",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.1600000001490116
+            }
+          }
+        },
         {
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
@@ -287,12 +250,12 @@
             "AdditiveNormalConfig": {
               "AnchorOffset": {
                 "X": 0,
-                "Y": -1.28,
-                "Z": -0.8
+                "Y": -2,
+                "Z": -1
               },
               "AimOffset": {
                 "X": 0,
-                "Y": -0.18,
+                "Y": 0.01,
                 "Z": 0
               },
               "NeedCutBlending": true,
@@ -300,20 +263,68 @@
             },
             "BlendConfig": {
               "BlendType": "Custom",
-              "BlendTime": 0.12
-            },
-            "ShowEntityConfig": {
-              "ShowTargetType": {
+              "CustomCurveName": "BlendCut_00to1",
+              "BlendTime": 0.5
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "AnimStateName": "Skill03",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.2579999996814877
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "NormalConfig": {
+              "CameraState": "CasterToTargetPerform",
+              "TemplateName": "Monster_Common_Range_AOE",
+              "AnchorTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "CasterWithAllEnemy"
-              }
+                "Alias": "AllEnemy"
+              },
+              "AnchorOffset": {
+                "X": 0,
+                "Y": 2,
+                "Z": -5
+              },
+              "AnchorRatio": 0.01,
+              "AimTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              },
+              "AimRatio": 1,
+              "ResetToDefault": false
+            },
+            "AdditiveNormalConfig": {
+              "AnchorOffset": {
+                "X": 0,
+                "Y": -2.01,
+                "Z": -1.7
+              },
+              "AimOffset": {
+                "X": 0,
+                "Y": -0.55,
+                "Z": 0
+              },
+              "NeedCutBlending": true,
+              "ResetToDefault": false
+            },
+            "BlendConfig": {
+              "BlendType": "EaseInOut",
+              "BlendTime": 1.5
             }
           }
         }
       ]
     },
     {
-      "Name": "Monster_SW_Boss_00_Skill05_Camera",
+      "Name": "Monster_SW_Boss_00_Skill04_Camera",
       "TargetInfo": {
         "TargetType": "Caster"
       },
@@ -324,13 +335,50 @@
             "NormalConfig": {
               "CameraState": "CastAnimation",
               "AnchorOffset": {
-                "X": 0,
+                "X": 2,
                 "Y": 0,
                 "Z": -6
               },
               "AimOffset": {
                 "X": 0,
-                "Y": 0.85,
+                "Y": 0.1,
+                "Z": 0
+              }
+            },
+            "BlendConfig": {
+              "BlendType": "Cut"
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              }
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "AnimStateName": "Skill04",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.010000000009313226
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "NormalConfig": {
+              "CameraState": "CastAnimation",
+              "AnchorOffset": {
+                "X": 2,
+                "Y": 0,
+                "Z": -9
+              },
+              "AimOffset": {
+                "X": 0,
+                "Y": 1.2,
                 "Z": 0
               }
             },
@@ -348,7 +396,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.49000000045634806
+              "Value": 0.31499999994412065
             }
           }
         },
@@ -369,16 +417,23 @@
               "ResetToDefault": false
             },
             "AdditiveNormalConfig": {
+              "AnchorOffset": {
+                "X": 2,
+                "Y": 0,
+                "Z": 0
+              },
               "AimOffset": {
                 "X": 0,
-                "Y": 0.5,
+                "Y": -0.5,
                 "Z": 0
               },
               "NeedCutBlending": true,
               "ResetToDefault": false
             },
             "BlendConfig": {
-              "BlendType": "Cut"
+              "BlendType": "Custom",
+              "CustomCurveName": "BlendCut_00to1",
+              "BlendTime": 0.3
             },
             "ShowEntityConfig": {
               "ShowTargetType": {
@@ -391,7 +446,7 @@
       ]
     },
     {
-      "Name": "Monster_SW_Boss_00_Skill06_Camera",
+      "Name": "Monster_SW_Boss_00_Skill05_Camera",
       "TargetInfo": {
         "TargetType": "SkillTargetEntityList"
       },
@@ -404,7 +459,7 @@
             },
             "AdditiveNormalConfig": {
               "AnchorOffset": {
-                "X": 2,
+                "X": 0,
                 "Y": -0.8,
                 "Z": -6.84
               },
@@ -414,7 +469,7 @@
               },
               "AimOffset": {
                 "X": 0.01,
-                "Y": 1,
+                "Y": 0.3,
                 "Z": 0.34
               }
             },
@@ -426,7 +481,7 @@
             "ShowEntityConfig": {
               "ShowTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "AllTeamMember"
               }
             }
           }
@@ -458,13 +513,13 @@
             },
             "AdditiveNormalConfig": {
               "AnchorOffset": {
-                "X": 2,
-                "Y": -3.27,
-                "Z": -7.18
+                "X": 0,
+                "Y": -2.8,
+                "Z": -6
               },
               "AimOffset": {
                 "X": -0.03,
-                "Y": 1.16,
+                "Y": 0.3,
                 "Z": 1.52
               },
               "ResetToDefault": false
@@ -477,8 +532,33 @@
             "ShowEntityConfig": {
               "ShowTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "AllTeamMember"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Monster_SW_Boss_00_Skill06_Camera",
+      "TargetInfo": {
+        "TargetType": "SkillTargetEntityList"
+      },
+      "OnStart": [
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "CloseupShotConfig": {
+              "CameraTimelineAssetName": "Monster_SW_Boss_00_Skill06_Timeline",
+              "TransTypeFollow": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "TransTypeAim": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "Override": true
             }
           }
         }
@@ -494,7 +574,7 @@
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
             "CloseupShotConfig": {
-              "CameraTimelineAssetName": "Monster_SW_Boss_00_Skill06_Timeline",
+              "CameraTimelineAssetName": "Monster_SW_Boss_00_Skill07_Timeline",
               "TransTypeFollow": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
@@ -564,25 +644,178 @@
       ]
     },
     {
-      "Name": "Monster_SW_Boss_00_Skill09_Camera",
+      "Name": "Monster_SW_Boss_00_Skill10_Camera",
       "TargetInfo": {
-        "TargetType": "SkillTargetEntityList"
+        "TargetType": "Caster"
       },
       "OnStart": [
         {
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
-            "CloseupShotConfig": {
-              "CameraTimelineAssetName": "Monster_SW_Boss_00_Skill07_Timeline",
-              "TransTypeFollow": {
+            "NormalConfig": {
+              "CameraState": "CastAnimation",
+              "AnchorOffset": {
+                "X": 2,
+                "Y": 0,
+                "Z": -10
+              },
+              "AimOffset": {
+                "X": 0,
+                "Y": 0.01,
+                "Z": 0
+              }
+            },
+            "BlendConfig": {
+              "BlendType": "Cut"
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              }
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "AnimStateName": "Skill04_02",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.31499999994412065
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "NormalConfig": {
+              "CameraState": "CasterToTargetPerform",
+              "TemplateName": "Monster_Common_Summon",
+              "AnchorTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllEnemy"
+              },
+              "AimTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              },
+              "ResetToDefault": false
+            },
+            "AdditiveNormalConfig": {
+              "AnchorOffset": {
+                "X": 2,
+                "Y": 0,
+                "Z": 0
+              },
+              "AimOffset": {
+                "X": 0,
+                "Y": -0.5,
+                "Z": 0
+              },
+              "NeedCutBlending": true,
+              "ResetToDefault": false
+            },
+            "BlendConfig": {
+              "BlendType": "Custom",
+              "CustomCurveName": "BlendCut_00to1",
+              "BlendTime": 0.3
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Monster_SW_Boss_00_PassiveSkill_Camera",
+      "TargetInfo": {
+        "TargetType": "Caster"
+      },
+      "OnStart": [
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "NormalConfig": {
+              "CameraState": "CastAnimation",
+              "AnchorOffset": {
+                "X": 0,
+                "Y": 0.25,
+                "Z": -9
+              },
+              "AimTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "TransTypeAim": {
+              "AimOffset": {
+                "X": 0,
+                "Y": 1,
+                "Z": 0
+              }
+            },
+            "BlendConfig": {
+              "BlendType": "Custom",
+              "CustomCurveName": "BlendCut_00to1"
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
+                "Alias": "AllTeamMember"
               },
-              "Override": true
+              "IsAliveOnly": false
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "AnimStateName": "PassiveSkill01",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.6500000006053597
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.VCameraConfigChange",
+          "CameraConfig": {
+            "NormalConfig": {
+              "CameraState": "UseSkillPerform",
+              "AnchorTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              },
+              "AnchorOffset": {
+                "X": 0,
+                "Y": 0,
+                "Z": -5
+              },
+              "AimTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              },
+              "AimOffset": {
+                "X": 0,
+                "Y": -0.5,
+                "Z": 0
+              },
+              "ForbidDynamicOffset": false,
+              "UseSkillPerformEnableCommonTeamWidthOffset": true
+            },
+            "BlendConfig": {
+              "BlendType": "Custom",
+              "CustomCurveName": "BlendCut_00to1",
+              "BlendTime": 0.1
+            },
+            "ShowEntityConfig": {
+              "ShowTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllTeamMember"
+              }
             }
           }
         }

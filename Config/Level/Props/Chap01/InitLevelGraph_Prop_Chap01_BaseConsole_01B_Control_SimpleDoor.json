@@ -42,7 +42,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -52,7 +52,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -93,12 +93,13 @@
                       },
                       "InteractID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 138994180
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            138994180
+                          ]
+                        }
                       }
                     }
                   ]
@@ -141,10 +142,7 @@
               "$type": "RPG.GameCore.EndPropInteract"
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerOpen",
-              "ParameterType": "Trigger",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -152,7 +150,9 @@
                   "Custom": true,
                   "Key": "Maze_Prop_Chap01_BaseControllSimpleDoor"
                 }
-              }
+              },
+              "ParameterName": "TriggerOpen",
+              "ParameterType": "Trigger"
             }
           ],
           "TargetType": {

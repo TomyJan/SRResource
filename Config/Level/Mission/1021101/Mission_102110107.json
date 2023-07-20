@@ -4,6 +4,10 @@
     {
       "TaskList": [
         {
+          "$type": "RPG.GameCore.SetAudioEmotionState",
+          "StateName": "State_Tense"
+        },
+        {
           "$type": "RPG.GameCore.TriggerPerformance",
           "ValueSource": {},
           "PerformanceType": "C",
@@ -16,7 +20,16 @@
           "CreateNpcList": [],
           "CaptureNpcList": [],
           "DestroyNpcList": [],
+          "CreateProp": {
+            "TaskEnabled": false
+          },
+          "DestroyProp": {
+            "TaskEnabled": false
+          },
           "ActiveVirtualCamera": {
+            "TaskEnabled": false
+          },
+          "ActiveTemplateVirtualCamera": {
             "TaskEnabled": false
           },
           "SwitchCharacterAnchor": {
@@ -28,7 +41,14 @@
             "AnchorName": {
               "Value": "Anchor1"
             }
+          },
+          "AdvNpcFaceToPlayer": {
+            "TaskEnabled": false
           }
+        },
+        {
+          "$type": "RPG.GameCore.SetAudioEmotionState",
+          "ResetToFloorDefault": true
         },
         {
           "$type": "RPG.GameCore.TriggerPerformance",

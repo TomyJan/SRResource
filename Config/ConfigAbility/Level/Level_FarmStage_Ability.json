@@ -471,6 +471,51 @@
       "Modifiers": {
         "MFarmRelic_104307": {
           "_CallbackList": {
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByHardLevelProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "HPRatio",
+                  "DynamicKey": "Hardlevel_HP"
+                },
+                {
+                  "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                  "DynamicKey": "TempAttack",
+                  "ReadTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Value": "BaseAttack"
+                },
+                {
+                  "$type": "RPG.GameCore.StackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  },
+                  "Property": "AttackDelta",
+                  "PropertyValue": {
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAAAAQBAQMJ",
+                      "FixedValues": [
+                        {
+                          "Value": 93
+                        }
+                      ],
+                      "DynamicHashes": [
+                        2096350732,
+                        -1959903536
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
             "OnListenCharacterCreate": {
               "CallbackConfig": [
                 {
@@ -481,7 +526,7 @@
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "ParamEntity"
                     },
-                    "Team": "TeamLight"
+                    "Team": "TeamDark"
                   },
                   "SuccessTaskList": [
                     {
@@ -490,31 +535,71 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ParamEntity"
                       },
-                      "ModifierName": "MFarmRelic_104307_DamageAddedRatio"
+                      "ModifierName": "MFarmRelic_104307_DOT"
                     }
                   ]
                 }
               ]
             }
+          },
+          "DynamicValues": {
+            "Values": {
+              "2096350732": {},
+              "-1959903536": {}
+            }
           }
         },
-        "MFarmRelic_104307_DamageAddedRatio": {
+        "MFarmRelic_104307_DOT": {
           "_CallbackList": {
-            "OnStack": {
+            "OnModifierOnStack": {
               "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.StackProperty",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByAnd",
+                    "PredicateList": [
+                      {
+                        "$type": "RPG.GameCore.ByTargetTeam",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity2"
+                        },
+                        "Team": "TeamLight"
+                      },
+                      {
+                        "$type": "RPG.GameCore.ByCheckModifierCallBackBehaviorFlag",
+                        "TargetType": {
+                          "$type": "RPG.GameCore.TargetAlias",
+                          "Alias": "ParamEntity"
+                        },
+                        "Flag": "STAT_DOT"
+                      }
+                    ]
                   },
-                  "Property": "WindAddedRatio",
-                  "PropertyValue": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.7500000006984919
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ModifierOwnerEntity"
+                      },
+                      "ModifierName": "MCommon_DOT_Electric",
+                      "LifeTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 3
+                        }
+                      },
+                      "DynamicValues": {
+                        "Modifier_Electric_DamagePercentage": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1.5000000004656613
+                          }
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }

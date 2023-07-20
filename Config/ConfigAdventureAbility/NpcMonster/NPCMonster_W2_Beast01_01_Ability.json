@@ -64,7 +64,7 @@
           "TriggerBattleDelay": 0.1,
           "AttackDetectConfig": {
             "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
-            "MaxRadius": 3,
+            "MaxRadius": 2.5,
             "FanAngle": 90,
             "Offset": {
               "X": 0,
@@ -118,6 +118,36 @@
         },
         {
           "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Flags": [
+            "Resident"
+          ],
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Maze_Common_Trail02.prefab"
+        }
+      ]
+    },
+    {
+      "Name": "ManikinMonster_W2_Beast01_01_Passive",
+      "TargetInfo": {
+        "TargetType": "Caster"
+      },
+      "OnAdd": [
+        {
+          "$type": "RPG.GameCore.TriggerEffectForUI",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Flags": [
+            "Resident"
+          ],
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Beast01_01/Eff_Monster_W2_Beast01_01_Maze_Common_Trail01.prefab"
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffectForUI",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"

@@ -4,15 +4,335 @@
     {
       "TaskList": [
         {
+          "$type": "RPG.GameCore.SetStageItemState",
+          "ItemList": [
+            {
+              "BlockAlias": "Chap00_CloseView_INT_Train_01",
+              "PrefabAlias": "Pad_03"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.SelectorConfig",
+          "TaskList": [
+            {
+              "$type": "RPG.GameCore.PropStateExecute",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              },
+              "Execute": [
+                {
+                  "$type": "RPG.GameCore.AnimSetParameter",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "ParameterName": "IsOpen",
+                  "ParameterType": "Bool"
+                }
+              ]
+            },
+            {
+              "$type": "RPG.GameCore.PropStateExecute",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              },
+              "State": "Open",
+              "Execute": [
+                {
+                  "$type": "RPG.GameCore.AnimSetParameter",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "ParameterName": "IsOpen",
+                  "ParameterType": "Bool",
+                  "Value": 1
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "TrainVisitor_Radio_01"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
           "$type": "RPG.GameCore.PropSetupUITrigger",
-          "DisableAfterTriggered": true,
           "IconType": "CheckIcon",
           "ButtonText": {
             "Hash": 278713937
           },
           "ButtonCallback": [
             {
+              "$type": "RPG.GameCore.SelectorConfig",
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.PropStateExecute",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "Execute": [
+                    {
+                      "$type": "RPG.GameCore.PropReqInteract",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                      },
+                      "InteractID": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1010
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.PropStateExecute",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "State": "Open",
+                  "Execute": [
+                    {
+                      "$type": "RPG.GameCore.PropReqInteract",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                      },
+                      "InteractID": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1100
+                        }
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.PlayMissionTalk",
+                      "IsVoice3D": true,
+                      "Voice3DTargetType": {
+                        "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+                        "FetchType": "SinglePropByPropID",
+                        "SinglePropID": {
+                          "GroupID": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 66
+                            }
+                          },
+                          "ID": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 300001
+                            }
+                          }
+                        }
+                      },
+                      "SimpleTalkList": [
+                        {
+                          "TalkSentenceID": 100025129,
+                          "ProtectTime": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "OverrideTargetTypes": [],
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+          }
+        }
+      ]
+    },
+    {
+      "IsLoop": true,
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.WaitCustomString",
+          "CustomString": {
+            "Value": "TrainVisitor_Radio_01"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByMainMissionFinish",
+            "MainMissionID": 1021501
+          },
+          "SuccessTaskList": [
+            {
               "$type": "RPG.GameCore.PlayMissionTalk",
+              "IsVoice3D": true,
+              "Voice3DTargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+                "FetchType": "SinglePropByPropID",
+                "SinglePropID": {
+                  "GroupID": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 66
+                    }
+                  },
+                  "ID": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 300001
+                    }
+                  }
+                }
+              },
+              "SimpleTalkList": [
+                {
+                  "TalkSentenceID": 100025128,
+                  "ProtectTime": 3
+                },
+                {
+                  "TalkSentenceID": 102000201,
+                  "ProtectTime": 4
+                },
+                {
+                  "TalkSentenceID": 102000202,
+                  "ProtectTime": 1
+                },
+                {
+                  "TalkSentenceID": 102000203,
+                  "ProtectTime": 5
+                },
+                {
+                  "TalkSentenceID": 102000204,
+                  "ProtectTime": 6
+                },
+                {
+                  "TalkSentenceID": 102000205,
+                  "ProtectTime": 8
+                },
+                {
+                  "TalkSentenceID": 102000206,
+                  "ProtectTime": 7
+                },
+                {
+                  "TalkSentenceID": 102000207,
+                  "ProtectTime": 5
+                },
+                {
+                  "TalkSentenceID": 102000208,
+                  "ProtectTime": 13
+                },
+                {
+                  "TalkSentenceID": 102000211,
+                  "ProtectTime": 15
+                },
+                {
+                  "TalkSentenceID": 102000212,
+                  "ProtectTime": 2
+                },
+                {
+                  "TalkSentenceID": 102000213,
+                  "ProtectTime": 10
+                },
+                {
+                  "TalkSentenceID": 102000214,
+                  "ProtectTime": 12
+                },
+                {
+                  "TalkSentenceID": 102000221,
+                  "ProtectTime": 7
+                },
+                {
+                  "TalkSentenceID": 102000222,
+                  "ProtectTime": 9
+                },
+                {
+                  "TalkSentenceID": 102000223,
+                  "ProtectTime": 15
+                },
+                {
+                  "TalkSentenceID": 102000224,
+                  "ProtectTime": 8
+                },
+                {
+                  "TalkSentenceID": 102000225,
+                  "ProtectTime": 12
+                },
+                {
+                  "TalkSentenceID": 102000231,
+                  "ProtectTime": 10
+                },
+                {
+                  "TalkSentenceID": 102000232,
+                  "ProtectTime": 12
+                },
+                {
+                  "TalkSentenceID": 102000233,
+                  "ProtectTime": 11
+                },
+                {
+                  "TalkSentenceID": 102000234,
+                  "ProtectTime": 7
+                },
+                {
+                  "TalkSentenceID": 102000241,
+                  "ProtectTime": 8
+                },
+                {
+                  "TalkSentenceID": 102000242,
+                  "ProtectTime": 10
+                },
+                {
+                  "TalkSentenceID": 102000243,
+                  "ProtectTime": 9
+                },
+                {
+                  "TalkSentenceID": 102000244,
+                  "ProtectTime": 13
+                },
+                {
+                  "TalkSentenceID": 102000251,
+                  "ProtectTime": 11
+                },
+                {
+                  "TalkSentenceID": 102000252,
+                  "ProtectTime": 7
+                },
+                {
+                  "TalkSentenceID": 100025129,
+                  "ProtectTime": 3
+                }
+              ]
+            }
+          ],
+          "FailedTaskList": [
+            {
+              "$type": "RPG.GameCore.PlayMissionTalk",
+              "IsVoice3D": true,
+              "Voice3DTargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+                "FetchType": "SinglePropByPropID",
+                "SinglePropID": {
+                  "GroupID": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 66
+                    }
+                  },
+                  "ID": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 300001
+                    }
+                  }
+                }
+              },
               "SimpleTalkList": [
                 {
                   "TalkSentenceID": 100025128,
@@ -136,8 +456,53 @@
                 }
               ]
             }
+          ]
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.PropStateChangeListenerConfig",
+          "ToState": "Open",
+          "OnChange": [
+            {
+              "$type": "RPG.GameCore.AnimSetParameter",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              },
+              "ParameterName": "IsOpen",
+              "ParameterType": "Bool",
+              "Value": 1
+            },
+            {
+              "$type": "RPG.GameCore.TriggerCustomString",
+              "CustomString": {
+                "Value": "TrainVisitor_Radio_01"
+              }
+            }
           ],
-          "OverrideTargetTypes": [],
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+          }
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.PropStateChangeListenerConfig",
+          "FromState": "Open",
+          "OnChange": [
+            {
+              "$type": "RPG.GameCore.AnimSetParameter",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              },
+              "ParameterName": "IsOpen",
+              "ParameterType": "Bool"
+            }
+          ],
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           }
@@ -146,15 +511,6 @@
     }
   ],
   "ValueSource": {
-    "Values": [
-      {
-        "$type": "RPG.GameCore.SharedFloat",
-        "Key": "TrainVisitorBubbleTalkSentence"
-      },
-      {
-        "$type": "RPG.GameCore.SharedFloat",
-        "Key": "TrainVisitorBubbleSeq"
-      }
-    ]
+    "Values": []
   }
 }

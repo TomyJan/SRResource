@@ -103,6 +103,7 @@
             {
               "$type": "RPG.GameCore.ModifierOverrideOnHitEffect",
               "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Mar_7th/Eff_Avatar_Mar_7th_00_Common_Halo_Trigger.prefab",
+              "SheildBreakEffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Mar_7th/Eff_Avatar_Mar_7th_00_Common_Halo_Trigger.prefab",
               "ModifierOverrideOnHitEffectPriority": "ModifyOthers",
               "HitEffectStacking": "Multiple",
               "OverrideOffset": true,
@@ -154,21 +155,23 @@
                   "FormulaType": "HealByTargetMaxHP",
                   "HealPercentage": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2054951994
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        2054951994
+                      ]
+                    }
                   },
                   "ModifyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1276127143
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1276127143
+                      ]
+                    }
                   },
                   "DisplayData": {
                     "DitherRangeX": 0,
@@ -214,21 +217,23 @@
               "FormulaType": "ShieldByCasterDefence",
               "ShieldValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2126266902
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2126266902
+                  ]
+                }
               },
               "ShieldPercentage": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -2062890509
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -2062890509
+                  ]
+                }
               },
               "DisplayData": {
                 "DitherRangeX": 0,
@@ -246,12 +251,13 @@
               "Property": "AggroAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -994449299
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -994449299
+                  ]
+                }
               }
             }
           ]
@@ -396,12 +402,13 @@
                   "CurrentState": "CoolDown",
                   "CD": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -94684849
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -94684849
+                      ]
+                    }
                   },
                   "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
                 }
@@ -448,12 +455,13 @@
                   "$type": "RPG.GameCore.ModifyDamageData",
                   "Attacker_WindPenetrate": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1231817797
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1231817797
+                      ]
+                    }
                   }
                 }
               ]
@@ -507,21 +515,17 @@
                       "LifeStepImmediately": true,
                       "LifeTime": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -836136964
-                          },
-                          {
-                            "Type": "FixedNumber",
-                            "FixedValue": {
+                        "PostfixExpr": {
+                          "OpCodes": "AQAAAAMJ",
+                          "FixedValues": [
+                            {
                               "Value": 1
                             }
-                          },
-                          {
-                            "Type": "Sub"
-                          }
-                        ]
+                          ],
+                          "DynamicHashes": [
+                            -836136964
+                          ]
+                        }
                       }
                     },
                     {
@@ -531,21 +535,17 @@
                       "CurrentState": "CoolDown",
                       "CD": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -836136964
-                          },
-                          {
-                            "Type": "FixedNumber",
-                            "FixedValue": {
+                        "PostfixExpr": {
+                          "OpCodes": "AQAAAAMJ",
+                          "FixedValues": [
+                            {
                               "Value": 1
                             }
-                          },
-                          {
-                            "Type": "Sub"
-                          }
-                        ]
+                          ],
+                          "DynamicHashes": [
+                            -836136964
+                          ]
+                        }
                       },
                       "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
                     }
@@ -561,12 +561,13 @@
                       "LifeStepImmediately": true,
                       "LifeTime": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -836136964
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -836136964
+                          ]
+                        }
                       }
                     },
                     {
@@ -576,12 +577,13 @@
                       "CurrentState": "CoolDown",
                       "CD": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -836136964
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -836136964
+                          ]
+                        }
                       },
                       "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
                     }
@@ -630,21 +632,17 @@
                       "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhanceCD",
                       "LifeTime": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -836136964
-                          },
-                          {
-                            "Type": "FixedNumber",
-                            "FixedValue": {
+                        "PostfixExpr": {
+                          "OpCodes": "AQAAAAMJ",
+                          "FixedValues": [
+                            {
                               "Value": 1
                             }
-                          },
-                          {
-                            "Type": "Sub"
-                          }
-                        ]
+                          ],
+                          "DynamicHashes": [
+                            -836136964
+                          ]
+                        }
                       }
                     },
                     {
@@ -654,21 +652,17 @@
                       "CurrentState": "CoolDown",
                       "CD": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -836136964
-                          },
-                          {
-                            "Type": "FixedNumber",
-                            "FixedValue": {
+                        "PostfixExpr": {
+                          "OpCodes": "AQAAAAMJ",
+                          "FixedValues": [
+                            {
                               "Value": 1
                             }
-                          },
-                          {
-                            "Type": "Sub"
-                          }
-                        ]
+                          ],
+                          "DynamicHashes": [
+                            -836136964
+                          ]
+                        }
                       },
                       "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
                     }
@@ -683,12 +677,13 @@
                       "ModifierName": "MAvatar_DanHeng_00_Passive_BeginTargetEnhanceCD",
                       "LifeTime": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -836136964
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -836136964
+                          ]
+                        }
                       }
                     },
                     {
@@ -698,12 +693,13 @@
                       "CurrentState": "CoolDown",
                       "CD": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -836136964
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -836136964
+                          ]
+                        }
                       },
                       "IconPath": "SpriteOutput/BuffIcon/Inlevel/Icon1002Passive.png"
                     }
@@ -742,12 +738,13 @@
               "Property": "FireTakenRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -777,21 +774,17 @@
               "Property": "SpeedDelta",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             },
             {
@@ -818,12 +811,13 @@
                   "Property": "AllDamageTypeTakenRatio",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1247013092
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1247013092
+                      ]
+                    }
                   }
                 }
               ]
@@ -852,12 +846,13 @@
               "Property": "AggroAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -883,12 +878,13 @@
               "Property": "AllDamageTypeAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -914,12 +910,13 @@
               "Property": "FireAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -946,12 +943,13 @@
               "Property": "AttackAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1826473127
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1826473127
+                  ]
+                }
               }
             },
             {
@@ -963,12 +961,13 @@
               "Property": "CriticalDamageConvert",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1424275782
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1424275782
+                  ]
+                }
               }
             }
           ]
@@ -995,12 +994,13 @@
               "Property": "AllDamageTypeAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 625640552
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    625640552
+                  ]
+                }
               }
             }
           ]
@@ -1029,12 +1029,13 @@
               "Property": "SpeedAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1596249176
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1596249176
+                  ]
+                }
               }
             }
           ]
@@ -1060,12 +1061,13 @@
               "Property": "AllDamageTypeAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -831871865
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -831871865
+                  ]
+                }
               }
             }
           ]
@@ -1091,12 +1093,13 @@
               "Property": "DefenceAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1849530227
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1849530227
+                  ]
+                }
               }
             }
           ]
@@ -1143,12 +1146,13 @@
               "Property": "AllDamageTypeAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -1644847981
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -1644847981
+                  ]
+                }
               }
             },
             {
@@ -1175,12 +1179,13 @@
                   "Property": "QuantumPenetrate",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1431075176
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1431075176
+                      ]
+                    }
                   }
                 }
               ]
@@ -1329,12 +1334,13 @@
               "Property": "SpeedAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -1385,19 +1391,14 @@
               "Property": "SpeedAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1062404780
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQQJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574,
+                    1062404780
+                  ]
+                }
               }
             }
           ]
@@ -1426,12 +1427,13 @@
               "Property": "FatigueRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -1458,12 +1460,13 @@
               "Property": "DefenceAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -1492,12 +1495,13 @@
               "Property": "FatigueRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             },
             {
@@ -1545,21 +1549,17 @@
               "Property": "DefenceAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -1585,12 +1585,13 @@
               "Property": "StatusProbabilityBase",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -1775,12 +1776,13 @@
               "Property": "AllDamageReduce",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -1818,12 +1820,13 @@
                   "$type": "RPG.GameCore.ModifyDamageData",
                   "Defender_AllDamageTypeTakenRatio": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2128130574
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        2128130574
+                      ]
+                    }
                   }
                 }
               ]
@@ -1950,12 +1953,13 @@
                 "CompareType": "LessEqual",
                 "CompareValue": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 350792237
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      350792237
+                    ]
+                  }
                 }
               },
               "SuccessTaskList": [
@@ -1969,12 +1973,13 @@
                   "DynamicValues": {
                     "MDF_PropertyValue": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 615124190
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          615124190
+                        ]
+                      }
                     }
                   }
                 }
@@ -1995,12 +2000,13 @@
                 "CompareType": "LessEqual",
                 "CompareValue": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 350792237
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      350792237
+                    ]
+                  }
                 }
               },
               "SuccessTaskList": [
@@ -2014,12 +2020,13 @@
                   "DynamicValues": {
                     "MDF_PropertyValue": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 615124190
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          615124190
+                        ]
+                      }
                     }
                   }
                 }
@@ -2066,12 +2073,13 @@
                   },
                   "AddValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 901482104
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        901482104
+                      ]
+                    }
                   }
                 }
               ]
@@ -2093,12 +2101,13 @@
               "Property": "HealRatioBase",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2125,12 +2134,13 @@
               "Property": "AggroAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2157,21 +2167,17 @@
               "Property": "AggroAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2205,21 +2211,17 @@
               "Property": "AttackAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2248,21 +2250,17 @@
               "Property": "DefenceAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2291,21 +2289,17 @@
               "Property": "SpeedAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2348,28 +2342,6 @@
       "_CallbackList": {
         "OnPhase1": {
           "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "BattleEventCaster"
-                },
-                "Flag": "STAT_CTRL"
-              },
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "BattleEventAbility_JingYuan_Passive_Insert",
-                  "AbilityTarget": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
-                  },
-                  "InsertAbilityPriority": "AvatarBuffSelf"
-                }
-              ]
-            },
             {
               "$type": "RPG.GameCore.TurnInsertAbility",
               "AbilityName": "Avatar_JingYuan_00_Passive_Insert",
@@ -2437,19 +2409,14 @@
               "Property": "SpeedDelta",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1662446059
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQQJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574,
+                    1662446059
+                  ]
+                }
               }
             }
           ]
@@ -2482,12 +2449,13 @@
                   "$type": "RPG.GameCore.ModifyDamageData",
                   "Attacker_AllDamageTypeAddedRatio": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 625640552
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        625640552
+                      ]
+                    }
                   }
                 }
               ]
@@ -2538,19 +2506,14 @@
               "Property": "AllDamageTypeTakenRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1662446059
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQQJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574,
+                    1662446059
+                  ]
+                }
               }
             }
           ]
@@ -2577,12 +2540,13 @@
               "Property": "CriticalDamageBase",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2608,12 +2572,13 @@
               "Property": "AllDamageTypeAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2640,21 +2605,17 @@
               "Property": "AllDamageTypeResistance",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2681,21 +2642,17 @@
               "Property": "StatusResistanceBase",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2725,21 +2682,17 @@
               "Property": "DefenceAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2765,12 +2718,13 @@
               "Property": "SPRatioBase",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2796,12 +2750,13 @@
               "Property": "CriticalChanceBase",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]
@@ -2827,12 +2782,13 @@
               "Property": "AttackAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2128130574
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2128130574
+                  ]
+                }
               }
             }
           ]

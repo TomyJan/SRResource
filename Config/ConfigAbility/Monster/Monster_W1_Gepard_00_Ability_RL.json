@@ -27,7 +27,12 @@
                       {
                         "$type": "RPG.GameCore.ByCompareMonsterPhase",
                         "CompareType": "Equal",
-                        "CompareValue": 1
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 1
+                          }
+                        }
                       }
                     ]
                   },
@@ -148,7 +153,12 @@
                           "Predicate": {
                             "$type": "RPG.GameCore.ByCompareMonsterPhase",
                             "CompareType": "Equal",
-                            "CompareValue": 1
+                            "CompareValue": {
+                              "IsDynamic": false,
+                              "FixedValue": {
+                                "Value": 1
+                              }
+                            }
                           },
                           "SuccessTaskList": [
                             {
@@ -170,7 +180,12 @@
                               "Predicate": {
                                 "$type": "RPG.GameCore.ByCompareMonsterPhase",
                                 "CompareType": "Equal",
-                                "CompareValue": 2
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 2
+                                  }
+                                }
                               },
                               "SuccessTaskList": [
                                 {
@@ -485,12 +500,13 @@
                     {
                       "MonsterID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 806205212
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            806205212
+                          ]
+                        }
                       },
                       "LocationType": "First",
                       "InitAnimStateName": "Appear"
@@ -498,12 +514,13 @@
                     {
                       "MonsterID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 806205207
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            806205207
+                          ]
+                        }
                       },
                       "LocationType": "Last",
                       "InitAnimStateName": "Appear"
@@ -718,12 +735,13 @@
                     {
                       "MonsterID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 806205212
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            806205212
+                          ]
+                        }
                       },
                       "LocationType": "BeforeCaster",
                       "InitAnimStateName": "Appear"
@@ -731,12 +749,13 @@
                     {
                       "MonsterID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 806205212
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            806205212
+                          ]
+                        }
                       },
                       "LocationType": "Last",
                       "InitAnimStateName": "Appear"
@@ -929,12 +948,13 @@
                     {
                       "MonsterID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 806205209
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            806205209
+                          ]
+                        }
                       },
                       "LocationType": "BeforeCaster",
                       "InitAnimStateName": "Appear"
@@ -942,12 +962,13 @@
                     {
                       "MonsterID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 806205209
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            806205209
+                          ]
+                        }
                       },
                       "LocationType": "AfterCaster",
                       "InitAnimStateName": "Appear"
@@ -968,6 +989,71 @@
                     "Alias": "CasterSummonedMinions"
                   },
                   "ModifierName": "MCommon_Servant"
+                }
+              ]
+            },
+            {
+              "NormalizedTime": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 0.11000000010244548
+                }
+              },
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByIsContainModifier",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "Caster"
+                    },
+                    "ModifierName": "SPRL_Flag"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.SummonMonster",
+                      "SummonMonsterDataList": [
+                        {
+                          "MonsterID": {
+                            "IsDynamic": true,
+                            "PostfixExpr": {
+                              "OpCodes": "AQAJ",
+                              "FixedValues": [],
+                              "DynamicHashes": [
+                                806205209
+                              ]
+                            }
+                          },
+                          "LocationType": "First",
+                          "InitAnimStateName": "Appear"
+                        },
+                        {
+                          "MonsterID": {
+                            "IsDynamic": true,
+                            "PostfixExpr": {
+                              "OpCodes": "AQAJ",
+                              "FixedValues": [],
+                              "DynamicHashes": [
+                                806205209
+                              ]
+                            }
+                          },
+                          "LocationType": "Last",
+                          "InitAnimStateName": "Appear"
+                        }
+                      ],
+                      "RefreshTeamLocation": false
+                    },
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "CasterSummonedMinions"
+                      },
+                      "ModifierName": "MCommon_Servant"
+                    }
+                  ]
                 }
               ]
             }
@@ -1126,12 +1212,13 @@
             "DamageType": "Ice",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -1308,12 +1395,13 @@
             "DamageType": "Ice",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1847083384
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -1497,30 +1585,33 @@
           "DynamicValues": {
             "MDF_ShieldPercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -9306705
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -9306705
+                ]
+              }
             },
             "MDF_MaxHPHitPercentage1": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 878681326
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  878681326
+                ]
+              }
             },
             "MDF_MaxHPHitPercentage2": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 131964973
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  131964973
+                ]
+              }
             }
           },
           "IsShowUIMessageFromModel": false
@@ -1792,12 +1883,13 @@
             "DamageType": "Ice",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -190305622
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -190305622
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -1856,12 +1948,13 @@
           "DynamicValues": {
             "MDF_DamageAddedRatio": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1498984993
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1498984993
+                ]
+              }
             }
           }
         },
@@ -2008,12 +2101,13 @@
           "ModifierName": "Monster_Gepard_Attack_Sign",
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1816074776
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1816074776
+              ]
+            }
           }
         },
         {
@@ -2317,12 +2411,13 @@
             "DamageType": "Ice",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 668244815
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  668244815
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -2456,329 +2551,6 @@
         {
           "$type": "RPG.GameCore.WaitSecond",
           "WaitTime": 1
-        },
-        {
-          "$type": "RPG.GameCore.SkillPerformFinish"
-        }
-      ]
-    },
-    {
-      "Name": "Monster_W1_Gepard_00_RL_Skill12_Phase01",
-      "TargetInfo": {
-        "TargetType": "SkillTargetEntityList"
-      },
-      "OnStart": [
-        {
-          "$type": "RPG.GameCore.SetTeamFormation",
-          "Team": "TeamLight",
-          "CustomFormationName": "W1_Gepard_00_Skill12_LightTeam",
-          "CustomCenterTargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "LightTeamCenter"
-          },
-          "CustomFormationIgnoreDying": false
-        },
-        {
-          "$type": "RPG.GameCore.TriggerAbility",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AbilityName": "Monster_W1_Gepard_00_RL_Skill12_Phase02",
-          "IsSkillPerform": true
-        },
-        {
-          "$type": "RPG.GameCore.TriggerAbility",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AbilityName": "Monster_W1_Gepard_00_RL_Skill12_Camera",
-          "IsSkillPerform": true
-        },
-        {
-          "$type": "RPG.GameCore.MoveToTargetList",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AnimStateName": "Skill12",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
-            }
-          },
-          "NormalizedTimeWait": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.8500000007916242
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.MoveToTargetPosition",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "TeamFormation"
-          },
-          "IgnoreRadius": true,
-          "OffsetTargetDistance": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.TriggerAnimState",
-          "AnimLogicState": "Idle",
-          "NormalizedTransitionDuration": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.1500000001396984
-            }
-          }
-        }
-      ]
-    },
-    {
-      "Name": "Monster_W1_Gepard_00_RL_Skill12_Phase02",
-      "TargetInfo": {
-        "TargetType": "SkillTargetEntityList"
-      },
-      "OnStart": [
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AnimStateName": "Skill12",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.10000000009313226
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.SkillExecutionStart"
-        },
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AnimStateName": "Skill12",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.33000000030733645
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.PredicateTaskList",
-          "Predicate": {
-            "$type": "RPG.GameCore.ByCompareMonsterPhase",
-            "CompareType": "Equal",
-            "CompareValue": 1
-          },
-          "SuccessTaskList": [
-            {
-              "$type": "RPG.GameCore.PredicateTaskList",
-              "Predicate": {
-                "$type": "RPG.GameCore.ByCompareCharacterNumber",
-                "TargetType": {
-                  "$type": "RPG.GameCore.TargetAlias",
-                  "Alias": "AllTeammate"
-                },
-                "CompareType": "Equal",
-                "CompareNumber": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
-                  }
-                }
-              },
-              "SuccessTaskList": [
-                {
-                  "$type": "RPG.GameCore.Retarget",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllTeammate"
-                  },
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareMonsterID",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "ParamEntity"
-                    },
-                    "TargetMonsterID": {
-                      "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 806205212
-                        }
-                      ]
-                    }
-                  },
-                  "TaskList": [
-                    {
-                      "$type": "RPG.GameCore.SummonMonster",
-                      "SummonMonsterDataList": [
-                        {
-                          "MonsterID": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 806205207
-                              }
-                            ]
-                          },
-                          "LocationType": "AfterCaster",
-                          "InitAnimStateName": "Appear"
-                        }
-                      ],
-                      "DelayRatio": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.5000000004656613
-                        }
-                      },
-                      "RefreshTeamLocation": false
-                    }
-                  ],
-                  "FailedTaskList": [
-                    {
-                      "$type": "RPG.GameCore.SummonMonster",
-                      "SummonMonsterDataList": [
-                        {
-                          "MonsterID": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 806205212
-                              }
-                            ]
-                          },
-                          "LocationType": "First",
-                          "InitAnimStateName": "Appear"
-                        }
-                      ],
-                      "DelayRatio": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.5000000004656613
-                        }
-                      },
-                      "RefreshTeamLocation": false
-                    }
-                  ]
-                }
-              ],
-              "FailedTaskList": [
-                {
-                  "$type": "RPG.GameCore.PredicateTaskList",
-                  "Predicate": {
-                    "$type": "RPG.GameCore.ByCompareCharacterNumber",
-                    "TargetType": {
-                      "$type": "RPG.GameCore.TargetAlias",
-                      "Alias": "AllTeammate"
-                    },
-                    "CompareType": "Equal",
-                    "CompareNumber": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 0
-                      }
-                    }
-                  },
-                  "SuccessTaskList": [
-                    {
-                      "$type": "RPG.GameCore.SummonMonster",
-                      "SummonMonsterDataList": [
-                        {
-                          "MonsterID": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 806205207
-                              }
-                            ]
-                          },
-                          "LocationType": "AfterCaster",
-                          "InitAnimStateName": "Appear"
-                        },
-                        {
-                          "MonsterID": {
-                            "IsDynamic": true,
-                            "Expressions": [
-                              {
-                                "Type": "DynamicNumber",
-                                "DynamicHash": 806205212
-                              }
-                            ]
-                          },
-                          "LocationType": "First",
-                          "InitAnimStateName": "Appear"
-                        }
-                      ],
-                      "DelayRatio": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.5000000004656613
-                        }
-                      },
-                      "RefreshTeamLocation": false
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "CasterSummonedMinions"
-          },
-          "ModifierName": "MCommon_Servant"
-        },
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AnimStateName": "Skill12",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.4300000004004687
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AnimStateName": "Skill12",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.7000000006519258
-            }
-          }
         },
         {
           "$type": "RPG.GameCore.SkillPerformFinish"
@@ -3427,12 +3199,13 @@
             {
               "MonsterID": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 806205212
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    806205212
+                  ]
+                }
               },
               "LocationType": "First",
               "InitAnimStateName": "Appear"
@@ -3440,12 +3213,13 @@
             {
               "MonsterID": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 806205207
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    806205207
+                  ]
+                }
               },
               "LocationType": "Last",
               "InitAnimStateName": "Appear"
@@ -3659,7 +3433,12 @@
                       "Alias": "ModifierOwnerEntity"
                     },
                     "CompareType": "Equal",
-                    "CompareValue": 1
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    }
                   },
                   "SuccessTaskList": [
                     {
@@ -3685,7 +3464,12 @@
                           "Alias": "ModifierOwnerEntity"
                         },
                         "CompareType": "Equal",
-                        "CompareValue": 2
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 2
+                          }
+                        }
                       },
                       "SuccessTaskList": [
                         {
@@ -3866,19 +3650,14 @@
               "Property": "AllDamageTypeAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 625640552
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -2027709849
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQQJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    625640552,
+                    -2027709849
+                  ]
+                }
               }
             },
             {
@@ -3887,7 +3666,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Rogue_AttackRise.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_AttackUp.prefab"
             }
           ]
         }
@@ -4008,12 +3787,13 @@
               "RatioType": "MaxHP",
               "Ratio": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -100297654
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -100297654
+                  ]
+                }
               },
               "Floor": {
                 "Value": 1
@@ -4031,12 +3811,13 @@
               "RatioType": "MaxHP",
               "Ratio": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -100297657
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -100297657
+                  ]
+                }
               },
               "Floor": {
                 "Value": 1
@@ -4050,21 +3831,23 @@
               "Active": "False",
               "MaxCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2126266902
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2126266902
+                  ]
+                }
               },
               "CurrentCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2126266902
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2126266902
+                  ]
+                }
               }
             },
             {
@@ -4202,39 +3985,30 @@
               "FormulaType": "ShieldByCasterMaxHP",
               "ShieldValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAAJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  }
-                ]
+                  ],
+                  "DynamicHashes": []
+                }
               },
               "ShieldPercentage": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -2062890509
-                  },
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AQAAAAUBAQQJ",
+                  "FixedValues": [
+                    {
                       "Value": 3
                     }
-                  },
-                  {
-                    "Type": "Div"
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -2027709849
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    -2062890509,
+                    -2027709849
+                  ]
+                }
               },
               "DisplayData": {
                 "DitherRangeX": 0,
@@ -4262,21 +4036,23 @@
               "IconPath": "SpriteOutput/BuffIcon/Inlevel/IconMonster_W1_Gepard_00_EnergyBar.png",
               "MaxCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2126266902
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2126266902
+                  ]
+                }
               },
               "CurrentCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2126266902
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2126266902
+                  ]
+                }
               }
             }
           ]
@@ -4297,21 +4073,23 @@
               "CenterStyle": 6,
               "MaxCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2126266902
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2126266902
+                  ]
+                }
               },
               "CurrentCount": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -527113652
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -527113652
+                  ]
+                }
               }
             }
           ]
@@ -4342,7 +4120,7 @@
             },
             {
               "$type": "RPG.GameCore.ModifierOverrideOnHitEffect",
-              "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Gepard/Eff_Avatar_Gepard_00_Common_Shield.prefab",
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Gepard_00/Eff_Monster_W1_Gepard_00_Common_Shield_01.prefab",
               "ModifierOverrideOnHitEffectPriority": "ModifyOthers",
               "HitEffectStacking": "Multiple",
               "OverrideOffset": true,
@@ -4377,7 +4155,6 @@
       "UIConfig": {
         "ModifierUIPriority": "HardControl"
       },
-      "Stacking": "Replace",
       "DynamicValues": {
         "Values": {
           "2126266902": {},
@@ -4389,7 +4166,6 @@
       "UIConfig": {
         "ModifierUIPriority": "Buff"
       },
-      "Stacking": "Replace",
       "DynamicValues": {
         "Values": {
           "2126266902": {},

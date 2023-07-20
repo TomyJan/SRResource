@@ -23,14 +23,13 @@
                   }
                 },
                 {
-                  "$type": "RPG.GameCore.PropAnimSetParameter",
-                  "ParameterName": "IsOn1F",
-                  "ParameterType": "Bool",
-                  "BoolValue": true,
-                  "FloatValue": 3.402823E+38,
+                  "$type": "RPG.GameCore.AnimSetParameter",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                  }
+                  },
+                  "ParameterName": "IsOn1F",
+                  "ParameterType": "Bool",
+                  "Value": 1
                 },
                 {
                   "$type": "RPG.GameCore.PropTriggerAnimState",
@@ -59,14 +58,13 @@
                   }
                 },
                 {
-                  "$type": "RPG.GameCore.PropAnimSetParameter",
-                  "ParameterName": "IsOn2F",
-                  "ParameterType": "Bool",
-                  "BoolValue": true,
-                  "FloatValue": 3.402823E+38,
+                  "$type": "RPG.GameCore.AnimSetParameter",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                  }
+                  },
+                  "ParameterName": "IsOn2F",
+                  "ParameterType": "Bool",
+                  "Value": 1
                 },
                 {
                   "$type": "RPG.GameCore.PropTriggerAnimState",
@@ -86,27 +84,27 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -114,7 +112,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -272,23 +270,20 @@
           "ToState": "Elevator2",
           "OnChange": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerMove",
-              "ParameterType": "Trigger",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "TriggerMove",
+              "ParameterType": "Trigger"
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "IsOn1F",
-              "ParameterType": "Bool",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "IsOn1F",
+              "ParameterType": "Bool"
             },
             {
               "$type": "RPG.GameCore.WaitSecond",
@@ -298,12 +293,13 @@
               "$type": "RPG.GameCore.PropMoveTo",
               "Duration": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2003200006
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2003200006
+                  ]
+                }
               },
               "LevelAreaKey": {
                 "Custom": true,
@@ -316,24 +312,21 @@
               }
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
+              "$type": "RPG.GameCore.AnimSetParameter",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              },
               "ParameterName": "IsOn2F",
               "ParameterType": "Bool",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              "Value": 1
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerStop",
-              "ParameterType": "Trigger",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "TriggerStop",
+              "ParameterType": "Trigger"
             }
           ],
           "TargetType": {
@@ -350,23 +343,20 @@
           "ToState": "Elevator1",
           "OnChange": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerMove",
-              "ParameterType": "Trigger",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "TriggerMove",
+              "ParameterType": "Trigger"
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "IsOn2F",
-              "ParameterType": "Bool",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "IsOn2F",
+              "ParameterType": "Bool"
             },
             {
               "$type": "RPG.GameCore.WaitSecond",
@@ -376,12 +366,13 @@
               "$type": "RPG.GameCore.PropMoveTo",
               "Duration": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 2003200006
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    2003200006
+                  ]
+                }
               },
               "LevelAreaKey": {
                 "Custom": true,
@@ -394,24 +385,21 @@
               }
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
+              "$type": "RPG.GameCore.AnimSetParameter",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              },
               "ParameterName": "IsOn1F",
               "ParameterType": "Bool",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              "Value": 1
             },
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerStop",
-              "ParameterType": "Trigger",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "TriggerStop",
+              "ParameterType": "Trigger"
             }
           ],
           "TargetType": {

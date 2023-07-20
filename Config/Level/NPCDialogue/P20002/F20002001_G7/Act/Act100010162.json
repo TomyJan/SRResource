@@ -4,6 +4,14 @@
     {
       "TaskList": [
         {
+          "$type": "RPG.GameCore.CollectDataConditions",
+          "TaskIDList": [],
+          "MainMissionIDList": [
+            1021301
+          ],
+          "PerformanceIDList": []
+        },
+        {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
           "PerformanceType": "E",
           "HideMunicipalCrowd": false,
@@ -511,15 +519,12 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PlaySimpleTalk",
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
                   "SimpleTalkList": [
                     {
                       "TalkSentenceID": 100025019
                     }
                   ]
-                },
-                {
-                  "$type": "RPG.GameCore.WaitSimpleTalkFinish"
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
@@ -538,15 +543,12 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PlaySimpleTalk",
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
                   "SimpleTalkList": [
                     {
                       "TalkSentenceID": 100025020
                     }
                   ]
-                },
-                {
-                  "$type": "RPG.GameCore.WaitSimpleTalkFinish"
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
@@ -565,15 +567,12 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PlaySimpleTalk",
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
                   "SimpleTalkList": [
                     {
                       "TalkSentenceID": 100025021
                     }
                   ]
-                },
-                {
-                  "$type": "RPG.GameCore.WaitSimpleTalkFinish"
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
@@ -592,21 +591,49 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PlaySimpleTalk",
-                  "SimpleTalkList": [
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareMainMissionState",
+                    "MainMissionID": 1021301
+                  },
+                  "SuccessTaskList": [
                     {
-                      "TalkSentenceID": 100025022
+                      "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                      "SimpleTalkList": [
+                        {
+                          "TalkSentenceID": 100025037
+                        },
+                        {
+                          "TalkSentenceID": 100025038
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerCustomString",
+                      "CustomString": {
+                        "Value": "100010162_End"
+                      }
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.PlaySimpleTalk",
+                      "SimpleTalkList": [
+                        {
+                          "TalkSentenceID": 100025022
+                        }
+                      ]
+                    },
+                    {
+                      "$type": "RPG.GameCore.WaitSimpleTalkFinish"
+                    },
+                    {
+                      "$type": "RPG.GameCore.TriggerCustomString",
+                      "CustomString": {
+                        "Value": "100010162_End"
+                      }
                     }
                   ]
-                },
-                {
-                  "$type": "RPG.GameCore.WaitSimpleTalkFinish"
-                },
-                {
-                  "$type": "RPG.GameCore.TriggerCustomString",
-                  "CustomString": {
-                    "Value": "100010162_End"
-                  }
                 }
               ]
             },
@@ -619,15 +646,12 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PlaySimpleTalk",
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
                   "SimpleTalkList": [
                     {
                       "TalkSentenceID": 100025023
                     }
                   ]
-                },
-                {
-                  "$type": "RPG.GameCore.WaitSimpleTalkFinish"
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
@@ -646,7 +670,7 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PlaySimpleTalk",
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
                   "SimpleTalkList": [
                     {
                       "TalkSentenceID": 100025024
@@ -654,7 +678,31 @@
                   ]
                 },
                 {
-                  "$type": "RPG.GameCore.WaitSimpleTalkFinish"
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1213
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025039
+                    },
+                    {
+                      "TalkSentenceID": 100025040
+                    }
+                  ]
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
@@ -673,7 +721,7 @@
               },
               "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PlaySimpleTalk",
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
                   "SimpleTalkList": [
                     {
                       "TalkSentenceID": 100025025
@@ -681,7 +729,298 @@
                   ]
                 },
                 {
-                  "$type": "RPG.GameCore.WaitSimpleTalkFinish"
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1217
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025041
+                    },
+                    {
+                      "TalkSentenceID": 100025042
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1107
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025043
+                    },
+                    {
+                      "TalkSentenceID": 100025044
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1111
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025045
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1110
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025046
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1112
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025047
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1208
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025048
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1210
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025049
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1214
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025050
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1215
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025051
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1206
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025052
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1212
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025053
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "100010162_End"
+                  }
+                }
+              ]
+            },
+            {
+              "Predicate": {
+                "$type": "RPG.GameCore.ByLocalPlayerAvatarID",
+                "AvatarIDs": [
+                  1211
+                ]
+              },
+              "SuccessTaskList": [
+                {
+                  "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "SimpleTalkList": [
+                    {
+                      "TalkSentenceID": 100025054
+                    }
+                  ]
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
@@ -715,37 +1054,70 @@
           "$type": "RPG.GameCore.RandomConfig",
           "OddsList": [
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.0900000010151416
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.0900000010151416
+              }
             },
             {
-              "Value": 0.10000000102445483
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 0.10000000102445483
+              }
             }
           ],
           "TaskList": [

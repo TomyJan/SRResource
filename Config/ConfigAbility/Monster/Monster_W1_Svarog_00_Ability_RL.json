@@ -20,12 +20,13 @@
                         "CompareType": "LessEqual",
                         "CompareValue": {
                           "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": -71259139
-                            }
-                          ]
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              -71259139
+                            ]
+                          }
                         }
                       },
                       {
@@ -35,7 +36,12 @@
                           "Alias": "ModifierOwnerEntity"
                         },
                         "CompareType": "Equal",
-                        "CompareValue": 3
+                        "CompareValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 3
+                          }
+                        }
                       }
                     ]
                   },
@@ -113,6 +119,51 @@
                             }
                           ],
                           "LifeTime": 2
+                        },
+                        {
+                          "$type": "RPG.GameCore.Retarget",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetAlias",
+                            "Alias": "CasterSummonedMinions"
+                          },
+                          "TaskList": [
+                            {
+                              "$type": "RPG.GameCore.PredicateTaskList",
+                              "Predicate": {
+                                "$type": "RPG.GameCore.ByCompareDynamicValue",
+                                "TargetType": {
+                                  "$type": "RPG.GameCore.TargetAlias",
+                                  "Alias": "ParamEntity"
+                                },
+                                "DynamicKey": "PartDecisionFlag",
+                                "ContextScope": "TargetEntity",
+                                "CompareType": "Equal",
+                                "CompareValue": {
+                                  "IsDynamic": false,
+                                  "FixedValue": {
+                                    "Value": 1
+                                  }
+                                }
+                              },
+                              "SuccessTaskList": [
+                                {
+                                  "$type": "RPG.GameCore.DefineDynamicValue",
+                                  "TargetType": {
+                                    "$type": "RPG.GameCore.TargetAlias",
+                                    "Alias": "ParamEntity"
+                                  },
+                                  "DynamicKey": "PartDecisionFlag",
+                                  "ResetValue": {
+                                    "IsDynamic": false,
+                                    "FixedValue": {
+                                      "Value": 2
+                                    }
+                                  },
+                                  "ContextScope": "TargetEntity"
+                                }
+                              ]
+                            }
+                          ]
                         }
                       ]
                     },
@@ -187,12 +238,13 @@
           "DynamicValues": {
             "MDF_LowHPRatio": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1303989190
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  1303989190
+                ]
+              }
             }
           }
         },
@@ -390,12 +442,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -551,12 +604,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1847083384
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -585,12 +639,13 @@
           },
           "AddNormalizedValue": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -176140990
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -176140990
+              ]
+            }
           }
         },
         {
@@ -1035,12 +1090,13 @@
           "DynamicValues": {
             "PassiveSkill02_P2_HPRatio": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -2005413301
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -2005413301
+                ]
+              }
             }
           }
         },
@@ -1062,12 +1118,13 @@
           "DynamicValues": {
             "Modifier_DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -56289053
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -56289053
+                ]
+              }
             }
           }
         },
@@ -1358,12 +1415,13 @@
             "AttackProperty": {
               "DamagePercentage": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -190305622
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -190305622
+                  ]
+                }
               },
               "SPHitRatio": {
                 "IsDynamic": false,
@@ -1411,22 +1469,24 @@
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 222217766
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                222217766
+              ]
+            }
           },
           "DynamicValues": {
             "MDF_DefenceAddedRatio_PerLayer": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -624065162
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -624065162
+                ]
+              }
             }
           }
         },
@@ -1637,12 +1697,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -402291451
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -402291451
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -1904,12 +1965,13 @@
           "DynamicValues": {
             "MDF_DamageUpRatio_PerLayer": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 575998175
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  575998175
+                ]
+              }
             }
           }
         },
@@ -2034,11 +2096,8 @@
                   "$type": "RPG.GameCore.SummonMonster",
                   "SummonMonsterDataList": [
                     {
-                      "MonsterID": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 1012041
-                        }
+                      "MonsterIDFromCustomValue": {
+                        "Hash": -1627316931
                       },
                       "LocationType": "First",
                       "InitAnimStateName": "Appear"
@@ -2058,11 +2117,8 @@
                   "$type": "RPG.GameCore.SummonMonster",
                   "SummonMonsterDataList": [
                     {
-                      "MonsterID": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 1012041
-                        }
+                      "MonsterIDFromCustomValue": {
+                        "Hash": -1627316931
                       },
                       "LocationType": "Last",
                       "InitAnimStateName": "Appear"
@@ -2102,12 +2158,13 @@
                   "DynamicKey": "LowHPRatio",
                   "Value": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1303989190
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1303989190
+                      ]
+                    }
                   }
                 }
               ]
@@ -2158,12 +2215,13 @@
                 "CompareType": "LessEqual",
                 "CompareValue": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1303989190
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1303989190
+                    ]
+                  }
                 }
               },
               "SuccessTaskList": [],
@@ -2178,12 +2236,13 @@
                   "DynamicValues": {
                     "PassiveSkill02_P2_HPRatio": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -2005413301
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -2005413301
+                        ]
+                      }
                     }
                   }
                 }
@@ -2540,12 +2599,13 @@
           "DynamicValues": {
             "MDF_DamageUpRatio_PerLayer": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -683180250
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -683180250
+                ]
+              }
             }
           }
         },
@@ -2923,22 +2983,24 @@
                       "ModifierName": "Monster_W1_Svarog_00_RL_AttackUp",
                       "LayerAddWhenStack": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 1530344204
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            1530344204
+                          ]
+                        }
                       },
                       "DynamicValues": {
                         "MDF_DamageUpRatio_PerLayer": {
                           "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": 575998175
-                            }
-                          ]
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              575998175
+                            ]
+                          }
                         }
                       }
                     }
@@ -3197,22 +3259,24 @@
                   "ModifierName": "Monster_W1_Svarog_00_RL_AttackUp",
                   "LayerAddWhenStack": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1530344204
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1530344204
+                      ]
+                    }
                   },
                   "DynamicValues": {
                     "MDF_DamageUpRatio_PerLayer": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 575998175
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          575998175
+                        ]
+                      }
                     }
                   }
                 }
@@ -3872,12 +3936,13 @@
           "DynamicValues": {
             "PassiveSkill02_P2_HPRatio": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -2005413301
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -2005413301
+                ]
+              }
             }
           }
         }
@@ -3913,12 +3978,13 @@
                   "DynamicValues": {
                     "PassiveSkill04_SpeedDelta": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 2091463550
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          2091463550
+                        ]
+                      }
                     }
                   }
                 }
@@ -3939,12 +4005,13 @@
                   "Property": "SpeedDelta",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 2091463550
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        2091463550
+                      ]
+                    }
                   }
                 }
               ]
@@ -3963,12 +4030,13 @@
     "Monster_W1_Svarog_00_RL_AttackUp": {
       "LayerAddWhenStack": {
         "IsDynamic": true,
-        "Expressions": [
-          {
-            "Type": "DynamicNumber",
-            "DynamicHash": -797864550
-          }
-        ]
+        "PostfixExpr": {
+          "OpCodes": "AQAJ",
+          "FixedValues": [],
+          "DynamicHashes": [
+            -797864550
+          ]
+        }
       },
       "_CallbackList": {
         "OnStack": {
@@ -3990,7 +4058,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Rogue_AttackRise.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_AttackUp.prefab"
             },
             {
               "$type": "RPG.GameCore.StackProperty",
@@ -4001,19 +4069,14 @@
               "Property": "AllDamageTypeAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -945261968
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1458882163
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQQJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -945261968,
+                    1458882163
+                  ]
+                }
               }
             }
           ]
@@ -4033,12 +4096,13 @@
       "MaxLayer": 10,
       "LayerAddWhenStack": {
         "IsDynamic": true,
-        "Expressions": [
-          {
-            "Type": "DynamicNumber",
-            "DynamicHash": -797864550
-          }
-        ]
+        "PostfixExpr": {
+          "OpCodes": "AQAJ",
+          "FixedValues": [],
+          "DynamicHashes": [
+            -797864550
+          ]
+        }
       },
       "LifeStepMoment": "ModifierPhase1End",
       "BehaviorFlagList": [
@@ -4075,28 +4139,18 @@
               "Property": "DefenceAddedRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAEBBAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 0
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1693774390
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1458882163
-                  },
-                  {
-                    "Type": "Mul"
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    1693774390,
+                    1458882163
+                  ]
+                }
               }
             }
           ]
@@ -4200,12 +4254,13 @@
                     "CompareType": "LessEqual",
                     "CompareValue": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 2100311627
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          2100311627
+                        ]
+                      }
                     }
                   },
                   {
@@ -4451,7 +4506,12 @@
                   "Alias": "ModifierOwnerEntity"
                 },
                 "CompareType": "Equal",
-                "CompareValue": 1
+                "CompareValue": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 1
+                  }
+                }
               },
               "SuccessTaskList": [
                 {

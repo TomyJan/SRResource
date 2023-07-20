@@ -201,7 +201,7 @@
       },
       "OnStart": [
         {
-          "$type": "RPG.GameCore.AdventureMonsterEscape",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -235,6 +235,27 @@
             "Alias": "Caster"
           },
           "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_Rogue_BossEnhance.prefab"
+        }
+      ]
+    },
+    {
+      "Name": "MazeMonster_CommonAbility_BossEnhanceEffect_Special",
+      "TargetInfo": {
+        "TargetType": "Caster"
+      },
+      "OnStart": [
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_Rogue_BossEnhance.prefab",
+          "Scale": {
+            "X": 1.2,
+            "Y": 1.2,
+            "Z": 1.2
+          }
         }
       ]
     },

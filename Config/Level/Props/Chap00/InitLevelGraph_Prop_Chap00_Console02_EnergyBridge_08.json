@@ -3,23 +3,23 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -27,23 +27,23 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -53,7 +53,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -85,10 +85,15 @@
                       "WaitTime": 0.7
                     },
                     {
-                      "$type": "RPG.GameCore.PropTriggerAnimState",
-                      "AnimStateName": "Open",
+                      "$type": "RPG.GameCore.PropReqInteract",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                      },
+                      "InteractID": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1010
+                        }
                       }
                     },
                     {
@@ -99,22 +104,6 @@
                       "$type": "RPG.GameCore.TriggerCustomString",
                       "CustomString": {
                         "Value": "N2_FlipBridge_Triggerd"
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.WaitSecond",
-                      "WaitTime": 0.5
-                    },
-                    {
-                      "$type": "RPG.GameCore.PropReqInteract",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                      },
-                      "InteractID": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 1010
-                        }
                       }
                     }
                   ]
@@ -131,10 +120,15 @@
                       "WaitTime": 0.7
                     },
                     {
-                      "$type": "RPG.GameCore.PropTriggerAnimState",
-                      "AnimStateName": "Close",
+                      "$type": "RPG.GameCore.PropReqInteract",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                      },
+                      "InteractID": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1100
+                        }
                       }
                     },
                     {
@@ -146,28 +140,13 @@
                       "CustomString": {
                         "Value": "N2_FlipBridge_Triggerd"
                       }
-                    },
-                    {
-                      "$type": "RPG.GameCore.WaitSecond",
-                      "WaitTime": 0.5
-                    },
-                    {
-                      "$type": "RPG.GameCore.PropReqInteract",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                      },
-                      "InteractID": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 1100
-                        }
-                      }
                     }
                   ]
                 }
               ]
             }
           ],
+          "OverrideTargetTypes": [],
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           }

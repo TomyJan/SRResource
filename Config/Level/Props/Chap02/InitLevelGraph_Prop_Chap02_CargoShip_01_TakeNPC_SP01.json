@@ -405,8 +405,6 @@
               "HideMunicipalCrowd": false,
               "HideMunicipalPedestrian": false,
               "PropVisiableList": [],
-              "StreamingCentersInBlackMask": [],
-              "StreamingCentersAfterBlackMask": [],
               "MarkStreamingItems": []
             },
             {
@@ -481,7 +479,7 @@
               }
             },
             {
-              "$type": "RPG.GameCore.PropTriggerEffectList",
+              "$type": "RPG.GameCore.TriggerEffectList",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -597,11 +595,7 @@
           "ToState": "Open",
           "OnChange": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerDoorOpen",
-              "ParameterType": "Trigger",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -609,7 +603,9 @@
                   "Custom": true,
                   "Key": "PuzzleCompass_CargoShip"
                 }
-              }
+              },
+              "ParameterName": "TriggerDoorOpen",
+              "ParameterType": "Trigger"
             },
             {
               "$type": "RPG.GameCore.PropEnableCollider",
@@ -656,10 +652,7 @@
           "ToState": "ChestClosed",
           "OnChange": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerUnlock",
-              "ParameterType": "Trigger",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -667,7 +660,9 @@
                   "Custom": true,
                   "Key": "PuzzleCompass_CargoChest01"
                 }
-              }
+              },
+              "ParameterName": "TriggerUnlock",
+              "ParameterType": "Trigger"
             }
           ],
           "TargetType": {
@@ -781,7 +776,7 @@
                   "State": "ChestLocked",
                   "Execute": [
                     {
-                      "$type": "RPG.GameCore.PropRemoveEffect",
+                      "$type": "RPG.GameCore.RemoveEffect",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                         "FetchType": "SinglePropByPropKey",

@@ -10,12 +10,13 @@
                   "$type": "RPG.GameCore.SetDynamicValueByRaidTargetProgress",
                   "RaidTargetID": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 462955996
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        462955996
+                      ]
+                    }
                   },
                   "CurrentProgressKey": "Raid_CurrentProgressKey",
                   "TotalProgressKey": "Raid_TotalProgressKey",
@@ -27,28 +28,24 @@
                   "DynamicValues": {
                     "BattleEventTurnLeftParamAbility": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1580909397
-                        },
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1013377410
-                        },
-                        {
-                          "Type": "Sub"
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQABAQMJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          1580909397,
+                          1013377410
+                        ]
+                      }
                     },
                     "TargetID": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 462955996
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          462955996
+                        ]
+                      }
                     }
                   }
                 }
@@ -83,7 +80,7 @@
     },
     {
       "Modifiers": {
-        "Modifier_BattleEventAbility_RogueChallengeTurnLimit_SpecialDrop": {
+        "Modifier_BattleEventAbility_RaidChallengeTurnLimit_RaidTimeCount": {
           "_CallbackList": {
             "OnCreate": {
               "CallbackConfig": []
@@ -97,12 +94,13 @@
                   "$type": "RPG.GameCore.SetRaidTargetProgress",
                   "RaidTargetID": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -151292771
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -151292771
+                      ]
+                    }
                   },
                   "ModifyValue": {
                     "IsDynamic": false,
@@ -175,12 +173,13 @@
           "LimitType": "Custom",
           "LimitCount": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1396861667
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1396861667
+              ]
+            }
           }
         },
         {
@@ -212,25 +211,27 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ModifierName": "Modifier_BattleEventAbility_RogueChallengeTurnLimit_SpecialDrop",
+          "ModifierName": "Modifier_BattleEventAbility_RaidChallengeTurnLimit_RaidTimeCount",
           "DynamicValues": {
             "BattleEventTurnLeftParam": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1396861667
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1396861667
+                ]
+              }
             },
             "ToRaidTargetID": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -2091559634
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -2091559634
+                ]
+              }
             }
           }
         }
@@ -257,12 +258,13 @@
                       "$type": "RPG.GameCore.SetRaidTargetProgress",
                       "RaidTargetID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -151292771
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -151292771
+                          ]
+                        }
                       },
                       "ModifyValue": {
                         "IsDynamic": false,
@@ -295,12 +297,13 @@
           "DynamicValues": {
             "ToRaidTargetID": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 462955996
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  462955996
+                ]
+              }
             }
           }
         }
@@ -374,19 +377,14 @@
                       "DynamicKey": "WaveNum",
                       "Value": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 516975834
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1761568725
-                          },
-                          {
-                            "Type": "Add"
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQABAQIJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            516975834,
+                            -1761568725
+                          ]
+                        }
                       }
                     }
                   ]
@@ -410,21 +408,23 @@
                       "$type": "RPG.GameCore.SetRaidTargetProgress",
                       "RaidTargetID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -151292771
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -151292771
+                          ]
+                        }
                       },
                       "ModifyValue": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1761568725
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -1761568725
+                          ]
+                        }
                       }
                     }
                   ]
@@ -453,12 +453,13 @@
           "DynamicValues": {
             "ToRaidTargetID": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 462955996
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  462955996
+                ]
+              }
             }
           }
         }
@@ -499,21 +500,23 @@
                       "$type": "RPG.GameCore.SetRaidTargetProgress",
                       "RaidTargetID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -151292771
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -151292771
+                          ]
+                        }
                       },
                       "ModifyValue": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1761568725
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -1761568725
+                          ]
+                        }
                       }
                     }
                   ]
@@ -543,19 +546,14 @@
                       "DynamicKey": "WaveNum",
                       "Value": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 516975834
-                          },
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -1761568725
-                          },
-                          {
-                            "Type": "Add"
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQABAQIJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            516975834,
+                            -1761568725
+                          ]
+                        }
                       }
                     }
                   ]
@@ -584,12 +582,13 @@
           "DynamicValues": {
             "ToRaidTargetID": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 462955996
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  462955996
+                ]
+              }
             }
           }
         }
@@ -702,7 +701,7 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "ModifierOwnerEntity"
                   },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_Rogue_OtherRise.prefab"
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_OtherRise.prefab"
                 },
                 {
                   "$type": "RPG.GameCore.ShowEntityFloatMessage",
@@ -783,12 +782,13 @@
                       "DynamicValues": {
                         "ADF_1": {
                           "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": 462955996
-                            }
-                          ]
+                          "PostfixExpr": {
+                            "OpCodes": "AQAJ",
+                            "FixedValues": [],
+                            "DynamicHashes": [
+                              462955996
+                            ]
+                          }
                         }
                       },
                       "InheritCaster": "TargetSelf"
@@ -821,12 +821,13 @@
                   "DynamicValues": {
                     "MDF_PropertyValue": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 909827945
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          909827945
+                        ]
+                      }
                     }
                   }
                 }
@@ -904,12 +905,13 @@
                   "FormulaType": "HealByTargetMaxHP",
                   "HealPercentage": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1169441530
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1169441530
+                      ]
+                    }
                   }
                 },
                 {
@@ -959,12 +961,13 @@
                   "DynamicValues": {
                     "HP_Ratio": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -1169441530
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -1169441530
+                        ]
+                      }
                     }
                   }
                 }
@@ -1028,19 +1031,14 @@
                   "DynamicKey": "Final_Damage",
                   "Value": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -1429717357
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 909827942
-                      },
-                      {
-                        "Type": "Mul"
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQABAQQJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -1429717357,
+                        909827942
+                      ]
+                    }
                   }
                 },
                 {
@@ -1062,12 +1060,13 @@
                   "AttackProperty": {
                     "DamageValue": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": -715788798
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -715788798
+                        ]
+                      }
                     },
                     "AttackType": "Pursued",
                     "FinalFormulaType": "ByPureDamage",
@@ -1430,12 +1429,13 @@
                   "Property": "FireTakenRatio",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 909832565
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        909832565
+                      ]
+                    }
                   }
                 },
                 {
@@ -1537,12 +1537,13 @@
                   "Property": "IceAddedRatio",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -306891275
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -306891275
+                      ]
+                    }
                   }
                 }
               ]
@@ -1588,12 +1589,13 @@
                       "$type": "RPG.GameCore.SetRaidTargetProgress",
                       "RaidTargetID": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": -151292771
-                          }
-                        ]
+                        "PostfixExpr": {
+                          "OpCodes": "AQAJ",
+                          "FixedValues": [],
+                          "DynamicHashes": [
+                            -151292771
+                          ]
+                        }
                       },
                       "ModifyValue": {
                         "IsDynamic": false,
@@ -1626,12 +1628,13 @@
           "DynamicValues": {
             "ToRaidTargetID": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 462955996
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  462955996
+                ]
+              }
             }
           }
         }

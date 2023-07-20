@@ -7,8 +7,10 @@
           "$type": "RPG.GameCore.CollectDataConditions",
           "TaskIDList": [
             202010301,
-            202030502
+            202030502,
+            202020303
           ],
+          "MainMissionIDList": [],
           "PerformanceIDList": [
             202010301
           ]
@@ -76,8 +78,26 @@
             {
               "$type": "RPG.GameCore.AddMenuItem",
               "MenuItemID": 202030502,
-              "DialoguePath": "Config/Level/Mission/2020305/Act/Act202030502.json",
-              "ExtraInfo": 1
+              "DialoguePath": "Config/Level/NPCDialogue/P10202/F10202002_G14/DialogueItem202030502_F10202002_G14_N400001.json",
+              "ExtraInfo": 2,
+              "MissionID": 202030502
+            }
+          ]
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByCompareSubMissionState",
+            "SubMissionID": 202020303,
+            "SubMissionState": "Started"
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddMenuItem",
+              "MenuItemID": 202050058,
+              "DialoguePath": "Config/Level/NPCDialogue/P10202/F10202002_G14/DialogueItem202020303_F10202002_G14_N400001.json",
+              "ExtraInfo": 2,
+              "MissionID": 202020303
             }
           ]
         }

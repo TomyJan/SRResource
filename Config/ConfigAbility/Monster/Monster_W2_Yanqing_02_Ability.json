@@ -100,7 +100,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.4110000003129244
+              "Value": 0.3110000002197921
             }
           }
         },
@@ -113,12 +113,22 @@
           "ModifierName": "MMonster_W2_Yanqing_01_StandByEffect"
         },
         {
-          "$type": "RPG.GameCore.RemoveEffect",
+          "$type": "RPG.GameCore.WaitAnimState",
+          "AnimStateName": "Skill01",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.4110000003129244
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.RemoveModifier",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Common_Appear.prefab"
+          "ModifierName": "MMonster_W2_Yanqing_01_SwordPowerUp_StandByEffect"
         },
         {
           "$type": "RPG.GameCore.RemoveEffect",
@@ -126,68 +136,156 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_02_Common_Appear.prefab"
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Common_Appear.prefab",
+          "IsNeedFadeOut": false
         },
         {
-          "$type": "RPG.GameCore.FireProjectile",
-          "Projectile": {
-            "FlyTime": 0.11,
-            "AttachPoint": "Skill01Point",
-            "TargetAttachPoint": "SelectRoot",
-            "IgnoreTargetHitbox": true,
-            "FlyEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Skill01_Bullet.prefab",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Skill01_Hit.prefab",
-            "FlyEffectFadeOut": true
+          "$type": "RPG.GameCore.RemoveEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
           },
-          "OnProjectileHit": [
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_02_Common_Appear.prefab",
+          "IsNeedFadeOut": false
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByIsContainModifier",
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "Caster"
+            },
+            "ModifierName": "MMonster_W2_Yanqing_00_SwordPowerUp"
+          },
+          "SuccessTaskList": [
             {
-              "$type": "RPG.GameCore.DamageByAttackProperty",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "AbilityTargetEntity"
+              "$type": "RPG.GameCore.FireProjectile",
+              "Projectile": {
+                "FlyTime": 0.11,
+                "AttachPoint": "Skill01Point",
+                "TargetAttachPoint": "SelectRoot",
+                "IgnoreTargetHitbox": true,
+                "FlyEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Skill01_Bullet.prefab",
+                "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_00_Skill03_Hit.prefab",
+                "FlyEffectFadeOut": true
               },
-              "AttackProperty": {
-                "DamageType": "Ice",
-                "DamagePercentage": {
-                  "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -1126825319
-                    }
-                  ]
-                },
-                "SPHitRatio": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
+              "OnProjectileHit": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AbilityTargetEntity"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Ice",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -1126825319
+                        ]
+                      }
+                    },
+                    "SPHitRatio": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    },
+                    "HitAnimation": "Hit"
                   }
                 },
-                "HitAnimation": "Hit"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.VCameraConfigChange",
-              "CameraConfig": {
-                "ShakeTemplateName": "Spike_Light",
-                "OverrideShakeConfigV2": {
-                  "ShakeScale": 0.4,
-                  "ShakeTime": 0.2,
-                  "ShakeDir": {
-                    "X": 0,
-                    "Y": 0,
-                    "Z": 0.7
-                  },
-                  "RangeAttenuationDelay": 999,
-                  "RangeAttenuationTarget": 0
-                },
-                "BlendConfig": {
-                  "BlendType": "Cut"
+                {
+                  "$type": "RPG.GameCore.VCameraConfigChange",
+                  "CameraConfig": {
+                    "ShakeTemplateName": "Spike_Light",
+                    "OverrideShakeConfigV2": {
+                      "ShakeScale": 0.8,
+                      "ShakeTime": 0.2,
+                      "ShakeDir": {
+                        "X": 0,
+                        "Y": 0,
+                        "Z": 0.7
+                      },
+                      "RangeAttenuationDelay": 999,
+                      "RangeAttenuationTarget": 0
+                    },
+                    "BlendConfig": {
+                      "BlendType": "Cut"
+                    }
+                  }
                 }
-              }
+              ],
+              "WaitProjectileFinish": true
             }
           ],
-          "WaitProjectileFinish": true
+          "FailedTaskList": [
+            {
+              "$type": "RPG.GameCore.FireProjectile",
+              "Projectile": {
+                "FlyTime": 0.11,
+                "AttachPoint": "Skill01Point",
+                "TargetAttachPoint": "SelectRoot",
+                "IgnoreTargetHitbox": true,
+                "FlyEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Skill01_Bullet.prefab",
+                "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Yanqing_00/Eff_Monster_W2_Yanqing_01_Skill01_Hit.prefab",
+                "FlyEffectFadeOut": true
+              },
+              "OnProjectileHit": [
+                {
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AbilityTargetEntity"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Ice",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -1126825319
+                        ]
+                      }
+                    },
+                    "SPHitRatio": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
+                      }
+                    },
+                    "HitAnimation": "Hit"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.VCameraConfigChange",
+                  "CameraConfig": {
+                    "ShakeTemplateName": "Spike_Light",
+                    "OverrideShakeConfigV2": {
+                      "ShakeScale": 0.4,
+                      "ShakeTime": 0.2,
+                      "ShakeDir": {
+                        "X": 0,
+                        "Y": 0,
+                        "Z": 0.7
+                      },
+                      "RangeAttenuationDelay": 999,
+                      "RangeAttenuationTarget": 0
+                    },
+                    "BlendConfig": {
+                      "BlendType": "Cut"
+                    }
+                  }
+                }
+              ],
+              "WaitProjectileFinish": true
+            }
+          ]
         },
         {
           "$type": "RPG.GameCore.DamagePerformFinish"
@@ -200,7 +298,7 @@
               "$type": "RPG.GameCore.TargetAlias",
               "Alias": "Caster"
             },
-            "ModifierName": "MMonster_W2_Yanqing_00_Skill08_SwordPowerUp"
+            "ModifierName": "MMonster_W2_Yanqing_00_SwordPowerUp"
           },
           "SuccessTaskList": [
             {
@@ -212,31 +310,34 @@
               "ModifierName": "MCommon_CTRL_Frozen",
               "Chance": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -787815554
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -787815554
+                  ]
+                }
               },
               "LifeTime": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 64630118
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    64630118
+                  ]
+                }
               },
               "DynamicValues": {
                 "Modifier_Frozen_DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 638876245
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      638876245
+                    ]
+                  }
                 }
               }
             }
@@ -273,6 +374,28 @@
             "Alias": "Caster"
           },
           "ModifierName": "MMonster_W2_Yanqing_01_StandByEffect"
+        },
+        {
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByIsContainModifier",
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "Caster"
+            },
+            "ModifierName": "MMonster_W2_Yanqing_00_SwordPowerUp"
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "MMonster_W2_Yanqing_01_SwordPowerUp_StandByEffect"
+            }
+          ],
+          "FailedTaskList": []
         },
         {
           "$type": "RPG.GameCore.SkillPerformFinish"

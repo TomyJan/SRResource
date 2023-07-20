@@ -36,14 +36,6 @@
           "TargetType": "AbilityTargetEntity"
         },
         {
-          "$type": "RPG.GameCore.StartAim",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "AbilityTargetEntity"
-          },
-          "TransitTime": 1.45
-        },
-        {
           "$type": "RPG.GameCore.TriggerAnimState",
           "AnimStateName": "Skill01",
           "NormalizedTimeEnd": {
@@ -110,29 +102,6 @@
           }
         },
         {
-          "$type": "RPG.GameCore.StopAim",
-          "TransitTime": 0.7
-        },
-        {
-          "$type": "RPG.GameCore.FireProjectile",
-          "Projectile": {
-            "FlySpeed": 12,
-            "AttachPoint": "Gun",
-            "TargetAttachPoint": "Root",
-            "IgnoreTargetHitbox": true,
-            "FlyEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill01_Bullet.prefab",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Soldier04_00/Eff_Monster_W1_Soldier04_00_Skill01_Hit.prefab",
-            "AlignHitEffect": true,
-            "LinearPitchAngle": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 30
-              }
-            }
-          },
-          "WaitProjectileFinish": true
-        },
-        {
           "$type": "RPG.GameCore.DamageByAttackProperty",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
@@ -141,12 +110,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -154,6 +124,7 @@
                 "Value": 1
               }
             },
+            "AttackType": "Normal",
             "IsFaceToHitDir": true,
             "HitAnimation": "Hit",
             "HitTimeSlowType": "Puncture"
@@ -175,12 +146,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1655355878
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1655355878
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -188,6 +160,7 @@
                 "Value": 1
               }
             },
+            "AttackType": "Normal",
             "IsFaceToHitDir": true,
             "HitAnimation": "Hit"
           },
@@ -225,25 +198,6 @@
             "Alias": "Caster"
           },
           "ModifierName": "WMonster_W1_Soldier04_01_CoinPassive"
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "Company_Coin",
-          "DynamicValues": {
-            "MDF_DamageUpRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 889233808
-                }
-              ]
-            }
-          }
         }
       ]
     }
@@ -261,7 +215,7 @@
                   "$type": "RPG.GameCore.TargetAlias",
                   "Alias": "ModifierOwnerEntity"
                 },
-                "ModifierName": "Company_Coin"
+                "ModifierName": "Monster_Company_Coin"
               },
               "FailedTaskList": [
                 {
@@ -270,16 +224,17 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "ModifierOwnerEntity"
                   },
-                  "ModifierName": "Company_Coin",
+                  "ModifierName": "Monster_Company_Coin",
                   "DynamicValues": {
                     "MDF_DamageUpRatio": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 889233808
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          889233808
+                        ]
+                      }
                     }
                   }
                 }

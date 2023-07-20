@@ -23,39 +23,7 @@
                         "CompareValue": {
                           "IsDynamic": false,
                           "FixedValue": {
-                            "Value": 2
-                          }
-                        }
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ModifierOwnerEntity"
-                        },
-                        "DynamicKey": "AIFlag",
-                        "ContextScope": "TargetEntity",
-                        "CompareType": "Equal",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 4
-                          }
-                        }
-                      },
-                      {
-                        "$type": "RPG.GameCore.ByCompareDynamicValue",
-                        "TargetType": {
-                          "$type": "RPG.GameCore.TargetAlias",
-                          "Alias": "ModifierOwnerEntity"
-                        },
-                        "DynamicKey": "AIFlag",
-                        "ContextScope": "TargetEntity",
-                        "CompareType": "Equal",
-                        "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 6
+                            "Value": 5
                           }
                         }
                       }
@@ -63,22 +31,16 @@
                   },
                   "SuccessTaskList": [
                     {
-                      "$type": "RPG.GameCore.SetDynamicValueByAddValue",
+                      "$type": "RPG.GameCore.DefineDynamicValue",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "ModifierOwnerEntity"
                       },
-                      "Key": "AIFlag",
-                      "AddValue": {
+                      "DynamicKey": "AIFlag",
+                      "ResetValue": {
                         "IsDynamic": false,
                         "FixedValue": {
-                          "Value": -1
-                        }
-                      },
-                      "Min": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0
+                          "Value": 4
                         }
                       },
                       "ContextScope": "TargetEntity"
@@ -237,6 +199,23 @@
       },
       "OnStart": [
         {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "AnimStateName": "Skill01",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.10000000009313226
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.SkillExecutionStart"
+        },
+        {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
@@ -293,11 +272,127 @@
           "WaitTime": 0.4
         },
         {
-          "$type": "RPG.GameCore.IncludeTaskListTemplate",
-          "Name": "Monster_XP_Elite02_02_Skill01_TaskTemplate_DamageWithRandomEffect"
-        },
-        {
-          "$type": "RPG.GameCore.DamagePerformFinish"
+          "$type": "RPG.GameCore.Retarget",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllEnemy"
+          },
+          "MaxNumber": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 1
+            }
+          },
+          "TaskList": [
+            {
+              "$type": "RPG.GameCore.DamageByAttackProperty",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "AttackProperty": {
+                "DamageType": "Wind",
+                "DamagePercentage": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -1126825319
+                    ]
+                  }
+                },
+                "SPHitRatio": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 1
+                  }
+                },
+                "AttackType": "Normal",
+                "HitAnimation": "Hit",
+                "HitRandomEffect": [
+                  "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit.prefab",
+                  "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit_02.prefab",
+                  "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit_03.prefab"
+                ]
+              },
+              "SpecialHitSoundEvent": "Ev_sfx_monster_skill_06_hit_xp_elite02",
+              "CanTriggerLastKill": true,
+              "DisplayData": {
+                "UIMessageHeight": 0.8,
+                "DitherRangeX": 0.01,
+                "DitherRangeY": 0.04
+              }
+            },
+            {
+              "$type": "RPG.GameCore.DamagePerformFinish"
+            },
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "ModifierName": "MCommon_DOT_Poison",
+              "Chance": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1846727255
+                  ]
+                }
+              },
+              "LifeTime": {
+                "IsDynamic": true,
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1159772563
+                  ]
+                }
+              },
+              "DynamicValues": {
+                "Modifier_Poison_DamagePercentage": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1063217924
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.TriggerEffect",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "ParamEntity"
+              },
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Hit.prefab"
+            },
+            {
+              "$type": "RPG.GameCore.VCameraConfigChange",
+              "CameraConfig": {
+                "ShakeConfigV2": {
+                  "ShakeRange": 0.12,
+                  "ShakeTime": 0.06,
+                  "ShakeDir": {
+                    "X": 0,
+                    "Y": -0.07,
+                    "Z": 0.07
+                  },
+                  "BaseCycle": 0.07,
+                  "CycleDamping": 0,
+                  "RangeAttenuation": 0.95
+                }
+              }
+            }
+          ]
         },
         {
           "$type": "RPG.GameCore.WaitAnimState",
@@ -335,125 +430,44 @@
               },
               "TaskList": [
                 {
-                  "$type": "RPG.GameCore.RandomConfig",
-                  "OddsList": [
-                    {
-                      "Value": 0.33000001311302185
-                    },
-                    {
-                      "Value": 0.33000001311302185
-                    },
-                    {
-                      "Value": 0.3400000031106174
-                    }
-                  ],
-                  "TaskList": [
-                    {
-                      "$type": "RPG.GameCore.DamageByAttackProperty",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "AttackProperty": {
-                        "DamageType": "Wind",
-                        "DamagePercentage": {
-                          "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": -1126825319
-                            }
-                          ]
-                        },
-                        "SPHitRatio": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 1
-                          }
-                        },
-                        "AttackType": "Normal",
-                        "HitAnimation": "Hit",
-                        "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit.prefab"
-                      },
-                      "SpecialHitSoundEvent": "Ev_sfx_monster_skill_06_hit_xp_elite02",
-                      "CanTriggerLastKill": true,
-                      "DisplayData": {
-                        "UIMessageHeight": 0.8,
-                        "DitherRangeX": 0.01,
-                        "DitherRangeY": 0.04
+                  "$type": "RPG.GameCore.DamageByAttackProperty",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ParamEntity"
+                  },
+                  "AttackProperty": {
+                    "DamageType": "Wind",
+                    "DamagePercentage": {
+                      "IsDynamic": true,
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          -1126825319
+                        ]
                       }
                     },
-                    {
-                      "$type": "RPG.GameCore.DamageByAttackProperty",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "AttackProperty": {
-                        "DamageType": "Wind",
-                        "DamagePercentage": {
-                          "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": -1126825319
-                            }
-                          ]
-                        },
-                        "SPHitRatio": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 1
-                          }
-                        },
-                        "AttackType": "Normal",
-                        "HitAnimation": "Hit",
-                        "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit_02.prefab"
-                      },
-                      "SpecialHitSoundEvent": "Ev_sfx_monster_skill_06_hit_xp_elite02",
-                      "CanTriggerLastKill": true,
-                      "DisplayData": {
-                        "UIMessageHeight": 0.8,
-                        "DitherRangeX": 0.01,
-                        "DitherRangeY": 0.04
+                    "SPHitRatio": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 1
                       }
                     },
-                    {
-                      "$type": "RPG.GameCore.DamageByAttackProperty",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "AttackProperty": {
-                        "DamageType": "Wind",
-                        "DamagePercentage": {
-                          "IsDynamic": true,
-                          "Expressions": [
-                            {
-                              "Type": "DynamicNumber",
-                              "DynamicHash": -1126825319
-                            }
-                          ]
-                        },
-                        "SPHitRatio": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 1
-                          }
-                        },
-                        "AttackType": "Normal",
-                        "HitAnimation": "Hit",
-                        "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit_03.prefab"
-                      },
-                      "SpecialHitSoundEvent": "Ev_sfx_monster_skill_06_hit_xp_elite02",
-                      "CanTriggerLastKill": true,
-                      "DisplayData": {
-                        "UIMessageHeight": 0.8,
-                        "DitherRangeX": 0.01,
-                        "DitherRangeY": 0.04
-                      }
-                    }
-                  ]
+                    "AttackType": "Normal",
+                    "HitAnimation": "Hit",
+                    "HitRandomEffect": [
+                      "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit.prefab",
+                      "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit_02.prefab",
+                      "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill01_Hit_03.prefab"
+                    ]
+                  },
+                  "SpecialHitSoundEvent": "Ev_sfx_monster_skill_06_hit_xp_elite02",
+                  "CanTriggerLastKill": true,
+                  "DisplayData": {
+                    "UIMessageHeight": 0.8,
+                    "DitherRangeX": 0.01,
+                    "DitherRangeY": 0.04
+                  }
                 },
                 {
                   "$type": "RPG.GameCore.AddModifier",
@@ -464,31 +478,34 @@
                   "ModifierName": "MCommon_DOT_Poison",
                   "Chance": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1846727255
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1846727255
+                      ]
+                    }
                   },
                   "LifeTime": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1159772563
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1159772563
+                      ]
+                    }
                   },
                   "DynamicValues": {
                     "Modifier_Poison_DamagePercentage": {
                       "IsDynamic": true,
-                      "Expressions": [
-                        {
-                          "Type": "DynamicNumber",
-                          "DynamicHash": 1063217924
-                        }
-                      ]
+                      "PostfixExpr": {
+                        "OpCodes": "AQAJ",
+                        "FixedValues": [],
+                        "DynamicHashes": [
+                          1063217924
+                        ]
+                      }
                     }
                   }
                 },
@@ -498,7 +515,7 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "ParamEntity"
                   },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Hit.prefab"
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Hit.prefab"
                 },
                 {
                   "$type": "RPG.GameCore.VCameraConfigChange",
@@ -661,7 +678,7 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill02_01.prefab",
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill02_01.prefab",
           "TowardTarget": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "AbilityTargetEntity"
@@ -699,6 +716,14 @@
           }
         },
         {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AbilityTargetEntity"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill02.prefab"
+        },
+        {
           "$type": "RPG.GameCore.DamageByAttackProperty",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
@@ -708,12 +733,13 @@
             "DamageType": "Wind",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1847083384
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -723,10 +749,9 @@
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Hit.prefab",
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill02_Hit01.prefab",
             "HitTimeSlowType": "Impact"
-          },
-          "SpecialHitSoundEvent": "Ev_sfx_monster_skill_02_hit_xp_elite02"
+          }
         },
         {
           "$type": "RPG.GameCore.AddModifier",
@@ -737,31 +762,34 @@
           "ModifierName": "MCommon_DOT_Poison",
           "Chance": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1505772678
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1505772678
+              ]
+            }
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1296360124
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1296360124
+              ]
+            }
           },
           "DynamicValues": {
             "Modifier_Poison_DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 502997759
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  502997759
+                ]
+              }
             }
           }
         },
@@ -812,12 +840,13 @@
             "DamageType": "Wind",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1847083384
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -827,10 +856,12 @@
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Hit.prefab",
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill02_Hit01.prefab",
             "HitTimeSlowType": "Impact"
-          },
-          "SpecialHitSoundEvent": "Ev_sfx_monster_skill_02_hit_xp_elite02"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.DamagePerformFinish"
         },
         {
           "$type": "RPG.GameCore.AddModifier",
@@ -841,31 +872,34 @@
           "ModifierName": "MCommon_DOT_Poison",
           "Chance": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1505772678
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1505772678
+              ]
+            }
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1296360124
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1296360124
+              ]
+            }
           },
           "DynamicValues": {
             "Modifier_Poison_DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 502997759
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  502997759
+                ]
+              }
             }
           }
         },
@@ -905,9 +939,6 @@
               }
             }
           }
-        },
-        {
-          "$type": "RPG.GameCore.DamagePerformFinish"
         },
         {
           "$type": "RPG.GameCore.WaitAnimState",
@@ -1025,12 +1056,13 @@
             "DamageType": "Wind",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -56289053
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -56289053
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -1040,10 +1072,13 @@
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill03_Hit.prefab",
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill03_Hit.prefab",
             "HitTimeSlowType": "Impact"
           },
           "SpecialHitSoundEvent": "Ev_sfx_monster_skill_01_hit_xp_elite02"
+        },
+        {
+          "$type": "RPG.GameCore.DamagePerformFinish"
         },
         {
           "$type": "RPG.GameCore.TriggerEffect",
@@ -1051,7 +1086,7 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "AbilityTargetEntity"
           },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Hit.prefab"
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Hit.prefab"
         },
         {
           "$type": "RPG.GameCore.AddModifier",
@@ -1062,31 +1097,34 @@
           "ModifierName": "MCommon_DOT_Poison",
           "Chance": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1455051169
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1455051169
+              ]
+            }
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1095931657
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1095931657
+              ]
+            }
           },
           "DynamicValues": {
             "Modifier_Poison_DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1874721286
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1874721286
+                ]
+              }
             }
           }
         },
@@ -1126,9 +1164,6 @@
               }
             }
           }
-        },
-        {
-          "$type": "RPG.GameCore.DamagePerformFinish"
         },
         {
           "$type": "RPG.GameCore.SkillPerformFinish"
@@ -1381,6 +1416,23 @@
       },
       "OnStart": [
         {
+          "$type": "RPG.GameCore.WaitAnimState",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "AnimStateName": "Skill05",
+          "NormalizedTimeEnd": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0.10000000009313226
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.SkillExecutionStart"
+        },
+        {
           "$type": "RPG.GameCore.SetTeamFormation",
           "Team": "TeamLight",
           "FormationType": "LightTeamNormal",
@@ -1485,33 +1537,70 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "AllEnemy"
           },
-          "ModifierName": "Monster_XP_Elite02_02_DirtyHP",
+          "ModifierName": "MCommon_BlackBlood",
           "Chance": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "IsDynamic": true,
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1583768018
+              ]
             }
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1098697678
-              }
-            ]
-          },
-          "DynamicValues": {
-            "MDF_DirtyHPRatio_PerLayer": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1532429807
-                }
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1098697678
               ]
             }
-          }
+          },
+          "DynamicValues": {
+            "MDF_DirtyHPRatio": {
+              "IsDynamic": true,
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1532429807
+                ]
+              }
+            }
+          },
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.ShowUIPage",
+              "AssetPath": "UI/Common/Widget/ShowBattleHint.prefab",
+              "UITextNodes": [
+                {
+                  "TextPath": "AreaInfoPanel/Title/Text",
+                  "TextContent": {
+                    "Hash": -1339221837
+                  }
+                }
+              ],
+              "LifeTime": 2
+            }
+          ]
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllEnemy"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill05_Hit.prefab"
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllEnemy"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Buff_Common.prefab"
         },
         {
           "$type": "RPG.GameCore.TriggerAnimState",
@@ -1524,21 +1613,8 @@
           "RandomHitAngle": true
         },
         {
-          "$type": "RPG.GameCore.WaitAnimState",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "AnimStateName": "Skill05",
-          "NormalizedTimeEnd": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.5200000004842877
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.DamagePerformFinish"
+          "$type": "RPG.GameCore.TriggerUINotify",
+          "NotifyTypeName": "BattleSkillFinishForHPBarTick"
         },
         {
           "$type": "RPG.GameCore.WaitAnimState",
@@ -1600,6 +1676,78 @@
           "ContextScope": "TargetEntity"
         }
       ]
+    },
+    {
+      "Modifiers": {
+        "Monster_XP_Elite02_02_BattlePerform_LockHP": {
+          "_CallbackList": {
+            "OnBeingLimbo": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.TriggerCustomString",
+                  "CustomString": {
+                    "Value": "Level_SpecialWin"
+                  }
+                }
+              ]
+            },
+            "OnStack": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.MuteMonsterLastKill",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerEntity"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Monster_XP_Elite02_02_Instance_DisableAction": {
+          "BehaviorFlagList": [
+            "DisableAction"
+          ]
+        }
+      },
+      "Name": "Monster_XP_Elite02_02_BattlePerformAbility",
+      "TargetInfo": {
+        "TargetType": "Caster"
+      },
+      "OnStart": [
+        {
+          "$type": "RPG.GameCore.ModifyDefaultTeamFormation",
+          "TeamCenter": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "AutoBalance": true
+        },
+        {
+          "$type": "RPG.GameCore.CharacterChangePhase",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "PhaseName": "Phase1",
+          "PhaseAnimConfig": {
+            "Die": "Die_Special",
+            "DieHit": "Die_Special",
+            "DieLimbo": "Die_Special"
+          }
+        },
+        {
+          "$type": "RPG.GameCore.SaveModelWhenDead"
+        },
+        {
+          "$type": "RPG.GameCore.AddModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "ModifierName": "Monster_XP_Elite02_02_BattlePerform_LockHP"
+        }
+      ]
     }
   ],
   "GlobalModifiers": {
@@ -1613,7 +1761,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_Loop.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_Loop.prefab"
             }
           ]
         },
@@ -1625,7 +1773,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_Loop.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_Loop.prefab"
             },
             {
               "$type": "RPG.GameCore.TriggerEffect",
@@ -1633,7 +1781,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_01.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_01.prefab"
             }
           ]
         },
@@ -1645,7 +1793,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_Loop.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_Loop.prefab"
             },
             {
               "$type": "RPG.GameCore.RemoveSelfModifier"
@@ -1664,7 +1812,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_01.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill04_01.prefab"
             }
           ]
         }
@@ -1674,12 +1822,13 @@
       "MaxLayer": 3,
       "LayerAddWhenStack": {
         "IsDynamic": true,
-        "Expressions": [
-          {
-            "Type": "DynamicNumber",
-            "DynamicHash": -797864550
-          }
-        ]
+        "PostfixExpr": {
+          "OpCodes": "AQAJ",
+          "FixedValues": [],
+          "DynamicHashes": [
+            -797864550
+          ]
+        }
       },
       "_CallbackList": {
         "OnStack": {
@@ -1690,7 +1839,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill05_Hit.prefab",
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Skill05_Hit.prefab",
               "MinMutexTime": -1,
               "MutexType": "Entity"
             },
@@ -1714,19 +1863,14 @@
               "Property": "DirtyHPRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -39687848
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1458882163
-                  },
-                  {
-                    "Type": "Mul"
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQABAQQJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -39687848,
+                    1458882163
+                  ]
+                }
               }
             },
             {
@@ -1735,7 +1879,7 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ModifierOwnerEntity"
               },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_Monster_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Buff_Common.prefab"
+              "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_02/Eff_Monster_XP_Elite02_02_Buff_Common.prefab"
             }
           ]
         }
@@ -1771,21 +1915,17 @@
               "Property": "DirtyHPRatio",
               "PropertyValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "FixedNumber",
-                    "FixedValue": {
+                "PostfixExpr": {
+                  "OpCodes": "AAABAAMJ",
+                  "FixedValues": [
+                    {
                       "Value": 1
                     }
-                  },
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -985395165
-                  },
-                  {
-                    "Type": "Sub"
-                  }
-                ]
+                  ],
+                  "DynamicHashes": [
+                    -985395165
+                  ]
+                }
               }
             }
           ]

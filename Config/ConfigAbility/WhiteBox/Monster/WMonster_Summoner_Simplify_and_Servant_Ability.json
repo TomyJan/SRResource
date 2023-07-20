@@ -316,21 +316,17 @@
                       "DynamicKey": "SummonCounter",
                       "Value": {
                         "IsDynamic": true,
-                        "Expressions": [
-                          {
-                            "Type": "DynamicNumber",
-                            "DynamicHash": 512209207
-                          },
-                          {
-                            "Type": "FixedNumber",
-                            "FixedValue": {
+                        "PostfixExpr": {
+                          "OpCodes": "AQAAAAIJ",
+                          "FixedValues": [
+                            {
                               "Value": 1
                             }
-                          },
-                          {
-                            "Type": "Add"
-                          }
-                        ]
+                          ],
+                          "DynamicHashes": [
+                            512209207
+                          ]
+                        }
                       }
                     }
                   ]
@@ -624,12 +620,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1729031150
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1729031150
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,

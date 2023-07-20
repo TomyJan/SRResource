@@ -67,7 +67,7 @@
             "Alias": "Caster"
           },
           "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_XP_Elite02_01/Eff_Monster_XP_Elite02_01_Skill02_Start02.prefab",
-          "AttachPoint": "EffectScale",
+          "AttachPoint": "Origin",
           "PositionOffset": {
             "X": 0,
             "Y": 1.825,
@@ -87,7 +87,7 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "FromAttachPoint": "EffectScale",
+          "FromAttachPoint": "Origin",
           "FromOffset": {
             "X": 0,
             "Y": 1.825,
@@ -113,7 +113,7 @@
             "EnableRayCast": true,
             "Gravity": 0,
             "MaxLifeTime": 0.5,
-            "AttachPoint": "EffectScale",
+            "AttachPoint": "Origin",
             "AttachOffset": {
               "X": 0,
               "Y": 1.825,
@@ -123,12 +123,13 @@
             "FlyEffect": "Effects/Eff_Prefab/Eff_Common/Eff_Empty_Projectile.prefab",
             "LinearPitchAngle": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1735103955
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1735103955
+                ]
+              }
             }
           },
           "OnProjectileHit": [

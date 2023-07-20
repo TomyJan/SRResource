@@ -15,12 +15,13 @@
               "$type": "RPG.GameCore.EnterMapByCondition",
               "EntranceID": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1987538685
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1987538685
+                  ]
+                }
               }
             }
           ],
@@ -53,25 +54,23 @@
           "ColliderRelativePath": "CustomTrigger_OnEnter",
           "OnTriggerEnter": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "IsShow",
-              "ParameterType": "Bool",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "IsShow",
+              "ParameterType": "Bool",
+              "Value": 1
             }
           ],
           "OnTriggerExit": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "IsShow",
-              "ParameterType": "Bool",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "IsShow",
+              "ParameterType": "Bool"
             }
           ]
         }

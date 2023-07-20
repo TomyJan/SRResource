@@ -2,6 +2,59 @@
   "AbilityList": [
     {
       "Modifiers": {
+        "StageAbility_NormalDamageReduce_Modifier": {
+          "_CallbackList": {
+            "OnListenAfterSkillUse": {
+              "CallbackConfig": [
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCurrentSkillType"
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.AddModifier",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "ModifierName": "MCommon_LevelAllDamageReduce",
+                      "LifeTime": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1
+                        }
+                      },
+                      "DynamicValues": {
+                        "MDF_PropertyValue": {
+                          "IsDynamic": false,
+                          "FixedValue": {
+                            "Value": 0.3500000003259629
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "Name": "StageAbility_NormalDamageReduce",
+      "OnAdd": [
+        {
+          "$type": "RPG.GameCore.AddModifier",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "ModifierName": "StageAbility_NormalDamageReduce_Modifier"
+        }
+      ]
+    },
+    {
+      "Modifiers": {
         "StageAbility_5001011_Modifier": {
           "_CallbackList": {
             "OnListenCharacterCreate": {
@@ -3491,19 +3544,14 @@
                   "Property": "AttackAddedRatio",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 462955996
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1662446059
-                      },
-                      {
-                        "Type": "Mul"
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQABAQQJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        462955996,
+                        1662446059
+                      ]
+                    }
                   }
                 }
               ]
@@ -4075,21 +4123,17 @@
                   "Property": "AttackAddedRatio",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
+                    "PostfixExpr": {
+                      "OpCodes": "AAABAAQJ",
+                      "FixedValues": [
+                        {
                           "Value": 0
                         }
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1662446059
-                      },
-                      {
-                        "Type": "Mul"
-                      }
-                    ]
+                      ],
+                      "DynamicHashes": [
+                        1662446059
+                      ]
+                    }
                   }
                 },
                 {
@@ -4101,21 +4145,17 @@
                   "Property": "DefenceAddedRatio",
                   "PropertyValue": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "FixedNumber",
-                        "FixedValue": {
+                    "PostfixExpr": {
+                      "OpCodes": "AAABAAQJ",
+                      "FixedValues": [
+                        {
                           "Value": 0.10000000009313226
                         }
-                      },
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1662446059
-                      },
-                      {
-                        "Type": "Mul"
-                      }
-                    ]
+                      ],
+                      "DynamicHashes": [
+                        1662446059
+                      ]
+                    }
                   }
                 }
               ]
@@ -4408,12 +4448,13 @@
                 {
                   "MonsterID": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": 1694320882
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1694320882
+                      ]
+                    }
                   },
                   "LocationType": "Last",
                   "InitAnimStateName": "Appear"

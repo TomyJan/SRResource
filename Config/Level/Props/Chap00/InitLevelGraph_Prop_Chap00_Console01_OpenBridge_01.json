@@ -3,7 +3,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -42,10 +42,15 @@
                       "WaitTime": 0.7
                     },
                     {
-                      "$type": "RPG.GameCore.PropTriggerAnimState",
-                      "AnimStateName": "Open",
+                      "$type": "RPG.GameCore.PropReqInteract",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                      },
+                      "InteractID": {
+                        "IsDynamic": false,
+                        "FixedValue": {
+                          "Value": 1010
+                        }
                       }
                     },
                     {
@@ -68,22 +73,6 @@
                       "$type": "RPG.GameCore.TriggerCustomString",
                       "CustomString": {
                         "Value": "N2_FlipBridge_Triggerd"
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.WaitSecond",
-                      "WaitTime": 0.1
-                    },
-                    {
-                      "$type": "RPG.GameCore.PropReqInteract",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                      },
-                      "InteractID": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 1010
-                        }
                       }
                     }
                   ]
@@ -117,7 +106,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]

@@ -10,7 +10,32 @@
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
               },
-              "State": "EventClose"
+              "State": "EventClose",
+              "Execute": [
+                {
+                  "$type": "RPG.GameCore.EnableBillboard",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "Enable": true
+                },
+                {
+                  "$type": "RPG.GameCore.PropSetVisibility",
+                  "Visible": true,
+                  "SpecifiedRelativePaths": [],
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.PropEnableCollider",
+                  "OPType": "TriggerOnly",
+                  "Enabled": true,
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  }
+                }
+              ]
             },
             {
               "$type": "RPG.GameCore.PropStateExecute",
@@ -21,6 +46,20 @@
               "Execute": [
                 {
                   "$type": "RPG.GameCore.EnableBillboard",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.PropSetVisibility",
+                  "SpecifiedRelativePaths": [],
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  }
+                },
+                {
+                  "$type": "RPG.GameCore.PropEnableCollider",
+                  "OPType": "TriggerOnly",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
                   }
@@ -48,14 +87,6 @@
               }
             },
             {
-              "$type": "RPG.GameCore.PropEnableCollider",
-              "OPType": "TriggerOnly",
-              "TriggerSelect": "HintTrigger",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
-            },
-            {
               "$type": "RPG.GameCore.PropStateExecute",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
@@ -75,6 +106,45 @@
                   }
                 }
               ]
+            }
+          ],
+          "OverrideTargetTypes": [],
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+          }
+        }
+      ]
+    },
+    {
+      "TaskList": [
+        {
+          "$type": "RPG.GameCore.PropStateChangeListenerConfig",
+          "FromState": "EventClose",
+          "ToState": "EventOpen",
+          "OnChange": [
+            {
+              "$type": "RPG.GameCore.EnableBillboard",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.PropEnableCollider",
+              "OPType": "TriggerOnly",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              }
+            },
+            {
+              "$type": "RPG.GameCore.WaitSecond",
+              "WaitTime": 2
+            },
+            {
+              "$type": "RPG.GameCore.PropSetVisibility",
+              "SpecifiedRelativePaths": [],
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              }
             }
           ],
           "TargetType": {
@@ -106,25 +176,23 @@
           "ColliderRelativePath": "CustomTrigger_Hint",
           "OnTriggerEnter": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "IsCloseEnough",
-              "ParameterType": "Bool",
-              "BoolValue": true,
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "IsCloseEnough",
+              "ParameterType": "Bool",
+              "Value": 1
             }
           ],
           "OnTriggerExit": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "IsCloseEnough",
-              "ParameterType": "Bool",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-              }
+              },
+              "ParameterName": "IsCloseEnough",
+              "ParameterType": "Bool"
             }
           ]
         }

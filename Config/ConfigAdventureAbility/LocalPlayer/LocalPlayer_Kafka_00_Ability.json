@@ -1,6 +1,16 @@
 {
   "AbilityList": [
     {
+      "OnAbort": [
+        {
+          "$type": "RPG.GameCore.RadialBlurEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Active": false
+        }
+      ],
       "Name": "LocalPlayer_Kafka_NormalAtk01",
       "TargetInfo": {
         "TargetType": "SkillPointEntityOrNone"
@@ -502,6 +512,21 @@
       ]
     },
     {
+      "OnAbort": [
+        {
+          "$type": "RPG.GameCore.RadialBlurEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Active": false
+        },
+        {
+          "$type": "RPG.GameCore.GlobalMainIntensityEffect",
+          "IsRevert": true,
+          "FadeDuration": 1
+        }
+      ],
       "Name": "LocalPlayer_Kafka_MazeSkill",
       "TargetInfo": {
         "TargetType": "SkillPointEntityOrNone"
@@ -523,11 +548,6 @@
               "AnimStateName": "MazeSkill"
             },
             {
-              "$type": "RPG.GameCore.LookAt",
-              "TargetType": "AbilityTargetEntity",
-              "Duration": 0.25
-            },
-            {
               "$type": "RPG.GameCore.WaitAnimState",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
@@ -542,9 +562,23 @@
               }
             },
             {
-              "$type": "RPG.GameCore.LookAt",
-              "TargetType": "AbilityTargetEntity",
-              "Duration": 0.25
+              "$type": "RPG.GameCore.WaitAnimState",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "AnimStateName": "MazeSkill",
+              "NormalizedTimeEnd": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 0.07000000006519258
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.GlobalMainIntensityEffect",
+              "TargetIntensity": 0.3,
+              "FadeDuration": 0.1
             },
             {
               "$type": "RPG.GameCore.WaitAnimState",
@@ -556,73 +590,34 @@
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0.060000000055879354
+                  "Value": 0.0800000000745058
                 }
               }
             },
             {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "SkillPointEntity"
+              "$type": "RPG.GameCore.AdventureTriggerAttack",
+              "TriggerBattleDelay": 0.2,
+              "AttackDetectConfig": {
+                "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
+                "MaxRadius": 10,
+                "FanAngle": 360,
+                "Hight": 2
               },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_01",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Hit.prefab",
-                "LinearPitchAngle": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.10000000009313226
-                  }
-                }
+              "HitConfig": {
+                "HitAnimation": "Hit",
+                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_01_Hit.prefab"
               },
-              "OnProjectileHit": [
+              "OnAttack": [
                 {
-                  "$type": "RPG.GameCore.AdventureTriggerAttack",
-                  "AttackTargetType": {
+                  "$type": "RPG.GameCore.AddMazeBuff",
+                  "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
+                    "Alias": "SkillPointEntity"
                   },
-                  "AttackRootTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ProjectileHitEntity"
-                  },
-                  "TriggerBattleDelay": 0.2,
-                  "AttackDetectConfig": {
-                    "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
-                    "MaxRadius": 1,
-                    "FanAngle": 360,
-                    "Hight": 2,
-                    "Offset": {
-                      "X": 0,
-                      "Y": -1,
-                      "Z": 0
-                    }
-                  },
-                  "HitConfig": {
-                    "HitAnimation": "Hit",
-                    "HitSoundEvent": "Ev_sfx_avatar_gun_hit_kafka"
-                  },
-                  "OnAttack": [
-                    {
-                      "$type": "RPG.GameCore.AddMazeBuff",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "SkillPointEntity"
-                      },
-                      "ID": 100501
-                    }
-                  ]
+                  "ID": 100501
                 }
-              ]
+              ],
+              "TriggerBattleByAllHitTarget": true
             },
             {
               "$type": "RPG.GameCore.VCameraConfigChange",
@@ -640,69 +635,7 @@
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0.0800000000745058
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "SkillPointEntity"
-              },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_02",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab",
-                "LinearPitchAngle": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.10000000009313226
-                  }
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.WaitAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AnimStateName": "MazeSkill",
-              "NormalizedTimeEnd": {
-                "IsDynamic": false,
-                "FixedValue": {
                   "Value": 0.10000000009313226
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "SkillPointEntity"
-              },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_01",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab",
-                "LinearPitchAngle": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.10000000009313226
-                  }
                 }
               }
             },
@@ -721,30 +654,6 @@
               }
             },
             {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "SkillPointEntity"
-              },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_02",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab",
-                "LinearPitchAngle": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.10000000009313226
-                  }
-                }
-              }
-            },
-            {
               "$type": "RPG.GameCore.WaitAnimState",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
@@ -759,28 +668,9 @@
               }
             },
             {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "SkillPointEntity"
-              },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_01",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab",
-                "LinearPitchAngle": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0.10000000009313226
-                  }
-                }
-              }
+              "$type": "RPG.GameCore.GlobalMainIntensityEffect",
+              "IsRevert": true,
+              "FadeDuration": 1
             }
           ],
           "FailedTaskList": [
@@ -816,7 +706,7 @@
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0.054999999701976776
+                  "Value": 0.06499999971129
                 }
               }
             },
@@ -843,104 +733,54 @@
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0.060000000055879354
+                  "Value": 0.07000000006519258
                 }
               }
             },
             {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
+              "$type": "RPG.GameCore.GlobalMainIntensityEffect",
+              "TargetIntensity": 0.3,
+              "FadeDuration": 0.1
+            },
+            {
+              "$type": "RPG.GameCore.WaitAnimState",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "None"
+                "Alias": "Caster"
               },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_01",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab",
-                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Hit.prefab"
-              },
-              "OnProjectileHit": [
-                {
-                  "$type": "RPG.GameCore.AdventureTriggerAttack",
-                  "AttackTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
-                  },
-                  "AttackRootTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ProjectileHitEntity"
-                  },
-                  "TriggerBattleDelay": 0.2,
-                  "AttackDetectConfig": {
-                    "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
-                    "MaxRadius": 1,
-                    "FanAngle": 360,
-                    "Hight": 2,
-                    "Offset": {
-                      "X": 0,
-                      "Y": -0.8,
-                      "Z": 0.3
-                    }
-                  },
-                  "HitConfig": {
-                    "HitAnimation": "Hit",
-                    "HitSoundEvent": "Ev_sfx_avatar_gun_hit_kafka"
-                  },
-                  "OnAttack": [
-                    {
-                      "$type": "RPG.GameCore.AddMazeBuff",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "ID": 100501
-                    }
-                  ]
+              "AnimStateName": "MazeSkill",
+              "NormalizedTimeEnd": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 0.08199999993667006
                 }
-              ],
-              "OnProjectileLifetimeFinish": [
+              }
+            },
+            {
+              "$type": "RPG.GameCore.AdventureTriggerAttack",
+              "AttackTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllEnemy"
+              },
+              "TriggerBattleDelay": 0.2,
+              "AttackDetectConfig": {
+                "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
+                "MaxRadius": 10,
+                "FanAngle": 360,
+                "Hight": 2
+              },
+              "HitConfig": {
+                "HitAnimation": "Hit",
+                "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_01_Hit.prefab"
+              },
+              "OnAttack": [
                 {
-                  "$type": "RPG.GameCore.AdventureTriggerAttack",
-                  "AttackTargetType": {
+                  "$type": "RPG.GameCore.AddMazeBuff",
+                  "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "AllEnemy"
+                    "Alias": "ParamEntity"
                   },
-                  "AttackRootTargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ProjectileHitEntity"
-                  },
-                  "TriggerBattleDelay": 0.2,
-                  "AttackDetectConfig": {
-                    "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
-                    "MaxRadius": 1,
-                    "FanAngle": 360,
-                    "Hight": 2,
-                    "Offset": {
-                      "X": 0,
-                      "Y": -0.8,
-                      "Z": 0.3
-                    }
-                  },
-                  "HitConfig": {
-                    "HitAnimation": "Hit",
-                    "HitSoundEvent": "Ev_sfx_avatar_gun_hit_kafka"
-                  },
-                  "OnAttack": [
-                    {
-                      "$type": "RPG.GameCore.AddMazeBuff",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetAlias",
-                        "Alias": "ParamEntity"
-                      },
-                      "ID": 100501
-                    }
-                  ]
+                  "ID": 100501
                 }
               ]
             },
@@ -960,123 +800,14 @@
               "NormalizedTimeEnd": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0.0800000000745058
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "None"
-              },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_02",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.WaitAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AnimStateName": "MazeSkill",
-              "NormalizedTimeEnd": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.10000000009313226
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "None"
-              },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_01",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.WaitAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AnimStateName": "MazeSkill",
-              "NormalizedTimeEnd": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.12000000011175871
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "None"
-              },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_02",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab"
-              }
-            },
-            {
-              "$type": "RPG.GameCore.WaitAnimState",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "Caster"
-              },
-              "AnimStateName": "MazeSkill",
-              "NormalizedTimeEnd": {
-                "IsDynamic": false,
-                "FixedValue": {
                   "Value": 0.1500000001396984
                 }
               }
             },
             {
-              "$type": "RPG.GameCore.AdventureFireProjectile",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "None"
-              },
-              "Projectile": {
-                "ColliderTemplate": "CapsuleZ_MazeCommonBullet",
-                "Behavior": "LinearWithHitDetect",
-                "FlySpeed": 70,
-                "EnableRayCast": true,
-                "Gravity": 0,
-                "MaxLifeTime": 0.2,
-                "AttachPoint": "Gun_01",
-                "TargetAttachPoint": "Root",
-                "FlyEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_MazeSkill01_Bullet.prefab"
-              }
+              "$type": "RPG.GameCore.GlobalMainIntensityEffect",
+              "IsRevert": true,
+              "FadeDuration": 1
             }
           ]
         }

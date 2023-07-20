@@ -3,7 +3,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -13,7 +13,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -177,10 +177,7 @@
           "$type": "RPG.GameCore.ShowMazeUI"
         },
         {
-          "$type": "RPG.GameCore.PropAnimSetParameter",
-          "ParameterName": "Finish",
-          "ParameterType": "Trigger",
-          "FloatValue": 3.402823E+38,
+          "$type": "RPG.GameCore.AnimSetParameter",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx",
             "FetchType": "SinglePropByPropKey",
@@ -188,7 +185,9 @@
               "Custom": true,
               "Key": "Rootcontamination"
             }
-          }
+          },
+          "ParameterName": "Finish",
+          "ParameterType": "Trigger"
         },
         {
           "$type": "RPG.GameCore.ActiveVirtualCamera",

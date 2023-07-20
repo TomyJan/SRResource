@@ -154,12 +154,13 @@
           "DynamicValues": {
             "MDF_Count": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1788953387
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1788953387
+                ]
+              }
             }
           }
         },
@@ -402,17 +403,35 @@
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
-            "$type": "RPG.GameCore.ByCompareMonsterID",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "TargetMonsterID": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 2004011
+            "$type": "RPG.GameCore.ByAny",
+            "PredicateList": [
+              {
+                "$type": "RPG.GameCore.ByCompareMonsterID",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "TargetMonsterID": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 2004011
+                  }
+                }
+              },
+              {
+                "$type": "RPG.GameCore.ByCompareMonsterID",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "TargetMonsterID": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 2004012
+                  }
+                }
               }
-            }
+            ]
           },
           "SuccessTaskList": [
             {
@@ -425,12 +444,13 @@
               "DynamicValues": {
                 "MDF_DamageUpRatio_PerLayer": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 2036968716
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      2036968716
+                    ]
+                  }
                 }
               }
             }
@@ -460,21 +480,17 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                },
-                {
-                  "Type": "FixedNumber",
-                  "FixedValue": {
+              "PostfixExpr": {
+                "OpCodes": "AQAAAAQJ",
+                "FixedValues": [
+                  {
                     "Value": 0.5000000004656613
                   }
-                },
-                {
-                  "Type": "Mul"
-                }
-              ]
+                ],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -484,7 +500,7 @@
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_Skill01_01_Hit.prefab"
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Kafka_00/Eff_Monster_W2_Kafka_00_Skill01_01_Hit.prefab"
           }
         },
         {
@@ -517,21 +533,17 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                },
-                {
-                  "Type": "FixedNumber",
-                  "FixedValue": {
+              "PostfixExpr": {
+                "OpCodes": "AQAAAAQJ",
+                "FixedValues": [
+                  {
                     "Value": 0.5000000004656613
                   }
-                },
-                {
-                  "Type": "Mul"
-                }
-              ]
+                ],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -541,7 +553,7 @@
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_Skill01_02_Hit.prefab"
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Kafka_00/Eff_Monster_W2_Kafka_00_Skill01_02_Hit.prefab"
           },
           "CanTriggerLastKill": true
         },
@@ -583,31 +595,34 @@
           "LifeStepImmediately": true,
           "Chance": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1283749776
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1283749776
+              ]
+            }
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1689877746
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1689877746
+              ]
+            }
           },
           "DynamicValues": {
             "Modifier_Electric_DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -2142458785
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -2142458785
+                ]
+              }
             }
           }
         },
@@ -828,7 +843,12 @@
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareMonsterPhase",
             "CompareType": "Equal",
-            "CompareValue": 3
+            "CompareValue": {
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 3
+              }
+            }
           },
           "SuccessTaskList": [
             {
@@ -861,17 +881,35 @@
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
-            "$type": "RPG.GameCore.ByCompareMonsterID",
-            "TargetType": {
-              "$type": "RPG.GameCore.TargetAlias",
-              "Alias": "Caster"
-            },
-            "TargetMonsterID": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 2004011
+            "$type": "RPG.GameCore.ByAny",
+            "PredicateList": [
+              {
+                "$type": "RPG.GameCore.ByCompareMonsterID",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "TargetMonsterID": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 2004011
+                  }
+                }
+              },
+              {
+                "$type": "RPG.GameCore.ByCompareMonsterID",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "TargetMonsterID": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 2004012
+                  }
+                }
               }
-            }
+            ]
           },
           "SuccessTaskList": [
             {
@@ -884,12 +922,13 @@
               "DynamicValues": {
                 "MDF_DamageUpRatio_PerLayer": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 2036968716
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      2036968716
+                    ]
+                  }
                 }
               }
             }
@@ -914,7 +953,12 @@
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareMonsterPhase",
             "CompareType": "Equal",
-            "CompareValue": 3
+            "CompareValue": {
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 3
+              }
+            }
           },
           "SuccessTaskList": [
             {
@@ -951,12 +995,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1847083384
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -972,7 +1017,7 @@
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_Skill02_01_Hit.prefab",
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Kafka_00/Eff_Monster_W2_Kafka_00_Skill02_01_Hit.prefab",
             "HitEffectOffsetAngle": -1
           }
         },
@@ -1020,12 +1065,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1847083384
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -1041,7 +1087,7 @@
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_Skill02_02_Hit.prefab",
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Kafka_00/Eff_Monster_W2_Kafka_00_Skill02_02_Hit.prefab",
             "HitEffectOffsetAngle": 45
           }
         },
@@ -1089,12 +1135,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1847083384
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -1124,12 +1171,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1055926903
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1055926903
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -1139,7 +1187,7 @@
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit_H",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Kafka/Eff_Avatar_Kafka_00_Skill02_03_Hit_02.prefab"
+            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_Kafka_00/Eff_Monster_W2_Kafka_00_Skill02_03_Hit_02.prefab"
           }
         },
         {
@@ -1203,22 +1251,24 @@
               },
               "LifeTime": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1689877746
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1689877746
+                  ]
+                }
               },
               "DynamicValues": {
                 "Modifier_Electric_DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": -2142458785
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      -2142458785
+                    ]
+                  }
                 }
               }
             }
@@ -1351,7 +1401,12 @@
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareMonsterPhase",
             "CompareType": "Equal",
-            "CompareValue": 3
+            "CompareValue": {
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 3
+              }
+            }
           },
           "SuccessTaskList": [
             {
@@ -1587,12 +1642,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -56289053
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -56289053
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -2003,58 +2059,58 @@
           "ModifierName": "MCommon_MindControl",
           "Chance": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -1260024276
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1260024276
+              ]
+            }
           },
           "LifeTime": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 55159024
-              },
-              {
-                "Type": "FixedNumber",
-                "FixedValue": {
+            "PostfixExpr": {
+              "OpCodes": "AQAAAAIJ",
+              "FixedValues": [
+                {
                   "Value": 1
                 }
-              },
-              {
-                "Type": "Add"
-              }
-            ]
+              ],
+              "DynamicHashes": [
+                55159024
+              ]
+            }
           },
           "DynamicValues": {
             "MDF_MindControlDamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 388865030
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  388865030
+                ]
+              }
             },
             "MDF_MaxDamageRatio": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -2069865456
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -2069865456
+                ]
+              }
             },
             "MDF_MinDamageRatio": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1690010071
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  1690010071
+                ]
+              }
             }
           },
           "SuccessTaskList": [
@@ -2213,7 +2269,12 @@
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareMonsterPhase",
             "CompareType": "Equal",
-            "CompareValue": 3
+            "CompareValue": {
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 3
+              }
+            }
           },
           "SuccessTaskList": [
             {
@@ -2310,12 +2371,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1122549516
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1122549516
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -2367,12 +2429,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1122549516
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1122549516
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -2423,12 +2486,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1122549516
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1122549516
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -2479,12 +2543,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1122549516
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1122549516
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -2535,12 +2600,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1122549516
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1122549516
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -2591,12 +2657,13 @@
             "DamageType": "Thunder",
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1122549516
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1122549516
+                ]
+              }
             },
             "HitSplitRatio": {
               "IsDynamic": false,
@@ -2723,7 +2790,12 @@
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareMonsterPhase",
             "CompareType": "Equal",
-            "CompareValue": 3
+            "CompareValue": {
+              "IsDynamic": false,
+              "FixedValue": {
+                "Value": 3
+              }
+            }
           },
           "SuccessTaskList": [
             {
@@ -2882,12 +2954,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 388865030
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  388865030
+                ]
+              }
             },
             "AttackType": "Normal",
             "HitAnimation": "Hit",
@@ -2954,12 +3027,13 @@
               "DynamicKey": "PursuitCount",
               "ResetValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -2027709849
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -2027709849
+                  ]
+                }
               },
               "ContextScope": "TargetEntity"
             }
@@ -3087,12 +3161,13 @@
               "DynamicKey": "PursuitCount",
               "ResetValue": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -2027709849
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -2027709849
+                  ]
+                }
               },
               "ContextScope": "TargetEntity"
             }
@@ -3376,19 +3451,14 @@
               "AttackProperty": {
                 "DamagePercentage": {
                   "IsDynamic": true,
-                  "Expressions": [
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1806253118
-                    },
-                    {
-                      "Type": "DynamicNumber",
-                      "DynamicHash": 1872728612
-                    },
-                    {
-                      "Type": "Div"
-                    }
-                  ]
+                  "PostfixExpr": {
+                    "OpCodes": "AQABAQUJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1806253118,
+                      1872728612
+                    ]
+                  }
                 },
                 "AttackType": "Pursued",
                 "InheritTargetType": {

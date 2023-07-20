@@ -347,12 +347,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -388,12 +389,12 @@
                 "Inverse": true
               },
               {
-                "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                "$type": "RPG.GameCore.ByIsContainModifier",
                 "TargetType": {
                   "$type": "RPG.GameCore.TargetAlias",
                   "Alias": "AbilityTargetEntity"
                 },
-                "Flag": "STAT_CTRL_Stun",
+                "ModifierName": "MCommon_Shake",
                 "Inverse": true
               }
             ]
@@ -408,21 +409,23 @@
               "ModifierName": "MCommon_Unstable",
               "Chance": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1562744672
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1562744672
+                  ]
+                }
               },
               "LifeTime": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": -223156200
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    -223156200
+                  ]
+                }
               }
             }
           ]
@@ -432,56 +435,5 @@
         }
       ]
     }
-  ],
-  "GlobalModifiers": {
-    "MCommon_Unstable": {
-      "UseSnapshotEntity": true,
-      "UIConfig": {
-        "UIEffectPath": "UI/Battle/Widget/TeamInfoStatusEff/TeamInfoStatus_Taunted.prefab",
-        "UIPosition": "UI_TOP",
-        "ModifierUIPriority": "Debuff"
-      },
-      "_CallbackList": {
-        "OnCreate": {
-          "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.TriggerEffect",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_StanceBreak_Common_Physical.prefab"
-            }
-          ]
-        },
-        "OnAfterBeingAttacked": {
-          "CallbackConfig": [
-            {
-              "$type": "RPG.GameCore.AddModifier",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "ModifierOwnerEntity"
-              },
-              "ModifierName": "MCommon_CTRL_Stun",
-              "Chance": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              },
-              "LifeTime": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
-              }
-            },
-            {
-              "$type": "RPG.GameCore.RemoveSelfModifier"
-            }
-          ]
-        }
-      }
-    }
-  }
+  ]
 }

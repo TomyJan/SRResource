@@ -3,7 +3,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -13,7 +13,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -44,6 +44,17 @@
           ],
           "ColliderRelativePath": "CustomTrigger_Open",
           "OnTriggerEnter": [
+            {
+              "$type": "RPG.GameCore.SetGraphDynamicFloat",
+              "Name": "Loc_IsOpened",
+              "TargetIDs": [],
+              "Value": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 1
+                }
+              }
+            },
             {
               "$type": "RPG.GameCore.PropStateExecute",
               "TargetType": {
@@ -118,43 +129,73 @@
           "OnTriggerEnter": [],
           "OnTriggerExit": [
             {
-              "$type": "RPG.GameCore.PropStateExecute",
-              "TargetType": {
-                "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+              "$type": "RPG.GameCore.PredicateTaskList",
+              "Predicate": {
+                "$type": "RPG.GameCore.ByCompareGraphDynamicFloat",
+                "Name": "Loc_IsOpened",
+                "Value": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 1
+                  }
+                },
+                "CompareType": "Equal"
               },
-              "State": "Open",
-              "Execute": [
+              "SuccessTaskList": [
                 {
-                  "$type": "RPG.GameCore.PropTriggerAnimState",
-                  "AnimStateName": "Close",
+                  "$type": "RPG.GameCore.SetDynamicValue",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                  },
+                  "DynamicKey": "Loc_IsOpened",
+                  "ContextScope": "ContextOwner",
+                  "Value": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 0
+                    }
                   }
                 },
                 {
-                  "$type": "RPG.GameCore.PropEnableCollider",
-                  "OPType": "TriggerOnly",
-                  "Enabled": true,
-                  "SpecifiedRelativePaths": [
-                    "TriggerOpen"
-                  ],
-                  "TriggerSelect": "CustomTrigger",
-                  "CustomTriggerName": "CustomTrigger_Open",
+                  "$type": "RPG.GameCore.PropStateExecute",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                  }
-                },
-                {
-                  "$type": "RPG.GameCore.PropEnableCollider",
-                  "OPType": "TriggerOnly",
-                  "SpecifiedRelativePaths": [
-                    "TriggerClose"
-                  ],
-                  "TriggerSelect": "CustomTrigger",
-                  "CustomTriggerName": "CustomTrigger_Close",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                  }
+                  },
+                  "State": "Open",
+                  "Execute": [
+                    {
+                      "$type": "RPG.GameCore.PropTriggerAnimState",
+                      "AnimStateName": "Close",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.PropEnableCollider",
+                      "OPType": "TriggerOnly",
+                      "Enabled": true,
+                      "SpecifiedRelativePaths": [
+                        "TriggerOpen"
+                      ],
+                      "TriggerSelect": "CustomTrigger",
+                      "CustomTriggerName": "CustomTrigger_Open",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                      }
+                    },
+                    {
+                      "$type": "RPG.GameCore.PropEnableCollider",
+                      "OPType": "TriggerOnly",
+                      "SpecifiedRelativePaths": [
+                        "TriggerClose"
+                      ],
+                      "TriggerSelect": "CustomTrigger",
+                      "CustomTriggerName": "CustomTrigger_Close",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                      }
+                    }
+                  ]
                 }
               ]
             }
@@ -170,6 +211,10 @@
         "Key": "Maze_Prop_Chap01_DoorFrame",
         "Comment": "对应门框",
         "EditorHint": "LevelObject"
+      },
+      {
+        "$type": "RPG.GameCore.SharedFloat",
+        "Key": "Loc_IsOpened"
       }
     ]
   }

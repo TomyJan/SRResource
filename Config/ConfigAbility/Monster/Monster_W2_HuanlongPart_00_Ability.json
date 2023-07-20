@@ -2,7 +2,7 @@
   "AbilityList": [
     {
       "Modifiers": {
-        "WMonster_W2_HuanlongPart_00_MuteHitFly": {
+        "Monster_W2_HuanlongPart_00_MuteHitFly": {
           "BehaviorFlagList": [
             "MuteHitFly"
           ]
@@ -24,11 +24,93 @@
                   "IsSlientDispel": true
                 },
                 {
-                  "$type": "RPG.GameCore.TurnInsertAbility",
-                  "AbilityName": "Monster_W2_HuanlongPart_00_PassiveSkill_Insert_Phase01",
-                  "InsertAbilityPriority": "MonsterDeathRattle",
-                  "OwnerAliveState": "Mask_AliveOrLimbo",
-                  "TargetAliveState": "Mask_AliveOrLimbo"
+                  "$type": "RPG.GameCore.Retarget",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "ModifierOwnerSummoner"
+                  },
+                  "MaxNumber": {
+                    "IsDynamic": false,
+                    "FixedValue": {
+                      "Value": 1
+                    }
+                  },
+                  "TaskList": [
+                    {
+                      "$type": "RPG.GameCore.SetDynamicValueByProperty",
+                      "DynamicKey": "CurrentHP",
+                      "ReadTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ParamEntity"
+                      },
+                      "Value": "CurrentHP"
+                    }
+                  ]
+                },
+                {
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByCompareDynamicValue",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "DynamicKey": "CurrentHP",
+                    "ContextScope": "TargetEntity",
+                    "CompareType": "Equal",
+                    "CompareValue": {
+                      "IsDynamic": false,
+                      "FixedValue": {
+                        "Value": 0
+                      }
+                    }
+                  },
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_W2_HuanlongPart_00_PassiveSkill_Insert_Phase01",
+                      "InsertAbilityPriority": "MonsterForceKill",
+                      "OwnerAliveState": "Mask_AliveOrLimbo",
+                      "TargetAliveState": "Mask_AliveOrLimbo",
+                      "ShowInActionBar": true
+                    }
+                  ],
+                  "FailedTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TurnInsertAbility",
+                      "AbilityName": "Monster_W2_HuanlongPart_00_PassiveSkill_Insert_Phase01",
+                      "InsertAbilityPriority": "MonsterDeathRattle",
+                      "InsertConditionPriority": {
+                        "OverridePriority": "MonsterForceKill",
+                        "Predicate": {
+                          "$type": "RPG.GameCore.ByCompareAbilityProperty",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetSequence",
+                            "Sequence": [
+                              {
+                                "$type": "RPG.GameCore.TargetAlias",
+                                "Alias": "Caster"
+                              },
+                              {
+                                "$type": "RPG.GameCore.TargetMapSummoner"
+                              }
+                            ]
+                          },
+                          "Property": "CurrentHP",
+                          "CompareType": "LessEqual",
+                          "CompareValue": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 0
+                            }
+                          }
+                        }
+                      },
+                      "OwnerAliveState": "Mask_AliveOrLimbo",
+                      "TargetAliveState": "Mask_AliveOrLimbo",
+                      "ShowInActionBar": true
+                    }
+                  ]
                 },
                 {
                   "$type": "RPG.GameCore.SetDieImmediately"
@@ -94,24 +176,84 @@
           "ModifierName": "Monster_W2_HuanlongPart_00_Deathrattle"
         },
         {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "Caster"
-          },
-          "ModifierName": "Monster_W2_HuanlongPart_00_Heal",
-          "DynamicValues": {
-            "MDF_HealRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 1142900351
+          "$type": "RPG.GameCore.PredicateTaskList",
+          "Predicate": {
+            "$type": "RPG.GameCore.ByAny",
+            "PredicateList": [
+              {
+                "$type": "RPG.GameCore.ByCompareMonsterID",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "TargetMonsterID": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 8012201
+                  }
                 }
-              ]
-            }
+              },
+              {
+                "$type": "RPG.GameCore.ByCompareMonsterID",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
+                "TargetMonsterID": {
+                  "IsDynamic": false,
+                  "FixedValue": {
+                    "Value": 8012203
+                  }
+                }
+              }
+            ]
           },
-          "ShowUIMessageDelayTime": 1.2
+          "SuccessTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W2_HuanlongPart_00_Heal",
+              "DynamicValues": {
+                "MDF_HealRatio": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1142900351
+                    ]
+                  }
+                }
+              },
+              "ShowUIMessageDelayTime": 1.2
+            }
+          ],
+          "FailedTaskList": [
+            {
+              "$type": "RPG.GameCore.AddModifier",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "ModifierName": "Monster_W2_HuanlongPart_00_Heal",
+              "DynamicValues": {
+                "MDF_HealRatio": {
+                  "IsDynamic": true,
+                  "PostfixExpr": {
+                    "OpCodes": "AQAJ",
+                    "FixedValues": [],
+                    "DynamicHashes": [
+                      1142900351
+                    ]
+                  }
+                }
+              },
+              "ShowUIMessageDelayTime": 1.9
+            }
+          ]
         },
         {
           "$type": "RPG.GameCore.AddModifier",
@@ -127,7 +269,7 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ModifierName": "WMonster_W2_HuanlongPart_00_MuteHitFly"
+          "ModifierName": "Monster_W2_HuanlongPart_00_MuteHitFly"
         }
       ]
     },
@@ -184,6 +326,22 @@
           "CustomFormationIgnoreDying": false
         },
         {
+          "$type": "RPG.GameCore.LookAt",
+          "PerformerType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllLightTeam"
+          },
+          "TargetType": "TeamFormation"
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_HuanlongPart_00/Eff_Monster_W2_HuanlongPart_00_Skill01_05.prefab"
+        },
+        {
           "$type": "RPG.GameCore.WaitAnimState",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
@@ -210,7 +368,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.40000000037252903
+              "Value": 0.3559999999124557
             }
           }
         },
@@ -219,26 +377,22 @@
           "ModifyFunction": "Add",
           "ModifyValue": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "FixedNumber",
-                "FixedValue": {
+            "PostfixExpr": {
+              "OpCodes": "AAABAAMJ",
+              "FixedValues": [
+                {
                   "Value": 0
                 }
-              },
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": -266899029
-              },
-              {
-                "Type": "Sub"
-              }
-            ]
+              ],
+              "DynamicHashes": [
+                -266899029
+              ]
+            }
           }
         },
         {
           "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/ShowBattleHint.prefab",
+          "AssetPath": "UI/Common/Widget/BattleAlertHint.prefab",
           "UITextNodes": [
             {
               "TextPath": "AreaInfoPanel/Title/Text",
@@ -248,6 +402,24 @@
             }
           ],
           "LifeTime": 3
+        },
+        {
+          "$type": "RPG.GameCore.TriggerAnimState",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllEnemy"
+          },
+          "AnimLogicState": "OnHit",
+          "AnimStateName": "Hit"
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllEnemy"
+          },
+          "AliveOnly": true,
+          "EffectPath": "Effects/Eff_Prefab/Eff_Monster/Eff_W2_HuanlongPart_00/Eff_Monster_W2_HuanlongPart_00_Skill01_Hit01.prefab"
         },
         {
           "$type": "RPG.GameCore.WaitAnimState",
@@ -323,7 +495,7 @@
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
-              "Value": 0.8000000007450581
+              "Value": 1
             }
           },
           "EventList": [
@@ -331,7 +503,7 @@
               "NormalizedTime": {
                 "IsDynamic": false,
                 "FixedValue": {
-                  "Value": 0.8000000007450581
+                  "Value": 0.7500000006984919
                 }
               },
               "TaskList": [
@@ -341,71 +513,91 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   }
+                },
+                {
+                  "$type": "RPG.GameCore.VCameraConfigChange",
+                  "CameraConfig": {
+                    "NormalConfig": {
+                      "CameraState": "CasterToTargetPerform",
+                      "AnchorTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "DarkTeamEntity"
+                      },
+                      "IsLocalOffset": true,
+                      "AnchorOffset": {
+                        "X": -2,
+                        "Y": 1,
+                        "Z": 4
+                      },
+                      "AnchorRatio": 1,
+                      "AimTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "LightTeamEntity"
+                      },
+                      "AimOffset": {
+                        "X": 2.3,
+                        "Y": 2.4,
+                        "Z": 0
+                      },
+                      "FollowDamp": 0.01,
+                      "AimDamp": 0.01,
+                      "Dutch": 2,
+                      "ResetToDefault": false
+                    },
+                    "BlendConfig": {
+                      "BlendType": "Cut"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "NormalizedTime": {
+                "IsDynamic": false,
+                "FixedValue": {
+                  "Value": 0.8200000007636845
+                }
+              },
+              "TaskList": [
+                {
+                  "$type": "RPG.GameCore.TriggerEffect",
+                  "TargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "AllLightTeam"
+                  },
+                  "AliveOnly": true,
+                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Buff_Common_RecoverBP.prefab"
+                },
+                {
+                  "$type": "RPG.GameCore.ShowUIPage",
+                  "AssetPath": "UI/Common/Widget/BattleSelfStatusHint.prefab",
+                  "UITextNodes": [
+                    {
+                      "TextPath": "AreaInfoPanel/Title/Text",
+                      "TextContent": {
+                        "Hash": -1141152547
+                      }
+                    }
+                  ],
+                  "LifeTime": 3
+                },
+                {
+                  "$type": "RPG.GameCore.ModifyTeamBoostPoint",
+                  "ModifyFunction": "Add",
+                  "ModifyValue": {
+                    "IsDynamic": true,
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        1450547785
+                      ]
+                    }
+                  }
                 }
               ]
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.VCameraConfigChange",
-          "CameraConfig": {
-            "NormalConfig": {
-              "CameraState": "CasterToTargetPerform",
-              "AnchorTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "DarkTeamEntity"
-              },
-              "IsLocalOffset": true,
-              "AnchorOffset": {
-                "X": -3,
-                "Y": 1,
-                "Z": 3.5
-              },
-              "AnchorRatio": 1,
-              "AimTargetType": {
-                "$type": "RPG.GameCore.TargetAlias",
-                "Alias": "LightTeamEntity"
-              },
-              "AimOffset": {
-                "X": 3,
-                "Y": 2,
-                "Z": 0
-              },
-              "FollowDamp": 0.01,
-              "AimDamp": 0.01,
-              "Dutch": 2,
-              "ResetToDefault": false
-            },
-            "BlendConfig": {
-              "BlendType": "Cut"
-            }
-          }
-        },
-        {
-          "$type": "RPG.GameCore.ShowUIPage",
-          "AssetPath": "UI/Common/Widget/BattleSelfStatusHint.prefab",
-          "UITextNodes": [
-            {
-              "TextPath": "AreaInfoPanel/Title/Text",
-              "TextContent": {
-                "Hash": -1141152547
-              }
-            }
-          ],
-          "LifeTime": 3
-        },
-        {
-          "$type": "RPG.GameCore.ModifyTeamBoostPoint",
-          "ModifyFunction": "Add",
-          "ModifyValue": {
-            "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1450547785
-              }
-            ]
-          }
         },
         {
           "$type": "RPG.GameCore.WaitSecond",
@@ -475,17 +667,9 @@
                   "NormalizedTimeWait": {
                     "IsDynamic": false,
                     "FixedValue": {
-                      "Value": 0.5000000004656613
+                      "Value": 0.10000000009313226
                     }
                   }
-                },
-                {
-                  "$type": "RPG.GameCore.TriggerEffect",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "ModifierOwnerEntity"
-                  },
-                  "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_Heal.prefab"
                 },
                 {
                   "$type": "RPG.GameCore.HealHP",
@@ -496,12 +680,13 @@
                   "FormulaType": "HealByHealerMaxHP",
                   "HealPercentage": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -2118159447
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -2118159447
+                      ]
+                    }
                   }
                 }
               ]

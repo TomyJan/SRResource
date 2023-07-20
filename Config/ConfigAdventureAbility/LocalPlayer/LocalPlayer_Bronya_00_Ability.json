@@ -1,6 +1,16 @@
 {
   "AbilityList": [
     {
+      "OnAbort": [
+        {
+          "$type": "RPG.GameCore.RadialBlurEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Active": false
+        }
+      ],
       "Name": "LocalPlayer_Bronya_NormalAtk01",
       "TargetInfo": {
         "TargetType": "SkillPointEntityOrNone"
@@ -154,6 +164,35 @@
                         "HitSoundEvent": "Ev_sfx_avatar_atk_cast_hit_bronya"
                       }
                     }
+                  ],
+                  "OnProjectileLifetimeFinish": [
+                    {
+                      "$type": "RPG.GameCore.AdventureTriggerAttack",
+                      "AttackTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
+                      },
+                      "AttackRootTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ProjectileHitEntity"
+                      },
+                      "TriggerBattleDelay": 0.2,
+                      "AttackDetectConfig": {
+                        "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
+                        "MaxRadius": 1,
+                        "FanAngle": 360,
+                        "Hight": 2,
+                        "Offset": {
+                          "X": 0,
+                          "Y": -1,
+                          "Z": 0
+                        }
+                      },
+                      "HitConfig": {
+                        "HitAnimation": "Hit",
+                        "HitSoundEvent": "Ev_sfx_avatar_atk_cast_hit_bronya"
+                      }
+                    }
                   ]
                 },
                 {
@@ -211,6 +250,34 @@
                     "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Bronya/Eff_Avatar_Bronya_00_MazeAttack_Hit01.prefab"
                   },
                   "OnProjectileHit": [
+                    {
+                      "$type": "RPG.GameCore.AdventureTriggerAttack",
+                      "AttackTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "AllEnemy"
+                      },
+                      "AttackRootTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "ProjectileHitEntity"
+                      },
+                      "TriggerBattleDelay": 0.2,
+                      "AttackDetectConfig": {
+                        "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
+                        "MaxRadius": 1,
+                        "FanAngle": 360,
+                        "Hight": 2,
+                        "Offset": {
+                          "X": 0,
+                          "Y": -1,
+                          "Z": 0
+                        }
+                      },
+                      "HitConfig": {
+                        "HitAnimation": "Hit"
+                      }
+                    }
+                  ],
+                  "OnProjectileLifetimeFinish": [
                     {
                       "$type": "RPG.GameCore.AdventureTriggerAttack",
                       "AttackTargetType": {
@@ -436,6 +503,16 @@
       ]
     },
     {
+      "OnAbort": [
+        {
+          "$type": "RPG.GameCore.RadialBlurEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Active": false
+        }
+      ],
       "Name": "LocalPlayer_Bronya_MazeSkill",
       "TargetInfo": {
         "TargetType": "Caster"

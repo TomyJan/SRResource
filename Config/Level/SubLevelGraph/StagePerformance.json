@@ -10,6 +10,12 @@
           }
         },
         {
+          "$type": "RPG.GameCore.TriggerCustomString",
+          "CustomString": {
+            "Value": "Stage_WaveMonsterPerformEnd1"
+          }
+        },
+        {
           "$type": "RPG.GameCore.WaveMonsterPerform",
           "OnFindPerformMonsterFailed": [
             {
@@ -51,12 +57,6 @@
               }
             }
           ]
-        },
-        {
-          "$type": "RPG.GameCore.TriggerCustomString",
-          "CustomString": {
-            "Value": "Stage_WaveMonsterPerformEnd1"
-          }
         }
       ]
     },
@@ -430,6 +430,21 @@
               }
             }
           }
+        },
+        {
+          "$type": "RPG.GameCore.SetTeamFormation",
+          "Team": "TeamDark",
+          "FormationType": "DarkTeamNormal"
+        },
+        {
+          "$type": "RPG.GameCore.SetTeamRootOffset",
+          "Team": "TeamLight",
+          "Reset": true
+        },
+        {
+          "$type": "RPG.GameCore.SetTeamFormation",
+          "Team": "TeamLight",
+          "FormationType": "LightTeamNormal"
         }
       ]
     },
@@ -658,6 +673,13 @@
               ]
             },
             {
+              "$type": "RPG.GameCore.ClearFormationFaceDelta",
+              "PerformerType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AllLightTeam"
+              }
+            },
+            {
               "$type": "RPG.GameCore.ChangeActionEntityToObserveState",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
@@ -797,6 +819,14 @@
         {
           "$type": "RPG.GameCore.SetSimulationSpeedEnable",
           "Enable": true
+        },
+        {
+          "$type": "RPG.GameCore.ClearFormationFaceDelta",
+          "IsReset": true,
+          "PerformerType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllLightTeam"
+          }
         }
       ]
     }

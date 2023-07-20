@@ -141,16 +141,15 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PropAnimSetParameter",
-          "ParameterName": "OnHit",
-          "ParameterType": "Trigger",
-          "FloatValue": 3.402823E+38,
+          "$type": "RPG.GameCore.AnimSetParameter",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-          }
+          },
+          "ParameterName": "OnHit",
+          "ParameterType": "Trigger"
         },
         {
-          "$type": "RPG.GameCore.PropTriggerEffectList",
+          "$type": "RPG.GameCore.TriggerEffectList",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           },
@@ -160,7 +159,7 @@
           ]
         },
         {
-          "$type": "RPG.GameCore.PropRemoveEffect",
+          "$type": "RPG.GameCore.RemoveEffect",
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           }
@@ -262,7 +261,7 @@
           }
         },
         {
-          "$type": "RPG.GameCore.PropStateChangeServerListenerConfig",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
@@ -276,11 +275,11 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPredicateSucc",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.ChangePropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -288,11 +287,11 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]

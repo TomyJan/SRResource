@@ -130,7 +130,7 @@
           "$type": "RPG.GameCore.PropPuzzleEventListener",
           "FinishCallback": [
             {
-              "$type": "RPG.GameCore.PropTriggerEffectList",
+              "$type": "RPG.GameCore.TriggerEffectList",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx"
               },
@@ -248,10 +248,7 @@
           "ToState": "Open",
           "OnChange": [
             {
-              "$type": "RPG.GameCore.PropAnimSetParameter",
-              "ParameterName": "TriggerOpen",
-              "ParameterType": "Trigger",
-              "FloatValue": 3.402823E+38,
+              "$type": "RPG.GameCore.AnimSetParameter",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                 "FetchType": "SinglePropByPropKey",
@@ -259,7 +256,9 @@
                   "Custom": true,
                   "Key": "ContainerDoor"
                 }
-              }
+              },
+              "ParameterName": "TriggerOpen",
+              "ParameterType": "Trigger"
             },
             {
               "$type": "RPG.GameCore.PropStateExecute",
@@ -278,10 +277,7 @@
                   "WaitTime": 0.9
                 },
                 {
-                  "$type": "RPG.GameCore.PropAnimSetParameter",
-                  "ParameterName": "TriggerUnlock",
-                  "ParameterType": "Trigger",
-                  "FloatValue": 3.402823E+38,
+                  "$type": "RPG.GameCore.AnimSetParameter",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx",
                     "FetchType": "SinglePropByPropKey",
@@ -289,7 +285,9 @@
                       "Custom": true,
                       "Key": "TargetChest"
                     }
-                  }
+                  },
+                  "ParameterName": "TriggerUnlock",
+                  "ParameterType": "Trigger"
                 },
                 {
                   "$type": "RPG.GameCore.PropReqInteract",

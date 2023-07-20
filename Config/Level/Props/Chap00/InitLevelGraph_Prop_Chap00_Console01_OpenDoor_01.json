@@ -42,7 +42,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -52,7 +52,7 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.SyncAllSubPropState",
+          "$type": "RPG.GameCore.CreateNPCMonster",
           "TaskEnabled": true
         }
       ]
@@ -77,34 +77,6 @@
                         "$type": "RPG.GameCore.TargetFetchAdvPropEx"
                       },
                       "Mode": "UsePose01"
-                    },
-                    {
-                      "$type": "RPG.GameCore.WaitSecond",
-                      "WaitTime": 0.2
-                    },
-                    {
-                      "$type": "RPG.GameCore.PropTriggerAnimState",
-                      "AnimStateName": "Open",
-                      "TransitionDuration": 0,
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PropTriggerAnimState",
-                      "AnimStateName": "Open",
-                      "TargetType": {
-                        "$type": "RPG.GameCore.TargetFetchAdvPropEx",
-                        "FetchType": "SinglePropByPropKey",
-                        "SinglePropKey": {
-                          "Custom": true,
-                          "Key": "Maze_Prop_Chap01_DoorFrame_01"
-                        }
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.WaitSecond",
-                      "WaitTime": 0.5
                     },
                     {
                       "$type": "RPG.GameCore.PropReqInteract",
@@ -140,6 +112,7 @@
             }
           ],
           "InteractAngleRange": 220,
+          "OverrideTargetTypes": [],
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvPropEx"
           }
@@ -173,6 +146,26 @@
           "ToState": "Open",
           "FromAnyState": true,
           "OnChange": [
+            {
+              "$type": "RPG.GameCore.WaitSecond",
+              "WaitTime": 0.2
+            },
+            {
+              "$type": "RPG.GameCore.PropTriggerAnimState",
+              "AnimStateName": "Open",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetFetchAdvPropEx",
+                "FetchType": "SinglePropByPropKey",
+                "SinglePropKey": {
+                  "Custom": true,
+                  "Key": "Maze_Prop_Chap01_DoorFrame_01"
+                }
+              }
+            },
+            {
+              "$type": "RPG.GameCore.WaitSecond",
+              "WaitTime": 0.5
+            },
             {
               "$type": "RPG.GameCore.PropTriggerAnimState",
               "AnimStateName": "Closed",

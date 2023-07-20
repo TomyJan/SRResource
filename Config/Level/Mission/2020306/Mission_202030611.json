@@ -2,32 +2,6 @@
   "OnInitSequece": [],
   "OnStartSequece": [
     {
-      "TaskList": [
-        {
-          "$type": "RPG.GameCore.PropTriggerAnimState",
-          "AnimStateName": "Open",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvPropEx",
-            "FetchType": "SinglePropByPropID",
-            "SinglePropID": {
-              "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 35
-                }
-              },
-              "ID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 300001
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "TaskList": []
     },
     {
@@ -81,10 +55,18 @@
           }
         },
         {
+          "$type": "RPG.GameCore.SetAudioEmotionState",
+          "StateName": "State_Joyful"
+        },
+        {
           "$type": "RPG.GameCore.TriggerPerformance",
           "ValueSource": {},
           "PerformanceType": "C",
           "PerformanceID": 202030611
+        },
+        {
+          "$type": "RPG.GameCore.SetAudioEmotionState",
+          "ResetToFloorDefault": true
         },
         {
           "$type": "RPG.GameCore.FinishPerformanceMission",

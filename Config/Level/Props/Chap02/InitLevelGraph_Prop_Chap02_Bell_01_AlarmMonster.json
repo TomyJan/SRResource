@@ -30,25 +30,24 @@
               },
               "Execute": [
                 {
-                  "$type": "RPG.GameCore.PropAnimSetParameter",
-                  "ParameterName": "TriggerAlarm",
-                  "ParameterType": "Trigger",
-                  "BoolValue": true,
-                  "FloatValue": 3.402823E+38,
+                  "$type": "RPG.GameCore.AnimSetParameter",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
-                  }
+                  },
+                  "ParameterName": "TriggerAlarm",
+                  "ParameterType": "Trigger"
                 },
                 {
                   "$type": "RPG.GameCore.AdvPlayerEnterAlertDeviceTrigger",
                   "GroupID": {
                     "IsDynamic": true,
-                    "Expressions": [
-                      {
-                        "Type": "DynamicNumber",
-                        "DynamicHash": -717984299
-                      }
-                    ]
+                    "PostfixExpr": {
+                      "OpCodes": "AQAJ",
+                      "FixedValues": [],
+                      "DynamicHashes": [
+                        -717984299
+                      ]
+                    }
                   }
                 },
                 {

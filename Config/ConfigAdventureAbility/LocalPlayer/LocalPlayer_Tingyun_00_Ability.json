@@ -1,6 +1,16 @@
 {
   "AbilityList": [
     {
+      "OnAbort": [
+        {
+          "$type": "RPG.GameCore.RadialBlurEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Active": false
+        }
+      ],
       "Name": "LocalPlayer_TingYun_NormalAtk01",
       "TargetInfo": {
         "TargetType": "SkillPointEntityOrNone"
@@ -499,12 +509,13 @@
           "$type": "RPG.GameCore.AdventureModifyTeamPlayerSP",
           "ModifyValue": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 457361642
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                457361642
+              ]
+            }
           },
           "SpecifyTargetType": {
             "$type": "RPG.GameCore.TargetAlias",

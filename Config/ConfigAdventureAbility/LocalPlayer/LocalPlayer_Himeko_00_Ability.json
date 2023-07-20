@@ -1,6 +1,16 @@
 {
   "AbilityList": [
     {
+      "OnAbort": [
+        {
+          "$type": "RPG.GameCore.RadialBlurEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "Active": false
+        }
+      ],
       "Name": "LocalPlayer_Himeko_NormalAtk01",
       "TargetInfo": {
         "TargetType": "SkillPointEntityOrNone"
@@ -549,12 +559,13 @@
               "PropID": 10031,
               "Duration": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1753558246
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1753558246
+                  ]
+                }
               },
               "NumLimitation": {
                 "IsDynamic": false,
@@ -610,7 +621,7 @@
                   "DeltaValue": 10
                 },
                 {
-                  "$type": "RPG.GameCore.PropTriggerEffectList",
+                  "$type": "RPG.GameCore.TriggerEffectList",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
                   },
@@ -711,12 +722,13 @@
               },
               "Duration": {
                 "IsDynamic": true,
-                "Expressions": [
-                  {
-                    "Type": "DynamicNumber",
-                    "DynamicHash": 1753558246
-                  }
-                ]
+                "PostfixExpr": {
+                  "OpCodes": "AQAJ",
+                  "FixedValues": [],
+                  "DynamicHashes": [
+                    1753558246
+                  ]
+                }
               },
               "NumLimitation": {
                 "IsDynamic": false,
@@ -772,7 +784,7 @@
                   "DeltaValue": 10
                 },
                 {
-                  "$type": "RPG.GameCore.PropTriggerEffectList",
+                  "$type": "RPG.GameCore.TriggerEffectList",
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetFetchAdvPropEx"
                   },

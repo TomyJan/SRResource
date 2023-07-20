@@ -125,12 +125,13 @@
           "AttackProperty": {
             "DamagePercentage": {
               "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": -1126825319
-                }
-              ]
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1126825319
+                ]
+              }
             },
             "SPHitRatio": {
               "IsDynamic": false,
@@ -139,8 +140,7 @@
               }
             },
             "AttackType": "Normal",
-            "HitAnimation": "Hit",
-            "HitTimeSlowType": "Puncture"
+            "HitAnimation": "Hit"
           },
           "TriggerHitSound": true,
           "DisplayData": {
@@ -170,25 +170,6 @@
             "Alias": "Caster"
           },
           "ModifierName": "WMonster_W1_Soldier02_01_CoinPassive"
-        },
-        {
-          "$type": "RPG.GameCore.AddModifier",
-          "TargetType": {
-            "$type": "RPG.GameCore.TargetAlias",
-            "Alias": "ModifierOwnerEntity"
-          },
-          "ModifierName": "Company_Coin",
-          "DynamicValues": {
-            "MDF_DamageUpRatio": {
-              "IsDynamic": true,
-              "Expressions": [
-                {
-                  "Type": "DynamicNumber",
-                  "DynamicHash": 889233808
-                }
-              ]
-            }
-          }
         }
       ]
     }

@@ -7,12 +7,26 @@
             "OnAfterBeingAttacked": {
               "CallbackConfig": [
                 {
-                  "$type": "RPG.GameCore.TriggerAbility",
-                  "TargetType": {
-                    "$type": "RPG.GameCore.TargetAlias",
-                    "Alias": "Caster"
+                  "$type": "RPG.GameCore.PredicateTaskList",
+                  "Predicate": {
+                    "$type": "RPG.GameCore.ByContainBehaviorFlag",
+                    "TargetType": {
+                      "$type": "RPG.GameCore.TargetAlias",
+                      "Alias": "ModifierOwnerEntity"
+                    },
+                    "Flag": "STAT_CTRL_Frozen",
+                    "Inverse": true
                   },
-                  "AbilityName": "WMonster_W3_Coin_00_Flop"
+                  "SuccessTaskList": [
+                    {
+                      "$type": "RPG.GameCore.TriggerAbility",
+                      "TargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "AbilityName": "WMonster_W3_Coin_00_Flop"
+                    }
+                  ]
                 }
               ]
             }
@@ -42,19 +56,28 @@
       "OnStart": [
         {
           "$type": "RPG.GameCore.SetDynamicValue",
+          "DynamicKey": "AIFlag",
+          "ContextScope": "TargetEntity",
+          "Value": {
+            "IsDynamic": false,
+            "FixedValue": {
+              "Value": 0
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.SetDynamicValue",
           "DynamicKey": "FlopSide",
           "ContextScope": "TargetEntity",
           "Value": {
             "IsDynamic": true,
-            "Expressions": [
-              {
-                "Type": "DynamicNumber",
-                "DynamicHash": 1675480356
-              },
-              {
-                "Type": "Neg"
-              }
-            ]
+            "PostfixExpr": {
+              "OpCodes": "AQAGCQ==",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1675480356
+              ]
+            }
           }
         },
         {
@@ -68,7 +91,7 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "AnimStateName": "FlopOver",
+          "AnimStateName": "Flop",
           "NormalizedTimeEnd": {
             "IsDynamic": false,
             "FixedValue": {
@@ -92,13 +115,9 @@
           },
           "SuccessTaskList": [
             {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "DynamicKey": "TempAnimatorSwitch",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
+              "$type": "RPG.GameCore.SwitchOverrideController",
+              "Name": {
+                "Value": "Override1"
               }
             }
           ]
@@ -119,13 +138,9 @@
           },
           "SuccessTaskList": [
             {
-              "$type": "RPG.GameCore.SetDynamicValue",
-              "DynamicKey": "TempAnimatorSwitch",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
-                }
+              "$type": "RPG.GameCore.SwitchOverrideController",
+              "Name": {
+                "Value": "Override2"
               }
             }
           ]
@@ -138,6 +153,12 @@
         "TargetType": "SkillTargetEntityList"
       },
       "OnStart": [
+        {
+          "$type": "RPG.GameCore.SetTeamFormation",
+          "Team": "TeamLight",
+          "FormationType": "LightTeamNormal",
+          "CustomFormationIgnoreDying": false
+        },
         {
           "$type": "RPG.GameCore.TriggerAbility",
           "TargetType": {
@@ -235,39 +256,41 @@
           "$type": "RPG.GameCore.SkillExecutionStart"
         },
         {
-          "$type": "RPG.GameCore.DamageByAttackProperty",
+          "$type": "RPG.GameCore.ModifySPNew",
           "TargetType": {
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "AbilityTargetEntity"
           },
-          "AttackProperty": {
-            "DamagePercentage": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            },
-            "SPHitRatio": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
-              }
-            },
-            "AttackType": "Normal",
-            "HitAnimation": "Hit_H",
-            "HitEffect": "Effects/Eff_Prefab/Eff_Monster/Eff_W1_Svarog_00/Eff_W1_Svarog_00_Skill02_Hit.prefab",
-            "HitTimeSlowType": "Slash",
-            "HitTimeSlowIntensity": "Middle"
-          },
-          "SpecialHitSoundEvent": "Ev_sfx_boss_skill_02_hit_svarog",
-          "DisplayData": {
-            "UIMessageHeight": 1,
-            "DitherRangeX": 0.02,
-            "DitherRangeY": 0.02
+          "AddMaxSPRatio": {
+            "IsDynamic": true,
+            "PostfixExpr": {
+              "OpCodes": "AQAJ",
+              "FixedValues": [],
+              "DynamicHashes": [
+                -1593212191
+              ]
+            }
           }
         },
         {
-          "$type": "RPG.GameCore.DamagePerformFinish"
+          "$type": "RPG.GameCore.ShowEntityFloatMessage",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AbilityTargetEntity"
+          },
+          "AliveOnly": true,
+          "ContentID": {
+            "Hash": 1878364322
+          }
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AbilityTargetEntity"
+          },
+          "AliveOnly": true,
+          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Common_MAZ_RecoverSP.prefab"
         },
         {
           "$type": "RPG.GameCore.SkillPerformFinish"
@@ -452,11 +475,15 @@
             "Alias": "AllEnemy"
           },
           "AttackProperty": {
-            "DamageType": "Ice",
+            "DamageType": "Quantum",
             "DamagePercentage": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
+              "IsDynamic": true,
+              "PostfixExpr": {
+                "OpCodes": "AQAJ",
+                "FixedValues": [],
+                "DynamicHashes": [
+                  -1847083384
+                ]
               }
             },
             "SPHitRatio": {
@@ -472,13 +499,100 @@
           "CanTriggerLastKill": true
         },
         {
+          "$type": "RPG.GameCore.DamagePerformFinish"
+        },
+        {
+          "$type": "RPG.GameCore.ModifySPNew",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllEnemy"
+          },
+          "AddMaxSPRatio": {
+            "IsDynamic": true,
+            "PostfixExpr": {
+              "OpCodes": "AQAGCQ==",
+              "FixedValues": [],
+              "DynamicHashes": [
+                1182405826
+              ]
+            }
+          }
+        },
+        {
+          "$type": "RPG.GameCore.ShowEntityFloatMessage",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllEnemy"
+          },
+          "AliveOnly": true,
+          "ContentID": {
+            "Hash": 1705296780
+          }
+        },
+        {
+          "$type": "RPG.GameCore.TriggerEffect",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AllEnemy"
+          },
+          "AliveOnly": true,
+          "EffectPath": "Effects/Eff_Prefab/Eff_Common/Eff_Temp/Eff_Temp_ReduceSP.prefab"
+        },
+        {
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
             "ShakeTemplateName": "Common_Explode_Big"
           }
         },
         {
-          "$type": "RPG.GameCore.DamagePerformFinish"
+          "$type": "RPG.GameCore.SkillPerformFinish"
+        }
+      ]
+    },
+    {
+      "Name": "WMonster_W3_Coin_00_Skill03_Phase01",
+      "TargetInfo": {
+        "TargetType": "SkillTargetEntityList"
+      },
+      "OnStart": [
+        {
+          "$type": "RPG.GameCore.TriggerAbility",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "AbilityName": "WMonster_W3_Coin_00_Skill03_Phase02",
+          "IsSkillPerform": true
+        },
+        {
+          "$type": "RPG.GameCore.TriggerAbility",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "AbilityName": "WMonster_W3_Coin_00_Skill03_Camera",
+          "IsSkillPerform": true
+        }
+      ]
+    },
+    {
+      "Name": "WMonster_W3_Coin_00_Skill03_Phase02",
+      "TargetInfo": {
+        "TargetType": "Caster"
+      },
+      "OnStart": [
+        {
+          "$type": "RPG.GameCore.TriggerAbility",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "AbilityName": "WMonster_W3_Coin_00_Flop",
+          "IsSkillPerform": true
+        },
+        {
+          "$type": "RPG.GameCore.WaitSecond",
+          "WaitTime": 1
         },
         {
           "$type": "RPG.GameCore.SkillPerformFinish"

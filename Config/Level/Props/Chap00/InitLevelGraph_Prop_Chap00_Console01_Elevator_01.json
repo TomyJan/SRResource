@@ -36,36 +36,6 @@
                   },
                   "FailedTaskList": [
                     {
-                      "$type": "RPG.GameCore.CaptureLocalPlayer",
-                      "CharacterUniqueName": "LocalPlayer"
-                    },
-                    {
-                      "$type": "RPG.GameCore.PlayScreenTransfer",
-                      "Mode": "SwitchOut",
-                      "CustomTime": 0.5
-                    },
-                    {
-                      "$type": "RPG.GameCore.SwitchCharacterAnchor",
-                      "IsLocalPlayer": true,
-                      "CharacterUniqueName": "LocalPlayer",
-                      "AreaName": {
-                        "Custom": true,
-                        "Key": "LevelArea"
-                      },
-                      "AnchorName": {
-                        "Custom": true,
-                        "Key": "Anchor"
-                      }
-                    },
-                    {
-                      "$type": "RPG.GameCore.PlayScreenTransfer",
-                      "CustomTime": 0.5
-                    },
-                    {
-                      "$type": "RPG.GameCore.ReleaseCharacter",
-                      "CharacterUniqueName": "LocalPlayer"
-                    },
-                    {
                       "$type": "RPG.GameCore.PropStateExecute",
                       "TargetType": {
                         "$type": "RPG.GameCore.TargetFetchAdvPropEx"
@@ -80,6 +50,48 @@
                             "IsDynamic": false,
                             "FixedValue": {
                               "Value": 1010
+                            }
+                          }
+                        },
+                        {
+                          "$type": "RPG.GameCore.WaitSecond",
+                          "WaitTime": 1
+                        },
+                        {
+                          "$type": "RPG.GameCore.PlayScreenTransfer",
+                          "Mode": "SwitchOut",
+                          "CustomTime": 0.5
+                        },
+                        {
+                          "$type": "RPG.GameCore.SwitchCharacterAnchor",
+                          "IsLocalPlayer": true,
+                          "CharacterUniqueName": "LocalPlayer",
+                          "AreaName": {
+                            "Custom": true,
+                            "Key": "LevelArea"
+                          },
+                          "AnchorName": {
+                            "Custom": true,
+                            "Key": "Anchor"
+                          }
+                        },
+                        {
+                          "$type": "RPG.GameCore.PlayScreenTransfer",
+                          "CustomTime": 0.5
+                        },
+                        {
+                          "$type": "RPG.GameCore.WaitSecond",
+                          "WaitTime": 1
+                        },
+                        {
+                          "$type": "RPG.GameCore.PropReqInteract",
+                          "TargetType": {
+                            "$type": "RPG.GameCore.TargetFetchAdvPropEx"
+                          },
+                          "InteractID": {
+                            "IsDynamic": false,
+                            "FixedValue": {
+                              "Value": 1100
                             }
                           }
                         }
